@@ -7,7 +7,16 @@ import (
 	"io/ioutil"
 )
 
-func ParseClubs(fileName string) *[]model.RawClub {
+func Parse(dirName string) *model.RawParsingResults {
+	clubs := parseClubs(dirName + "clubs.json")
+	dancers := parseDancers(dirName + "dancers.json")
+	return &model.RawParsingResults{
+		Clubs:   clubs,
+		Dancers: dancers,
+	}
+}
+
+func parseClubs(fileName string) *[]model.RawClub {
 	data, err := ioutil.ReadFile(fileName)
 	util.CheckErr(err, "Read file: "+fileName)
 
@@ -16,4 +25,15 @@ func ParseClubs(fileName string) *[]model.RawClub {
 	json.Unmarshal(data, &clubs)
 
 	return &clubs
+}
+
+func parseDancers(fileName string) *[]model.RawDancer {
+	data, err := ioutil.ReadFile(fileName)
+	util.CheckErr(err, "Read file: "+fileName)
+
+	dancers := make([]model.RawDancer, 0)
+
+	json.Unmarshal(data, &dancers)
+
+	return &dancers
 }

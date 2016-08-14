@@ -13,6 +13,7 @@ import (
 	"strings"
 	"time"
 
+	"fmt"
 	"github.com/itimofeev/hustlesa/model"
 	"github.com/itimofeev/hustlesa/parser"
 	"reflect"
@@ -84,16 +85,20 @@ func main() {
 
 	db := initDb(config)
 
-	clubs := parser.ParseClubs("/Users/ilyatimofee/prog/hsa/parse-xls/json/clubs.json")
+	fmt.Println("!!! ", db) //TODO remove
 
+	res := parser.Parse("/Users/ilyatimofee/prog/hsa/parse-xls/json/")
 
+	fmt.Printf("!!!%+v\n", (*res.Dancers)[10]) //TODO remove
 
-	for _, club := range *clubs {
-		fixString(&(*clubs)[0])
-		_, err := insertClub(db, &club)
-
-		CheckErr(err, "insert club")
-	}
+	//clubs := parser.ParseClubs("/Users/ilyatimofee/prog/hsa/parse-xls/json/clubs.json")
+	//
+	//for _, club := range *clubs {
+	//	fixString(&(*clubs)[0])
+	//	_, err := insertClub(db, &club)
+	//
+	//	CheckErr(err, "insert club")
+	//}
 }
 
 func fixString(obj interface{}) {
@@ -114,7 +119,7 @@ func fixString(obj interface{}) {
 				str := strings.TrimSpace(str)
 				strField.SetString(str)
 
-				if  "" == str {
+				if "" == str {
 					validField.SetBool(false)
 				}
 			}
