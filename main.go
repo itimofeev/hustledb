@@ -81,24 +81,13 @@ func initEnvironment() {
 func main() {
 	initEnvironment()
 
-	config := ReadConfig()
-
-	db := initDb(config)
-
-	fmt.Println("!!! ", db) //TODO remove
+	//config := ReadConfig()
+	//
+	//db := initDb(config)
 
 	res := parser.Parse("/Users/ilyatimofee/prog/hsa/parse-xls/json/")
 
-	fmt.Printf("!!!%+v\n", (*res.Dancers)[10]) //TODO remove
-
-	//clubs := parser.ParseClubs("/Users/ilyatimofee/prog/hsa/parse-xls/json/clubs.json")
-	//
-	//for _, club := range *clubs {
-	//	fixString(&(*clubs)[0])
-	//	_, err := insertClub(db, &club)
-	//
-	//	CheckErr(err, "insert club")
-	//}
+	fmt.Printf("!!!%+v\n", res.DancerClubs[20]) //TODO remove
 }
 
 func fixString(obj interface{}) {
@@ -126,6 +115,15 @@ func fixString(obj interface{}) {
 		}
 	}
 }
+
+//clubs := parser.ParseClubs("/Users/ilyatimofee/prog/hsa/parse-xls/json/clubs.json")
+//
+//for _, club := range *clubs {
+//	fixString(&(*clubs)[0])
+//	_, err := insertClub(db, &club)
+//
+//	CheckErr(err, "insert club")
+//}
 
 func insertClub(db *runner.DB, club *model.RawClub) (*model.RawClub, error) {
 	err := db.
