@@ -13,16 +13,13 @@ import (
 	"strings"
 	"time"
 
-	"fmt"
-	"github.com/itimofeev/hustlesa/model"
 	"github.com/itimofeev/hustlesa/parser"
-	"reflect"
 )
 
 func initDb(config Config) *runner.DB {
 	db, err := sql.Open("postgres", config.Db().URL)
 
-	CheckErr(err, "Open db")
+	parser.CheckErr(err, "Open db")
 
 	runner.MustPing(db)
 
@@ -81,57 +78,11 @@ func initEnvironment() {
 func main() {
 	initEnvironment()
 
-	//config := ReadConfig()
-	//
-	//db := initDb(config)
+	config := ReadConfig()
+
+	db := initDb(config)
 
 	res := parser.Parse("/Users/ilyatimofee/prog/hsa/parse-xls/json/")
 
-	fmt.Printf("!!!%+v\n", res.DancerClubs[3]) //TODO remove
-}
-
-func fixString(obj interface{}) {
-	v := reflect.ValueOf(obj).Elem()
-	for i := 0; i < v.NumField(); i++ {
-		field := v.Field(i)
-
-		switch field.Interface().(type) {
-		case string:
-			field.SetString(strings.TrimSpace(field.String()))
-		case dat.NullString:
-			strField := field.FieldByName("String")
-			validField := field.FieldByName("Valid")
-
-			str := strField.String()
-			valid := validField.Bool()
-			if valid {
-				str := strings.TrimSpace(str)
-				strField.SetString(str)
-
-				if "" == str {
-					validField.SetBool(false)
-				}
-			}
-		}
-	}
-}
-
-//clubs := parser.ParseClubs("/Users/ilyatimofee/prog/hsa/parse-xls/json/clubs.json")
-//
-//for _, club := range *clubs {
-//	fixString(&(*clubs)[0])
-//	_, err := insertClub(db, &club)
-//
-//	CheckErr(err, "insert club")
-//}
-
-func insertClub(db *runner.DB, club *model.RawClub) (*model.RawClub, error) {
-	err := db.
-		InsertInto("club").
-		Columns("id", "name", "leader", "comment", "site1", "old_name").
-		Record(club).
-		Returning("id").
-		QueryScalar(&club.ID)
-
-	return club, err
+	parser.InsertData(db, res)
 }

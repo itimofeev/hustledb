@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/itimofeev/hustlesa/model"
+	"gopkg.in/mgutz/dat.v1"
 	"io/ioutil"
 	"log"
 	"strings"
@@ -19,28 +20,58 @@ type parser struct {
 	name2club map[string]int64
 }
 
-func (p *parser) Parse() *model.RawParsingResults {
+func (p *parser) Parse() model.RawParsingResults {
 	p.name2club = make(map[string]int64)
 	p.clubs = fixClubs(parseClubs(p.dirName + "clubs.json"))
 
-	p.dancers = parseDancers(p.dirName + "dancers.json")
+	p.dancers = fixDancers(parseDancers(p.dirName + "dancers.json"))
 
 	fillName2Club(p.name2club, p.clubs)
 
 	dancerClubs := parseDancerClubs(p.dirName + "dancerClubs.json")
 	p.dancerClubs = fixDancerClubs(dancerClubs, p.name2club)
 
-	return &model.RawParsingResults{
+	return model.RawParsingResults{
 		Clubs:       p.clubs,
 		Dancers:     p.dancers,
 		DancerClubs: p.dancerClubs,
 	}
 }
+
+func parseDancerName(name string) (string, string, *string) {
+	split := strings.Split(name, " ")
+	if !(len(split) == 2 || len(split) == 3) {
+		log.Panic("Bad name " + name)
+	}
+
+	if len(split) == 2 {
+		return split[0], split[1], nil
+	}
+	return split[0], split[1], &split[2]
+}
+
+func fixDancers(dancers []model.RawDancer) []model.RawDancer {
+	for _, dancer := range dancers {
+		dancer.Code = fmt.Sprintf("%05d", dancer.ID)
+		name, surname, patronymic := parseDancerName(dancer.Title)
+		dancer.Name = name
+		dancer.Surname = surname
+		dancer.Title = ""
+
+		if patronymic != nil {
+			dancer.Patronymic = dat.NullStringFrom(*patronymic)
+		}
+
+	}
+
+	return dancers
+}
+
 func fixClubs(clubs []model.RawClub) []model.RawClub {
 	maxClubId := findMaxClubId(clubs)
 	clubs = append(clubs, model.RawClub{ID: 0, Name: "самост."})
 	clubs = append(clubs, model.RawClub{ID: maxClubId + 1, Name: "Magnit"})
-	clubs = append(clubs, model.RawClub{ID: maxClubId + 1, Name: "Intensity (г.Иваново)"})
+	clubs = append(clubs, model.RawClub{ID: maxClubId + 2, Name: "Intensity (г.Иваново)"})
 	clubs = append(clubs, model.RawClub{ID: maxClubId + 3, Name: "Мартэ"})
 
 	return clubs
@@ -65,8 +96,6 @@ func fixDancerClubs(original []model.RawDancerClub, name2club map[string]int64) 
 
 		dancerClubs = append(dancerClubs, generated...)
 	}
-
-	fmt.Println("!!! ", dancerClubs) //TODO remove
 
 	return dancerClubs
 }
@@ -94,7 +123,7 @@ func generateDancerClubs(names []string, name2club map[string]int64, original mo
 	return dancerClubs
 }
 
-func Parse(dirName string) *model.RawParsingResults {
+func Parse(dirName string) model.RawParsingResults {
 	p := parser{dirName: dirName}
 
 	return p.Parse()

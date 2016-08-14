@@ -28,8 +28,8 @@ CREATE TABLE dancer (
 );
 
 CREATE TABLE dancer_club (
-    dancer_id BIGINT NOT NULL REFERENCES(dancer),
-    club_id BIGINT NOT NULL REFERENCES(club)
+    dancer_id BIGINT NOT NULL REFERENCES dancer,
+    club_id BIGINT NOT NULL REFERENCES club
 );
 
 -- +migrate Down

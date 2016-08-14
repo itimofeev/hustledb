@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/itimofeev/hustlesa/parser"
 	"github.com/kelseyhightower/envconfig"
 )
 
@@ -31,7 +32,7 @@ func ReadConfig() Config {
 	var c configEnv
 	err := envconfig.Process("axxoncloud", &c)
 
-	CheckErr(err, "read envconfig")
+	parser.CheckErr(err, "read envconfig")
 
 	return &c
 }

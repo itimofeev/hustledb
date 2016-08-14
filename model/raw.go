@@ -28,7 +28,7 @@ type RawDancer struct {
 
 	Code       string         `db:"code"`
 	Name       string         `db:"name"`
-	Surname    dat.NullString `db:"surname"`
+	Surname    string         `db:"surname"`
 	Patronymic dat.NullString `db:"patronymic"`
 }
 
