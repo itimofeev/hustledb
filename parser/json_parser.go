@@ -51,17 +51,24 @@ func parseDancerName(name string) (string, string, *string) {
 }
 
 func fixDancers(dancers []model.RawDancer) []model.RawDancer {
-	for _, dancer := range dancers {
-		dancer.Code = fmt.Sprintf("%05d", dancer.ID)
-		name, surname, patronymic := parseDancerName(dancer.Title)
-		dancer.Name = name
-		dancer.Surname = surname
-		dancer.Title = ""
+	for i, dancer := range dancers {
+		dancers[i].Code = fmt.Sprintf("%05d", dancer.ID)
+		surname, name, patronymic := parseDancerName(dancer.Title)
+		dancers[i].Name = name
+		dancers[i].Surname = surname
+		dancers[i].Title = ""
 
-		if patronymic != nil {
-			dancer.Patronymic = dat.NullStringFrom(*patronymic)
+		if dancers[i].Sex == "м" {
+			dancers[i].Sex = "m"
+		} else if dancers[i].Sex == "ж" {
+			dancers[i].Sex = "f"
+		} else {
+			CheckErr(errors.New("bad sex "+dancers[i].Sex), "")
 		}
 
+		if patronymic != nil {
+			dancers[i].Patronymic = dat.NullStringFrom(*patronymic)
+		}
 	}
 
 	return dancers

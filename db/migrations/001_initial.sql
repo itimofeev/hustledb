@@ -24,7 +24,12 @@ CREATE TABLE dancer (
     jnj_class VARCHAR(256) NOT NULL,
 
     prev_surname VARCHAR(256),
-    source VARCHAR(256)
+    source VARCHAR(256),
+
+    CONSTRAINT dancer__code_unique UNIQUE (code),
+    CONSTRAINT dancer__sex_values_check CHECK (sex in ('m', 'f')),
+    CONSTRAINT dancer__pair_class_values_check CHECK (pair_class in ('A', 'B', 'C', 'D', 'E')),
+    CONSTRAINT dancer__jnj_class_values_check CHECK (jnj_class in ('BG', 'RS', 'M', 'S', 'Ch'))
 );
 
 CREATE TABLE dancer_club (
