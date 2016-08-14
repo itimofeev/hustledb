@@ -87,7 +87,7 @@ func main() {
 
 	res := parser.Parse("/Users/ilyatimofee/prog/hsa/parse-xls/json/")
 
-	fmt.Printf("!!!%+v\n", res.DancerClubs[20]) //TODO remove
+	fmt.Printf("!!!%+v\n", res.DancerClubs[3]) //TODO remove
 }
 
 func fixString(obj interface{}) {
