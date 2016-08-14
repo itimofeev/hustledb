@@ -3,8 +3,8 @@ package main
 import (
 	"bufio"
 	"database/sql"
-	"fmt"
 	"github.com/itimofeev/hustlesa/db/migrations"
+	_ "github.com/lib/pq" //postgres driver
 	"github.com/rubenv/sql-migrate"
 	"gopkg.in/mgutz/dat.v1"
 	"gopkg.in/mgutz/dat.v1/sqlx-runner"
@@ -12,14 +12,15 @@ import (
 	"os"
 	"strings"
 	"time"
+
+	"github.com/itimofeev/hustlesa/model"
+	"github.com/itimofeev/hustlesa/parser"
 )
 
 func initDb(config Config) *runner.DB {
 	db, err := sql.Open("postgres", config.Db().URL)
 
-	if err != nil {
-		log.Panic("Could not open db")
-	}
+	CheckErr(err, "Open db")
 
 	runner.MustPing(db)
 
@@ -53,7 +54,7 @@ func initDb(config Config) *runner.DB {
 
 //Устанавливает переменные окружения, заданные в testing.env.list
 func initEnvironment() {
-	file, err := os.Open("../tools/testing.env.list")
+	file, err := os.Open("/Users/ilyatimofee/prog/axxonsoft/src/github.com/itimofeev/hustlesa/tools/local.env")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -61,11 +62,12 @@ func initEnvironment() {
 
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
-		s := strings.Split(scanner.Text(), "=")
-		if len(s) != 2 {
+		s := strings.SplitN(scanner.Text(), "=", 2)
+		if len(s) < 2 {
 			//skip empty lines
 			continue
 		}
+
 		os.Setenv(s[0], s[1])
 	}
 
@@ -78,7 +80,25 @@ func main() {
 	initEnvironment()
 
 	config := ReadConfig()
+
 	db := initDb(config)
 
-	fmt.Println("!!! ", db) //TODO remove
+	clubs := parser.ParseClubs("/Users/ilyatimofee/prog/hsa/parse-xls/json/clubs.json")
+
+	for _, club := range *clubs {
+		_, err := insertClub(db, &club)
+
+		CheckErr(err, "insert club")
+	}
+}
+
+func insertClub(db *runner.DB, club *model.Club) (*model.Club, error) {
+	err := db.
+		InsertInto("club").
+		Columns("id", "name").
+		Record(club).
+		Returning("id").
+		QueryScalar(&club.ID)
+
+	return club, err
 }
