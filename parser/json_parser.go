@@ -3,6 +3,7 @@ package parser
 import (
 	"bitbucket.org/Axxonsoft/axxoncloudgo/util"
 	"encoding/json"
+	"fmt"
 	"github.com/itimofeev/hustlesa/model"
 	"io/ioutil"
 	"log"
@@ -56,28 +57,30 @@ func findMaxClubId(clubs []model.RawClub) int64 {
 }
 
 func fixDancerClubs(original []model.RawDancerClub, name2club map[string]int64) []model.RawDancerClub {
-	dancerClubs := make([]model.RawDancerClub, len(original)*2)
+	dancerClubs := make([]model.RawDancerClub, 0, len(original)*2)
 	for _, dc := range original {
 		names := strings.Split(dc.ClubNames, ",")
 
-		generated := generateDancerClubs(names, name2club, dc)
+		generated := make([]model.RawDancerClub, 0)
+		generated = generateDancerClubs(generated, names, name2club, dc)
 
 		dancerClubs = append(dancerClubs, generated...)
 	}
 
+	fmt.Println("!!! ", dancerClubs) //TODO remove
+
 	return dancerClubs
 }
-func generateDancerClubs(names []string, name2club map[string]int64, original model.RawDancerClub) []model.RawDancerClub {
+func generateDancerClubs(dancerClubs []model.RawDancerClub, names []string, name2club map[string]int64, original model.RawDancerClub) []model.RawDancerClub {
 	if len(names) == 1 {
 		clubId, ok := name2club[strings.ToLower(names[0])]
 		if !ok {
 			log.Panic("Not found club name " + names[0])
 		}
 		original.ClubId = clubId
-		return []model.RawDancerClub{original}
+		dancerClubs = append(dancerClubs, original)
 	}
 
-	dancerClubs := make([]model.RawDancerClub, len(names))
 	for _, name := range names {
 		club, ok := name2club[strings.ToLower(name)]
 		if !ok {
