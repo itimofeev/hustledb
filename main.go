@@ -15,6 +15,7 @@ import (
 
 	"github.com/itimofeev/hustlesa/model"
 	"github.com/itimofeev/hustlesa/parser"
+	"reflect"
 )
 
 func initDb(config Config) *runner.DB {
@@ -85,17 +86,46 @@ func main() {
 
 	clubs := parser.ParseClubs("/Users/ilyatimofee/prog/hsa/parse-xls/json/clubs.json")
 
+
+
 	for _, club := range *clubs {
+		fixString(&(*clubs)[0])
 		_, err := insertClub(db, &club)
 
 		CheckErr(err, "insert club")
 	}
 }
 
-func insertClub(db *runner.DB, club *model.Club) (*model.Club, error) {
+func fixString(obj interface{}) {
+	v := reflect.ValueOf(obj).Elem()
+	for i := 0; i < v.NumField(); i++ {
+		field := v.Field(i)
+
+		switch field.Interface().(type) {
+		case string:
+			field.SetString(strings.TrimSpace(field.String()))
+		case dat.NullString:
+			strField := field.FieldByName("String")
+			validField := field.FieldByName("Valid")
+
+			str := strField.String()
+			valid := validField.Bool()
+			if valid {
+				str := strings.TrimSpace(str)
+				strField.SetString(str)
+
+				if  "" == str {
+					validField.SetBool(false)
+				}
+			}
+		}
+	}
+}
+
+func insertClub(db *runner.DB, club *model.RawClub) (*model.RawClub, error) {
 	err := db.
 		InsertInto("club").
-		Columns("id", "name").
+		Columns("id", "name", "leader", "comment", "site1", "old_name").
 		Record(club).
 		Returning("id").
 		QueryScalar(&club.ID)
