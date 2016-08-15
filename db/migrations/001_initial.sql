@@ -66,8 +66,37 @@ CREATE TABLE nomination (
 );
 
 
+CREATE TABLE result (
+         id BIGSERIAL PRIMARY KEY NOT NULL,
+         competition_id BIGINT NOT NULL REFERENCES competition,
+         dancer_id BIGINT NOT NULL REFERENCES dancer,
+         nomination_id BIGINT REFERENCES nomination, --TODO make not null
+         result VARCHAR(32) NOT NULL,
+
+         place INT NOT NULL,
+         place_from INT NOT NULL,
+         is_jnj BOOL NOT NULL,
+
+         points INT NOT NULL,
+         class VARCHAR(10) NOT NULL,
+
+         all_places_from INT NOT NULL,
+         all_places_to INT NOT NULL,
+
+         all_places_min_class VARCHAR(10) NOT NULL,
+         all_places_max_class VARCHAR(10) NOT NULL,
+
+         CONSTRAINT result__class_check CHECK (class in ('A', 'B', 'C', 'D', 'E')),
+
+         CONSTRAINT result__all_places_min_class_check CHECK (all_places_min_class in ('A', 'B', 'C', 'D', 'E')),
+         CONSTRAINT result__all_places_max_class_check CHECK (all_places_max_class in ('A', 'B', 'C', 'D', 'E'))
+
+);
+
+
 -- +migrate Down
 -- SQL section 'Down' is executed when this migration is rolled back
+DROP TABLE result;
 DROP TABLE dancer_club;
 DROP TABLE nomination;
 DROP TABLE club;

@@ -46,6 +46,14 @@ func InsertData(db *runner.DB, res model.RawParsingResults) {
 
 		CheckErr(err, "insert nomination")
 	}
+
+	for _, cr := range res.CompResults {
+		fixString(&cr)
+
+		_, err := insertCompResult(db, &cr)
+
+		CheckErr(err, "insert comp results")
+	}
 }
 
 func insertClub(db *runner.DB, club *model.RawClub) (*model.RawClub, error) {
@@ -100,6 +108,19 @@ func insertNomination(db *runner.DB, nominations *model.RawNomination) (*model.R
 		QueryScalar(&nominations.ID)
 
 	return nominations, err
+}
+
+func insertCompResult(db *runner.DB, result *model.RawCompetitionResult) (*model.RawCompetitionResult, error) {
+	err := db.
+		InsertInto("result").
+		Columns("competition_id", "dancer_id" /* "nomination_id",*/, "result",
+			"place", "place_from", "is_jnj", "points", "class",
+			"all_places_from", "all_places_to", "all_places_min_class", "all_places_max_class").
+		Record(result).
+		Returning("id").
+		QueryScalar(&result.ID)
+
+	return result, err
 }
 
 func fixString(obj interface{}) {

@@ -69,7 +69,7 @@ type RawCompetitionResult struct {
 	ID            int64  `db:"id"`
 	CompetitionID int64  `json:"competitionId" db:"competition_id"`
 	DancerID      int64  `json:"dancerId" db:"dancer_id"`
-	Result        string `json:"result"`
+	Result        string `json:"result" db:"result"`
 
 	NominationID int64 `db:"nomination_id"`
 
@@ -79,6 +79,11 @@ type RawCompetitionResult struct {
 
 	Points int    `db:"points"`
 	Class  string `db:"class"`
+
+	AllPlacesFrom     int    `db:"all_places_from"`
+	AllPlacesTo       int    `db:"all_places_to"`
+	AllPlacesMinClass string `db:"all_places_min_class"`
+	AllPlacesMaxClass string `db:"all_places_max_class"`
 }
 
 /*

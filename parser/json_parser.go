@@ -32,7 +32,7 @@ func Parse(dirName string) model.RawParsingResults {
 	loadFromJSON(dirName+"dancerClubs.json", &dancerClubs)
 	loadFromJSON(dirName+"competitions.json", &competitions)
 	loadFromJSON(dirName+"nominations.json", &nominations)
-	loadFromJSON(dirName+"competitionResults.json", &compResults)
+	loadFromJSON(dirName+"competitionsResults.json", &compResults)
 
 	clubs = fixClubs(clubs)
 	dancers = fixDancers(dancers)
@@ -48,6 +48,7 @@ func Parse(dirName string) model.RawParsingResults {
 		DancerClubs:  dancerClubs,
 		Competitions: competitions,
 		Nominations:  nominations,
+		CompResults:  compResults,
 	}
 }
 func fixCompResults(results []model.RawCompetitionResult, nominations []model.RawNomination) []model.RawCompetitionResult {
@@ -65,8 +66,10 @@ func fixCompResults(results []model.RawCompetitionResult, nominations []model.Ra
 func fixResult(result *model.RawCompetitionResult) *model.RawCompetitionResult {
 	//(Д-А30-32)C1/19+5
 	//(С-Б6)C4/9+1
+	//E4/21+3
 
 	s := result.Result
+	s = doCleanResult(s)
 	s = doCleanCompDependent(s, result.CompetitionID)
 
 	if strings.Contains(strings.ToLower(s), "x") || strings.Contains(s, "skip") || strings.Contains(s, "анулировано") || strings.Contains(s, "штраф") {
@@ -97,59 +100,38 @@ func fixResult(result *model.RawCompetitionResult) *model.RawCompetitionResult {
 	placeFrom := Atoi(placeSplitOnPlus[0])
 	isJnj := strings.Contains(allPlacesStr, "@")
 
-	//cleanAllPlaceStr:= strings.Replace(allPlacesStr,"@", "", -1) //D-E12-13 D-E12 E12-13 CBA12
-
 	result.Place = place
 	result.PlaceFrom = placeFrom
 	result.IsJNJ = isJnj
 	result.Class = className
 	result.Points = points
 
-	/*
-			    def parseResult(dancerId: Long, compId: Long, placeStr: String, allPlaceStr: String): ClassicResult = {
+	if allPlacesStr == "" {
+		result.AllPlacesMinClass = result.Class
+		result.AllPlacesMaxClass = result.Class
+		result.AllPlacesFrom = result.Place
+		result.AllPlacesTo = result.Place
+	} else {
+		cleanAllPlaceStr := strings.Replace(allPlacesStr, "@", "", -1) //D-E12-13 D-E12 E12-13 CBA12
+		minClass, maxClass := parseClasses(cleanAllPlaceStr)
+		numbers := parseAllNumbers(cleanAllPlaceStr)
 
+		allPlaceFrom, allPlaceTo := 0, 0
+		if len(numbers) == 2 {
+			allPlaceFrom = numbers[0]
+			allPlaceTo = numbers[1]
+		} else if len(numbers) == 1 {
+			allPlaceFrom = numbers[0]
+			allPlaceTo = numbers[0]
+		} else {
+			CheckOk(false, "Bad format "+allPlacesStr)
+		}
 
-		      Pattern.compile("\\d").matcher(cleanAllPlaceStr).matches()
-
-		      val allPlace = if (cleanAllPlaceStr.length == 0) None else Some(parseAllPlace(cleanAllPlaceStr))
-
-		      ClassicResult(dancerId, compId, 0, place, isJnj, points, allPlace)
-		    }
-
-
-
-			 def enrichCompetitionResults(competitionResults: Seq[RawCompetitionResult], nominations: Seq[NominationBase]) = {
-		    def createAllPlace(places: ArrayBuffer[String], letters: ArrayBuffer[String]): AllClassicPlace = {
-		      val min: Int = places.map(_.toInt).min
-		      val max: Int = places.map(_.toInt).max
-
-		      val minClass: ClassicClass.Value = ClassicClass.withName(letters.max)
-		      val maxClass: ClassicClass.Value = ClassicClass.withName(letters.min)
-
-		      AllClassicPlace(minClass, maxClass, min, max)
-		    }
-
-
-		    def parseAllPlace(allPlace: String): AllClassicPlace = {
-		      val digitPattern: Pattern = Pattern.compile("\\d+")
-		      val letterPattern: Pattern = Pattern.compile("[ABCDE]")
-
-		      val digitMatcher: Matcher = digitPattern.matcher(allPlace)
-		      val places = ArrayBuffer[String]()
-		      while (digitMatcher.find) {
-		        places.append(digitMatcher.group)
-		      }
-
-		      val letterMatcher = letterPattern.matcher(allPlace)
-		      val letters = ArrayBuffer[String]()
-		      while (letterMatcher.find) {
-		        letters.append(letterMatcher.group)
-		      }
-
-		      createAllPlace(places, letters)
-		    }
-
-	*/
+		result.AllPlacesMinClass = minClass
+		result.AllPlacesMaxClass = maxClass
+		result.AllPlacesFrom = allPlaceFrom
+		result.AllPlacesTo = allPlaceTo
+	}
 
 	return result
 }
