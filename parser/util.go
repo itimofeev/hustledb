@@ -8,3 +8,10 @@ func CheckErr(err error, msg string) {
 		log.Panicln(msg, err)
 	}
 }
+
+// CheckOk check ok
+func CheckOk(ok bool, msg string) {
+	if !ok {
+		log.Panicln(msg)
+	}
+}

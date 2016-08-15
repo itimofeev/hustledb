@@ -69,6 +69,8 @@ CREATE TABLE nomination (
 -- +migrate Down
 -- SQL section 'Down' is executed when this migration is rolled back
 DROP TABLE dancer_club;
+DROP TABLE nomination;
 DROP TABLE club;
 DROP TABLE dancer;
 DROP TABLE competition;
+DROP TABLE gorp_migrations;

@@ -38,6 +38,14 @@ func InsertData(db *runner.DB, res model.RawParsingResults) {
 
 		CheckErr(err, "insert competition")
 	}
+
+	for _, n := range res.Nominations {
+		fixString(&n)
+
+		_, err := insertNomination(db, &n)
+
+		CheckErr(err, "insert nomination")
+	}
 }
 
 func insertClub(db *runner.DB, club *model.RawClub) (*model.RawClub, error) {
@@ -81,6 +89,17 @@ func insertCompetition(db *runner.DB, competition *model.RawCompetition) (*model
 		QueryScalar(&competition.ID)
 
 	return competition, err
+}
+
+func insertNomination(db *runner.DB, nominations *model.RawNomination) (*model.RawNomination, error) {
+	err := db.
+		InsertInto("nomination").
+		Columns("competition_id", "value", "male_count", "female_count", "type", "min_class", "max_class", "min_jnj_class", "max_jnj_class").
+		Record(nominations).
+		Returning("id").
+		QueryScalar(&nominations.ID)
+
+	return nominations, err
 }
 
 func fixString(obj interface{}) {
