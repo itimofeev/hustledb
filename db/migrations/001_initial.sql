@@ -37,8 +37,17 @@ CREATE TABLE dancer_club (
     club_id BIGINT NOT NULL REFERENCES club
 );
 
+CREATE TABLE competition (
+       id BIGSERIAL PRIMARY KEY NOT NULL,
+       title VARCHAR(256) NOT NULL,
+       date TIMESTAMP WITHOUT TIME ZONE NOT NULL,
+       site VARCHAR(256)
+);
+
+
 -- +migrate Down
 -- SQL section 'Down' is executed when this migration is rolled back
 DROP TABLE dancer_club;
 DROP TABLE club;
 DROP TABLE dancer;
+DROP TABLE competition;

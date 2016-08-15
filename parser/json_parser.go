@@ -3,39 +3,44 @@ package parser
 import (
 	"bitbucket.org/Axxonsoft/axxoncloudgo/util"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"github.com/itimofeev/hustlesa/model"
 	"gopkg.in/mgutz/dat.v1"
 	"io/ioutil"
 	"log"
 	"strings"
+	"time"
 )
 
-type parser struct {
-	dirName     string
-	clubs       []model.RawClub
-	dancers     []model.RawDancer
-	dancerClubs []model.RawDancerClub
+func Parse(dirName string) model.RawParsingResults {
+	name2club := make(map[string]int64)
+	clubs := fixClubs(parseClubs(dirName + "clubs.json"))
 
-	name2club map[string]int64
-}
+	dancers := fixDancers(parseDancers(dirName + "dancers.json"))
 
-func (p *parser) Parse() model.RawParsingResults {
-	p.name2club = make(map[string]int64)
-	p.clubs = fixClubs(parseClubs(p.dirName + "clubs.json"))
+	fillName2Club(name2club, clubs)
 
-	p.dancers = fixDancers(parseDancers(p.dirName + "dancers.json"))
+	dancerClubs := parseDancerClubs(dirName + "dancerClubs.json")
+	dancerClubs = fixDancerClubs(dancerClubs, name2club)
 
-	fillName2Club(p.name2club, p.clubs)
-
-	dancerClubs := parseDancerClubs(p.dirName + "dancerClubs.json")
-	p.dancerClubs = fixDancerClubs(dancerClubs, p.name2club)
+	competitions := fixCompetitions(parseCompetitions(dirName + "competitions.json"))
 
 	return model.RawParsingResults{
-		Clubs:       p.clubs,
-		Dancers:     p.dancers,
-		DancerClubs: p.dancerClubs,
+		Clubs:        clubs,
+		Dancers:      dancers,
+		DancerClubs:  dancerClubs,
+		Competitions: competitions,
 	}
+}
+func fixCompetitions(competitions []model.RawCompetition) []model.RawCompetition {
+	for i, c := range competitions {
+		competitions[i].Date = parseFromUnix(c.RawDate)
+	}
+	return competitions
+}
+func parseFromUnix(timeInUnix int64) time.Time {
+	return time.Unix(timeInUnix/1000, 0) //TODO разобраться, какая-то хрень
 }
 
 func parseDancerName(name string) (string, string, *string) {
@@ -130,11 +135,6 @@ func generateDancerClubs(names []string, name2club map[string]int64, original mo
 	return dancerClubs
 }
 
-func Parse(dirName string) model.RawParsingResults {
-	p := parser{dirName: dirName}
-
-	return p.Parse()
-}
 func fillName2Club(name2club map[string]int64, clubs []model.RawClub) {
 	for _, club := range clubs {
 		name2club[strings.ToLower(club.Name)] = club.ID
@@ -172,4 +172,15 @@ func parseDancerClubs(fileName string) []model.RawDancerClub {
 	json.Unmarshal(data, &dancerClubs)
 
 	return dancerClubs
+}
+
+func parseCompetitions(fileName string) []model.RawCompetition {
+	data, err := ioutil.ReadFile(fileName)
+	util.CheckErr(err, "Read file: "+fileName)
+
+	competitions := make([]model.RawCompetition, 0)
+
+	json.Unmarshal(data, &competitions)
+
+	return competitions
 }

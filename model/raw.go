@@ -1,11 +1,15 @@
 package model
 
-import "gopkg.in/mgutz/dat.v1"
+import (
+	"gopkg.in/mgutz/dat.v1"
+	"time"
+)
 
 type RawParsingResults struct {
-	Clubs       []RawClub
-	Dancers     []RawDancer
-	DancerClubs []RawDancerClub
+	Clubs        []RawClub
+	Dancers      []RawDancer
+	DancerClubs  []RawDancerClub
+	Competitions []RawCompetition
 }
 
 type RawClub struct {
@@ -36,4 +40,12 @@ type RawDancerClub struct {
 	DancerId  int64  `json:"dancerId" db:"dancer_id"`
 	ClubNames string `json:"clubId"`
 	ClubId    int64  `db:"club_id"`
+}
+
+type RawCompetition struct {
+	ID      int64          `json:"id" db:"id"`
+	Title   string         `json:"title" db:"title"`
+	RawDate int64          `json:"date"`
+	Date    time.Time      `db:"date"`
+	Site    dat.NullString `json:"site" db:"site"`
 }
