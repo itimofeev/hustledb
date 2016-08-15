@@ -44,6 +44,27 @@ CREATE TABLE competition (
        site VARCHAR(256)
 );
 
+CREATE TABLE nomination (
+       id BIGSERIAL PRIMARY KEY NOT NULL,
+       competition_id BIGINT NOT NULL REFERENCES competition,
+
+       value VARCHAR(256) NOT NULL,
+
+       male_count INT NOT NULL,
+       female_count INT NOT NULL,
+       type VARCHAR(10) NOT NULL,
+       min_class VARCHAR(10),
+       max_class VARCHAR(10),
+       min_jnj_class VARCHAR(10),
+       max_jnj_class VARCHAR(10),
+
+       CONSTRAINT nomination__type_check CHECK (type in ('OLD_JNJ', 'NEW_JNJ', 'CLASSIC')),
+       CONSTRAINT nomination__min_class_check CHECK (min_class in ('A', 'B', 'C', 'D', 'E')),
+       CONSTRAINT nomination__max_class_check CHECK (max_class in ('A', 'B', 'C', 'D', 'E')),
+       CONSTRAINT nomination__min_jnj_class_check CHECK (min_jnj_class in ('BG', 'RS', 'M', 'S', 'Ch')),
+       CONSTRAINT nomination__max_jnj_class_check CHECK (max_jnj_class in ('BG', 'RS', 'M', 'S', 'Ch'))
+);
+
 
 -- +migrate Down
 -- SQL section 'Down' is executed when this migration is rolled back

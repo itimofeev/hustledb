@@ -82,7 +82,7 @@ func main() {
 
 	db := initDb(config)
 
-	res := parser.Parse("/Users/ilyatimofee/prog/hsa/parse-xls/json/")
+	res := parser.Parse("/Users/ilyatimofee/prog/axxonsoft/src/github.com/itimofeev/hustlesa/json/")
 
 	parser.InsertData(db, res)
 }

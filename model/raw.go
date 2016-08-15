@@ -10,6 +10,7 @@ type RawParsingResults struct {
 	Dancers      []RawDancer
 	DancerClubs  []RawDancerClub
 	Competitions []RawCompetition
+	Nominations  []RawNomination
 }
 
 type RawClub struct {
@@ -37,7 +38,7 @@ type RawDancer struct {
 }
 
 type RawDancerClub struct {
-	DancerId  int64  `json:"dancerId" db:"dancer_id"`
+	DancerID  int64  `json:"dancerId" db:"dancer_id"`
 	ClubNames string `json:"clubId"`
 	ClubId    int64  `db:"club_id"`
 }
@@ -48,4 +49,17 @@ type RawCompetition struct {
 	RawDate int64          `json:"date"`
 	Date    time.Time      `db:"date"`
 	Site    dat.NullString `json:"site" db:"site"`
+}
+
+type RawNomination struct {
+	ID            int64  `db:"id"`
+	MaleCount     int    `db:"male_count"`
+	FemaleCount   int    `db:"female_count"`
+	Type          string `db:"type"`
+	minClass      string `db:"min_class"`
+	maxClass      string `db:"max_class"`
+	minJnjClass   string `db:"min_jnj_class"`
+	maxJnjClass   string `db:"max_jnj_class"`
+	CompetitionID int64  `json:"competitionId" db:"competition_id"`
+	Value         string `json:"value" db:"value"`
 }

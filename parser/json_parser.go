@@ -15,24 +15,37 @@ import (
 
 func Parse(dirName string) model.RawParsingResults {
 	name2club := make(map[string]int64)
-	clubs := fixClubs(parseClubs(dirName + "clubs.json"))
 
-	dancers := fixDancers(parseDancers(dirName + "dancers.json"))
+	clubs := make([]model.RawClub, 0)
+	dancers := make([]model.RawDancer, 0)
+	dancerClubs := make([]model.RawDancerClub, 0)
+	competitions := make([]model.RawCompetition, 0)
+	nominations := make([]model.RawNomination, 0)
+	loadFromJSON(dirName+"clubs.json", &clubs)
+	loadFromJSON(dirName+"dancers.json", &dancers)
+	loadFromJSON(dirName+"dancerClubs.json", &dancerClubs)
+	loadFromJSON(dirName+"competitions.json", &competitions)
+	loadFromJSON(dirName+"nominations.json", &nominations)
 
+	clubs = fixClubs(clubs)
+	dancers = fixDancers(dancers)
 	fillName2Club(name2club, clubs)
-
-	dancerClubs := parseDancerClubs(dirName + "dancerClubs.json")
 	dancerClubs = fixDancerClubs(dancerClubs, name2club)
-
-	competitions := fixCompetitions(parseCompetitions(dirName + "competitions.json"))
+	competitions = fixCompetitions(competitions)
+	nominations = fixNominations(nominations)
 
 	return model.RawParsingResults{
 		Clubs:        clubs,
 		Dancers:      dancers,
 		DancerClubs:  dancerClubs,
 		Competitions: competitions,
+		Nominations:  nominations,
 	}
 }
+func fixNominations(nominations []model.RawNomination) []model.RawNomination {
+	return nominations
+}
+
 func fixCompetitions(competitions []model.RawCompetition) []model.RawCompetition {
 	for i, c := range competitions {
 		competitions[i].Date = parseFromUnix(c.RawDate)
@@ -128,7 +141,7 @@ func generateDancerClubs(names []string, name2club map[string]int64, original mo
 			log.Panicf("Not found club name '%s', %+v", name, original)
 		}
 
-		dancerClub := model.RawDancerClub{ClubId: club, DancerId: original.DancerId, ClubNames: name}
+		dancerClub := model.RawDancerClub{ClubId: club, DancerID: original.DancerID, ClubNames: name}
 		dancerClubs = append(dancerClubs, dancerClub)
 	}
 
@@ -141,46 +154,9 @@ func fillName2Club(name2club map[string]int64, clubs []model.RawClub) {
 	}
 }
 
-func parseClubs(fileName string) []model.RawClub {
+func loadFromJSON(fileName string, v interface{}) {
 	data, err := ioutil.ReadFile(fileName)
 	util.CheckErr(err, "Read file: "+fileName)
 
-	clubs := make([]model.RawClub, 0)
-
-	json.Unmarshal(data, &clubs)
-
-	return clubs
-}
-
-func parseDancers(fileName string) []model.RawDancer {
-	data, err := ioutil.ReadFile(fileName)
-	util.CheckErr(err, "Read file: "+fileName)
-
-	dancers := make([]model.RawDancer, 0)
-
-	json.Unmarshal(data, &dancers)
-
-	return dancers
-}
-
-func parseDancerClubs(fileName string) []model.RawDancerClub {
-	data, err := ioutil.ReadFile(fileName)
-	util.CheckErr(err, "Read file: "+fileName)
-
-	dancerClubs := make([]model.RawDancerClub, 0)
-
-	json.Unmarshal(data, &dancerClubs)
-
-	return dancerClubs
-}
-
-func parseCompetitions(fileName string) []model.RawCompetition {
-	data, err := ioutil.ReadFile(fileName)
-	util.CheckErr(err, "Read file: "+fileName)
-
-	competitions := make([]model.RawCompetition, 0)
-
-	json.Unmarshal(data, &competitions)
-
-	return competitions
+	json.Unmarshal(data, v)
 }
