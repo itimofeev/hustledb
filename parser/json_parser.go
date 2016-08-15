@@ -16,7 +16,7 @@ import (
 )
 
 var digitPattern = regexp.MustCompile("\\d+")
-var letterPattern = regexp.MustCompile("[ABCDE]")
+var letterPattern = regexp.MustCompile("[ABCDERMS]")
 
 func Parse(dirName string) model.RawParsingResults {
 	name2club := make(map[string]int64)
@@ -25,7 +25,9 @@ func Parse(dirName string) model.RawParsingResults {
 	dancers := make([]model.RawDancer, 0)
 	dancerClubs := make([]model.RawDancerClub, 0)
 	competitions := make([]model.RawCompetition, 0)
+	jnjCompetitions := make([]model.RawCompetition, 0)
 	nominations := make([]model.RawNomination, 0)
+	jnjNominations := make([]model.RawNomination, 0)
 	compResults := make([]model.RawCompetitionResult, 0)
 	loadFromJSON(dirName+"clubs.json", &clubs)
 	loadFromJSON(dirName+"dancers.json", &dancers)
@@ -33,6 +35,8 @@ func Parse(dirName string) model.RawParsingResults {
 	loadFromJSON(dirName+"competitions.json", &competitions)
 	loadFromJSON(dirName+"nominations.json", &nominations)
 	loadFromJSON(dirName+"competitionsResults.json", &compResults)
+	loadFromJSON(dirName+"jnjCompetitions.json", jnjCompetitions)
+	loadFromJSON(dirName+"jnjNominations.json", jnjNominations)
 
 	clubs = fixClubs(clubs)
 	dancers = fixDancers(dancers)
@@ -40,7 +44,18 @@ func Parse(dirName string) model.RawParsingResults {
 	dancerClubs = fixDancerClubs(dancerClubs, name2club)
 	competitions = fixCompetitions(competitions)
 	nominations = fixNominations(nominations)
-	compResults = fixCompResults(compResults, nominations)
+	compResults = fixCompResults(compResults)
+
+	site2oldCompId := make(map[string]int64)
+	for _, comp := range competitions {
+		site2oldCompId[comp.Site.String] = comp.ID
+	}
+
+	new2old := make(map[int64]int64)
+
+	jnjNominations = fixJnjNominations(jnjNominations)
+	jnjCompetitions = fixJnjCompetitionIds(jnjCompetitions, site2oldCompId, new2old)
+	jnjNominations = fixJnjNominationCompetitionIds(jnjNominations, new2old)
 
 	return model.RawParsingResults{
 		Clubs:        clubs,
@@ -49,9 +64,77 @@ func Parse(dirName string) model.RawParsingResults {
 		Competitions: competitions,
 		Nominations:  nominations,
 		CompResults:  compResults,
+
+		JnjCompetitions: jnjCompetitions,
+		JnjNominations:  jnjNominations,
 	}
 }
-func fixCompResults(results []model.RawCompetitionResult, nominations []model.RawNomination) []model.RawCompetitionResult {
+
+func fixJnjNominationCompetitionIds(nominations []model.RawNomination, new2old map[int64]int64) []model.RawNomination {
+	for i := range nominations {
+		newId := nominations[i].CompetitionID
+
+		oldId, ok := new2old[newId]
+		CheckOk(ok, fmt.Sprintf("not found comp by id %d", newId))
+
+		nominations[i].CompetitionID = oldId
+	}
+	return nominations
+}
+
+func fixJnjNominations(nominations []model.RawNomination) []model.RawNomination {
+	for i := range nominations {
+		fixJnjNomination(&nominations[i])
+	}
+
+	return nominations
+}
+
+func fixJnjNomination(nomination *model.RawNomination) *model.RawNomination {
+	s := nomination.Value
+	s = doCleanJnj(s)
+
+	minClass, maxClass := parseClasses(s, false)
+	maleCount, femaleCount := parse2Numbers(s)
+
+	nomination.Type = "NEW_JNJ"
+	nomination.MaleCount = maleCount
+	nomination.FemaleCount = femaleCount
+	nomination.MinJnjClass = dat.NullStringFrom(minClass)
+	nomination.MaxJnjClass = dat.NullStringFrom(maxClass)
+
+	return nomination
+}
+
+func doCleanJnj(s string) string {
+	s = strings.Replace(s, " ", "", -1)
+	s = strings.Replace(s, "уч.", "", -1)
+	s = strings.Replace(s, "B-RS1", "BG-RS1", -1)
+	s = strings.Replace(s, "Ch10/11", "S10/11", -1)
+	s = strings.Replace(s, "B33/34", "BG33/34", -1)
+	s = strings.Replace(s, "BGG", "B", -1)
+	s = strings.Replace(s, "BG", "B", -1)
+	s = strings.Replace(s, "RS", "R", -1)
+	s = strings.Replace(s, "Ch", "C", -1)
+	return s
+}
+
+func fixJnjCompetitionIds(jnj []model.RawCompetition, site2oldCompId map[string]int64, new2old map[int64]int64) []model.RawCompetition {
+	for i := range jnj {
+		CheckOk(jnj[i].Site.Valid, "jnj site is empty")
+
+		oldId, ok := site2oldCompId[jnj[i].Site.String]
+		CheckOk(ok, "old id not found by site jnj[i].Site")
+
+		new2old[jnj[i].ID] = oldId
+
+		jnj[i].ID = oldId
+	}
+
+	return jnj
+}
+
+func fixCompResults(results []model.RawCompetitionResult) []model.RawCompetitionResult {
 	newResults := make([]model.RawCompetitionResult, 0, len(results))
 	for i := range results {
 		fixed := fixResult(&results[i])
@@ -113,7 +196,7 @@ func fixResult(result *model.RawCompetitionResult) *model.RawCompetitionResult {
 		result.AllPlacesTo = result.Place
 	} else {
 		cleanAllPlaceStr := strings.Replace(allPlacesStr, "@", "", -1) //D-E12-13 D-E12 E12-13 CBA12
-		minClass, maxClass := parseClasses(cleanAllPlaceStr)
+		minClass, maxClass := parseClasses(cleanAllPlaceStr, true)
 		numbers := parseAllNumbers(cleanAllPlaceStr)
 
 		allPlaceFrom, allPlaceTo := 0, 0
@@ -213,7 +296,7 @@ func fixNomination(nomination *model.RawNomination) *model.RawNomination {
 	}
 	s = strings.Replace(s, "@", "", -1)
 
-	minClass, maxClass := parseClasses(s)
+	minClass, maxClass := parseClasses(s, true)
 
 	nomination.MinClass = dat.NullStringFrom(minClass)
 	nomination.MaxClass = dat.NullStringFrom(maxClass)
@@ -252,17 +335,23 @@ func parseAllLetters(str string) []string {
 	return letterPattern.FindAllString(str, -1)
 }
 
-func parseClasses(s string) (string, string) {
+func parseClasses(s string, classic bool) (string, string) {
 	letters := parseAllLetters(s)
+	var m map[string]int
+	if classic {
+		m = map[string]int{"A": 10, "B": 8, "C": 6, "D": 4, "E": 2}
+	} else {
+		m = map[string]int{"C": 10, "S": 8, "M": 6, "R": 4, "B": 2}
+	}
 
 	minClass := letters[0]
 	maxClass := letters[0]
 
 	for _, let := range letters {
-		if let > minClass {
+		if m[let] < m[minClass] {
 			minClass = let
 		}
-		if let < maxClass {
+		if m[let] > m[maxClass] {
 			maxClass = let
 		}
 	}

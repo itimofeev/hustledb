@@ -13,7 +13,7 @@ CREATE TABLE club
 CREATE TABLE dancer (
     id BIGSERIAL PRIMARY KEY NOT NULL,
 
-    code VARCHAR(256) NOT NULL,--TODO make unique
+    code VARCHAR(256) NOT NULL,
 
     name VARCHAR (256) NOT NULL,
     surname VARCHAR (256) NOT NULL,

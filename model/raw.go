@@ -6,12 +6,15 @@ import (
 )
 
 type RawParsingResults struct {
-	Clubs        []RawClub
-	Dancers      []RawDancer
-	DancerClubs  []RawDancerClub
-	Competitions []RawCompetition
-	Nominations  []RawNomination
-	CompResults  []RawCompetitionResult
+	Clubs           []RawClub
+	Dancers         []RawDancer
+	DancerClubs     []RawDancerClub
+	Competitions    []RawCompetition
+	Nominations     []RawNomination
+	CompResults     []RawCompetitionResult
+	JnjCompetitions []RawCompetition
+	JnjNominations  []RawNomination
+	JnjCompResults  []RawCompetitionResult
 }
 
 type RawClub struct {
@@ -85,31 +88,3 @@ type RawCompetitionResult struct {
 	AllPlacesMinClass string `db:"all_places_min_class"`
 	AllPlacesMaxClass string `db:"all_places_max_class"`
 }
-
-/*
-
-case class Place(place: Int, placeFrom: Int)
-case class AllClassicPlace(minClass: ClassicClass.ClassicClass, maxClass: ClassicClass.ClassicClass, minPlace: Int, maxPlace: Int)
-case class AllJnjPlace(minClass: JnJClass, maxClass: JnJClass, minPlace: Int, maxPlace: Int)
-case class JnjPoints(points: Int, pointsClass: JnJClass.JnJClass)
-case class ClassicPoints(points: Int, pointsClass: ClassicClass.ClassicClass)
-
-class BaseResult(val dancerId: Long, val competitionId: Long, val nominationId: Long, place: Place)
-
-
-case class ClassicResult(override val dancerId: Long,
-                         override val competitionId: Long,
-                         override  val nominationId: Long,
-                         place: Place,
-                         isJnj: Boolean,
-                         classicPoints: ClassicPoints,
-                         allPlace: Option[AllClassicPlace]) extends BaseResult(dancerId, competitionId, nominationId, place)
-
-case class JnjResult(override val dancerId: Long,
-                     override val competitionId: Long,
-                     override val nominationId: Long,
-                     place: Place,
-                     jnjPoints: JnjPoints,
-                     allPlace: Option[AllJnjPlace]) extends BaseResult(dancerId, competitionId, nominationId, place)
-
-*/

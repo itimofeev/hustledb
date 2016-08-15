@@ -13,6 +13,7 @@ import (
 	"strings"
 	"time"
 
+	"fmt"
 	"github.com/itimofeev/hustlesa/parser"
 )
 
@@ -84,5 +85,8 @@ func main() {
 
 	res := parser.Parse("/Users/ilyatimofee/prog/axxonsoft/src/github.com/itimofeev/hustlesa/json/")
 
-	parser.InsertData(db, res)
+	fmt.Println("!!! ", &res != nil) //TODO remove
+	fmt.Println("!!! ", db != nil)   //TODO remove
+
+	//parser.InsertData(db, res)
 }
