@@ -26,11 +26,13 @@ func Parse(dirName string) model.RawParsingResults {
 	dancerClubs := make([]model.RawDancerClub, 0)
 	competitions := make([]model.RawCompetition, 0)
 	nominations := make([]model.RawNomination, 0)
+	compResults := make([]model.RawCompetitionResult, 0)
 	loadFromJSON(dirName+"clubs.json", &clubs)
 	loadFromJSON(dirName+"dancers.json", &dancers)
 	loadFromJSON(dirName+"dancerClubs.json", &dancerClubs)
 	loadFromJSON(dirName+"competitions.json", &competitions)
 	loadFromJSON(dirName+"nominations.json", &nominations)
+	loadFromJSON(dirName+"competitionResults.json", &compResults)
 
 	clubs = fixClubs(clubs)
 	dancers = fixDancers(dancers)
@@ -38,6 +40,7 @@ func Parse(dirName string) model.RawParsingResults {
 	dancerClubs = fixDancerClubs(dancerClubs, name2club)
 	competitions = fixCompetitions(competitions)
 	nominations = fixNominations(nominations)
+	compResults = fixCompResults(compResults, nominations)
 
 	return model.RawParsingResults{
 		Clubs:        clubs,
@@ -46,6 +49,109 @@ func Parse(dirName string) model.RawParsingResults {
 		Competitions: competitions,
 		Nominations:  nominations,
 	}
+}
+func fixCompResults(results []model.RawCompetitionResult, nominations []model.RawNomination) []model.RawCompetitionResult {
+	newResults := make([]model.RawCompetitionResult, 0, len(results))
+	for i := range results {
+		fixed := fixResult(&results[i])
+		if fixed != nil {
+			newResults = append(newResults, *fixed)
+		}
+	}
+
+	return newResults
+}
+
+func fixResult(result *model.RawCompetitionResult) *model.RawCompetitionResult {
+	//(Д-А30-32)C1/19+5
+	//(С-Б6)C4/9+1
+
+	s := result.Result
+	s = doCleanCompDependent(s, result.CompetitionID)
+
+	if strings.Contains(strings.ToLower(s), "x") || strings.Contains(s, "skip") || strings.Contains(s, "анулировано") || strings.Contains(s, "штраф") {
+		//TODO process x
+		return nil
+	}
+	split := strings.Split(s, ")")
+	var allPlacesStr, placesStr string
+
+	if len(split) > 1 {
+		allPlacesStr = strings.Replace(split[0], "(", "", -1)
+		placesStr = split[1]
+	} else {
+		placesStr = s
+	}
+
+	placesStr = strings.Replace(placesStr, "/0", "", -1) //spike
+	className := placesStr[:1]
+	placesSplit := strings.Split(placesStr[1:], "/")
+	placeSplitOnPlus := strings.Split(placesSplit[1], "+")
+
+	points := 0
+	if len(placeSplitOnPlus) == 2 {
+		points = Atoi(placeSplitOnPlus[1])
+	}
+
+	place := Atoi(placesSplit[0])
+	placeFrom := Atoi(placeSplitOnPlus[0])
+	isJnj := strings.Contains(allPlacesStr, "@")
+
+	//cleanAllPlaceStr:= strings.Replace(allPlacesStr,"@", "", -1) //D-E12-13 D-E12 E12-13 CBA12
+
+	result.Place = place
+	result.PlaceFrom = placeFrom
+	result.IsJNJ = isJnj
+	result.Class = className
+	result.Points = points
+
+	/*
+			    def parseResult(dancerId: Long, compId: Long, placeStr: String, allPlaceStr: String): ClassicResult = {
+
+
+		      Pattern.compile("\\d").matcher(cleanAllPlaceStr).matches()
+
+		      val allPlace = if (cleanAllPlaceStr.length == 0) None else Some(parseAllPlace(cleanAllPlaceStr))
+
+		      ClassicResult(dancerId, compId, 0, place, isJnj, points, allPlace)
+		    }
+
+
+
+			 def enrichCompetitionResults(competitionResults: Seq[RawCompetitionResult], nominations: Seq[NominationBase]) = {
+		    def createAllPlace(places: ArrayBuffer[String], letters: ArrayBuffer[String]): AllClassicPlace = {
+		      val min: Int = places.map(_.toInt).min
+		      val max: Int = places.map(_.toInt).max
+
+		      val minClass: ClassicClass.Value = ClassicClass.withName(letters.max)
+		      val maxClass: ClassicClass.Value = ClassicClass.withName(letters.min)
+
+		      AllClassicPlace(minClass, maxClass, min, max)
+		    }
+
+
+		    def parseAllPlace(allPlace: String): AllClassicPlace = {
+		      val digitPattern: Pattern = Pattern.compile("\\d+")
+		      val letterPattern: Pattern = Pattern.compile("[ABCDE]")
+
+		      val digitMatcher: Matcher = digitPattern.matcher(allPlace)
+		      val places = ArrayBuffer[String]()
+		      while (digitMatcher.find) {
+		        places.append(digitMatcher.group)
+		      }
+
+		      val letterMatcher = letterPattern.matcher(allPlace)
+		      val letters = ArrayBuffer[String]()
+		      while (letterMatcher.find) {
+		        letters.append(letterMatcher.group)
+		      }
+
+		      createAllPlace(places, letters)
+		    }
+
+	*/
+
+	return result
 }
 func fixNominations(nominations []model.RawNomination) []model.RawNomination {
 

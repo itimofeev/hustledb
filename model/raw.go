@@ -11,6 +11,7 @@ type RawParsingResults struct {
 	DancerClubs  []RawDancerClub
 	Competitions []RawCompetition
 	Nominations  []RawNomination
+	CompResults  []RawCompetitionResult
 }
 
 type RawClub struct {
@@ -63,3 +64,47 @@ type RawNomination struct {
 	CompetitionID int64          `json:"competitionId" db:"competition_id"`
 	Value         string         `json:"value" db:"value"`
 }
+
+type RawCompetitionResult struct {
+	ID            int64  `db:"id"`
+	CompetitionID int64  `json:"competitionId" db:"competition_id"`
+	DancerID      int64  `json:"dancerId" db:"dancer_id"`
+	Result        string `json:"result"`
+
+	NominationID int64 `db:"nomination_id"`
+
+	Place     int  `db:"place"`
+	PlaceFrom int  `db:"place_from"`
+	IsJNJ     bool `db:"is_jnj"`
+
+	Points int    `db:"points"`
+	Class  string `db:"class"`
+}
+
+/*
+
+case class Place(place: Int, placeFrom: Int)
+case class AllClassicPlace(minClass: ClassicClass.ClassicClass, maxClass: ClassicClass.ClassicClass, minPlace: Int, maxPlace: Int)
+case class AllJnjPlace(minClass: JnJClass, maxClass: JnJClass, minPlace: Int, maxPlace: Int)
+case class JnjPoints(points: Int, pointsClass: JnJClass.JnJClass)
+case class ClassicPoints(points: Int, pointsClass: ClassicClass.ClassicClass)
+
+class BaseResult(val dancerId: Long, val competitionId: Long, val nominationId: Long, place: Place)
+
+
+case class ClassicResult(override val dancerId: Long,
+                         override val competitionId: Long,
+                         override  val nominationId: Long,
+                         place: Place,
+                         isJnj: Boolean,
+                         classicPoints: ClassicPoints,
+                         allPlace: Option[AllClassicPlace]) extends BaseResult(dancerId, competitionId, nominationId, place)
+
+case class JnjResult(override val dancerId: Long,
+                     override val competitionId: Long,
+                     override val nominationId: Long,
+                     place: Place,
+                     jnjPoints: JnjPoints,
+                     allPlace: Option[AllJnjPlace]) extends BaseResult(dancerId, competitionId, nominationId, place)
+
+*/

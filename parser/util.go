@@ -1,6 +1,9 @@
 package parser
 
-import "log"
+import (
+	"log"
+	"strconv"
+)
 
 // CheckErr check error is nil and if not panic with message
 func CheckErr(err error, msg string) {
@@ -14,4 +17,10 @@ func CheckOk(ok bool, msg string) {
 	if !ok {
 		log.Panicln(msg)
 	}
+}
+
+func Atoi(s string) int {
+	r, err := strconv.Atoi(s)
+	CheckErr(err, "unable to parse string to int"+s)
+	return r
 }
