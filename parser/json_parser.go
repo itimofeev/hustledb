@@ -29,6 +29,7 @@ func Parse(dirName string) model.RawParsingResults {
 	nominations := make([]model.RawNomination, 0)
 	jnjNominations := make([]model.RawNomination, 0)
 	compResults := make([]model.RawCompetitionResult, 0)
+	jnjResults := make([]model.RawCompetitionResult, 0)
 	loadFromJSON(dirName+"clubs.json", &clubs)
 	loadFromJSON(dirName+"dancers.json", &dancers)
 	loadFromJSON(dirName+"dancerClubs.json", &dancerClubs)
@@ -37,6 +38,7 @@ func Parse(dirName string) model.RawParsingResults {
 	loadFromJSON(dirName+"competitionsResults.json", &compResults)
 	loadFromJSON(dirName+"jnjCompetitions.json", jnjCompetitions)
 	loadFromJSON(dirName+"jnjNominations.json", jnjNominations)
+	loadFromJSON(dirName+"jnjResults.json", jnjResults)
 
 	clubs = fixClubs(clubs)
 	dancers = fixDancers(dancers)
@@ -57,6 +59,8 @@ func Parse(dirName string) model.RawParsingResults {
 	jnjCompetitions = fixJnjCompetitionIds(jnjCompetitions, site2oldCompId, new2old)
 	jnjNominations = fixJnjNominationCompetitionIds(jnjNominations, new2old)
 
+	jnjResults = fixJnjResults(jnjResults)
+
 	return model.RawParsingResults{
 		Clubs:        clubs,
 		Dancers:      dancers,
@@ -67,7 +71,93 @@ func Parse(dirName string) model.RawParsingResults {
 
 		JnjCompetitions: jnjCompetitions,
 		JnjNominations:  jnjNominations,
+		JnjCompResults:  jnjResults,
 	}
+}
+
+func fixJnjResults(results []model.RawCompetitionResult) []model.RawCompetitionResult {
+	for i := range results {
+		fixJnjResult(&results[i])
+	}
+	return results
+}
+
+func fixJnjResult(result *model.RawCompetitionResult) *model.RawCompetitionResult {
+	s := result.Result
+	s = doCleanJnj(s)
+	split := strings.Split(s, ")")
+
+	var placesStr, allPlacesStr string
+
+	if len(split) > 1 {
+		allPlacesStr = strings.Replace(split[0], ")", "", -1)
+		placesStr = split[1]
+	} else {
+		placesStr = split[0]
+	}
+
+	className := placesStr[:1]
+	placesSplit := strings.Split(placesStr[1:], "/")
+	placeSplitOnPlus := strings.Split(placesSplit[1], "+")
+
+	points := 0
+	if len(placeSplitOnPlus) == 2 {
+		points = Atoi(placeSplitOnPlus[1])
+	}
+
+	place := Atoi(placesSplit[0])
+	placeFrom := Atoi(placeSplitOnPlus[0])
+
+	result.Place = place
+	result.PlaceFrom = placeFrom
+	result.IsJNJ = true
+	result.Class = uncompressJnjClass(className)
+	result.Points = points
+
+	if allPlacesStr == "" {
+		result.AllPlacesMinClass = result.Class
+		result.AllPlacesMaxClass = result.Class
+		result.AllPlacesFrom = result.Place
+		result.AllPlacesTo = result.Place
+	} else {
+		cleanAllPlaceStr := allPlacesStr
+		minClass, maxClass := parseClasses(cleanAllPlaceStr, false)
+		numbers := parseAllNumbers(cleanAllPlaceStr)
+
+		allPlaceFrom, allPlaceTo := 0, 0
+		if len(numbers) == 2 {
+			allPlaceFrom = numbers[0]
+			allPlaceTo = numbers[1]
+		} else if len(numbers) == 1 {
+			allPlaceFrom = numbers[0]
+			allPlaceTo = numbers[0]
+		} else {
+			CheckOk(false, "Bad format "+allPlacesStr)
+		}
+
+		result.AllPlacesMinClass = uncompressJnjClass(minClass)
+		result.AllPlacesMaxClass = uncompressJnjClass(maxClass)
+		result.AllPlacesFrom = allPlaceFrom
+		result.AllPlacesTo = allPlaceTo
+	}
+
+	return result
+}
+func uncompressJnjClass(class string) string {
+	switch class {
+	case "R":
+		return "RS"
+	case "C":
+		return "Ch"
+	case "M":
+		return "M"
+	case "B":
+		return "BG"
+	case "S":
+		return "S"
+	}
+	CheckOk(false, "unknown class "+class)
+	return class
 }
 
 func fixJnjNominationCompetitionIds(nominations []model.RawNomination, new2old map[int64]int64) []model.RawNomination {
@@ -114,8 +204,11 @@ func doCleanJnj(s string) string {
 	s = strings.Replace(s, "B33/34", "BG33/34", -1)
 	s = strings.Replace(s, "BGG", "B", -1)
 	s = strings.Replace(s, "BG", "B", -1)
+	s = strings.Replace(s, "Bg", "B", -1)
 	s = strings.Replace(s, "RS", "R", -1)
+	s = strings.Replace(s, "Rs", "R", -1)
 	s = strings.Replace(s, "Ch", "C", -1)
+	s = strings.Replace(s, "CH", "C", -1)
 	return s
 }
 
