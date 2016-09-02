@@ -53,10 +53,8 @@ CREATE TABLE nomination (
        male_count INT NOT NULL,
        female_count INT NOT NULL,
        type VARCHAR(10) NOT NULL,
-       min_class VARCHAR(10),
-       max_class VARCHAR(10),
-       min_jnj_class VARCHAR(10),
-       max_jnj_class VARCHAR(10),
+       min_class VARCHAR(10) NOT NULL,
+       max_class VARCHAR(10) NOT NULL,
 
        CONSTRAINT nomination__type_check CHECK (type in ('OLD_JNJ', 'NEW_JNJ', 'CLASSIC')),
        CONSTRAINT nomination__min_class_check CHECK (min_class in ('A', 'B', 'C', 'D', 'E')),

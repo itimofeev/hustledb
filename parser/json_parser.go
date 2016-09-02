@@ -10,6 +10,7 @@ import (
 	"io/ioutil"
 	"log"
 	"regexp"
+	"sort"
 	"strconv"
 	"strings"
 	"time"
@@ -58,20 +59,199 @@ func Parse(dirName string) model.RawParsingResults {
 	jnjNominations = fixJnjNominations(jnjNominations)
 	jnjCompetitions = fixJnjCompetitionIds(jnjCompetitions, site2oldCompId, new2old)
 	jnjNominations = fixJnjNominationCompetitionIds(jnjNominations, new2old)
-
 	jnjResults = fixJnjResults(jnjResults)
+	jnjResults = fixJnjResultsCompetitionIds(jnjResults, new2old)
+
+	allNominations := make([]model.RawNomination, 0, len(nominations)+len(jnjNominations))
+	allNominations = append(allNominations, nominations...)
+	allNominations = append(allNominations, jnjNominations...)
+	generateNominationIds(allNominations)
+
+	allResults := fixJnjNominationIds(jnjResults, compResults, allNominations)
 
 	return model.RawParsingResults{
 		Clubs:        clubs,
 		Dancers:      dancers,
 		DancerClubs:  dancerClubs,
 		Competitions: competitions,
-		Nominations:  nominations,
-		CompResults:  compResults,
+		Nominations:  allNominations,
+		CompResults:  allResults,
+	}
+}
 
-		JnjCompetitions: jnjCompetitions,
-		JnjNominations:  jnjNominations,
-		JnjCompResults:  jnjResults,
+type ByCompId []model.RawCompetitionResult
+
+func (s ByCompId) Len() int {
+	return len(s)
+}
+func (s ByCompId) Swap(i, j int) {
+	s[i], s[j] = s[j], s[i]
+}
+func (s ByCompId) Less(i, j int) bool {
+	//if(r1.competitionId != r2.competitionId) r1.competitionId > r2.competitionId else r1.nominationId > r2.nominationId)
+
+	if s[i].CompetitionID != s[j].CompetitionID {
+		return s[i].CompetitionID > s[j].CompetitionID
+	}
+	return s[i].NominationID > s[j].NominationID
+}
+
+func fixJnjNominationIds(results []model.RawCompetitionResult, jnjResults []model.RawCompetitionResult, nominations []model.RawNomination) []model.RawCompetitionResult {
+	allResults := make([]model.RawCompetitionResult, 0, len(results)+len(jnjResults))
+	allResults = append(allResults, results...)
+	allResults = append(allResults, jnjResults...)
+
+	compIdToNominations := make(map[int64][]model.RawNomination)
+	for i := range nominations {
+		compId := nominations[i].CompetitionID
+		foundNoms, ok := compIdToNominations[compId]
+		if !ok {
+			foundNoms = make([]model.RawNomination, 0)
+		}
+		foundNoms = append(foundNoms, nominations[i])
+		compIdToNominations[compId] = foundNoms
+	}
+
+	sort.Sort(ByCompId(allResults))
+
+	for i, result := range allResults {
+		compNominations, found := compIdToNominations[result.CompetitionID]
+		CheckOk(found, fmt.Sprintf("Not found nomination by comp id %s", result.CompetitionID))
+
+		nomination := findNomination(result, compNominations)
+		allResults[i].NominationID = nomination.ID
+	}
+
+	/*
+			  def findNomination(r: BaseResult, nominations: Seq[NominationBase]): Long = {
+		    val suitable = nominations.filter(n => n.isSuitableResult(r))
+		    if (suitable.size > 1) {
+		      throw new RuntimeException(s"Found more than one suitable nominations $suitable for result $r")
+		    } else if (suitable.isEmpty) {
+		      throw new RuntimeException(s"Not found suitable nomination for result $r from $nominations")
+		    }
+		    suitable.head.id.get
+		  }
+
+
+
+
+		  case class ClassicNomination(override val id: Option[Long], override val competitionId: Long,
+		                             count: Int, minClass: ClassicClass.ClassicClass, maxClass: ClassicClass.ClassicClass) extends NominationBase(id, competitionId, count, count) {
+
+		  def isSuitable(res: ClassicResult): Boolean = {
+		    res.allPlace match {
+		      case Some(AllClassicPlace(min, max, _, _)) => min == minClass && max == maxClass
+		      case None => res.classicPoints.pointsClass == minClass && res.classicPoints.pointsClass == maxClass
+		    }
+		  }
+
+		  override def isSuitableResult(r: BaseResult): Boolean = {
+		    r match {
+		      case res: ClassicResult if !res.isJnj => isSuitable(res)
+		      case _ => false
+		    }
+		  }
+		}
+
+		case class ClassicJnjNomination(override val id: Option[Long], override val competitionId: Long,
+		                                override val maleCount: Int, override val femaleCount: Int,
+		                                minClass: ClassicClass.ClassicClass, maxClass: ClassicClass.ClassicClass) extends NominationBase(id, competitionId, maleCount, femaleCount) {
+
+		  def isSuitable(res: ClassicResult): Boolean = {
+		    res.allPlace match {
+		      case Some(AllClassicPlace(min, max, _, _)) => min == minClass && max == maxClass
+		      case None => res.classicPoints.pointsClass == minClass && res.classicPoints.pointsClass == maxClass
+		    }
+		  }
+
+		  override def isSuitableResult(r: BaseResult): Boolean = {
+		    r match {
+		      case res: ClassicResult if res.isJnj => isSuitable(res)
+		      case _ => false
+		    }
+		  }
+		}
+
+		case class JnjNomination(override val id: Option[Long], override val competitionId: Long,
+		                         override val maleCount: Int, override val femaleCount: Int,
+		                         minClass: JnJClass.JnJClass, maxClass: JnJClass.JnJClass) extends NominationBase(id, competitionId, maleCount, femaleCount) {
+
+		  def isSuitable(res: JnjResult): Boolean = {
+		    res.allPlace match {
+		      case Some(AllJnjPlace(min, max, _, _)) => min == minClass && max == maxClass
+		      case None => res.jnjPoints.pointsClass == minClass && res.jnjPoints.pointsClass == maxClass
+		    }
+		  }
+
+		  override def isSuitableResult(r: BaseResult): Boolean = {
+		    r match {
+		      case res: JnjResult => isSuitable(res)
+		      case _ => false
+		    }
+		  }
+		}
+
+	*/
+
+	return allResults
+}
+
+func findNomination(result model.RawCompetitionResult, nominations []model.RawNomination) model.RawNomination {
+	var suitableNominations []model.RawNomination
+
+	for _, nomination := range nominations {
+		if isSuitable(result, nomination) {
+			suitableNominations = append(suitableNominations, nomination)
+		}
+	}
+
+	if len(suitableNominations) > 1 {
+		CheckOk(false, fmt.Sprintf("More than one suitable nominations %v, for result %+v", suitableNominations, result))
+	} else if len(suitableNominations) == 0 {
+		CheckOk(false, fmt.Sprintf("Not found suitable nominations for result %+v, from nominations %+v", result, nominations))
+	}
+
+	return suitableNominations[0]
+}
+func isSuitable(result model.RawCompetitionResult, nomination model.RawNomination) bool {
+	if resultType(result) != nomination.Type {
+		return false
+	}
+
+	if result.AllPlacesFrom != 0 {
+		return result.AllPlacesMinClass == nomination.MinClass && result.AllPlacesMaxClass == nomination.MaxClass
+	}
+
+	return result.Class == nomination.MinClass && result.Class == nomination.MaxClass
+}
+
+func resultType(result model.RawCompetitionResult) string {
+	if !result.IsJNJ {
+		return "CLASSIC"
+	}
+	if strings.Contains("BG RS M S Ch", result.Class) {
+		return "NEW_JNJ"
+	}
+	return "OLD_JNJ"
+}
+
+func fixJnjResultsCompetitionIds(results []model.RawCompetitionResult, new2old map[int64]int64) []model.RawCompetitionResult {
+	for i := range results {
+		newId := results[i].CompetitionID
+		oldId, ok := new2old[newId]
+		CheckOk(ok, fmt.Sprintf("old competition not found by id %d", newId))
+
+		results[i].CompetitionID = oldId
+	}
+	return results
+}
+
+func generateNominationIds(nominations []model.RawNomination) {
+	var id int64 = 1
+	for i := range nominations {
+		nominations[i].ID = id
+		id++
 	}
 }
 
@@ -190,8 +370,8 @@ func fixJnjNomination(nomination *model.RawNomination) *model.RawNomination {
 	nomination.Type = "NEW_JNJ"
 	nomination.MaleCount = maleCount
 	nomination.FemaleCount = femaleCount
-	nomination.MinJnjClass = dat.NullStringFrom(minClass)
-	nomination.MaxJnjClass = dat.NullStringFrom(maxClass)
+	nomination.MinClass = minClass
+	nomination.MaxClass = maxClass
 
 	return nomination
 }
@@ -332,32 +512,32 @@ func fixNominations(nominations []model.RawNomination) []model.RawNomination {
 			CompetitionID: 247,
 			FemaleCount:   2,
 			MaleCount:     2,
-			MinClass:      dat.NullStringFrom(E),
-			MaxClass:      dat.NullStringFrom(C),
+			MinClass:      E,
+			MaxClass:      C,
 		},
 		{ //"Чемпионат Москвы 2014"
 			Type:          "CLASSIC",
 			CompetitionID: 238,
 			FemaleCount:   57,
 			MaleCount:     57,
-			MinClass:      dat.NullStringFrom(D),
-			MaxClass:      dat.NullStringFrom(D),
+			MinClass:      D,
+			MaxClass:      D,
 		},
 		{ //Кубок Буревестника 2013
 			Type:          "CLASSIC",
 			CompetitionID: 213,
 			FemaleCount:   3,
 			MaleCount:     3,
-			MinClass:      dat.NullStringFrom(B),
-			MaxClass:      dat.NullStringFrom(B),
+			MinClass:      B,
+			MaxClass:      B,
 		},
 		{ //Кубок В.Новгорода 2011
 			Type:          "CLASSIC",
 			CompetitionID: 109,
 			FemaleCount:   10,
 			MaleCount:     10,
-			MinClass:      dat.NullStringFrom(C),
-			MaxClass:      dat.NullStringFrom(B),
+			MinClass:      C,
+			MaxClass:      B,
 		},
 	}...)
 
@@ -391,8 +571,8 @@ func fixNomination(nomination *model.RawNomination) *model.RawNomination {
 
 	minClass, maxClass := parseClasses(s, true)
 
-	nomination.MinClass = dat.NullStringFrom(minClass)
-	nomination.MaxClass = dat.NullStringFrom(maxClass)
+	nomination.MinClass = minClass
+	nomination.MaxClass = maxClass
 
 	return nomination
 }

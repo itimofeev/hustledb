@@ -6,15 +6,12 @@ import (
 )
 
 type RawParsingResults struct {
-	Clubs           []RawClub
-	Dancers         []RawDancer
-	DancerClubs     []RawDancerClub
-	Competitions    []RawCompetition
-	Nominations     []RawNomination
-	CompResults     []RawCompetitionResult
-	JnjCompetitions []RawCompetition
-	JnjNominations  []RawNomination
-	JnjCompResults  []RawCompetitionResult
+	Clubs        []RawClub
+	Dancers      []RawDancer
+	DancerClubs  []RawDancerClub
+	Competitions []RawCompetition
+	Nominations  []RawNomination
+	CompResults  []RawCompetitionResult
 }
 
 type RawClub struct {
@@ -56,16 +53,14 @@ type RawCompetition struct {
 }
 
 type RawNomination struct {
-	ID            int64          `db:"id"`
-	MaleCount     int            `db:"male_count"`
-	FemaleCount   int            `db:"female_count"`
-	Type          string         `db:"type"`
-	MinClass      dat.NullString `db:"min_class"`
-	MaxClass      dat.NullString `db:"max_class"`
-	MinJnjClass   dat.NullString `db:"min_jnj_class"`
-	MaxJnjClass   dat.NullString `db:"max_jnj_class"`
-	CompetitionID int64          `json:"competitionId" db:"competition_id"`
-	Value         string         `json:"value" db:"value"`
+	ID            int64  `db:"id"`
+	MaleCount     int    `db:"male_count"`
+	FemaleCount   int    `db:"female_count"`
+	Type          string `db:"type"`
+	MinClass      string `db:"min_class"`
+	MaxClass      string `db:"max_class"`
+	CompetitionID int64  `json:"competitionId" db:"competition_id"`
+	Value         string `json:"value" db:"value"`
 }
 
 type RawCompetitionResult struct {
@@ -88,3 +83,11 @@ type RawCompetitionResult struct {
 	AllPlacesMinClass string `db:"all_places_min_class"`
 	AllPlacesMaxClass string `db:"all_places_max_class"`
 }
+
+type NomType string
+
+const (
+	NomTypeClassic = "CLASSIC"
+	NomTypeOldJnj  = "OLD_JNJ"
+	NomTypeNewJnj  = "NEW_JNJ"
+)
