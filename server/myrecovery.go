@@ -69,14 +69,17 @@ func (h recoveryHandler) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 			w.WriteHeader(http.StatusInternalServerError)
 			w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 
-			if err := json.NewEncoder(w).Encode(err.(error).Error()); err != nil {
-				panic(err)
-			}
+			writeError(w, err.(error))
 			h.log(err)
 		}
 	}()
 
 	h.handler.ServeHTTP(w, req)
+}
+func writeError(w http.ResponseWriter, err error) {
+	if err := json.NewEncoder(w).Encode(err.Error()); err != nil {
+		panic(err)
+	}
 }
 
 func (h recoveryHandler) log(message interface{}) {
