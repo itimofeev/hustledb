@@ -88,5 +88,5 @@ func main() {
 	fmt.Println("!!! ", &res != nil) //TODO remove
 	fmt.Println("!!! ", db != nil)   //TODO remove
 
-	//parser.InsertData(db, res)
+	parser.InsertData(db, res)
 }

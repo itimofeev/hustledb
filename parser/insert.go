@@ -102,7 +102,7 @@ func insertCompetition(db *runner.DB, competition *model.RawCompetition) (*model
 func insertNomination(db *runner.DB, nominations *model.RawNomination) (*model.RawNomination, error) {
 	err := db.
 		InsertInto("nomination").
-		Columns("competition_id", "value", "male_count", "female_count", "type", "min_class", "max_class", "min_jnj_class", "max_jnj_class").
+		Columns("competition_id", "value", "male_count", "female_count", "type", "min_class", "max_class").
 		Record(nominations).
 		Returning("id").
 		QueryScalar(&nominations.ID)
@@ -113,7 +113,7 @@ func insertNomination(db *runner.DB, nominations *model.RawNomination) (*model.R
 func insertCompResult(db *runner.DB, result *model.RawCompetitionResult) (*model.RawCompetitionResult, error) {
 	err := db.
 		InsertInto("result").
-		Columns("competition_id", "dancer_id" /* "nomination_id",*/, "result",
+		Columns("competition_id", "dancer_id", "nomination_id", "result",
 			"place", "place_from", "is_jnj", "points", "class",
 			"all_places_from", "all_places_to", "all_places_min_class", "all_places_max_class").
 		Record(result).
