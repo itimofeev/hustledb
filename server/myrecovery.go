@@ -1,6 +1,7 @@
 package server
 
 import (
+	"encoding/json"
 	"log"
 	"net/http"
 	"runtime/debug"
@@ -66,6 +67,11 @@ func (h recoveryHandler) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 	defer func() {
 		if err := recover(); err != nil {
 			w.WriteHeader(http.StatusInternalServerError)
+			w.Header().Set("Content-Type", "application/json; charset=UTF-8")
+
+			if err := json.NewEncoder(w).Encode(err.(error).Error()); err != nil {
+				panic(err)
+			}
 			h.log(err)
 		}
 	}()

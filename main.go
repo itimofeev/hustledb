@@ -15,6 +15,8 @@ import (
 
 	"fmt"
 	"github.com/itimofeev/hustlesa/parser"
+	"github.com/itimofeev/hustlesa/server"
+	"net/http"
 )
 
 func initDb(config Config) *runner.DB {
@@ -83,10 +85,12 @@ func main() {
 
 	db := initDb(config)
 
-	res := parser.Parse("/Users/ilyatimofee/prog/axxonsoft/src/github.com/itimofeev/hustlesa/json/")
+	//res := parser.Parse("/Users/ilyatimofee/prog/axxonsoft/src/github.com/itimofeev/hustlesa/json/")
 
-	fmt.Println("!!! ", &res != nil) //TODO remove
-	fmt.Println("!!! ", db != nil)   //TODO remove
+	fmt.Println("!!! ", db != nil) //TODO remove
 
-	parser.InsertData(db, res)
+	//parser.InsertData(db, res)
+
+	log.Fatal(http.ListenAndServe(":8080", server.InitRouter(db)))
+
 }
