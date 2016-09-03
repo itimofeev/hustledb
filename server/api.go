@@ -30,10 +30,7 @@ func ListCompetitions(w http.ResponseWriter, r *http.Request) {
 	var params PageParams
 	parsePageParams(w, r, &params)
 
-	t, err := RepoListCompetitions(params)
-	if err != nil {
-		panic(err)
-	}
+	t := RepoListCompetitions(params)
 
-	WriteJSONStatus(w, t, http.StatusCreated)
+	WriteJSONStatus(w, t, http.StatusOK)
 }

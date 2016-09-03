@@ -18,6 +18,14 @@ type PageParams struct {
 	Limit  int `json:"limit"`
 }
 
+type PageResponse struct {
+	TotalCount int `json:"totalCount"`
+	PageSize   int `json:"pageSize"`
+	Count      int `json:"count"`
+
+	Content interface{} `json:"content"`
+}
+
 func WriteJSON(w http.ResponseWriter, model interface{}) {
 	WriteJSONStatus(w, model, http.StatusOK)
 }
