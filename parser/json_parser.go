@@ -365,7 +365,7 @@ func fixResult(result *model.RawCompetitionResult) *model.RawCompetitionResult {
 	s = doCleanResult(s)
 	s = doCleanCompDependent(s, result.CompetitionID)
 
-	if strings.Contains(strings.ToLower(s), "x") || strings.Contains(s, "skip") || strings.Contains(s, "анулировано") || strings.Contains(s, "штраф") {
+	if strings.Contains(strings.ToLower(s), "x") || strings.Contains(s, "skip") || strings.Contains(s, "анулирован") || strings.Contains(s, "аннулирован") || strings.Contains(s, "штраф") {
 		//TODO process x
 		return nil
 	}
@@ -600,6 +600,10 @@ func doCleanResult(s string) string {
 
 func doCleanCompDependent(s string, competitionID int64) string {
 	switch competitionID {
+	case 340:
+		if "B-A4" == s {
+			s = "EA4"
+		}
 	case 214:
 		s = strings.Replace(s, "@DCBA", "@EDCBA", -1)
 	case 221:
@@ -674,6 +678,17 @@ func parseFromUnix(timeInUnix int64) time.Time {
 }
 
 func parseDancerName(name string) (string, string, *string) {
+	name = strings.TrimSpace(name)
+	if name == "Тугаринова (Рико) Наталья Александровна" {
+		p := "Александровна"
+		return "Тугаринова (Рико)", "Наталья", &p
+	}
+
+	if name == "Мелла Хамед Алан Лезгинович" {
+		p := "Лезгинович"
+		return "Мелла Хамед", "Алан", &p
+	}
+
 	split := strings.Split(name, " ")
 	if !(len(split) == 2 || len(split) == 3) {
 		log.Panic("Bad name " + name)
@@ -685,6 +700,14 @@ func parseDancerName(name string) (string, string, *string) {
 	return split[0], split[1], &split[2]
 }
 
+func doCleanJnjClass(s string) string {
+	switch s {
+	case "Bg":
+		return "BG"
+	}
+	return s
+}
+
 func fixDancers(dancers []model.RawDancer) []model.RawDancer {
 	for i, dancer := range dancers {
 		dancers[i].Code = fmt.Sprintf("%05d", dancer.ID)
@@ -692,6 +715,7 @@ func fixDancers(dancers []model.RawDancer) []model.RawDancer {
 		dancers[i].Name = name
 		dancers[i].Surname = surname
 		dancers[i].Title = ""
+		dancers[i].JnjClass = doCleanJnjClass(dancers[i].JnjClass)
 
 		if dancers[i].Sex == "м" {
 			dancers[i].Sex = "m"
@@ -715,6 +739,7 @@ func fixClubs(clubs []model.RawClub) []model.RawClub {
 	clubs = append(clubs, model.RawClub{ID: maxClubId + 1, Name: "Magnit"})
 	clubs = append(clubs, model.RawClub{ID: maxClubId + 2, Name: "Intensity (г.Иваново)"})
 	clubs = append(clubs, model.RawClub{ID: maxClubId + 3, Name: "Мартэ"})
+	clubs = append(clubs, model.RawClub{ID: maxClubId + 4, Name: "Kids Office"})
 
 	return clubs
 }
@@ -744,6 +769,12 @@ func fixDancerClubs(original []model.RawDancerClub, name2club map[string]int64) 
 func generateDancerClubs(names []string, name2club map[string]int64, original model.RawDancerClub) []model.RawDancerClub {
 	if len(names) == 1 {
 		clubId, ok := name2club[strings.ToLower(names[0])]
+		if names[0] == "ДИСКВАЛИФИКАЦИЯ до 31.08.2016 Чердак (г.Красноярск)" {
+			clubId, ok = name2club[strings.ToLower("Чердак (г.Красноярск)")]
+		}
+		if names[0] == "ДИСКВАЛИФИКАЦИЯ до 31 мая 2017 года. Ivara" {
+			clubId, ok = name2club[strings.ToLower("Ivara")]
+		}
 		if !ok {
 			log.Panic("Not found club name " + names[0])
 		}

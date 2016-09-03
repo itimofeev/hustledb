@@ -1,6 +1,7 @@
 package parser
 
 import (
+	"fmt"
 	"github.com/itimofeev/hustlesa/model"
 	"gopkg.in/mgutz/dat.v1"
 	"gopkg.in/mgutz/dat.v1/sqlx-runner"
@@ -20,7 +21,7 @@ func InsertData(db *runner.DB, res model.RawParsingResults) {
 		fixString(&dancer)
 		_, err := insertDancer(db, &dancer)
 
-		CheckErr(err, "insert dancer")
+		CheckErr(err, fmt.Sprintf("insert dancer: %+v", dancer))
 	}
 
 	for _, dc := range res.DancerClubs {
