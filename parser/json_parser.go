@@ -18,6 +18,7 @@ import (
 
 var digitPattern = regexp.MustCompile("\\d+")
 var letterPattern = regexp.MustCompile("[ABCDERMS]")
+var newClassesPattern = regexp.MustCompile("(BG|RS|M|S|Ch)")
 
 func Parse(dirName string) model.RawParsingResults {
 	name2club := make(map[string]int64)
@@ -118,83 +119,18 @@ func fixJnjNominationIds(results []model.RawCompetitionResult, jnjResults []mode
 		compNominations, found := compIdToNominations[result.CompetitionID]
 		CheckOk(found, fmt.Sprintf("Not found nomination by comp id %s", result.CompetitionID))
 
-		nomination := findNomination(result, compNominations)
+		crutchFixResult(&allResults[i])
+
+		nomination := findNomination(allResults[i], compNominations)
 		allResults[i].NominationID = nomination.ID
 	}
 
-	/*
-			  def findNomination(r: BaseResult, nominations: Seq[NominationBase]): Long = {
-		    val suitable = nominations.filter(n => n.isSuitableResult(r))
-		    if (suitable.size > 1) {
-		      throw new RuntimeException(s"Found more than one suitable nominations $suitable for result $r")
-		    } else if (suitable.isEmpty) {
-		      throw new RuntimeException(s"Not found suitable nomination for result $r from $nominations")
-		    }
-		    suitable.head.id.get
-		  }
-
-
-
-
-		  case class ClassicNomination(override val id: Option[Long], override val competitionId: Long,
-		                             count: Int, minClass: ClassicClass.ClassicClass, maxClass: ClassicClass.ClassicClass) extends NominationBase(id, competitionId, count, count) {
-
-		  def isSuitable(res: ClassicResult): Boolean = {
-		    res.allPlace match {
-		      case Some(AllClassicPlace(min, max, _, _)) => min == minClass && max == maxClass
-		      case None => res.classicPoints.pointsClass == minClass && res.classicPoints.pointsClass == maxClass
-		    }
-		  }
-
-		  override def isSuitableResult(r: BaseResult): Boolean = {
-		    r match {
-		      case res: ClassicResult if !res.isJnj => isSuitable(res)
-		      case _ => false
-		    }
-		  }
-		}
-
-		case class ClassicJnjNomination(override val id: Option[Long], override val competitionId: Long,
-		                                override val maleCount: Int, override val femaleCount: Int,
-		                                minClass: ClassicClass.ClassicClass, maxClass: ClassicClass.ClassicClass) extends NominationBase(id, competitionId, maleCount, femaleCount) {
-
-		  def isSuitable(res: ClassicResult): Boolean = {
-		    res.allPlace match {
-		      case Some(AllClassicPlace(min, max, _, _)) => min == minClass && max == maxClass
-		      case None => res.classicPoints.pointsClass == minClass && res.classicPoints.pointsClass == maxClass
-		    }
-		  }
-
-		  override def isSuitableResult(r: BaseResult): Boolean = {
-		    r match {
-		      case res: ClassicResult if res.isJnj => isSuitable(res)
-		      case _ => false
-		    }
-		  }
-		}
-
-		case class JnjNomination(override val id: Option[Long], override val competitionId: Long,
-		                         override val maleCount: Int, override val femaleCount: Int,
-		                         minClass: JnJClass.JnJClass, maxClass: JnJClass.JnJClass) extends NominationBase(id, competitionId, maleCount, femaleCount) {
-
-		  def isSuitable(res: JnjResult): Boolean = {
-		    res.allPlace match {
-		      case Some(AllJnjPlace(min, max, _, _)) => min == minClass && max == maxClass
-		      case None => res.jnjPoints.pointsClass == minClass && res.jnjPoints.pointsClass == maxClass
-		    }
-		  }
-
-		  override def isSuitableResult(r: BaseResult): Boolean = {
-		    r match {
-		      case res: JnjResult => isSuitable(res)
-		      case _ => false
-		    }
-		  }
-		}
-
-	*/
-
 	return allResults
+}
+func crutchFixResult(result *model.RawCompetitionResult) {
+	if result.CompetitionID == 18 && (result.DancerID == 822 || result.DancerID == 782) && result.Result == "A1/1" {
+		result.AllPlacesMinClass = "B"
+	}
 }
 
 func findNomination(result model.RawCompetitionResult, nominations []model.RawNomination) model.RawNomination {
@@ -230,7 +166,8 @@ func resultType(result model.RawCompetitionResult) string {
 	if !result.IsJNJ {
 		return "CLASSIC"
 	}
-	if strings.Contains("BG RS M S Ch", result.Class) {
+
+	if newClassesPattern.MatchString(result.Class) {
 		return "NEW_JNJ"
 	}
 	return "OLD_JNJ"
@@ -731,6 +668,7 @@ func fixCompetitions(competitions []model.RawCompetition) []model.RawCompetition
 	}
 	return competitions
 }
+
 func parseFromUnix(timeInUnix int64) time.Time {
 	return time.Unix(timeInUnix/1000, 0) //TODO разобраться, какая-то хрень
 }
