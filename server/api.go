@@ -18,7 +18,8 @@ func InitRouter(conn *runner.DB) http.Handler {
 	dancerRouter := apiRouter.PathPrefix("/dancers").Subrouter()
 
 	compRouter.Methods("GET").HandlerFunc(ListCompetitions)
-	dancerRouter.Methods("GET").HandlerFunc(ListDancers)
+	dancerRouter.Path("/").Methods("GET").HandlerFunc(ListDancers)
+	dancerRouter.Path("/{id:[0-9]+}").Methods("GET").HandlerFunc(GetDancerInfo)
 
 	loggedRouter := handlers.LoggingHandler(os.Stdout, router)
 	recovery := RecoveryHandler(PrintRecoveryStack(true))(loggedRouter)
@@ -42,6 +43,18 @@ func ListDancers(w http.ResponseWriter, r *http.Request) {
 	parseParamsGet(w, r, &params)
 
 	t := RepoListDancers(params)
+
+	WriteJSONStatus(w, t, http.StatusOK)
+}
+
+func GetDancerInfo(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	dancerIdStr := vars["id"]
+	dancerId, err := Atoi64(dancerIdStr)
+	if err != nil {
+		panic(err)
+	}
+	t := RepoGetDancerInfo(dancerId)
 
 	WriteJSONStatus(w, t, http.StatusOK)
 }

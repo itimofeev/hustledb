@@ -6,6 +6,7 @@ import (
 	"io"
 	"io/ioutil"
 	"net/http"
+	"strconv"
 )
 
 // DefaultLimit elements in page in paged requests
@@ -88,4 +89,9 @@ func parseParamsGet(w http.ResponseWriter, r *http.Request, params interface{}) 
 			pp.Limit = DefaultLimit
 		}
 	}
+}
+
+// Atoi64 parses int64 from string
+func Atoi64(s string) (int64, error) {
+	return strconv.ParseInt(s, 10, 64)
 }
