@@ -15,8 +15,10 @@ func InitRouter(conn *runner.DB) http.Handler {
 	apiRouter := router.PathPrefix("/api/v1").Subrouter() /*.Headers("Content-Type", "application/json")*/
 
 	compRouter := apiRouter.PathPrefix("/competitions").Subrouter()
+	dancerRouter := apiRouter.PathPrefix("/dancers").Subrouter()
 
 	compRouter.Methods("GET").HandlerFunc(ListCompetitions)
+	dancerRouter.Methods("GET").HandlerFunc(ListDancers)
 
 	loggedRouter := handlers.LoggingHandler(os.Stdout, router)
 	recovery := RecoveryHandler(PrintRecoveryStack(true))(loggedRouter)
@@ -31,6 +33,15 @@ func ListCompetitions(w http.ResponseWriter, r *http.Request) {
 	parsePageParams(w, r, &params)
 
 	t := RepoListCompetitions(params)
+
+	WriteJSONStatus(w, t, http.StatusOK)
+}
+
+func ListDancers(w http.ResponseWriter, r *http.Request) {
+	var params PageParams
+	parseParamsGet(w, r, &params)
+
+	t := RepoListDancers(params)
 
 	WriteJSONStatus(w, t, http.StatusOK)
 }

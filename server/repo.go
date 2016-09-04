@@ -4,33 +4,108 @@ import (
 	"fmt"
 	"github.com/itimofeev/hustlesa/model"
 	"gopkg.in/mgutz/dat.v1/sqlx-runner"
-	"strings"
 )
 
 func RepoListCompetitions(params PageParams) PageResponse {
 	var competitions []model.RawCompetition
-
-	sql := `
-		SELECT
-			{COLUMNS}
-		FROM
-			competition c
-	`
 	var total int
 
-	pageQuery(db, params, sql, &total, &competitions)
+	sb := SqlBuilder{
+		Select: "*",
+		From: `FROM
+			competition c`,
+		OrderBy: "c.id",
+		Pp:      params,
+	}
+
+	pageQuery(db, params, sb, &total, &competitions)
 
 	return NewPageResponse(params, total, competitions)
 }
+
+type SqlBuilder struct {
+	Select  string
+	From    string
+	OrderBy string
+	Where   string
+	Args    []interface{}
+	Pp      PageParams
+}
+
+func (sb SqlBuilder) totalQuery() string {
+	where := sb.Where
+	if where == "" {
+		where = "true"
+	}
+	return fmt.Sprintf(`
+		SELECT
+			count(*)
+		FROM
+			%s
+		WHERE
+			%s
+	`, sb.From, where)
+}
+
+func (sb SqlBuilder) dataQuery() (string, []interface{}) {
+	where := sb.Where
+	if where == "" {
+		where = "true"
+	}
+	orderBy := sb.OrderBy
+	if orderBy != "" {
+		orderBy = fmt.Sprintf(
+			`ORDER BY
+				%s`, orderBy,
+		)
+	}
+
+	var fullArgs []interface{}
+	fullArgs = append(fullArgs, sb.Args...)
+	fullArgs = append(fullArgs, sb.Pp.Limit, sb.Pp.Offset)
+
+	argsLen := len(sb.Args)
+
+	return fmt.Sprintf(`
+		SELECT
+			%s
+		FROM
+			%s
+		WHERE
+			%s
+		%s
+		LIMIT	$%d
+		OFFSET	$%d`, sb.Select, sb.From, where, orderBy, argsLen+1, argsLen+2,
+		),
+		fullArgs
+}
+
+func RepoListDancers(params PageParams) PageResponse {
+	var dancers []model.RawDancer
+
+	sb := SqlBuilder{
+		Select:  "*",
+		From:    "dancer d",
+		OrderBy: "d.id",
+		Pp:      params,
+	}
+
+	var total int
+
+	pageQuery(db, params, sb, &total, &dancers)
+
+	return NewPageResponse(params, total, dancers)
+}
+
 func NewPageResponse(params PageParams, total int, slice interface{}) PageResponse {
 	//TODO wtf!!!
 	return PageResponse{Count: 20, Content: slice, PageSize: params.Limit, TotalCount: total}
 }
 
-func pageQuery(conn runner.Connection, params PageParams, sqlStr string, total *int, result interface{}, args ...interface{}) PageResponse {
-	countSql := strings.Replace(sqlStr, "{COLUMNS}", "count(*)", -1)
+func pageQuery(conn runner.Connection, params PageParams, sb SqlBuilder, total *int, result interface{}) PageResponse {
+	totalSql := sb.totalQuery()
 
-	if err := conn.SQL(countSql, args...).QueryScalar(total); err != nil {
+	if err := conn.SQL(totalSql, sb.Args...).QueryScalar(total); err != nil {
 		panic(err)
 	}
 
@@ -38,16 +113,10 @@ func pageQuery(conn runner.Connection, params PageParams, sqlStr string, total *
 		return NewPageResponse(params, *total, result)
 	}
 
-	selectSql := strings.Replace(sqlStr, "{COLUMNS}", "*", -1)
-
-	argsLen := len(args)
-	selectSql = fmt.Sprintf("%s \n LIMIT $%d OFFSET $%d", selectSql, argsLen+1, argsLen+2)
-
-	var fullArgs []interface{}
-	fullArgs = append(fullArgs, args...)
-	fullArgs = append(fullArgs, params.Limit, params.Offset)
-
-	if err := conn.SQL(selectSql, fullArgs...).QueryStructs(result); err != nil {
+	dataSql, args := sb.dataQuery()
+	fmt.Println("!!! ", dataSql) //TODO remove
+	fmt.Println("!!! ", args)    //TODO remove
+	if err := conn.SQL(dataSql, args...).QueryStructs(result); err != nil {
 		panic(err)
 	}
 

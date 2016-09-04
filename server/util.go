@@ -2,6 +2,7 @@ package server
 
 import (
 	"encoding/json"
+	"github.com/gorilla/schema"
 	"io"
 	"io/ioutil"
 	"net/http"
@@ -40,7 +41,7 @@ func WriteJSONStatus(w http.ResponseWriter, model interface{}, httpStatus int) {
 }
 
 func parsePageParams(w http.ResponseWriter, r *http.Request, params *PageParams) {
-	parseParams(w, r, params)
+	parseParamsJSONBody(w, r, params)
 
 	if params.Limit > MaxLimit {
 		params.Limit = MaxLimit
@@ -51,7 +52,7 @@ func parsePageParams(w http.ResponseWriter, r *http.Request, params *PageParams)
 	}
 }
 
-func parseParams(w http.ResponseWriter, r *http.Request, params interface{}) {
+func parseParamsJSONBody(w http.ResponseWriter, r *http.Request, params interface{}) {
 	body, err := ioutil.ReadAll(io.LimitReader(r.Body, 1048576))
 	if err != nil {
 		panic(err)
@@ -67,5 +68,24 @@ func parseParams(w http.ResponseWriter, r *http.Request, params interface{}) {
 
 	if err := json.Unmarshal(body, &params); err != nil {
 		panic(err)
+	}
+}
+
+func parseParamsGet(w http.ResponseWriter, r *http.Request, params interface{}) {
+	decoder := schema.NewDecoder()
+	r.ParseForm()
+
+	if err := decoder.Decode(params, r.Form); err != nil {
+		panic(err)
+	}
+
+	if pp, ok := params.(*PageParams); ok {
+		if pp.Limit > MaxLimit {
+			pp.Limit = MaxLimit
+		}
+
+		if pp.Limit == 0 {
+			pp.Limit = DefaultLimit
+		}
 	}
 }
