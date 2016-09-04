@@ -114,8 +114,6 @@ func pageQuery(conn runner.Connection, params PageParams, sb SqlBuilder, total *
 	}
 
 	dataSql, args := sb.dataQuery()
-	fmt.Println("!!! ", dataSql) //TODO remove
-	fmt.Println("!!! ", args)    //TODO remove
 	if err := conn.SQL(dataSql, args...).QueryStructs(result); err != nil {
 		panic(err)
 	}
