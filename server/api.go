@@ -1,60 +1,55 @@
 package server
 
 import (
-	"github.com/gorilla/handlers"
-	"github.com/gorilla/mux"
+	"github.com/gin-gonic/gin"
 	"gopkg.in/mgutz/dat.v1/sqlx-runner"
 	"net/http"
-	"os"
 )
 
 var db *runner.DB
 
-func InitRouter(conn *runner.DB) http.Handler {
-	router := mux.NewRouter().StrictSlash(true)
-	apiRouter := router.PathPrefix("/api/v1").Subrouter() /*.Headers("Content-Type", "application/json")*/
+func InitRouter(conn *runner.DB) *gin.Engine {
+	r := gin.Default()
 
-	compRouter := apiRouter.PathPrefix("/competitions").Subrouter()
-	dancerRouter := apiRouter.PathPrefix("/dancers").Subrouter()
+	api := r.Group("/api/v1")
 
-	compRouter.Methods("GET").HandlerFunc(ListCompetitions)
-	dancerRouter.Path("/").Methods("GET").HandlerFunc(ListDancers)
-	dancerRouter.Path("/{id:[0-9]+}").Methods("GET").HandlerFunc(GetDancerInfo)
-
-	loggedRouter := handlers.LoggingHandler(os.Stdout, router)
-	recovery := RecoveryHandler(PrintRecoveryStack(true))(loggedRouter)
+	api.GET("/competitions", ListCompetitions)
+	api.GET("/dancers", ListDancers)
+	api.GET("/dancers/:dancerId", GetDancerInfo)
 
 	db = conn
 
-	return recovery
+	return r
 }
 
-func ListCompetitions(w http.ResponseWriter, r *http.Request) {
+func ListCompetitions(c *gin.Context) {
 	var params PageParams
-	parsePageParams(w, r, &params)
+	parseParamsGet(c, &params)
 
 	t := RepoListCompetitions(params)
 
-	WriteJSONStatus(w, t, http.StatusOK)
+	WriteJSONStatus(c, t, http.StatusOK)
 }
 
-func ListDancers(w http.ResponseWriter, r *http.Request) {
-	var params PageParams
-	parseParamsGet(w, r, &params)
+type ListDancerParams struct {
+	Offset int    `json:"offset" form:"offset"`
+	Limit  int    `json:"limit" form:"limit"`
+	Query  string `form:"query"`
+}
+
+func ListDancers(c *gin.Context) {
+	var params ListDancerParams
+	parseParamsGet(c, &params)
 
 	t := RepoListDancers(params)
 
-	WriteJSONStatus(w, t, http.StatusOK)
+	WriteJSONStatus(c, t, http.StatusOK)
 }
 
-func GetDancerInfo(w http.ResponseWriter, r *http.Request) {
-	vars := mux.Vars(r)
-	dancerIdStr := vars["id"]
-	dancerId, err := Atoi64(dancerIdStr)
-	if err != nil {
-		panic(err)
-	}
+func GetDancerInfo(c *gin.Context) {
+	dancerId := GetPathInt64Param(c, "dancerId")
+
 	t := RepoGetDancerInfo(dancerId)
 
-	WriteJSONStatus(w, t, http.StatusOK)
+	WriteJSONStatus(c, t, http.StatusOK)
 }

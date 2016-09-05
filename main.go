@@ -13,7 +13,6 @@ import (
 	"strings"
 	"time"
 
-	"fmt"
 	"github.com/itimofeev/hustlesa/parser"
 	"github.com/itimofeev/hustlesa/server"
 	"net/http"
@@ -86,9 +85,6 @@ func main() {
 	db := initDb(config)
 
 	//res := parser.Parse("/Users/ilyatimofee/prog/axxonsoft/src/github.com/itimofeev/hustlesa/json/")
-
-	fmt.Println("!!! ", db != nil) //TODO remove
-
 	//parser.InsertData(db, res)
 
 	log.Fatal(http.ListenAndServe(":8080", server.InitRouter(db)))

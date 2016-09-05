@@ -7,14 +7,15 @@ import (
 	"gopkg.in/mgutz/dat.v1/sqlx-runner"
 )
 
+const debug = false
+
 func RepoListCompetitions(params PageParams) PageResponse {
 	var competitions []model.RawCompetition
 	var total int
 
 	sb := SqlBuilder{
-		Select: "*",
-		From: `FROM
-			competition c`,
+		Select:  "*",
+		From:    `competition c`,
 		OrderBy: "c.id",
 		Pp:      params,
 	}
@@ -24,21 +25,24 @@ func RepoListCompetitions(params PageParams) PageResponse {
 	return NewPageResponse(params, total, competitions)
 }
 
-func RepoListDancers(params PageParams) PageResponse {
+func RepoListDancers(params ListDancerParams) PageResponse {
+	pageParams := PageParams{Limit: params.Limit, Offset: params.Offset}
 	var dancers []model.RawDancer
 
 	sb := SqlBuilder{
 		Select:  "*",
 		From:    "dancer d",
 		OrderBy: "d.id",
-		Pp:      params,
+		Pp:      pageParams,
+		Where:   "d.code ilike $1",
+		Args:    []interface{}{fmt.Sprintf("%%%s%%", params.Query)},
 	}
 
 	var total int
 
-	pageQuery(db, params, sb, &total, &dancers)
+	pageQuery(db, pageParams, sb, &total, &dancers)
 
-	return NewPageResponse(params, total, dancers)
+	return NewPageResponse(pageParams, total, dancers)
 }
 
 func RepoGetDancerInfo(dancerId int64) model.DancerInfo {
@@ -156,6 +160,8 @@ func (sb SqlBuilder) dataQuery() (string, []interface{}) {
 		)
 	}
 
+	sb.Pp.fix()
+
 	var fullArgs []interface{}
 	fullArgs = append(fullArgs, sb.Args...)
 	fullArgs = append(fullArgs, sb.Pp.Limit, sb.Pp.Offset)
@@ -184,6 +190,11 @@ func NewPageResponse(params PageParams, total int, slice interface{}) PageRespon
 func pageQuery(conn runner.Connection, params PageParams, sb SqlBuilder, total *int, result interface{}) PageResponse {
 	totalSql := sb.totalQuery()
 
+	if debug {
+		fmt.Println("Args: ", sb.Args)
+		fmt.Println("TotalSql: ", totalSql)
+	}
+
 	if err := conn.SQL(totalSql, sb.Args...).QueryScalar(total); err != nil {
 		panic(err)
 	}
@@ -193,6 +204,12 @@ func pageQuery(conn runner.Connection, params PageParams, sb SqlBuilder, total *
 	}
 
 	dataSql, args := sb.dataQuery()
+
+	if debug {
+		fmt.Println("Args: ", args)
+		fmt.Println("DataSql: ", dataSql)
+	}
+
 	if err := conn.SQL(dataSql, args...).QueryStructs(result); err != nil {
 		panic(err)
 	}
