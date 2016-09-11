@@ -28,6 +28,22 @@ func (pp *PageParams) fix() {
 	}
 }
 
+type ListDancerParams struct {
+	Offset int    `json:"offset" form:"offset"`
+	Limit  int    `json:"limit" form:"limit"`
+	Query  string `form:"query"`
+}
+
+func (pp *ListDancerParams) fix() {
+	if pp.Limit > MaxLimit {
+		pp.Limit = MaxLimit
+	}
+
+	if pp.Limit == 0 {
+		pp.Limit = DefaultLimit
+	}
+}
+
 type PageResponse struct {
 	TotalCount int `json:"totalCount"`
 	PageSize   int `json:"pageSize"`

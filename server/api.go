@@ -25,21 +25,17 @@ func InitRouter(conn *runner.DB) *gin.Engine {
 func ListCompetitions(c *gin.Context) {
 	var params PageParams
 	parseParamsGet(c, &params)
+	params.fix()
 
 	t := RepoListCompetitions(params)
 
 	WriteJSONStatus(c, t, http.StatusOK)
 }
 
-type ListDancerParams struct {
-	Offset int    `json:"offset" form:"offset"`
-	Limit  int    `json:"limit" form:"limit"`
-	Query  string `form:"query"`
-}
-
 func ListDancers(c *gin.Context) {
 	var params ListDancerParams
 	parseParamsGet(c, &params)
+	params.fix()
 
 	t := RepoListDancers(params)
 

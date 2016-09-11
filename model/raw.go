@@ -32,10 +32,10 @@ type RawDancer struct {
 	Sex         string         `json:"sex" db:"sex"`
 	Source      string         `json:"source" db:"source"`
 
-	Code       string         `db:"code"`
-	Name       string         `db:"name"`
-	Surname    string         `db:"surname"`
-	Patronymic dat.NullString `db:"patronymic"`
+	Code       string         `db:"code" json:"code"`
+	Name       string         `db:"name" json:"firstName"`
+	Surname    string         `db:"surname" json:"surname"`
+	Patronymic dat.NullString `db:"patronymic" json:"patronymic"`
 }
 
 type RawDancerClub struct {
