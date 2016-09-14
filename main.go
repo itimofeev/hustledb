@@ -78,7 +78,7 @@ func initEnvironment() {
 }
 
 func main() {
-	initEnvironment()
+	//initEnvironment()
 
 	config := ReadConfig()
 

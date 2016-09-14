@@ -7,7 +7,7 @@ services:
       - "18443:443"
     depends_on:
       - hustlesa
-    volumes:
+#    volumes:
 #      - /var/log/nginx:/var/log/nginx
 #      - /home/ilyaufo/hustlesa/html/:/etc/nginx/html/
   db:
