@@ -3,11 +3,13 @@
 export GOPATH=/Users/ilyatimofee/prog/axxonsoft/
 
 PROJECT_PATH=/Users/ilyatimofee/prog/axxonsoft/src/github.com/itimofeev/hustlesa
+FRONTEND_PROJECT_PATH=/Users/ilyatimofee/prog/js/hustlesa-ui
 
-rm $PROJECT_PATH/target/*
+rm ${PROJECT_PATH}/target/*
+mkdir ${PROJECT_PATH}/target
 
 
-docker build --force-rm=true -t nginxhustlesa -f $PROJECT_PATH/tools/nginx.Dockerfile .
+docker build --force-rm=true -t nginxhustlesa -f ${PROJECT_PATH}/tools/nginx.Dockerfile .
 docker save -o "$PROJECT_PATH/target/nginxhustlesa.img" "nginxhustlesa"
 
 export GOOS=linux
@@ -16,10 +18,19 @@ go build -v github.com/itimofeev/hustlesa
 
 
 
-docker build --force-rm=true -t hustlesa -f $PROJECT_PATH/tools/hustlesa.Dockerfile .
+docker build --force-rm=true -t hustlesa -f ${PROJECT_PATH}/tools/hustlesa.Dockerfile .
 docker save -o "$PROJECT_PATH/target/hustlesa.img" "hustlesa"
 
 
 rm hustlesa
 
-cp tools/docker-compose.yml tools/run.sh tools/prod.env tools/postgres.env $PROJECT_PATH/target/
+cp ${PROJECT_PATH}/tools/prod.docker-compose.yml ${PROJECT_PATH}/tools/run.sh ${PROJECT_PATH}/tools/prod.env ${PROJECT_PATH}/tools/postgres.env ${PROJECT_PATH}/target/
+
+echo 'building frontend'
+
+#npm build ${FRONTEND_PROJECT_PATH}
+cp -r ${FRONTEND_PROJECT_PATH}/build ${PROJECT_PATH}/target/frontend
+cd target
+tar -jcvf ${PROJECT_PATH}/target/frontend.tar.bz2 frontend
+
+rm -r frontend

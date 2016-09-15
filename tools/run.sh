@@ -3,4 +3,6 @@
 docker load -i hustlesa.img
 docker load -i nginxhustlesa.img
 
-docker-compose -p hustlesa up -d
+tar -jxvf frontend.tar.bz2
+
+docker-compose -p hustlesa -f prod.docker-compose.yml up -d
