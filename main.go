@@ -84,7 +84,7 @@ func main() {
 
 	db := initDb(config)
 
-	//res := parser.Parse("/Users/ilyatimofee/prog/axxonsoft/src/github.com/itimofeev/hustlesa/json/")
+	//res := parser.Parse("config.App().JsonFilesPath")
 	//parser.InsertData(db, res)
 
 	log.Fatal(http.ListenAndServe(":8080", server.InitRouter(db)))

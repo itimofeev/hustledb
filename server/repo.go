@@ -45,13 +45,12 @@ func RepoListDancers(params ListDancerParams) PageResponse {
 	return NewPageResponse(pageParams, total, dancers)
 }
 
-func RepoGetDancerInfo(dancerId int64) model.DancerInfo {
-	var info model.DancerInfo
+func RepoGetDancerInfo(dancerId int64) DancerProfileDto {
+	var profile DancerProfileDto
 	err := DoInTransaction(func(conn runner.Connection) error {
-		info.RawDancer = *GetDancer(conn, dancerId)
-
-		info.Clubs = *GetDancerClubs(conn, dancerId)
-		info.Results = *GetDancerResults(conn, dancerId)
+		profile = *GetDancerProfile(conn, dancerId)
+		profile.Clubs = *GetDancerClubsDto(conn, dancerId)
+		profile.Results = *GetDancerResultsDto(conn, dancerId)
 
 		return nil
 	})
@@ -59,7 +58,7 @@ func RepoGetDancerInfo(dancerId int64) model.DancerInfo {
 		panic(err)
 	}
 
-	return info
+	return profile
 }
 
 func GetDancerResults(conn runner.Connection, dancerId int64) *[]model.RawCompetitionResult {
@@ -71,6 +70,40 @@ func GetDancerResults(conn runner.Connection, dancerId int64) *[]model.RawCompet
 		FROM
 			result r
 			JOIN competition c ON r.competition_id = c.id
+		WHERE
+			r.dancer_id = $1
+		ORDER BY
+			c.date desc
+	`, dancerId).QueryStructs(&results)
+	if err != nil {
+		panic(err)
+	}
+
+	return &results
+}
+
+func GetDancerResultsDto(conn runner.Connection, dancerId int64) *[]ResultDto {
+	var results []ResultDto
+
+	err := conn.SQL(`
+		SELECT
+			r.id,
+			r.result,
+			r.is_jnj,
+			r.points,
+			r.class,
+			r.all_places_from place,
+
+			n.id nom_id,
+			n.value nom_title,
+
+			c.id comp_id,
+			c.title comp_title,
+			c.date comp_date
+		FROM
+			result r
+			JOIN competition c ON r.competition_id = c.id
+			JOIN nomination n on r.nomination_id = n.id
 		WHERE
 			r.dancer_id = $1
 		ORDER BY
@@ -104,6 +137,28 @@ func GetDancerClubs(conn runner.Connection, dancerId int64) *[]model.RawClub {
 	return &clubs
 }
 
+func GetDancerClubsDto(conn runner.Connection, dancerId int64) *[]ClubDto {
+	var clubs []ClubDto
+
+	err := conn.SQL(`
+		SELECT
+			c.id,
+			c.name title
+		FROM
+			club c
+			JOIN dancer_club dc on c.id = dc.club_id
+		WHERE
+			dc.dancer_id = $1
+		ORDER BY
+			c.name asc
+	`, dancerId).QueryStructs(&clubs)
+	if err != nil {
+		panic(err)
+	}
+
+	return &clubs
+}
+
 func GetDancer(conn runner.Connection, dancerId int64) *model.RawDancer {
 	var dancer model.RawDancer
 	err := conn.SQL(`
@@ -121,6 +176,30 @@ func GetDancer(conn runner.Connection, dancerId int64) *model.RawDancer {
 	}
 
 	return &dancer
+}
+
+func GetDancerProfile(conn runner.Connection, dancerId int64) *DancerProfileDto {
+
+	var dancerProfile DancerProfileDto
+	err := conn.SQL(`
+		SELECT
+			d.id,
+			d.code,
+			d.surname || ' ' || d.name || coalesce(' ' || d.surname, '') title,
+			d.pair_class classic_class,
+			d.jnj_class
+		FROM
+			dancer d
+		WHERE
+			d.id = $1
+	`, dancerId).
+		QueryStruct(&dancerProfile)
+
+	if err == sql.ErrNoRows {
+		panic(err)
+	}
+
+	return &dancerProfile
 }
 
 type SqlBuilder struct {
