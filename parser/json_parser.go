@@ -1,7 +1,6 @@
 package parser
 
 import (
-	"bitbucket.org/Axxonsoft/axxoncloudgo/util"
 	"encoding/json"
 	"errors"
 	"fmt"
@@ -804,7 +803,7 @@ func fillName2Club(name2club map[string]int64, clubs []model.RawClub) {
 
 func loadFromJSON(fileName string, v interface{}) {
 	data, err := ioutil.ReadFile(fileName)
-	util.CheckErr(err, "Read file: "+fileName)
+	CheckErr(err, "Read file: "+fileName)
 
 	json.Unmarshal(data, v)
 }
