@@ -23,7 +23,8 @@ _testmain.go
 *.test
 *.prof
 
-/json
+/target
+/tools/json
 /.idea
 /vendor
 *.iml
