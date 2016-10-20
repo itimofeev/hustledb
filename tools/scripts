@@ -1,0 +1,38 @@
+select * from (
+select
+	u.first_name || ' ' || u.last_name as vk_name,
+	count(*) vk_count
+from
+	vk_user u
+group by
+	u.first_name || ' ' || u.last_name
+order by
+	count(*) desc
+) vk
+full outer join (
+select
+	d.name || ' ' || d.surname hsa_name,
+	count(*) hsa_count
+from
+	dancer d
+group by
+	d.name || ' ' || d.surname
+order by
+	count(*) desc
+) hsa
+ on vk.vk_name = hsa.hsa_name
+
+ where vk.vk_name is not null and hsa.hsa_name is not null and vk.vk_count = 1 and hsa.hsa_count = 1
+
+
+
+;
+
+select
+	count(distinct d.id)
+from
+	dancer d
+	join result r on r.dancer_id = d.id
+	join competition c on r.competition_id = c.id
+where
+	c.date > '2015-01-01'

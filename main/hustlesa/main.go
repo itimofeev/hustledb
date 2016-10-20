@@ -13,15 +13,15 @@ import (
 	"strings"
 	"time"
 
-	"github.com/itimofeev/hustlesa/parser"
 	"github.com/itimofeev/hustlesa/server"
+	"github.com/itimofeev/hustlesa/util"
 	"net/http"
 )
 
-func initDb(config Config) *runner.DB {
+func initDb(config util.Config) *runner.DB {
 	db, err := sql.Open("postgres", config.Db().URL)
 
-	parser.CheckErr(err, "Open db")
+	util.CheckErr(err, "Open db")
 
 	runner.MustPing(db)
 
@@ -80,7 +80,7 @@ func initEnvironment() {
 func main() {
 	//initEnvironment()
 
-	config := ReadConfig()
+	config := util.ReadConfig()
 
 	db := initDb(config)
 

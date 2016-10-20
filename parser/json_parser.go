@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"github.com/itimofeev/hustlesa/model"
+	"github.com/itimofeev/hustlesa/util"
 	"gopkg.in/mgutz/dat.v1"
 	"io/ioutil"
 	"log"
@@ -142,9 +143,9 @@ func findNomination(result model.RawCompetitionResult, nominations []model.RawNo
 	}
 
 	if len(suitableNominations) > 1 {
-		CheckOk(false, fmt.Sprintf("More than one suitable nominations %v, for result %+v", suitableNominations, result))
+		util.CheckOk(false, fmt.Sprintf("More than one suitable nominations %v, for result %+v", suitableNominations, result))
 	} else if len(suitableNominations) == 0 {
-		CheckOk(false, fmt.Sprintf("Not found suitable nominations for result %+v, from nominations %+v", result, nominations))
+		util.CheckOk(false, fmt.Sprintf("Not found suitable nominations for result %+v, from nominations %+v", result, nominations))
 	}
 
 	return suitableNominations[0]
@@ -176,7 +177,7 @@ func fixJnjResultsCompetitionIds(results []model.RawCompetitionResult, new2old m
 	for i := range results {
 		newId := results[i].CompetitionID
 		oldId, ok := new2old[newId]
-		CheckOk(ok, fmt.Sprintf("old competition not found by id %d", newId))
+		util.CheckOk(ok, fmt.Sprintf("old competition not found by id %d", newId))
 
 		results[i].CompetitionID = oldId
 	}

@@ -20,9 +20,9 @@ type VkClient struct {
 
 type VkUser struct {
 	Uid       int64  `json:"uid"`
-	Id        int64  `json:"id"`
-	FirstName string `json:"first_name"`
-	LastName  string `json:"last_name"`
+	Id        int64  `json:"id" db:"id"`
+	FirstName string `json:"first_name" db:"first_name"`
+	LastName  string `json:"last_name" db:"last_name"`
 }
 
 func (u *VkUser) GetId() int64 {

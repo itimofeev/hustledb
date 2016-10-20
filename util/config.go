@@ -1,7 +1,6 @@
-package main
+package util
 
 import (
-	"github.com/itimofeev/hustlesa/parser"
 	"github.com/kelseyhightower/envconfig"
 )
 
@@ -40,7 +39,7 @@ func ReadConfig() Config {
 	var c configEnv
 	err := envconfig.Process("hustlesa", &c)
 
-	parser.CheckErr(err, "read envconfig")
+	CheckErr(err, "read envconfig")
 
 	return &c
 }
