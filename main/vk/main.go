@@ -5,13 +5,20 @@ import (
 	"github.com/itimofeev/hustlesa/vk"
 )
 
+/*
+// disco_dubrovka
+// dwizhenie
+// discoswing
+// discofoxan
+// club3688533 (Динамика)
+// svitelev_hustle
+*/
 func main() {
-	client := vk.NewVkClient()
+	groups := []string{"dwizhenie", "disco_dubrovka"}
+	userNames := []string{"3956992"}
+	fetcher := vk.NewVkFetcher(groups, userNames)
 
-	userResponse, err := client.GetGroupMembers(10, 0, "dwizhenie")
-	if err != nil {
-		fmt.Printf("!!!%+v\n", err) //TODO remove
-	} else {
-		fmt.Printf("!!!%+v\n", userResponse) //TODO remove
-	}
+	users := fetcher.FetchAllUsers()
+
+	fmt.Printf("!!!Unique users: %d\n", len(users)) //TODO remove
 }
