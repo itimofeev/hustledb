@@ -23,8 +23,20 @@ type Nomination struct {
 	FinalTechResult []*FinalTechResult
 }
 
+type Dancer struct {
+	Id           int
+	Title        string
+	ClassClassic string
+	ClassJnj     string
+	Clubs        []string
+}
+
 type Place struct {
-	Value string
+	PlaceFrom int
+	PlaceTo   int
+	Number    int
+	Dancer1   *Dancer
+	Dancer2   *Dancer
 }
 
 type Stage struct {
