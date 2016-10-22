@@ -23,7 +23,7 @@ var (
 )
 
 func initRegexps() {
-	judgeRegexp = compileRegexp("\\d \\([A-G]\\) - [\\W ]+") //1 (A) - Милованов Александр
+	judgeRegexp = compileRegexp("\\d \\(.\\) - [\\W ]+") //1 (A) - Милованов Александр
 	resultsRegexp = compileRegexp("\\s*Результаты турнира:")
 	participantRegexp = compileRegexp(".* ((Участников)||(Участвовало.пар)):.\\d+") //DnD Beginner (ПАРТНЕРЫ). Участников: 49 |  DnD Beginner (ДЕВУШКИ). Участников: 85 | E класс. Участвовало пар: 23
 	stageRegexp = compileRegexp("1/\\d+ финала")                                    //1/2 финала | ФИНАЛ | 1/16 финала

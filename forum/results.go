@@ -1,22 +1,43 @@
 package forum
 
 type ForumResults struct {
-	Judges          []string
-	NominationNames []string
-	Stages          []string
-	TechStages      []string
-	FinalTechStages []string
-	TechResult      []string
-	FinalTechResult []string
-	Places          []string
+	JudgesResults []*JudgeResult
+
+	Stages          []string `json:"-"`
+	TechStages      []string `json:"-"`
+	FinalTechStages []string `json:"-"`
+	TechResult      []string `json:"-"`
+	FinalTechResult []string `json:"-"`
+	Places          []string `json:"-"`
+}
+
+type JudgeResult struct {
+	Judges      []string
+	Nominations []*NominationResult
+}
+
+type NominationResult struct {
+	Title string
 }
 
 func (fr *ForumResults) addJudge(line string) {
-	fr.Judges = append(fr.Judges, line)
+	needNew := len(fr.JudgesResults) == 0 || len(fr.JudgesResults[len(fr.JudgesResults)-1].Nominations) > 0
+	if needNew {
+		fr.JudgesResults = append(fr.JudgesResults, &JudgeResult{
+			Judges: []string{line},
+		})
+	} else {
+		lastJudgeResult := fr.JudgesResults[len(fr.JudgesResults)-1]
+		lastJudgeResult.Judges = append(lastJudgeResult.Judges, line)
+	}
 }
 
 func (fr *ForumResults) addNominationName(line string) {
-	fr.NominationNames = append(fr.NominationNames, line)
+	lastJudgeResult := fr.JudgesResults[len(fr.JudgesResults)-1]
+
+	lastJudgeResult.Nominations = append(lastJudgeResult.Nominations, &NominationResult{
+		Title: line,
+	})
 }
 
 func (fr *ForumResults) addStage(line string) {
