@@ -1,7 +1,9 @@
 package forum
 
 import (
+	"fmt"
 	"github.com/itimofeev/hustlesa/util"
+	"regexp"
 	"strings"
 )
 
@@ -13,17 +15,18 @@ const jnjClasses = "bgrsmsch"
 func parseJudge(str string) *Judge {
 	util.CheckMatchesRegexp("\\d \\(.\\) - [\\W ]+", str)
 
-	letter := string(str[strings.Index(str, "(")+1])
-	title := string(str[strings.Index(str, "- ")+2:])
+	letter := str[strings.Index(str, "(")+1 : strings.Index(str, ")")]
+	title := str[strings.Index(str, "- ")+2:]
 
 	return &Judge{
-		Letter: fixLetter(letter),
+		Letter: fixJudgeLetter(letter),
 		Title:  strings.TrimSpace(title),
 	}
 }
 
-func fixLetter(letter string) string {
-	util.CheckOk(len(letter) == 1, "Not letter: "+letter)
+func fixJudgeLetter(letter string) string {
+	letter = fixLetter(letter)
+	util.CheckOk(len(letter) == 1, fmt.Sprintf("Not letter: '%s'", letter))
 	util.CheckOk(strings.Contains(judgeLetters, letter), "Unknown letter: "+letter)
 	return letter
 }
@@ -68,7 +71,7 @@ func parsePlaces(str string) (int, int) {
 }
 
 func parseDancers(str string) (*Dancer, *Dancer) {
-	split := strings.Split(str, "-")
+	split := strings.Split(str, ")-")
 	if len(split) == 1 {
 		return parseDancer(str), nil
 	} else {
@@ -79,8 +82,12 @@ func parseDancers(str string) (*Dancer, *Dancer) {
 //Беликов Александр Валерьевич(дебют,AlphaDance,E)
 //Потапов Николай Олегович(7008,Движение,Ivara,D,Bg)
 func parseDancer(str string) *Dancer {
-	title := str[:strings.Index(str, "(")]
-	info := str[strings.Index(str, "(")+1:]
+	r, _ := regexp.Compile("\\(((\\d+)||(дебют)),")
+
+	indexOpen := r.FindStringIndex(str)
+
+	title := str[:indexOpen[0]]
+	info := str[indexOpen[0]+1:]
 
 	dancerCodeStr := info[:strings.Index(info, ",")]
 	var dancerId int
@@ -101,6 +108,23 @@ func parseDancer(str string) *Dancer {
 		Id:    dancerId,
 		Title: title,
 		Clubs: clubs,
+	}
+}
+
+func fixLetter(letter string) string {
+	switch letter {
+	case "А":
+		return "A"
+	case "В":
+		return "B"
+	case "С":
+		return "C"
+	case "Д":
+		return "D"
+	case "Е":
+		return "E"
+	default:
+		return letter
 	}
 }
 

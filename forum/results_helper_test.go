@@ -10,6 +10,11 @@ func TestParseJudge(t *testing.T) {
 
 	assert.Equal(t, "A", judge.Letter)
 	assert.Equal(t, "Милованов Александр", judge.Title)
+
+	judge = parseJudge("2 (В) - Дубровин Игорь")
+
+	assert.Equal(t, "B", judge.Letter)
+	assert.Equal(t, "Дубровин Игорь", judge.Title)
 }
 
 //1 место-№562-Беликов Александр Валерьевич(дебют,AlphaDance,E)-Егорова Юлия Викторовна(8463,AlphaDance,E)
@@ -33,5 +38,16 @@ func TestParsePlace(t *testing.T) {
 	assert.Equal(t, "Потапов Николай Олегович", place.Dancer1.Title)
 	assert.Equal(t, 7008, place.Dancer1.Id)
 	assert.Equal(t, []string{"Движение", "Ivara"}, place.Dancer1.Clubs)
+
+	place = parsePlace("19-23 место-№556-Козлов Корней Викторович(8432,Хастл-Центр,E)-Воропаева Марина Валериевна(дебют,Хастл-Центр,E)")
+	assert.Equal(t, "Козлов Корней Викторович", place.Dancer1.Title)
+	assert.Equal(t, []string{"Хастл-Центр"}, place.Dancer1.Clubs)
+
+	place = parsePlace("72-85 место-№669-Тугаринова (Рико) Наталья Александровна(8514,Движение,E,Bg)")
+	assert.Equal(t, "Тугаринова (Рико) Наталья Александровна", place.Dancer1.Title)
+	assert.Equal(t, []string{"Движение"}, place.Dancer1.Clubs)
+
+	place = parsePlace("19-23 место-№573-Мосолов Валерий Валентинович(8655,Дизайн (г.Курск),E)-Савельева Ирина Юрьевна(7331,Дизайн (г.Курск),E)")
+	assert.Equal(t, []string{"Дизайн (г.Курск)"}, place.Dancer1.Clubs)
 
 }
