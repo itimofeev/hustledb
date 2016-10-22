@@ -29,7 +29,9 @@ func TestTechnicalState_ProcessLine(t *testing.T) {
 	assert.Equal(t, beginType, reflect.TypeOf(begin.ProcessLine(fr, "21.00 Окончание турнира  ")))
 
 	assert.Equal(t, judgeTeamType, reflect.TypeOf(begin.ProcessLine(fr, "Результаты турнира:")))
+	assert.Equal(t, judgeTeamType, reflect.TypeOf(judge.ProcessLine(fr, "1 (A) - Милованов Александр")))
 	assert.Equal(t, placeType, reflect.TypeOf(judge.ProcessLine(fr, "C класс. Участвовало пар: 6")))
+	assert.Equal(t, placeType, reflect.TypeOf(place.ProcessLine(fr, "1/8 финала")))
 	assert.Equal(t, placeType, reflect.TypeOf(place.ProcessLine(fr, "2 место-№740-Ларин Максим Геннадьевич(5944,Движение,C)-Тимофеева Юлия Андреевна(1956,Движение,C)")))
 
 	assert.Equal(t, techType, reflect.TypeOf(place.ProcessLine(fr, "Технические результаты:")))

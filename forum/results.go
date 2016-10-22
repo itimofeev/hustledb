@@ -1,12 +1,18 @@
 package forum
 
 type ForumResults struct {
-	JudgesResults []*Judge
+	JudgesResults []*JudgeTeam
+}
+
+type JudgeTeam struct {
+	Judges      []*Judge
+	Nominations []*Nomination
 }
 
 type Judge struct {
-	Judges      []string
-	Nominations []*Nomination
+	DancerId int64
+	Letter   string
+	Title    string
 }
 
 type Nomination struct {
@@ -17,13 +23,13 @@ type Nomination struct {
 	FinalTechResult []*FinalTechResult
 }
 
-type Places struct {
+type Place struct {
 	Value string
 }
 
 type Stage struct {
 	Title  string
-	Places []*Places
+	Places []*Place
 }
 
 type TechStage struct {
@@ -39,14 +45,15 @@ type FinalTechResult struct {
 }
 
 func (fr *ForumResults) addJudge(line string) {
+	judge := parseJudge(line)
 	needNew := len(fr.JudgesResults) == 0 || len(fr.JudgesResults[len(fr.JudgesResults)-1].Nominations) > 0
 	if needNew {
-		fr.JudgesResults = append(fr.JudgesResults, &Judge{
-			Judges: []string{line},
+		fr.JudgesResults = append(fr.JudgesResults, &JudgeTeam{
+			Judges: []*Judge{judge},
 		})
 	} else {
 		lastJudgeResult := fr.JudgesResults[len(fr.JudgesResults)-1]
-		lastJudgeResult.Judges = append(lastJudgeResult.Judges, line)
+		lastJudgeResult.Judges = append(lastJudgeResult.Judges, judge)
 	}
 }
 
@@ -72,9 +79,7 @@ func (fr *ForumResults) addPlace(line string) {
 	lastNomination := lastJudgeResult.Nominations[len(lastJudgeResult.Nominations)-1]
 	lastStage := lastNomination.Stages[len(lastNomination.Stages)-1]
 
-	lastStage.Places = append(lastStage.Places, &Places{
-		Value: line,
-	})
+	lastStage.Places = append(lastStage.Places, parsePlace(line))
 }
 
 func (fr *ForumResults) addTechStage(line string) {
