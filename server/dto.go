@@ -39,3 +39,31 @@ type ResultDto struct {
 
 	Place string `json:"place" db:"place"`
 }
+
+type NominationResultDto struct {
+	ID int64 `json:"id" db:"id"`
+
+	ResultString string `json:"resultString" db:"result"`
+
+	DancerId    int64  `json:"dancerId" db:"dancer_id"`
+	DancerTitle string `json:"dancerTitle" db:"dancer_title"`
+
+	IsJNJ bool `json:"isJnj"db:"is_jnj"`
+
+	Points int    `json:"points" db:"points"`
+	Class  string `json:"class" db:"class"`
+
+	Place string `json:"place" db:"place"`
+}
+
+type CompetitionDto struct {
+	ID          int64           `json:"id"`
+	Title       string          `json:"title"`
+	Nominations []NominationDto `json:"nominations"`
+}
+
+type NominationDto struct {
+	ID      int64                 `json:"id"`
+	Title   string                `json:"title"`
+	Results []NominationResultDto `json:"results"`
+}

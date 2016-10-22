@@ -14,6 +14,7 @@ func InitRouter(conn *runner.DB) *gin.Engine {
 	api := r.Group("/api/v1")
 
 	api.GET("/competitions", ListCompetitions)
+	api.GET("/competitions/:id", ListCompetition)
 	api.GET("/dancers", ListDancers)
 	api.GET("/dancers/:dancerId", GetDancerInfo)
 
@@ -28,6 +29,14 @@ func ListCompetitions(c *gin.Context) {
 	params.fix()
 
 	t := RepoListCompetitions(params)
+
+	WriteJSONStatus(c, t, http.StatusOK)
+}
+
+func ListCompetition(c *gin.Context) {
+	compId := GetPathInt64Param(c, "id")
+
+	t := RepoGetCompetitionInfo(compId)
 
 	WriteJSONStatus(c, t, http.StatusOK)
 }

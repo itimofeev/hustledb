@@ -16,13 +16,106 @@ func RepoListCompetitions(params PageParams) PageResponse {
 	sb := SqlBuilder{
 		Select:  "*",
 		From:    `competition c`,
-		OrderBy: "c.id",
+		OrderBy: "c.date desc",
 		Pp:      params,
 	}
 
 	pageQuery(db, params, sb, &total, &competitions)
 
 	return NewPageResponse(params, total, competitions)
+}
+
+func RepoGetCompetitionInfo(id int64) CompetitionDto {
+	var comp CompetitionDto
+	err := DoInTransaction(func(conn runner.Connection) error {
+		rawComp := *GetCompetition(conn, id)
+		rawNom := GetNominationsByCompetitionId(conn, id)
+
+		comp.ID = rawComp.ID
+		comp.Title = rawComp.Title
+
+		var noms []NominationDto
+		for _, rawNom := range *rawNom {
+			noms = append(noms, NominationDto{
+				ID:      rawNom.ID,
+				Title:   rawNom.Value,
+				Results: GetResultsByNomination(conn, rawNom.ID),
+			})
+		}
+
+		comp.Nominations = noms
+
+		return nil
+	})
+	if err != nil {
+		panic(err)
+	}
+
+	return comp
+}
+
+func GetCompetition(conn runner.Connection, id int64) *model.RawCompetition {
+	var competition model.RawCompetition
+	err := conn.SQL(`
+		SELECT
+			*
+		FROM
+			competition c
+		WHERE
+			c.id = $1
+	`, id).
+		QueryStruct(&competition)
+
+	if err == sql.ErrNoRows {
+		panic(err)
+	}
+
+	return &competition
+}
+
+func GetResultsByNomination(conn runner.Connection, id int64) []NominationResultDto {
+	var results []NominationResultDto
+
+	/*
+		ID int64 `json:"id" db:"id"`
+
+		ResultString string `json:"resultString" db:"result"`
+
+		DancerId int64 `json:"dancerId" db:"dancer_id"`
+		DancerTitle string `json:"dancerTitle" db:"dancer_title"`
+
+
+		IsJNJ bool `json:"isJnj"db:"is_jnj"`
+
+		Points int    `json:"points" db:"points"`
+		Class  string `json:"class" db:"class"`
+
+		Place string `json:"place" db:"place"`
+	*/
+
+	err := conn.SQL(`
+		SELECT
+			r.id,
+			r.result,
+			r.is_jnj,
+			r.points,
+			r.class,
+			r.all_places_from place,
+			d.id dancer_id,
+			d.surname || ' ' || d.name || coalesce(' ' || d.patronymic, '') dancer_title
+		FROM
+			result r
+			join dancer d on r.dancer_id = d.id
+		WHERE
+			r.nomination_id = $1
+		ORDER BY
+			r.all_places_from asc
+	`, id).QueryStructs(&results)
+	if err != nil {
+		panic(err)
+	}
+
+	return results
 }
 
 func RepoListDancers(params ListDancerParams) PageResponse {
@@ -157,6 +250,26 @@ func GetDancerClubsDto(conn runner.Connection, dancerId int64) *[]ClubDto {
 	}
 
 	return &clubs
+}
+
+func GetNominationsByCompetitionId(conn runner.Connection, compId int64) *[]model.RawNomination {
+	var nominations []model.RawNomination
+
+	err := conn.SQL(`
+		SELECT
+			*
+		FROM
+			nomination n
+		WHERE
+			n.competition_id = $1
+		ORDER BY
+			n.value asc
+	`, compId).QueryStructs(&nominations)
+	if err != nil {
+		panic(err)
+	}
+
+	return &nominations
 }
 
 func GetDancer(conn runner.Connection, dancerId int64) *model.RawDancer {
