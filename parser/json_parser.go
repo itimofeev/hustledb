@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"github.com/itimofeev/hustlesa/model"
+	"github.com/itimofeev/hustlesa/util"
 	"gopkg.in/mgutz/dat.v1"
 	"io/ioutil"
 	"log"
@@ -116,7 +117,7 @@ func fixJnjNominationIds(results []model.RawCompetitionResult, jnjResults []mode
 
 	for i, result := range allResults {
 		compNominations, found := compIdToNominations[result.CompetitionID]
-		CheckOk(found, fmt.Sprintf("Not found nomination by comp id %s", result.CompetitionID))
+		util.CheckOk(found, fmt.Sprintf("Not found nomination by comp id %s", result.CompetitionID))
 
 		crutchFixResult(&allResults[i])
 
@@ -142,9 +143,9 @@ func findNomination(result model.RawCompetitionResult, nominations []model.RawNo
 	}
 
 	if len(suitableNominations) > 1 {
-		CheckOk(false, fmt.Sprintf("More than one suitable nominations %v, for result %+v", suitableNominations, result))
+		util.CheckOk(false, fmt.Sprintf("More than one suitable nominations %v, for result %+v", suitableNominations, result))
 	} else if len(suitableNominations) == 0 {
-		CheckOk(false, fmt.Sprintf("Not found suitable nominations for result %+v, from nominations %+v", result, nominations))
+		util.CheckOk(false, fmt.Sprintf("Not found suitable nominations for result %+v, from nominations %+v", result, nominations))
 	}
 
 	return suitableNominations[0]
@@ -176,7 +177,7 @@ func fixJnjResultsCompetitionIds(results []model.RawCompetitionResult, new2old m
 	for i := range results {
 		newId := results[i].CompetitionID
 		oldId, ok := new2old[newId]
-		CheckOk(ok, fmt.Sprintf("old competition not found by id %d", newId))
+		util.CheckOk(ok, fmt.Sprintf("old competition not found by id %d", newId))
 
 		results[i].CompetitionID = oldId
 	}
@@ -218,11 +219,11 @@ func fixJnjResult(result *model.RawCompetitionResult) *model.RawCompetitionResul
 
 	points := 0
 	if len(placeSplitOnPlus) == 2 {
-		points = Atoi(placeSplitOnPlus[1])
+		points = util.Atoi(placeSplitOnPlus[1])
 	}
 
-	place := Atoi(placesSplit[0])
-	placeFrom := Atoi(placeSplitOnPlus[0])
+	place := util.Atoi(placesSplit[0])
+	placeFrom := util.Atoi(placeSplitOnPlus[0])
 
 	result.Place = place
 	result.PlaceFrom = placeFrom
@@ -248,7 +249,7 @@ func fixJnjResult(result *model.RawCompetitionResult) *model.RawCompetitionResul
 			allPlaceFrom = numbers[0]
 			allPlaceTo = numbers[0]
 		} else {
-			CheckOk(false, "Bad format "+allPlacesStr)
+			util.CheckOk(false, "Bad format "+allPlacesStr)
 		}
 
 		result.AllPlacesMinClass = uncompressJnjClass(minClass)
@@ -272,7 +273,7 @@ func uncompressJnjClass(class string) string {
 	case "S":
 		return "S"
 	}
-	CheckOk(false, "unknown class "+class)
+	util.CheckOk(false, "unknown class "+class)
 	return class
 }
 
@@ -281,7 +282,7 @@ func fixJnjNominationCompetitionIds(nominations []model.RawNomination, new2old m
 		newId := nominations[i].CompetitionID
 
 		oldId, ok := new2old[newId]
-		CheckOk(ok, fmt.Sprintf("not found comp by id %d", newId))
+		util.CheckOk(ok, fmt.Sprintf("not found comp by id %d", newId))
 
 		nominations[i].CompetitionID = oldId
 	}
@@ -330,10 +331,10 @@ func doCleanJnj(s string) string {
 
 func fixJnjCompetitionIds(jnj []model.RawCompetition, site2oldCompId map[string]int64, new2old map[int64]int64) []model.RawCompetition {
 	for i := range jnj {
-		CheckOk(jnj[i].Site.Valid, "jnj site is empty")
+		util.CheckOk(jnj[i].Site.Valid, "jnj site is empty")
 
 		oldId, ok := site2oldCompId[jnj[i].Site.String]
-		CheckOk(ok, "old id not found by site jnj[i].Site")
+		util.CheckOk(ok, "old id not found by site jnj[i].Site")
 
 		new2old[jnj[i].ID] = oldId
 
@@ -385,11 +386,11 @@ func fixResult(result *model.RawCompetitionResult) *model.RawCompetitionResult {
 
 	points := 0
 	if len(placeSplitOnPlus) == 2 {
-		points = Atoi(placeSplitOnPlus[1])
+		points = util.Atoi(placeSplitOnPlus[1])
 	}
 
-	place := Atoi(placesSplit[0])
-	placeFrom := Atoi(placeSplitOnPlus[0])
+	place := util.Atoi(placesSplit[0])
+	placeFrom := util.Atoi(placeSplitOnPlus[0])
 	isJnj := strings.Contains(allPlacesStr, "@")
 
 	result.Place = place
@@ -416,7 +417,7 @@ func fixResult(result *model.RawCompetitionResult) *model.RawCompetitionResult {
 			allPlaceFrom = numbers[0]
 			allPlaceTo = numbers[0]
 		} else {
-			CheckOk(false, "Bad format "+allPlacesStr)
+			util.CheckOk(false, "Bad format "+allPlacesStr)
 		}
 
 		result.AllPlacesMinClass = minClass
@@ -520,7 +521,7 @@ func parseAllNumbers(str string) []int {
 
 	for _, number := range numbers {
 		n, err := strconv.Atoi(number)
-		CheckErr(err, "unable to parse int "+number)
+		util.CheckErr(err, "unable to parse int "+number)
 		res = append(res, n)
 	}
 	return res
@@ -528,14 +529,14 @@ func parseAllNumbers(str string) []int {
 
 func parseNumber(str string) int {
 	numbers := parseAllNumbers(str)
-	CheckOk(len(numbers) == 1, fmt.Sprintf("Len of numbers not 1: %v, %s", numbers, str))
+	util.CheckOk(len(numbers) == 1, fmt.Sprintf("Len of numbers not 1: %v, %s", numbers, str))
 
 	return numbers[0]
 }
 
 func parse2Numbers(str string) (int, int) {
 	numbers := parseAllNumbers(str)
-	CheckOk(len(numbers) == 2, fmt.Sprintf("Len of numbers not 2: %v, %s", numbers, str))
+	util.CheckOk(len(numbers) == 2, fmt.Sprintf("Len of numbers not 2: %v, %s", numbers, str))
 
 	return numbers[0], numbers[1]
 }
@@ -721,7 +722,7 @@ func fixDancers(dancers []model.RawDancer) []model.RawDancer {
 		} else if dancers[i].Sex == "ж" {
 			dancers[i].Sex = "f"
 		} else {
-			CheckErr(errors.New("bad sex "+dancers[i].Sex), "")
+			util.CheckErr(errors.New("bad sex "+dancers[i].Sex), "")
 		}
 
 		if patronymic != nil {
@@ -803,7 +804,7 @@ func fillName2Club(name2club map[string]int64, clubs []model.RawClub) {
 
 func loadFromJSON(fileName string, v interface{}) {
 	data, err := ioutil.ReadFile(fileName)
-	CheckErr(err, "Read file: "+fileName)
+	util.CheckErr(err, "Read file: "+fileName)
 
 	json.Unmarshal(data, v)
 }
