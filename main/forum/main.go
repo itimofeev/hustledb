@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"github.com/itimofeev/hustlesa/forum"
 	"github.com/itimofeev/hustlesa/util"
@@ -19,7 +20,10 @@ func main() {
 
 	results := forum.ParseForum([]byte(res))
 
-	fmt.Printf("!!!%+v\n", results)
+	jsonData, err := json.Marshal(results)
+	util.CheckErr(err, "")
+
+	fmt.Println("!!!", string(jsonData)) //TODO remove
 }
 
 //err := ioutil.WriteFile("/Users/ilyatimofee/prog/axxonsoft/src/github.com/itimofeev/hustlesa/tools/forum/3761.html", data, 0644)
