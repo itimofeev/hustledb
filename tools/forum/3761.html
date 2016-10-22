@@ -1,0 +1,851 @@
+<html> 
+<head> 
+<title>Форум АСХ -> (2016-08-27) Динамиада</title> 
+<meta http-equiv="content-type" content="text/html; charset=windows-1251" /> 
+ 
+<style type='text/css'>
+/* FIX IE6 Scrollbars bug - Leave this in! */
+/* FIX IE6 Scrollbars bug - Leave this in! */
+html { overflow-x: auto; } 
+
+/* Body entry, change forum page background colour, default font, font size, etc. Leave text-align:center to center board content
+   #ipwrapper will set text-align back to left for the forum. Any other tables / divs you use must use text-align:left to re-align
+   the content properly. This is a work around to a known Internet Explorer bug */
+BODY { font-family: Verdana, Tahoma, Arial, sans-serif; font-size: 11px; color: #000; margin:0px;padding:0px;background-color:#FFF; text-align:center }
+TABLE, TR, TD { font-family: Verdana, Tahoma, Arial, sans-serif; font-size: 11px; color: #000; }
+
+/* MAIN WRAPPER: Adjust forum width here. Leave margins alone to auto-center content */
+#ipbwrapper { text-align:left; width:95%; margin-left:auto;margin-right:auto }
+
+a:link, a:visited, a:active { text-decoration: underline; color: #000 }
+a:hover { color: #465584; text-decoration:underline }
+
+fieldset.search { padding:6px; line-height:150% }
+label      { cursor:pointer; }
+form       { display:inline; }
+img        { vertical-align:middle; border:0px }
+img.attach { border:2px outset #EEF2F7;padding:2px }
+
+.googleroot  { padding:6px; line-height:130% }
+.googlechild { padding:6px; margin-left:30px; line-height:130% }
+.googlebottom, .googlebottom a:link, .googlebottom a:visited, .googlebottom a:active { font-size:11px; color: #3A4F6C; }
+.googlish, .googlish a:link, .googlish a:visited, .googlish a:active { font-size:14px; font-weight:bold; color:#00D; }
+.googlepagelinks { font-size:1.1em; letter-spacing:1px }
+.googlesmall, .googlesmall a:link, .googlesmall a:active, .googlesmall a:visited { font-size:10px; color:#434951 }
+
+li.helprow { padding:0px; margin:0px 0px 10px 0px }
+ul#help    { padding:0px 0px 0px 15px }
+
+option.cat { font-weight:bold; }
+option.sub { font-weight:bold;color:#555 }
+.caldate   { text-align:right;font-weight:bold;font-size:11px;color:#777;background-color:#DFE6EF;padding:4px;margin:0px }
+
+.warngood { color:green }
+.warnbad  { color:red }
+
+#padandcenter { margin-left:auto;margin-right:auto;text-align:center;padding:14px 0px 14px 0px }
+
+#profilename { font-size:28px; font-weight:bold; }
+#calendarname { font-size:22px; font-weight:bold; }
+
+#photowrap { padding:6px; }
+#phototitle { font-size:24px; border-bottom:1px solid black }
+#photoimg   { text-align:center; margin-top:15px } 
+
+#ucpmenu    { line-height:150%;width:22%; border:1px solid #345487;background-color: #F5F9FD }
+#ucpmenu p  { padding:2px 5px 6px 9px;margin:0px; }
+#ucpcontent { background-color: #F5F9FD; border:1px solid #345487;line-height:150%; width:auto }
+#ucpcontent p  { padding:10px;margin:0px; }
+
+#ipsbanner { position:absolute;top:1px;right:5%; }
+#logostrip { border:1px solid #345487;background-color: #3860BB;background-image:url(style_images/1/tile_back.gif);padding:0px;margin:0px; }
+#submenu   { border:1px solid #BCD0ED;background-color: #DFE6EF;font-size:10px;margin:3px 0px 3px 0px;color:#3A4F6C;font-weight:bold;}
+#submenu a:link, #submenu  a:visited, #submenu a:active { font-weight:bold;font-size:10px;text-decoration: none; color: #3A4F6C; }
+#userlinks { border:1px solid #C2CFDF; background-color: #F0F5FA }
+
+#navstrip  { font-weight:bold;padding:6px 0px 6px 0px; }
+
+.activeuserstrip { background-color:#BCD0ED; padding:6px }
+
+/* Form stuff (post / profile / etc) */
+.pformstrip { background-color: #D1DCEB; color:#3A4F6C;font-weight:bold;padding:7px;margin-top:1px }
+.pformleft  { background-color: #F5F9FD; padding:6px; margin-top:1px;width:25%; border-top:1px solid #C2CFDF; border-right:1px solid #C2CFDF; }
+.pformleftw { background-color: #F5F9FD; padding:6px; margin-top:1px;width:40%; border-top:1px solid #C2CFDF; border-right:1px solid #C2CFDF; }
+.pformright { background-color: #F5F9FD; padding:6px; margin-top:1px;border-top:1px solid #C2CFDF; }
+
+/* Topic View elements */
+.signature   { font-size: 10px; color: #339; line-height:150% }
+.postdetails { font-size: 10px }
+.postcolor   { font-size: 12px; line-height: 160% }
+
+.normalname { font-size: 12px; font-weight: bold; color: #003 }
+.normalname a:link, .normalname a:visited, .normalname a:active { font-size: 12px }
+.unreg { font-size: 11px; font-weight: bold; color: #900 }
+
+.post1 { background-color: #F5F9FD }
+.post2 { background-color: #EEF2F7 }
+.postlinksbar { background-color:#D1DCEB;padding:7px;margin-top:1px;font-size:10px; background-image: url(style_images/1/tile_sub.gif) }
+
+/* Common elements */
+.row1 { background-color: #F5F9FD }
+.row2 { background-color: #DFE6EF }
+.row3 { background-color: #EEF2F7 }
+.row4 { background-color: #E4EAF2 }
+
+.darkrow1 { background-color: #C2CFDF; color:#4C77B6; }
+.darkrow2 { background-color: #BCD0ED; color:#3A4F6C; }
+.darkrow3 { background-color: #D1DCEB; color:#3A4F6C; }
+
+.hlight { background-color: #DFE6EF }
+.dlight { background-color: #EEF2F7 }
+
+.titlemedium { font-weight:bold; color:#3A4F6C; padding:7px; margin:0px; background-image: url(style_images/1/tile_sub.gif) }
+.titlemedium  a:link, .titlemedium  a:visited, .titlemedium  a:active  { text-decoration: underline; color: #3A4F6C }
+
+/* Main table top (dark blue gradient by default) */
+.maintitle { vertical-align:middle;font-weight:bold; color:#FFF; padding:8px 0px 8px 5px; background-image: url(style_images/1/tile_back.gif) }
+.maintitle a:link, .maintitle  a:visited, .maintitle  a:active { text-decoration: none; color: #FFF }
+.maintitle a:hover { text-decoration: underline }
+
+/* tableborders gives the white column / row lines effect */
+.plainborder { border:1px solid #345487;background-color:#F5F9FD }
+.tableborder { border:1px solid #345487;background-color:#FFF; padding:0; margin:0 }
+.tablefill   { border:1px solid #345487;background-color:#F5F9FD;padding:6px;  }
+.tablepad    { background-color:#F5F9FD;padding:6px }
+.tablebasic  { width:100%; padding:0px 0px 0px 0px; margin:0px; border:0px }
+
+.wrapmini    { float:left;line-height:1.5em;width:25% }
+.pagelinks   { float:left;line-height:1.2em;width:35% }
+
+.desc { font-size:10px; color:#434951 }
+.edit { font-size: 9px }
+
+
+.searchlite { font-weight:bold; color:#F00; background-color:#FF0 }
+
+#QUOTE { white-space:normal; font-family: Verdana, Arial; font-size: 11px; color: #465584; background-color: #FAFCFE; border: 1px solid #000; padding-top: 2px; padding-right: 2px; padding-bottom: 2px; padding-left: 2px }
+#SPOILER { font-family: Verdana, Arial; font-size: 8pt; color: #FAFCFE; background-color: #FAFCFE; border: 1px solid Black; padding-top: 2px; padding-right: 2px; padding-bottom: 2px; padding-left: 2px }
+#CODE  { white-space:normal; font-family: Courier, Courier New, Verdana, Arial;  font-size: 11px; color: #465584; background-color: #FAFCFE; border: 1px solid #000; padding-top: 2px; padding-right: 2px; padding-bottom: 2px; padding-left: 2px }
+
+.copyright { font-family: Verdana, Tahoma, Arial, Sans-Serif; font-size: 9px; line-height: 12px }
+
+.codebuttons  { font-size: 10px; font-family: verdana, helvetica, sans-serif; vertical-align: middle }
+.forminput, .textinput, .radiobutton, .checkbox  { font-size: 11px; font-family: verdana, helvetica, sans-serif; vertical-align: middle }
+
+.thin { padding:6px 0px 6px 0px;line-height:140%;margin:2px 0px 2px 0px;border-top:1px solid #FFF;border-bottom:1px solid #FFF }
+
+.purple { color:purple;font-weight:bold }
+.red    { color:red;font-weight:bold }
+.green  { color:green;font-weight:bold }
+.blue   { color:blue;font-weight:bold }
+.orange { color:#F90;font-weight:bold }
+</style> 
+<script language="javascript" src="./html/quote.js"></script> 
+</head> 
+<body>
+<div id="ipbwrapper">
+<script language='JavaScript' type="text/javascript">
+<!--
+function buddy_pop() { window.open('index.php?act=buddy&s=1e76f48e3bb4f6320a128e8b8f36c9e8','BrowserBuddy','width=250,height=500,resizable=yes,scrollbars=yes'); }
+function chat_pop(cw,ch)  { window.open('index.php?s=1e76f48e3bb4f6320a128e8b8f36c9e8&act=chat&pop=1','Chat','width='+cw+',height='+ch+',resizable=yes,scrollbars=yes'); }
+function multi_page_jump( url_bit, total_posts, per_page )
+{
+pages = 1; cur_st = parseInt(""); cur_page  = 1;
+if ( total_posts % per_page == 0 ) { pages = total_posts / per_page; }
+ else { pages = Math.ceil( total_posts / per_page ); }
+msg = "Введите номер страницы, к которой хотите перейти." + " " + pages;
+if ( cur_st > 0 ) { cur_page = cur_st / per_page; cur_page = cur_page -1; }
+show_page = 1;
+if ( cur_page < pages )  { show_page = cur_page + 1; }
+if ( cur_page >= pages ) { show_page = cur_page - 1; }
+ else { show_page = cur_page + 1; }
+userPage = prompt( msg, show_page );
+if ( userPage > 0  ) {
+	if ( userPage < 1 )     {    userPage = 1;  }
+	if ( userPage > pages ) { userPage = pages; }
+	if ( userPage == 1 )    {     start = 0;    }
+	else { start = (userPage - 1) * per_page; }
+	window.location = url_bit + "&st=" + start;
+}
+}
+//-->
+</script>
+ 
+<!-- IE6/Win TABLE FIX -->
+<table  width="100%" cellspacing="6" id="submenu">
+<tr>
+ <td><a href='http://hustle-sa.ru'>Перейти на главную страницу сайта АСХ</a>&nbsp;&middot; <a href="http://hustle-sa.ru/forum/index.php?s=1e76f48e3bb4f6320a128e8b8f36c9e8&amp;act=boardrules">Правила форума</a></td>
+ <td align="right">
+   <img src="style_images/1/atb_help.gif" border="0" alt="" />&nbsp;<a href='http://hustle-sa.ru/forum/index.php?s=1e76f48e3bb4f6320a128e8b8f36c9e8&amp;act=Help'>Помощь</a>
+   &nbsp; &nbsp;&nbsp;<img src="style_images/1/atb_search.gif" border="0" alt="" />&nbsp;<a href='http://hustle-sa.ru/forum/index.php?s=1e76f48e3bb4f6320a128e8b8f36c9e8&amp;act=Search&amp;f=6'>Поиск</a>
+   &nbsp; &nbsp;&nbsp;<img src="style_images/1/atb_members.gif" border="0" alt="" />&nbsp;<a href='http://hustle-sa.ru/forum/index.php?s=1e76f48e3bb4f6320a128e8b8f36c9e8&amp;act=Members'>Участники</a>
+   &nbsp; &nbsp;&nbsp;<img src="style_images/1/atb_calendar.gif" border="0" alt="" />&nbsp;<a href='http://hustle-sa.ru/forum/index.php?s=1e76f48e3bb4f6320a128e8b8f36c9e8&amp;act=calendar'>Календарь</a>
+   <!--IBF.CHATLINK-->
+   <!--IBF.TSLLINK-->
+ </td>
+</tr>
+</table>
+<table width="100%" id="userlinks" cellspacing="6">
+   <tr>
+    <td>Здравствуйте Гость ( <a href='http://hustle-sa.ru/forum/index.php?s=1e76f48e3bb4f6320a128e8b8f36c9e8&amp;act=Login&amp;CODE=00'>Вход</a> | <a href='http://hustle-sa.ru/forum/index.php?s=1e76f48e3bb4f6320a128e8b8f36c9e8&amp;act=Reg&amp;CODE=00'>Регистрация</a> )</td>
+    <td align='right'><a href='http://hustle-sa.ru/forum/index.php?s=1e76f48e3bb4f6320a128e8b8f36c9e8&amp;act=Reg&amp;CODE=reval'>Выслать повторно письмо для активации</a></td>
+   </tr>
+  </table>
+<br /> 
+<div id='navstrip' align='left'><img src='style_images/1/nav.gif' border='0'  alt='&gt;' />&nbsp;<a href='http://hustle-sa.ru/forum/index.php?s=1e76f48e3bb4f6320a128e8b8f36c9e8&amp;act=idx'>Форум АСХ</a>&nbsp;-&gt;&nbsp;<a href='http://hustle-sa.ru/forum/index.php?s=1e76f48e3bb4f6320a128e8b8f36c9e8&amp;act=SC&amp;c=1'>Ассоциация спортивного хастла</a>&nbsp;-&gt;&nbsp;<a href='http://hustle-sa.ru/forum/index.php?s=1e76f48e3bb4f6320a128e8b8f36c9e8&amp;showforum=6'>Конкурсы и соревнования АСХ</a></div>
+<br /> 
+    <script language='javascript' type='text/javascript'>
+    <!--
+    
+    function link_to_post(pid)
+    {
+    	temp = prompt( "Копирование прямой ссылки этой темы, для сохранения ссылки в буфере обмена Вашего компьютера", "http://hustle-sa.ru/forum/index.php?s=1e76f48e3bb4f6320a128e8b8f36c9e8&amp;showtopic=3761&view=findpost&p=" + pid );
+    	return false;
+    }
+    
+    function delete_post(theURL) {
+       if (confirm('Вы действительно хотите удалить это сообщение?')) {
+          window.location.href=theURL;
+       }
+       else {
+          alert ('Не хотите, как хотите :)');
+       } 
+    }
+    
+    function PopUp(url, name, width,height,center,resize,scroll,posleft,postop) {
+    if (posleft != 0) { x = posleft }
+    if (postop  != 0) { y = postop  }
+
+    if (!scroll) { scroll = 1 }
+    if (!resize) { resize = 1 }
+
+    if ((parseInt (navigator.appVersion) >= 4 ) && (center)) {
+      X = (screen.width  - width ) / 2;
+      Y = (screen.height - height) / 2;
+    }
+    if (scroll != 0) { scroll = 1 }
+
+    var Win = window.open( url, name, 'width='+width+',height='+height+',top='+Y+',left='+X+',resizable='+resize+',scrollbars='+scroll+',location=no,directories=no,status=no,menubar=no,toolbar=no');
+	}
+	
+	function ShowHide(id1, id2) {
+	  if (id1 != '') expMenu(id1);
+	  if (id2 != '') expMenu(id2);
+	}
+	
+	function expMenu(id) {
+	  var itm = null;
+	  if (document.getElementById) {
+		itm = document.getElementById(id);
+	  } else if (document.all){
+		itm = document.all[id];
+	  } else if (document.layers){
+		itm = document.layers[id];
+	  }
+	
+	  if (!itm) {
+	   // do nothing
+	  }
+	  else if (itm.style) {
+		if (itm.style.display == "none") { itm.style.display = ""; }
+		else { itm.style.display = "none"; }
+	  }
+	  else { itm.visibility = "show"; }
+	}
+    //-->
+    </script>
+    
+<a name='top'></a>
+<!-- Show FAQ/Forum Rules -->
+    <div align='left'><img src='style_images/1/forum_rules.gif' border='0'  alt='Правила форума' />&nbsp;<b>НАЗНАЧЕНИЕ ДАННОГО РАЗДЕЛА</b><br /><br />Раздел предназначен для запросов на проведение и анонсов рейтинговых турниров АСХ. Правила создания тем читайте в <a target=_new href=http://hustle-sa.ru/forum/index.php?showtopic=31>отдельной ветке =>></a></div>
+	<br />
+   <!-- End FAQ/Forum Rules -->
+
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+ <td align='left' width="20%" nowrap="nowrap">&nbsp;</td>
+ <td align='right' width="80%"><a href='http://hustle-sa.ru/forum/index.php?s=1e76f48e3bb4f6320a128e8b8f36c9e8&amp;act=Post&amp;CODE=02&amp;f=6&amp;t=3761'><img src='style_images/1/t_reply.gif' border='0'  alt='Ответ в тему' /></a><a href='http://hustle-sa.ru/forum/index.php?s=1e76f48e3bb4f6320a128e8b8f36c9e8&amp;act=Post&amp;CODE=00&amp;f=6' title='Создание новой темы'><img src='style_images/1/t_new.gif' border='0'  alt='Создание новой темы' /></a><a href='http://hustle-sa.ru/forum/index.php?s=1e76f48e3bb4f6320a128e8b8f36c9e8&amp;act=Post&amp;CODE=10&amp;f=6'><img src='style_images/1/t_poll.gif' border='0'  alt='Создание опроса' /></a></td>
+</tr>
+</table>
+<br />
+<div class="tableborder">
+    <div class='maintitle'><img src='style_images/1/nav_m.gif' border='0'  alt='&gt;' width='8' height='8' />&nbsp;<b>(2016-08-27) Динамиада</b>, г. Москва, УТВЕРЖДЕНО РК АСХ</div>
+	<!--{IBF.POLL}-->
+	<div align='right' class='postlinksbar'>
+	  <strong><!--{IBF.START_NEW_POLL}--><a href='http://hustle-sa.ru/forum/index.php?s=1e76f48e3bb4f6320a128e8b8f36c9e8&amp;act=Track&amp;f=6&amp;t=3761'>Подписка на тему</a> |
+	  <a href='http://hustle-sa.ru/forum/index.php?s=1e76f48e3bb4f6320a128e8b8f36c9e8&amp;act=Forward&amp;f=6&amp;t=3761'>Сообщить другу</a> |
+	  <a href='http://hustle-sa.ru/forum/index.php?s=1e76f48e3bb4f6320a128e8b8f36c9e8&amp;act=Print&amp;client=printer&amp;f=6&amp;t=3761'>Версия для печати</a></strong>
+	</div>
+	
+	<!--Begin Msg Number 22788-->
+    <table width='100%' border='0' cellspacing='1' cellpadding='3'>
+    <tr>
+      <td align='center' valign='middle' class='row4' width="1%"><a name='entry22788'></a><span class='normalname'><a href="javascript:ins('Кудрявцев&nbsp;Михаил')">Кудрявцев&nbsp;Михаил</a></span></td>
+        <td class='row4' valign='top' width="99%">
+        
+        <!-- POSTED DATE DIV -->
+        
+        <div align='left' class='row4' style='float:left;padding-top:4px;padding-bottom:4px'>
+        <span class='postdetails'><b><a title="Показать ссылку этой темы" href="#" onclick="link_to_post(22788); return false;" style="text-decoration:underline">Дата</a></b> 18.06.2016 - 14:12</span>
+        </div>
+        
+        <!-- REPORT / DELETE / EDIT / QUOTE DIV -->
+        
+        <div align='right'>
+        <a href='http://hustle-sa.ru/forum/index.php?s=1e76f48e3bb4f6320a128e8b8f36c9e8&amp;act=Post&amp;CODE=06&amp;f=6&amp;t=3761&amp;p=22788'><img src='style_images/1/p_quote.gif' border='0'  alt='Цитировать сообщение' /></a>
+      </div>
+      
+      </td>
+    </tr>
+    <tr>
+      <td align='center' valign='top' class='post2'>
+        <span class='postdetails'><br /><br /><img src='http://hustle-sa.ru/forum/uploads/av-866.jpg' border='0' width='40' height='100' alt='' /><br /><br />
+        Старожил<br />
+        <img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><br /><br />
+        <a href='http://hustle-sa.ru/forum/index.php?s=1e76f48e3bb4f6320a128e8b8f36c9e8&amp;showuser=866'>Профиль</a><br />
+        Группа: Судья или руководитель клуба<br />
+        Сообщений: 268<br />
+        Пользователь №: 866<br />
+        Регистрация: 16.08.2009<br />
+        <br />
+        <br /><br />
+         </span><br />
+        <!--$ author[field_1]-->
+        <img src='style_images/1/spacer.gif' alt='' width='160' height='1' /><br /> 
+      </td>
+      <td width='100%' valign='top' class='post2'>
+        <!-- THE POST 22788 -->
+        <div class='postcolor'> <span style='color:#0000FF'><span style='font-size:11pt;line-height:100%'><b>ЛЕТНЯЯ ДИНАМИАДА.</b></span></span><br /><br />   <b>Организатор:</b> <a href='http://www.dancehustle.ru/' target='_blank'>ТСК &quot;Динамика&quot;</a><br /> <b>   Правила и рейтинг АСХ :</b>  <a href='http://hustle-sa.ru/pages.html' target='_blank'>http://hustle-sa.ru/pages.html</a><br />   <b> Дата проведения турнира:</b> <span style='color:#FF0000'><b>27 августа.</b></span><br />    <b>Место проведения: </b>ДК &quot;Альфапластик&quot;. м.Бульвар Рокоссовского. Комфортабельный танцевальный зал с профессиональным паркетным покрытием площадью 200 кв. метров.<br />    <b>Адрес зала - </b>Ивантеевская ул., д.13 стр.1.<br /><br /><b>Форма подачи заявки - </b> <a href='http://www.liveindance.ru/contest/reg.php?id=270' target='_blank'>http://www.liveindance.ru/contest/reg.php?id=270</a><br /><b>Список заявок onLine -</b> <a href='http://www.liveindance.ru/contest/registration/list.php?id=270' target='_blank'>http://www.liveindance.ru/contest/registra...list.php?id=270</a><br /><b>Форма для получения ТАЙМИНГА турнира на ваш мобильный телефон - </b>скоро появится<br /><br /><br /><b>Номинации турнира:</b><br />1-ое отделение<br /><br />Хастл Е класс;<br />Хастл D класс;<br />Хастл ДнД Beginner;<br />Хастл ДнД Beginner-0 (номинация для танцоров, не имеющих очков)<br /><br /><br />2-ое отделение<br /><br />Хастл С класс;<br />ДнД Rising Star;<br />ДнД Main;<br />ДнД Star + Champion.<br /><br /><br /><b>Судейская бригада:</b><br /><br />Главный судья: Милованов Александр<br /><br />Первое отделение:<br /><br />Милованов Александр<br />Дубровин Игорь<br />Кудрявцева Ирина<br />Иентш Александр<br />Дутчак Татьяна<br /><br />Второе отделение:<br /><br />Милованов Александр<br />Дубровин Игорь<br />Кудрявцева Ирина<br />Иентш Александр<br />Литке Евгений<br /><br /><b>Запасные судьи:</b>  Кудрявцев Михаил<br /><br /><b>    Счетная комиссия и информация на экранах -</b> Иванов Владимир <br /><b>    Ведущий - </b> Кудрявцев Михаил<br />   <b> Музыкальное сопровождение -</b>Данила Гуров<br />   <b> Официальное видео -</b>Скобелев Игорь<br />    <b>Фото оператор -</b> Голов Дмитрий<br /><br /><br /><b>Предварительная регистрация заканчивается 25 августа в 00:00.</b><br /><br /><b>В помещении имеется:</b><br /><br />    несколько зон отдыха с мягкими диванами, включая два балкона<br />    уютное кафе, где можно посидеть, перекусить<br />    удобные мягкие сидячие места для зрителей с двух сторон от паркета<br />    бесплатная камера хранения<br /><br />Стоимость с человека:<br /><br />Входной билет (для участников и зрителей): 300 рублей с человека.<br />Участие в первой номинации: 300 рублей.<br />Участие в каждой последующей номинации: 150 рублей.<br />Участие без предварительной регистрации: +100 рублей за каждую номинацию.<br />На турнире будут использоваться тканевые номерки. Пожалуйста, приготовьте 500 руб (желательно одной купюрой) для залога за номер.<br />Призы: Кубки победителям, медали призёрам, грамоты финалистам. <br /><br /><br /><b>Призы: </b> Кубки победителям, медали призёрам, грамоты финалистам. <br /><br /><span class='edit'>Это сообщение отредактировал <b>Кудрявцев Михаил</b> - 26.08.2016 - 15:32</span> </div>
+        <br /><br />--------------------<br />
+<div class='signature'><b>Руководитель <a href='http://www.dancehustle.ru/' target='_blank'>ТСК &quot; ДИНАМИКА &quot;</a></b> </div>
+        <!-- THE POST -->
+      </td>
+    </tr>
+    <tr>
+      <td class='darkrow3' align='left'><b></b></td>
+      <td class='darkrow3' nowrap="nowrap" align='left'>
+      
+        <!-- PM / EMAIL / WWW / MSGR -->
+      
+        <div align='left' class='darkrow3' style='float:left;width:auto'>
+        <a href='http://hustle-sa.ru/forum/index.php?s=1e76f48e3bb4f6320a128e8b8f36c9e8&amp;act=Msg&amp;CODE=04&amp;MID=866'><img src='style_images/1/p_pm.gif' border='0'  alt='PM' /></a><a href='http://hustle-sa.ru/forum/index.php?s=1e76f48e3bb4f6320a128e8b8f36c9e8&amp;act=Mail&amp;CODE=00&amp;MID=866'><img src='style_images/1/p_email.gif' border='0'  alt='Письмо на e-mail пользователю' /></a>
+        </div>
+        
+        <!-- REPORT / UP -->
+         
+        <div align='right'>
+         <a href='javascript:scroll(0,0);'><img src='style_images/1/p_up.gif' alt='Top' border='0' /></a>
+        </div>
+      </td>
+    </tr>
+    </table>
+    <div class='darkrow1' style='height:5px'><!-- --></div>
+    
+	<!--Begin Msg Number 22832-->
+    <table width='100%' border='0' cellspacing='1' cellpadding='3'>
+    <tr>
+      <td align='center' valign='middle' class='row4' width="1%"><a name='entry22832'></a><span class='normalname'><a href="javascript:ins('Mr.&nbsp;Grin')">Mr.&nbsp;Grin</a></span></td>
+        <td class='row4' valign='top' width="99%">
+        
+        <!-- POSTED DATE DIV -->
+        
+        <div align='left' class='row4' style='float:left;padding-top:4px;padding-bottom:4px'>
+        <span class='postdetails'><b><a title="Показать ссылку этой темы" href="#" onclick="link_to_post(22832); return false;" style="text-decoration:underline">Дата</a></b> 29.06.2016 - 13:51</span>
+        </div>
+        
+        <!-- REPORT / DELETE / EDIT / QUOTE DIV -->
+        
+        <div align='right'>
+        <a href='http://hustle-sa.ru/forum/index.php?s=1e76f48e3bb4f6320a128e8b8f36c9e8&amp;act=Post&amp;CODE=06&amp;f=6&amp;t=3761&amp;p=22832'><img src='style_images/1/p_quote.gif' border='0'  alt='Цитировать сообщение' /></a>
+      </div>
+      
+      </td>
+    </tr>
+    <tr>
+      <td align='center' valign='top' class='post1'>
+        <span class='postdetails'><br /><br /><br /><br />
+        Мудрец<br />
+        <img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><br /><br />
+        <a href='http://hustle-sa.ru/forum/index.php?s=1e76f48e3bb4f6320a128e8b8f36c9e8&amp;showuser=251'>Профиль</a><br />
+        Группа: Администраторы<br />
+        Сообщений: 1647<br />
+        Пользователь №: 251<br />
+        Регистрация: 28.04.2008<br />
+        <br />
+        <br /><br />
+         </span><br />
+        <!--$ author[field_1]-->
+        <img src='style_images/1/spacer.gif' alt='' width='160' height='1' /><br /> 
+      </td>
+      <td width='100%' valign='top' class='post1'>
+        <!-- THE POST 22832 -->
+        <div class='postcolor'> УТВЕРЖДЕНО РК АСХ  </div>
+        
+        <!-- THE POST -->
+      </td>
+    </tr>
+    <tr>
+      <td class='darkrow3' align='left'><b></b></td>
+      <td class='darkrow3' nowrap="nowrap" align='left'>
+      
+        <!-- PM / EMAIL / WWW / MSGR -->
+      
+        <div align='left' class='darkrow3' style='float:left;width:auto'>
+        <a href='http://hustle-sa.ru/forum/index.php?s=1e76f48e3bb4f6320a128e8b8f36c9e8&amp;act=Msg&amp;CODE=04&amp;MID=251'><img src='style_images/1/p_pm.gif' border='0'  alt='PM' /></a><a href='http://hustle-sa.ru/forum/index.php?s=1e76f48e3bb4f6320a128e8b8f36c9e8&amp;act=Mail&amp;CODE=00&amp;MID=251'><img src='style_images/1/p_email.gif' border='0'  alt='Письмо на e-mail пользователю' /></a>
+        </div>
+        
+        <!-- REPORT / UP -->
+         
+        <div align='right'>
+         <a href='javascript:scroll(0,0);'><img src='style_images/1/p_up.gif' alt='Top' border='0' /></a>
+        </div>
+      </td>
+    </tr>
+    </table>
+    <div class='darkrow1' style='height:5px'><!-- --></div>
+    
+	<!--Begin Msg Number 23018-->
+    <table width='100%' border='0' cellspacing='1' cellpadding='3'>
+    <tr>
+      <td align='center' valign='middle' class='row4' width="1%"><a name='entry23018'></a><span class='normalname'><a href="javascript:ins('Кудрявцев&nbsp;Михаил')">Кудрявцев&nbsp;Михаил</a></span></td>
+        <td class='row4' valign='top' width="99%">
+        
+        <!-- POSTED DATE DIV -->
+        
+        <div align='left' class='row4' style='float:left;padding-top:4px;padding-bottom:4px'>
+        <span class='postdetails'><b><a title="Показать ссылку этой темы" href="#" onclick="link_to_post(23018); return false;" style="text-decoration:underline">Дата</a></b> 26.08.2016 - 00:46</span>
+        </div>
+        
+        <!-- REPORT / DELETE / EDIT / QUOTE DIV -->
+        
+        <div align='right'>
+        <a href='http://hustle-sa.ru/forum/index.php?s=1e76f48e3bb4f6320a128e8b8f36c9e8&amp;act=Post&amp;CODE=06&amp;f=6&amp;t=3761&amp;p=23018'><img src='style_images/1/p_quote.gif' border='0'  alt='Цитировать сообщение' /></a>
+      </div>
+      
+      </td>
+    </tr>
+    <tr>
+      <td align='center' valign='top' class='post2'>
+        <span class='postdetails'><br /><br /><img src='http://hustle-sa.ru/forum/uploads/av-866.jpg' border='0' width='40' height='100' alt='' /><br /><br />
+        Старожил<br />
+        <img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><br /><br />
+        <a href='http://hustle-sa.ru/forum/index.php?s=1e76f48e3bb4f6320a128e8b8f36c9e8&amp;showuser=866'>Профиль</a><br />
+        Группа: Судья или руководитель клуба<br />
+        Сообщений: 268<br />
+        Пользователь №: 866<br />
+        Регистрация: 16.08.2009<br />
+        <br />
+        <br /><br />
+         </span><br />
+        <!--$ author[field_1]-->
+        <img src='style_images/1/spacer.gif' alt='' width='160' height='1' /><br /> 
+      </td>
+      <td width='100%' valign='top' class='post2'>
+        <!-- THE POST 23018 -->
+        <div class='postcolor'> Тайминг:<br />10.30 - 11.30 Регистрация 1 и 2 отделений<br />12.00 - Старт 1 отделения<br /><br />16.30 - Окончание регистрации 2 отделения<br />17.00 - Старт 2 отделения<br />21.00 Окончание турнира  </div>
+        <br /><br />--------------------<br />
+<div class='signature'><b>Руководитель <a href='http://www.dancehustle.ru/' target='_blank'>ТСК &quot; ДИНАМИКА &quot;</a></b> </div>
+        <!-- THE POST -->
+      </td>
+    </tr>
+    <tr>
+      <td class='darkrow3' align='left'><b></b></td>
+      <td class='darkrow3' nowrap="nowrap" align='left'>
+      
+        <!-- PM / EMAIL / WWW / MSGR -->
+      
+        <div align='left' class='darkrow3' style='float:left;width:auto'>
+        <a href='http://hustle-sa.ru/forum/index.php?s=1e76f48e3bb4f6320a128e8b8f36c9e8&amp;act=Msg&amp;CODE=04&amp;MID=866'><img src='style_images/1/p_pm.gif' border='0'  alt='PM' /></a><a href='http://hustle-sa.ru/forum/index.php?s=1e76f48e3bb4f6320a128e8b8f36c9e8&amp;act=Mail&amp;CODE=00&amp;MID=866'><img src='style_images/1/p_email.gif' border='0'  alt='Письмо на e-mail пользователю' /></a>
+        </div>
+        
+        <!-- REPORT / UP -->
+         
+        <div align='right'>
+         <a href='javascript:scroll(0,0);'><img src='style_images/1/p_up.gif' alt='Top' border='0' /></a>
+        </div>
+      </td>
+    </tr>
+    </table>
+    <div class='darkrow1' style='height:5px'><!-- --></div>
+    
+	<!--Begin Msg Number 23023-->
+    <table width='100%' border='0' cellspacing='1' cellpadding='3'>
+    <tr>
+      <td align='center' valign='middle' class='row4' width="1%"><a name='entry23023'></a><span class='normalname'><a href="javascript:ins('Ivanov_Vladimir')">Ivanov_Vladimir</a></span></td>
+        <td class='row4' valign='top' width="99%">
+        
+        <!-- POSTED DATE DIV -->
+        
+        <div align='left' class='row4' style='float:left;padding-top:4px;padding-bottom:4px'>
+        <span class='postdetails'><b><a title="Показать ссылку этой темы" href="#" onclick="link_to_post(23023); return false;" style="text-decoration:underline">Дата</a></b> 27.08.2016 - 16:33</span>
+        </div>
+        
+        <!-- REPORT / DELETE / EDIT / QUOTE DIV -->
+        
+        <div align='right'>
+        <a href='http://hustle-sa.ru/forum/index.php?s=1e76f48e3bb4f6320a128e8b8f36c9e8&amp;act=Post&amp;CODE=06&amp;f=6&amp;t=3761&amp;p=23023'><img src='style_images/1/p_quote.gif' border='0'  alt='Цитировать сообщение' /></a>
+      </div>
+      
+      </td>
+    </tr>
+    <tr>
+      <td align='center' valign='top' class='post1'>
+        <span class='postdetails'><br /><br /><br /><br />
+        Специалист<br />
+        <img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><br /><br />
+        <a href='http://hustle-sa.ru/forum/index.php?s=1e76f48e3bb4f6320a128e8b8f36c9e8&amp;showuser=437'>Профиль</a><br />
+        Группа: Организатор турниров<br />
+        Сообщений: 391<br />
+        Пользователь №: 437<br />
+        Регистрация: 22.09.2008<br />
+        <br />
+        <br /><br />
+         </span><br />
+        <!--$ author[field_1]-->
+        <img src='style_images/1/spacer.gif' alt='' width='160' height='1' /><br /> 
+      </td>
+      <td width='100%' valign='top' class='post1'>
+        <!-- THE POST 23023 -->
+        <div class='postcolor'><span style='font-size:13pt;line-height:100%'><b>Результаты турнира:</b></span><br /><br /><b>Главный судья:</b> Милованов Александр<br /><br /><b>Судейская бригада:</b><br />1 (A) - Милованов Александр<br />2 (В) - Дубровин Игорь<br />3 (С) - Кудрявцева Ирина<br />4 (D) - Иентш Александр<br />5 (E) - Дутчак Татьяна <br /><br /><span style='font-size:13pt;line-height:100%'><b>E класс. Участвовало пар: 23</b></span><br /><b>ФИНАЛ</b><br />1 место-№562-Беликов Александр Валерьевич(дебют,AlphaDance,E)-Егорова Юлия Викторовна(8463,AlphaDance,E)<br />2 место-№536-Логинов Алексей Викторович(8445,Ivara,E)-Мызникова Анна Александровна(дебют,Ivara,E)<br />3 место-№577-Эльперин Игорь Юрьевич(дебют,Движение,E)-Конева Александра Алексеевна(дебют,Движение,E)<br />4 место-№554-Мелла Хамед Алан Лезгинович(8601,Движение,E)-Остапенко Ирина Юрьевна(6941,Движение,E)<br />5 место-№610-Томилов Александр Сергеевич(8280,Ivara,E)-Соколова Надежда Александровна(8288,Ivara,E)<br />6 место-№620-Осначёв Евгений Геннадьевич(дебют,YouDance,E)-Переверзева Владислава Игоревна(8709,YouDance,E)<br />7 место-№586-Расторгуев Леонид Алексеевич(8650,YouDance,E)-Черепанова Жанна Валерьевна(8464,YouDance,E)<br />8 место-№574-Коротков Дмитрий Вячеславович(8440,AlphaDance,E)-Политова Ксения Владимировна(7700,AlphaDance,E)<br /><b>1/2 финала</b><br />9-11 место-№625-Стернин Максим Григорьевич(8784,Движение,E)-Жулябина Анастасия Андреевна(8018,Движение,E)<br />9-11 место-№545-Лукашин Андрей Юрьевич(дебют,Движение,E)-Лисенкова Дарья Алексеевна(дебют,Движение,E)<br />9-11 место-№666-Максимов Вадим Александрович(7970,AlphaDance,Движение,E)-Потапова Юлия Сергеевна(6163,Движение,E)<br />12 место-№538-Моисеев Сергей Владимирович(8783,Ivara,Движение,E)-Примачек Александра Сергеевна(8019,Движение,E)<br />13 место-№539-Севостьянов Максим Александрович(8328,Движение,E)-Варчева Анастасия Эдуардовна(8692,Движение,E)<br /><b>1/4 финала</b><br />14-16 место-№557-Попов Денис Анатольевич(8322,RedRose,E)-Нестерук Марина Юрьевна(8343,RedRose,E)<br />14-16 место-№559-Суетин Игорь Сергеевич(дебют,RedRose,E)-Ульдина Кристина Сергеевна(8358,RedRose,E)<br />14-16 место-№627-Аливер Вячеслав Юрьевич(5584,Движение,Vesta,E)-Ильина Татьяна Александровна(7347,Движение,E)<br />17-18 место-№517-Фирсов Михаил Владимирович(8740,YouDance,E)-Иванова Мария Александровна(8710,YouDance,E)<br />17-18 место-№605-Кириллов Святослав Игоревич(дебют,Ivara,AlphaDance,E)-Утеалиева Нина Ербулатовна(7806,Мегаполис,E)<br />19-23 место-№508-Живорыкин Андрей Алексеевич(дебют,Ivara,E)-Копылова Лариса Васильева(дебют,Ivara,E)<br />19-23 место-№556-Козлов Корней Викторович(8432,Хастл-Центр,E)-Воропаева Марина Валериевна(дебют,Хастл-Центр,E)<br />19-23 место-№573-Мосолов Валерий Валентинович(8655,Дизайн (г.Курск),E)-Савельева Ирина Юрьевна(7331,Дизайн (г.Курск),E)<br />19-23 место-№623-Шурмин Сергей Анатольевич(дебют,Движение,E)-Карданова Валерия Александровна(дебют,Движение,E)<br />19-23 место-№660-Глазков Василий Владимирович(8657,RedRose,E)-Майорова Галина Александровна(8682,RedRose,E)<br /> <br /><b>Технические результаты:</b><br /><span style='font-family:courier'><br /><b>E класс: 1/4 финала</b><br />--------+---------------------------------<br /> Пары   |  Кресты (буквы судей)<br />--------+---------------------------------<br />  536   | AB|CDE ==&gt; выход в 1/2 финала<br />  577   | AB|CDE ==&gt; выход в 1/2 финала<br />  610   | AB|CDE ==&gt; выход в 1/2 финала<br />  539   | AB|CD  ==&gt; выход в 1/2 финала<br />  554   | AB|CE  ==&gt; выход в 1/2 финала<br />  562   | AB|CD  ==&gt; выход в 1/2 финала<br />  574   | BC|DE  ==&gt; выход в 1/2 финала<br />  586   | AB|CE  ==&gt; выход в 1/2 финала<br />  620   | BC|DE  ==&gt; выход в 1/2 финала<br />  666   | AC|DE  ==&gt; выход в 1/2 финала<br />  538   | AB|D   ==&gt; выход в 1/2 финала<br />  545   | AD|E   ==&gt; выход в 1/2 финала<br />  625   | AB|C   ==&gt; выход в 1/2 финала<br />  557   | BE|   место: 14-16<br />  559   | DE|   место: 14-16<br />  627   | AC|   место: 14-16<br />  517   | D |   место: 17-18<br />  605   | E |   место: 17-18<br />  508   |   |   место: 19-23<br />  556   |   |   место: 19-23<br />  573   |   |   место: 19-23<br />  623   |   |   место: 19-23<br />  660   |   |   место: 19-23<br />--------+---------------------------------<br /> <br /><b>E класс: 1/2 финала</b><br />--------+---------------------------------<br /> Пары   |  Кресты (буквы судей)<br />--------+---------------------------------<br />  536   | AB|CDE ==&gt; выход в ФИНАЛ<br />  554   | AB|CE  ==&gt; выход в ФИНАЛ<br />  620   | AC|DE  ==&gt; выход в ФИНАЛ<br />  574   | BC|D   ==&gt; выход в ФИНАЛ<br />  610   | BD|E   ==&gt; выход в ФИНАЛ<br />  562   | AC|D   ==&gt; выход в ФИНАЛ<br />  577   | AD|E   ==&gt; выход в ФИНАЛ<br />  586   | AB|C   ==&gt; выход в ФИНАЛ<br />  625   | AB|   место: 9-11<br />  545   | DE|   место: 9-11<br />  666   | CE|   место: 9-11<br />  538   | B |   место: 12<br />  539   |   |   место: 13<br />--------+---------------------------------<br /> <br /><b>E класс: ФИНАЛ</b><br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br />        | Места за 1-й.     &#9474; Место  &#9474; Места за 2-й.     &#9474; Место  &#9474; Места за 3-й.     &#9474; Место  &#9474;Сумма &#9474;Итоговое <br />        | танец             &#9474; пары в &#9474; танец             &#9474; пары в &#9474; танец             &#9474; пары в &#9474;мест  &#9474; место   <br />--------+-------------------+  1-м.  +-------------------+ 2-м.   &#9474;-------------------+ 3-м.   +за все&#9474; пары    <br /> Судьи  &#9474; A B C D E F G H I &#9474; танце  &#9474; A B C D E F G H I &#9474; танце  &#9474; A B C D E F G H I &#9474; танце  &#9474;танцы &#9474;         <br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br />  Пары  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;      &#9474;<br />  562   | 1 1 1 1 2         &#9474;     1  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;    1 &#9474;    1<br />  536   | 2 3 7 2 1         &#9474;     2  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;    2 &#9474;    2<br />  577   | 3 5 8 3 3         &#9474;     3  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;    3 &#9474;    3<br />  554   | 5 4 4 7 5         &#9474;     4  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;    4 &#9474;    4<br />  610   | 6 2 6 5 6         &#9474;     5  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;    5 &#9474;    5<br />  620   | 7 6 3 8 4         &#9474;     6  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;    6 &#9474;    6<br />  586   | 4 8 5 6 8         &#9474;     7  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;    7 &#9474;    7<br />  574   | 8 7 2 4 7         &#9474;     8  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;    8 &#9474;    8<br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br /></span><br /><br /><span style='font-size:13pt;line-height:100%'><b>D класс. Участвовало пар: 24</b></span><br /><b>ФИНАЛ</b><br />1 место-№501-Виноградов Андрей Вячеславович(6919,Динамика,D)-Баринова Мария Александровна(8002,Динамика,D)<br />2 место-№612-Кузнецов Александр Евгеньевич(8558,Движение,D)-Мельничук Мария Дмитриевна(8565,Движение,D)<br />3 место-№596-Пушкарев Алексей Сергеевич(4331,YouDance,D)-Лесина Варвара Андреевна(5898,YouDance,D)<br />4 место-№505-Курсов Денис Леонидович(7637,Движение,D)-Перевалова Ирина Сергеевна(7050,Движение,D)<br />5 место-№513-Кретов Евгений Михайлович(8658,Дизайн (г.Курск),D)-Березникова Анастасия Васильевна(4477,Дизайн (г.Курск),D)<br />6 место-№619-Доронин Георгий Александрович(7304,DanceLab,D)-Сахарова Анна Феликсовна(7339,DanceLab,D)<br /><b>1/2 финала</b><br />7-11 место-№510-Потехин Алексей Викторович(6117,AlphaDance,D)-Степнова Наталья Андреевна(6398,AlphaDance,D)<br />7-11 место-№677-Дорин Александр Евгеньевич(6106,AlphaDance,DanceLab,D)-Нечаева Алена Сергеевна(6563,DanceLab,D)<br />7-11 место-№519-Ихьянов Александр Радионович(6371,YouDance,D)-Минина Надежда Викторовна(6865,YouDance,D)<br />7-11 место-№578-Суминов Антон Сергеевич(5888,Движение,D)-Гладырева Ольга Витальевна(5920,Движение,D)<br />7-11 место-№631-Кан Юрий Витальевич(7003,Smile,D)-Рогожина Ирина Александровна(8227,Smile,D)<br />12 место-№521-Чулков Илья Сергеевич(7041,YouDance,D)-Субботина Екатерина Александровна(7847,YouDance,D)<br /><b>1/4 финала</b><br />13-17 место-№546-Гареев Александр Артурович(5945,Движение,D)-Роцкова Мария Александровна(5964,Движение,D)<br />13-17 место-№550-Левченко Владимир Александрович(7192,Динамика,D)-Пономарева Виктория Сергеевна(6796,Динамика,D)<br />13-17 место-№700-Александров Олег Борисович(6278,Динамика,Движение,D)-Тимофеева Лидия Александровна(7693,Движение,D)<br />13-17 место-№531-Шаповалов Артем Владимирович(7862,Движение,D)-Аймадинова Нелли Камильевна(7884,Движение,D)<br />13-17 место-№537-Белехов Владимир Николаевич(7024,Ivara,Движение,D)-Дружинец Марина Федоровна(5897,Движение,D)<br />18-19 место-№632-Жураковский Александр Викторович(6853,Ivara,D)-Воробьева Вера Владимировна(5904,Ivara,D)<br />18-19 место-№614-Васильев Ярослав Сергеевич(7410,Движение,D)-Бочканова Кристина Геннадиевна(7422,Движение,D)<br /><b>1/8 финала</b><br />20-22 место-№541-Худин Кирилл Олегович(5750,Движение,Мегаполис,D)-Копалина Наталья Ильинична(7876,Движение,E)<br />20-22 место-№581-Маврин Алексей Александрович(5878,Движение,D)-Колганова Марина Александровна(6199,DanceLab,D)<br />20-22 место-№644-Фотов Александр Федорович(1901,Данцарто,D)-Андрианова Наталья Ивановна(6940,YouDance,D)<br />23-24 место-№582-Юдин Максим Геннадьевич(5862,Ivara,D)-Сорокина Наталья Александровна(дебют,Ivara,E)<br />23-24 место-№603-Бобрышев Александр Александрович(7638,Динамика,D)-Бушаева Елена Александровна(7345,Динамика,Движение,D)<br /> <br /><b>Технические результаты:</b><br /><span style='font-family:courier'><br /><b>D класс: 1/8 финала</b><br />--------+---------------------------------<br /> Пары   |  Кресты (буквы судей)<br />--------+---------------------------------<br />  501   | AB|CDE ==&gt; выход в 1/4 финала<br />  505   | AB|CDE ==&gt; выход в 1/4 финала<br />  519   | AB|CDE ==&gt; выход в 1/4 финала<br />  596   | AB|CDE ==&gt; выход в 1/4 финала<br />  612   | AB|CDE ==&gt; выход в 1/4 финала<br />  619   | AB|CDE ==&gt; выход в 1/4 финала<br />  632   | AB|CDE ==&gt; выход в 1/4 финала<br />  677   | AB|CDE ==&gt; выход в 1/4 финала<br />  510   | AC|DE  ==&gt; выход в 1/4 финала<br />  513   | AB|CE  ==&gt; выход в 1/4 финала<br />  521   | AB|DE  ==&gt; выход в 1/4 финала<br />  537   | AC|DE  ==&gt; выход в 1/4 финала<br />  550   | BC|DE  ==&gt; выход в 1/4 финала<br />  578   | AC|DE  ==&gt; выход в 1/4 финала<br />  614   | BC|DE  ==&gt; выход в 1/4 финала<br />  631   | AB|CE  ==&gt; выход в 1/4 финала<br />  700   | AB|DE  ==&gt; выход в 1/4 финала<br />  531   | AB|C   ==&gt; выход в 1/4 финала<br />  546   | AB|D   ==&gt; выход в 1/4 финала<br />  541   | AD|   место: 20-22<br />  581   | BE|   место: 20-22<br />  644   | BC|   место: 20-22<br />  582   | D |   место: 23-24<br />  603   | C |   место: 23-24<br />--------+---------------------------------<br /> <br /><b>D класс: 1/4 финала</b><br />--------+---------------------------------<br /> Пары   |  Кресты (буквы судей)<br />--------+---------------------------------<br />  501   | AB|CDE ==&gt; выход в 1/2 финала<br />  612   | AB|CDE ==&gt; выход в 1/2 финала<br />  677   | AB|CDE ==&gt; выход в 1/2 финала<br />  619   | AB|CDE ==&gt; выход в 1/2 финала<br />  513   | AB|CE  ==&gt; выход в 1/2 финала<br />  521   | AB|DE  ==&gt; выход в 1/2 финала<br />  510   | AC|DE  ==&gt; выход в 1/2 финала<br />  519   | AC|DE  ==&gt; выход в 1/2 финала<br />  596   | BC|D   ==&gt; выход в 1/2 финала<br />  631   | AB|E   ==&gt; выход в 1/2 финала<br />  505   | BC|E   ==&gt; выход в 1/2 финала<br />  578   | AB|E   ==&gt; выход в 1/2 финала<br />  546   | AD|   место: 13-17<br />  550   | CD|   место: 13-17<br />  700   | AC|   место: 13-17<br />  531   | BD|   место: 13-17<br />  537   | CE|   место: 13-17<br />  632   | B |   место: 18-19<br />  614   | D |   место: 18-19<br />--------+---------------------------------<br /> <br /><b>D класс: 1/2 финала</b><br />--------+---------------------------------<br /> Пары   |  Кресты (буквы судей)<br />--------+---------------------------------<br />  501   | BC|DE ==&gt; выход в ФИНАЛ<br />  513   | AB|DE ==&gt; выход в ФИНАЛ<br />  505   | AB|E  ==&gt; выход в ФИНАЛ<br />  596   | BC|D  ==&gt; выход в ФИНАЛ<br />  612   | AB|C  ==&gt; выход в ФИНАЛ<br />  619   | CD|P  ==&gt; выход в ФИНАЛ<br />  510   | AC|  место: 7-11<br />  677   | AD|  место: 7-11<br />  519   | CE|  место: 7-11<br />  578   | AE|  место: 7-11<br />  631   | DE|  место: 7-11<br />  521   | B |  место: 12<br />--------+---------------------------------<br /> <br /><b>D класс: ФИНАЛ</b><br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br />        | Места за 1-й.     &#9474; Место  &#9474; Места за 2-й.     &#9474; Место  &#9474; Места за 3-й.     &#9474; Место  &#9474;Сумма &#9474;Итоговое <br />        | танец             &#9474; пары в &#9474; танец             &#9474; пары в &#9474; танец             &#9474; пары в &#9474;мест  &#9474; место   <br />--------+-------------------+  1-м.  +-------------------+ 2-м.   &#9474;-------------------+ 3-м.   +за все&#9474; пары    <br /> Судьи  &#9474; A B C D E F G H I &#9474; танце  &#9474; A B C D E F G H I &#9474; танце  &#9474; A B C D E F G H I &#9474; танце  &#9474;танцы &#9474;         <br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br />  Пары  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;      &#9474;<br />  501   | 6 2 1 1 1         &#9474;     1  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;    1 &#9474;    1<br />  612   | 1 1 3 3 4         &#9474;     2  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;    2 &#9474;    2<br />  596   | 4 6 2 2 3         &#9474;     3  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;    3 &#9474;    3<br />  505   | 3 4 6 4 2         &#9474;     4  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;    4 &#9474;    4<br />  513   | 2 3 4 6 6         &#9474;     5  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;    5 &#9474;    5<br />  619   | 5 5 5 5 5         &#9474;     6  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;    6 &#9474;    6<br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br /></span><br /><br /><span style='font-size:13pt;line-height:100%'><b>DnD Beginner (ПАРТНЕРЫ). Участников: 49</b></span><br /><b>ФИНАЛ</b><br />1 место-№635-Захаржевский Виталий Викторович(7316,Ivara,D,Bg)<br />2 место-№647-Лапшин Павел Сергеевич(2414,YouDance,D,Bg)<br />3 место-№598-Афонский Александр Сергеевич(5885,Движение,D,Bg)<br />4 место-№671-Устинов Алексей Сергеевич(8171,Ivara,D,Bg)<br />5 место-№613-Гостев Павел Павлович(8198,Ivara,D,Bg)<br />6 место-№553-Фадеев Алексей Сергеевич(8599,Движение,D,Bg)<br />7 место-№654-Иванов Александр Сергеевич(5880,Динамика,D,Bg)<br />8 место-№529-Колобов Николай Сергеевич(7148,Ivara,E,Bg)<br /><b>1/2 финала</b><br />9-10 место-№543-Трифонов Андрей Александрович(6923,Ivara,D,Bg)<br />9-10 место-№675-Ковалев Александр Владимирович(6848,Мегаполис,E,Bg)<br />11-12 место-№513-Кретов Евгений Михайлович(8658,Дизайн (г.Курск),D,Bg)<br />11-12 место-№644-Фотов Александр Федорович(1901,Данцарто,D,Bg)<br /><b>1/4 финала</b><br />13-19 место-№602-Исаев Константин Валерьевич(4289,Альтернатива,D,Bg)<br />13-19 место-№614-Васильев Ярослав Сергеевич(7410,Движение,D,Bg)<br />13-19 место-№638-Бобошко Станислав Игоревич(8034,Движение,D,Bg)<br />13-19 место-№642-Кучин Виталий Германович(7020,Движение,D,Bg)<br />13-19 место-№643-Деревянко Сергей Сергеевич(6924,YouDance,D,Bg)<br />13-19 место-№652-Голубев Анатолий Сергеевич(8323,Динамика,D,Bg)<br />13-19 место-№659-Шатунов Тимур Мухаметович(5748,Ivara,YouDance,D,Bg)<br />20-23 место-№608-Малков Владимир Александрович(7865,Динамика,D,Bg)<br />20-23 место-№626-Башков Алексей Игоревич(8433,Ivara,E,Bg)<br />20-23 место-№633-Ситаев Алексей Вячеславович(3795,Ivara,D,Bg)<br />20-23 место-№700-Александров Олег Борисович(6278,Динамика,Движение,D,Bg)<br />24 место-№541-Худин Кирилл Олегович(5750,Движение,Мегаполис,D,Bg)<br /><b>1/8 финала</b><br />25-27 место-№528-Баранов Дмитрий Сергеевич(7623,Ivara,D,Bg)<br />25-27 место-№536-Логинов Алексей Викторович(8445,Ivara,E,Bg)<br />25-27 место-№636-Саввин Руслан Петрович(7983,Движение,D,Bg)<br />28-34 место-№504-Потапов Николай Олегович(7008,Движение,D,Bg)<br />28-34 место-№526-Зиновьев Антон Алексеевич(8159,AlphaDance,D,Bg)<br />28-34 место-№552-Виноградов Виталий Александрович(8561,Движение,D,Bg)<br />28-34 место-№610-Томилов Александр Сергеевич(8280,Ivara,E,Bg)<br />28-34 место-№620-Осначёв Евгений Геннадьевич(дебют,YouDance,E,Bg)<br />28-34 место-№627-Аливер Вячеслав Юрьевич(5584,Движение,Vesta,E,Bg)<br />28-34 место-№662-Обморошев Борис Леонидович(8165,RedRose,Движение,E,Bg)<br />35-44 место-№554-Мелла Хамед Алан Лезгинович(8601,Движение,E,Bg)<br />35-44 место-№557-Попов Денис Анатольевич(8322,RedRose,E,Bg)<br />35-44 место-№559-Суетин Игорь Сергеевич(дебют,RedRose,E,Bg)<br />35-44 место-№573-Мосолов Валерий Валентинович(8655,Дизайн (г.Курск),E,Bg)<br />35-44 место-№584-Мещанинов Алексей Андреевич(8503,SunRise,D,Bg)<br />35-44 место-№585-Новгородцев Дмитрий Дмитриевич(8335,SunRise,E,Bg)<br />35-44 место-№589-Суслов Алексей Евгеньевич(дебют,Ivara,E,Bg)<br />35-44 место-№622-Аль-Натах Ренат Ибрагимович(8324,YouDance,D,Bg)<br />35-44 место-№666-Максимов Вадим Александрович(7970,AlphaDance,Движение,E,Bg)<br />35-44 место-№679-Соков Максим Вячеславович(8173,Движение,E,Bg)<br /><b>1/16 финала</b><br />45 место-№508-Живорыкин Андрей Алексеевич(дебют,Ivara,E,Bg)<br />46-47 место-№549-Трофимов Александр Иванович(7639,самост.,E,Bg)<br />46-47 место-№574-Коротков Дмитрий Вячеславович(8440,AlphaDance,E,Bg)<br />48-49 место-№605-Кириллов Святослав Игоревич(дебют,Ivara,AlphaDance,E,Bg)<br />48-49 место-№657-Даренских Денис Андреевич(7985,Движение,E,Bg)<br /> <br /><b>Технические результаты:</b><br /><span style='font-family:courier'><br /><b>DnD Beginner (ПАРТНЕРЫ): 1/16 финала</b><br />--------+---------------------------------<br /> Пары   |  Кресты (буквы судей)<br />--------+---------------------------------<br />  504   | AB|CDE ==&gt; выход в 1/8 финала<br />  541   | AB|CDE ==&gt; выход в 1/8 финала<br />  589   | AB|CDE ==&gt; выход в 1/8 финала<br />  620   | AB|CDE ==&gt; выход в 1/8 финала<br />  638   | AB|CDE ==&gt; выход в 1/8 финала<br />  654   | AB|CDE ==&gt; выход в 1/8 финала<br />  513   | AB|CDE ==&gt; выход в 1/8 финала<br />  543   | AB|CDE ==&gt; выход в 1/8 финала<br />  598   | AB|CDE ==&gt; выход в 1/8 финала<br />  627   | AB|CDE ==&gt; выход в 1/8 финала<br />  642   | AB|CDE ==&gt; выход в 1/8 финала<br />  659   | AB|CDE ==&gt; выход в 1/8 финала<br />  526   | AB|CDE ==&gt; выход в 1/8 финала<br />  553   | AB|CDE ==&gt; выход в 1/8 финала<br />  602   | AB|CDE ==&gt; выход в 1/8 финала<br />  626   | AB|CDE ==&gt; выход в 1/8 финала<br />  643   | AB|CDE ==&gt; выход в 1/8 финала<br />  662   | AB|CDE ==&gt; выход в 1/8 финала<br />  528   | AB|CDE ==&gt; выход в 1/8 финала<br />  554   | AB|CDE ==&gt; выход в 1/8 финала<br />  608   | AB|CDE ==&gt; выход в 1/8 финала<br />  633   | AB|CDE ==&gt; выход в 1/8 финала<br />  644   | AB|CDE ==&gt; выход в 1/8 финала<br />  671   | AB|CDE ==&gt; выход в 1/8 финала<br />  529   | AB|CDE ==&gt; выход в 1/8 финала<br />  584   | AB|CDE ==&gt; выход в 1/8 финала<br />  613   | AB|CDE ==&gt; выход в 1/8 финала<br />  635   | AB|CDE ==&gt; выход в 1/8 финала<br />  647   | AB|CDE ==&gt; выход в 1/8 финала<br />  675   | AB|CDE ==&gt; выход в 1/8 финала<br />  536   | AB|CDE ==&gt; выход в 1/8 финала<br />  585   | AB|CDE ==&gt; выход в 1/8 финала<br />  614   | AB|CDE ==&gt; выход в 1/8 финала<br />  636   | AB|CDE ==&gt; выход в 1/8 финала<br />  652   | AB|CDE ==&gt; выход в 1/8 финала<br />  700   | AB|CDE ==&gt; выход в 1/8 финала<br />  552   | AC|DE  ==&gt; выход в 1/8 финала<br />  679   | AB|CD  ==&gt; выход в 1/8 финала<br />  557   | AB|CE  ==&gt; выход в 1/8 финала<br />  573   | AB|DE  ==&gt; выход в 1/8 финала<br />  610   | BC|DE  ==&gt; выход в 1/8 финала<br />  622   | AB|CE  ==&gt; выход в 1/8 финала<br />  666   | AC|DE  ==&gt; выход в 1/8 финала<br />  559   | BD|E   ==&gt; выход в 1/8 финала<br />  508   | BC|   место: 45<br />  549   | A |   место: 46-47<br />  574   | D |   место: 46-47<br />  605   |   |   место: 48-49<br />  657   |   |   место: 48-49<br />--------+---------------------------------<br /> <br /><b>DnD Beginner (ПАРТНЕРЫ): 1/8 финала</b><br />--------+---------------------------------<br /> Пары   |  Кресты (буквы судей)<br />--------+---------------------------------<br />  635   | AB|CDE ==&gt; выход в 1/4 финала<br />  644   | AB|CDE ==&gt; выход в 1/4 финала<br />  654   | AB|CDE ==&gt; выход в 1/4 финала<br />  529   | AB|CDE ==&gt; выход в 1/4 финала<br />  614   | AB|CDE ==&gt; выход в 1/4 финала<br />  642   | AB|CDE ==&gt; выход в 1/4 финала<br />  602   | AB|CDE ==&gt; выход в 1/4 финала<br />  613   | AB|CDE ==&gt; выход в 1/4 финала<br />  700   | AB|CDE ==&gt; выход в 1/4 финала<br />  541   | AC|DE  ==&gt; выход в 1/4 финала<br />  553   | AC|DE  ==&gt; выход в 1/4 финала<br />  652   | BC|DE  ==&gt; выход в 1/4 финала<br />  633   | BC|DE  ==&gt; выход в 1/4 финала<br />  638   | AC|DE  ==&gt; выход в 1/4 финала<br />  513   | AB|DE  ==&gt; выход в 1/4 финала<br />  671   | AB|CE  ==&gt; выход в 1/4 финала<br />  608   | CD|E   ==&gt; выход в 1/4 финала<br />  659   | BD|E   ==&gt; выход в 1/4 финала<br />  543   | AB|E   ==&gt; выход в 1/4 финала<br />  626   | AB|C   ==&gt; выход в 1/4 финала<br />  647   | AB|E   ==&gt; выход в 1/4 финала<br />  598   | AC|E   ==&gt; выход в 1/4 финала<br />  643   | AB|C   ==&gt; выход в 1/4 финала<br />  675   | BC|E   ==&gt; выход в 1/4 финала<br />  528   | AD|   место: 25-27<br />  536   | BD|   место: 25-27<br />  636   | AD|   место: 25-27<br />  504   | C |   место: 28-34<br />  526   | D |   место: 28-34<br />  552   | B |   место: 28-34<br />  610   | B |   место: 28-34<br />  620   | D |   место: 28-34<br />  627   | C |   место: 28-34<br />  662   | A |   место: 28-34<br />  554   |   |   место: 35-44<br />  557   |   |   место: 35-44<br />  559   |   |   место: 35-44<br />  573   |   |   место: 35-44<br />  584   |   |   место: 35-44<br />  585   |   |   место: 35-44<br />  589   |   |   место: 35-44<br />  622   |   |   место: 35-44<br />  666   |   |   место: 35-44<br />  679   |   |   место: 35-44<br />--------+---------------------------------<br /> <br /><b>DnD Beginner (ПАРТНЕРЫ): 1/4 финала</b><br />--------+---------------------------------<br /> Пары   |  Кресты (буквы судей)<br />--------+---------------------------------<br />  635   | AB|CDE ==&gt; выход в 1/2 финала<br />  543   | AB|CD  ==&gt; выход в 1/2 финала<br />  671   | BC|DE  ==&gt; выход в 1/2 финала<br />  529   | AB|CE  ==&gt; выход в 1/2 финала<br />  647   | AB|DE  ==&gt; выход в 1/2 финала<br />  513   | AB|D   ==&gt; выход в 1/2 финала<br />  613   | BC|D   ==&gt; выход в 1/2 финала<br />  644   | AB|D   ==&gt; выход в 1/2 финала<br />  553   | AC|D   ==&gt; выход в 1/2 финала<br />  598   | AC|E   ==&gt; выход в 1/2 финала<br />  654   | BC|E   ==&gt; выход в 1/2 финала<br />  675   | BC|E   ==&gt; выход в 1/2 финала<br />  602   | CD|   место: 13-19<br />  614   | AE|   место: 13-19<br />  638   | DE|   место: 13-19<br />  642   | AE|   место: 13-19<br />  643   | AD|   место: 13-19<br />  652   | CE|   место: 13-19<br />  659   | DE|   место: 13-19<br />  608   | C |   место: 20-23<br />  626   | B |   место: 20-23<br />  633   | B |   место: 20-23<br />  700   | A |   место: 20-23<br />  541   |   |   место: 24<br />--------+---------------------------------<br /> <br /><b>DnD Beginner (ПАРТНЕРЫ): 1/2 финала</b><br />--------+---------------------------------<br /> Пары   |  Кресты (буквы судей)<br />--------+---------------------------------<br />  529   | AB|CDE ==&gt; выход в ФИНАЛ<br />  635   | AB|CDE ==&gt; выход в ФИНАЛ<br />  671   | BC|DE  ==&gt; выход в ФИНАЛ<br />  613   | CD|E   ==&gt; выход в ФИНАЛ<br />  553   | AC|D   ==&gt; выход в ФИНАЛ<br />  598   | AC|E   ==&gt; выход в ФИНАЛ<br />  647   | AB|D   ==&gt; выход в ФИНАЛ<br />  654   | BC|E   ==&gt; выход в ФИНАЛ<br />  543   | AB|   место: 9-10<br />  675   | BE|   место: 9-10<br />  513   | D |   место: 11-12<br />  644   | A |   место: 11-12<br />--------+---------------------------------<br /> <br /><b>DnD Beginner (ПАРТНЕРЫ): ФИНАЛ</b><br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br />        | Места за 1-й.     &#9474; Место  &#9474; Места за 2-й.     &#9474; Место  &#9474; Места за 3-й.     &#9474; Место  &#9474;Сумма &#9474;Итоговое <br />        | танец             &#9474; пары в &#9474; танец             &#9474; пары в &#9474; танец             &#9474; пары в &#9474;мест  &#9474; место   <br />--------+-------------------+  1-м.  +-------------------+ 2-м.   &#9474;-------------------+ 3-м.   +за все&#9474; пары    <br /> Судьи  &#9474; A B C D E F G H I &#9474; танце  &#9474; A B C D E F G H I &#9474; танце  &#9474; A B C D E F G H I &#9474; танце  &#9474;танцы &#9474;         <br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br />  Пары  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;      &#9474;<br />  635   | 1 1 2 4 2         &#9474;     1  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;    1 &#9474;    1<br />  647   | 2 3 8 2 1         &#9474;     2  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;    2 &#9474;    2<br />  598   | 3 2 3 5 4         &#9474;     3  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;    3 &#9474;    3<br />  671   | 4 4 1 1 5         &#9474;     4  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;    4 &#9474;    4<br />  613   | 7 5 4 6 3         &#9474;     5  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;    5 &#9474;    5<br />  553   | 6 8 6 3 6         &#9474;     6  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;    6 &#9474;    6<br />  654   | 5 7 7 8 7         &#9474;     7  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;    7 &#9474;    7<br />  529   | 8 6 5 7 8         &#9474;     8  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;    8 &#9474;    8<br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br /></span><br /><br /><span style='font-size:13pt;line-height:100%'><b>DnD Beginner (ДЕВУШКИ). Участников: 85</b></span><br /><b>ФИНАЛ</b><br />1 место-№678-Нечаева Алена Сергеевна(6563,DanceLab,D,Bg)<br />2 место-№567-Иванова Татьяна Алексеевна(8608,Движение,E,Bg)<br />3 место-№535-Билялова Гюльнара Максутовна(7645,Движение,D,Bg)<br />4 место-№568-Летова Елена Олеговна(7656,Движение,E,Bg)<br />5 место-№502-Баринова Мария Александровна(8002,Динамика,D,Bg)<br />6 место-№637-Архипова Марина Сергеевна(8711,Движение,E,Bg)<br />7 место-№506-Перевалова Ирина Сергеевна(7050,Движение,D,Bg)<br />8 место-№563-Егорова Юлия Викторовна(8463,AlphaDance,E,Bg)<br /><b>1/2 финала</b><br />9-11 место-№544-Трифонова Ольга Владимировна(6935,Ivara,D,Bg)<br />9-11 место-№658-Петросян Лиана Павловна(8020,Движение,D,Bg)<br />9-11 место-№609-Понина Ольга Константиновна(7886,Динамика,D,Bg)<br />12 место-№640-Чудеса Полина Каримжанова(7427,Движение,Динамика,D,Bg)<br />13 место-№540-Филиппова Анна Анатольевна(7829,Динамика,D,Bg)<br /><b>1/4 финала</b><br />14-20 место-№547-Роцкова Мария Александровна(5964,Движение,D,Bg)<br />14-20 место-№551-Сутормина Светлана Александровна(8569,Движение,D,Bg)<br />14-20 место-№580-Кузнецова Марина Сергеевна(2725,Движение,D,Bg)<br />14-20 место-№594-Стеблич Надежда Даниловна(6385,YouDance,D,Bg)<br />14-20 место-№601-Грин Евгения Викторовна(7885,YouDance,D,Bg)<br />14-20 место-№634-Афонина Ольга Алексеевна(7883,Ivara,D,Bg)<br />14-20 место-№646-Корчагина Ольга Юрьевна(7851,Ivara,YouDance,D,Bg)<br />21-22 место-№590-Чубукова Мария Сергеевна(6516,Ivara,D,Bg)<br />21-22 место-№599-Андрушко Евгения Юрьевна(8615,Движение,D,Bg)<br /><b>1/8 финала</b><br />23-30 место-№548-Рыжова Юлия Игоревна(5907,Движение,D,Bg)<br />23-30 место-№569-Дементьева Наталья Валерьевна(8221,Движение,D,Bg)<br />23-30 место-№576-Дейкина Наталья Николаевна(4614,ALphaDance,D,Bg)<br />23-30 место-№579-Гладырева Ольга Витальевна(5920,Движение,D,Bg)<br />23-30 место-№595-Иоффе Надежда Викторовна(7893,YouDance,D,Bg)<br />23-30 место-№653-Санто Мария Дмитриевна(8350,Динамика,D,Bg)<br />23-30 место-№670-Иванова Наталья Николаевна(7850,Движение,YouDance,D,Bg)<br />23-30 место-№672-Горячкина Александра Евгеньевна(8184,Ivara,D,Bg)<br />31-40 место-№515-Панасенко Марина Петровна(6504,Движение,D,Bg)<br />31-40 место-№520-Зыкова Анна Борисовна(8459,DanceLab,E,Bg)<br />31-40 место-№532-ТЕмникова Алевтина Александровна(5906,Движение,C,Bg)<br />31-40 место-№561-Андреева Анастасия Андреевна(5986,Dance Fox (г.Кемерово),D,Bg)<br />31-40 место-№564-Сулемова Анастасия Андреевна(6771,YouDance,E,Bg)<br />31-40 место-№591-Головкова Светлана Игоревна(8175,Ivara,D,Bg)<br />31-40 место-№592-Минаева Ирина Владимировна(3423,Дизайн,Ivara,D,Bg)<br />31-40 место-№618-Дмитриева Татьяна Николаевна(6773,Движение,D,Bg)<br />31-40 место-№648-Грушевская Яна Александровна(8466,DanceLab,Ivara,E,Bg)<br />31-40 место-№673-Нарожная Вероника Сергеевна(8364,Движение,E,Bg)<br />41-42 место-№607-Кобзева Ольга Сергеевна(8293,Мегаполис,D,Bg)<br />41-42 место-№641-Алексашина Полина Александровна(5409,Движение,Ivara,YouDance,D,Bg)<br /><b>1/16 финала</b><br />43-56 место-№509-Луковская Виктория Викторовна(5609,AlphaDance,C,Bg)<br />43-56 место-№516-Бакшеева Оксана Александровна(3079,AlphaDance,Хастл-Центр,D,Bg)<br />43-56 место-№518-Терехова Маргарита Игоревна(8223,Smile,E,Bg)<br />43-56 место-№522-Субботина Екатерина Александровна(7847,YouDance,D,Bg)<br />43-56 место-№523-Ицкина Наталья Игоревна(7842,YouDance,D,Bg)<br />43-56 место-№530-Лопунова Ольга Юрьевна(7916,Динамика,D,Bg)<br />43-56 место-№542-Копалина Наталья Ильинична(7876,Движение,E,Bg)<br />43-56 место-№555-Остапенко Ирина Юрьевна(6941,Движение,E,Bg)<br />43-56 место-№583-Пшеничникова Анастасия Юрьевна(8292,SunRise,D,Bg)<br />43-56 место-№588-Горобец Екатерина Алексеевна(8789,Априори (г.Владивосток),E,Bg)<br />43-56 место-№600-Ханова Елена Юрьевна(дебют,Динамика,E,Bg)<br />43-56 место-№606-Утеалиева Нина Ербулатовна(7806,Мегаполис,E,Bg)<br />43-56 место-№615-Бочканова Кристина Геннадиевна(7422,Движение,D,Bg)<br />43-56 место-№668-Кодрик Екатерина Владимировна(8515,Движение,E,Bg)<br />57-71 место-№503-Безменова Анастасия Юрьевна(6867,Ivara,D,Bg)<br />57-71 место-№512-Савельева Ирина Юрьевна(7331,Дизайн (г.Курск),E,Bg)<br />57-71 место-№525-Рябченко Елена Борисовна(8785,AlphaDance,E,Bg)<br />57-71 место-№533-Красноход Дарья Александровна(7706,AlphaDance,Хастл-Центр,E,Bg)<br />57-71 место-№571-Машновская Мария Тимофеевна(8771,YouDance,D,Bg)<br />57-71 место-№572-Константинова Жанна Геннадьевна(7839,YouDance,E,Bg)<br />57-71 место-№575-Политова Ксения Владимировна(7700,AlphaDance,E,Bg)<br />57-71 место-№587-Черепанова Жанна Валерьевна(8464,YouDance,E,Bg)<br />57-71 место-№593-Комкова Софья Павловна(8708,YouDance,E,Bg)<br />57-71 место-№604-Бушаева Елена Александровна(7345,Динамика,Движение,D,Bg)<br />57-71 место-№611-Соколова Надежда Александровна(8288,Ivara,E,Bg)<br />57-71 место-№616-Галкина Александра Сергеевна(7882,Динамика,E,Bg)<br />57-71 место-№628-Ильина Татьяна Александровна(7347,Движение,E,Bg)<br />57-71 место-№664-Родина Елена Александровна(8360,YouDance,D,Bg)<br />57-71 место-№667-Потапова Юлия Сергеевна(6163,Движение,E,Bg)<br />72-85 место-№507-Копылова Лариса Васильева(дебют,Ivara,E,Bg)<br />72-85 место-№527-Хамутова Елена Дмитриевна(7643,Ivara,D,Bg)<br />72-85 место-№534-Соловьева Анастасия Николаевна(7889,Хастл-Центр,E,Bg)<br />72-85 место-№558-Нестерук Марина Юрьевна(8343,RedRose,E,Bg)<br />72-85 место-№560-Ульдина Кристина Сергеевна(8358,RedRose,E,Bg)<br />72-85 место-№565-Угарова Елена Владимировна(5927,Ivara,E,Bg)<br />72-85 место-№570-Шаляпина Ольга Игоревна(8788,самост.,E,Bg)<br />72-85 место-№645-Андрианова Наталья Ивановна(6940,YouDance,D,Bg)<br />72-85 место-№650-Мельникова Дарья Сергеевна(8050,Ivara,E,Bg)<br />72-85 место-№655-Носенкова Александра Валерьевна(8359,Динамика,E,Bg)<br />72-85 место-№661-Майорова Галина Александровна(8682,RedRose,E,Bg)<br />72-85 место-№663-Бодренкова Екатерина Викторовна(3708,Движение,E,Bg)<br />72-85 место-№669-Тугаринова (Рико) Наталья Александровна(8514,Движение,E,Bg)<br />72-85 место-№676-Вовненко Мария Анатольевна(7436,YouDance,E,Bg)<br /> <br /><b>Технические результаты:</b><br /><span style='font-family:courier'><br /><b>DnD Beginner (ДЕВУШКИ): 1/16 финала</b><br />--------+---------------------------------<br /> Пары   |  Кресты (буквы судей)<br />--------+---------------------------------<br />  502   | AB|CDE ==&gt; выход в 1/8 финала<br />  564   | AB|CDE ==&gt; выход в 1/8 финала<br />  634   | AB|CDE ==&gt; выход в 1/8 финала<br />  506   | AB|CDE ==&gt; выход в 1/8 финала<br />  576   | AB|CDE ==&gt; выход в 1/8 финала<br />  637   | AB|CDE ==&gt; выход в 1/8 финала<br />  535   | AB|CDE ==&gt; выход в 1/8 финала<br />  580   | AB|CDE ==&gt; выход в 1/8 финала<br />  640   | AB|CDE ==&gt; выход в 1/8 финала<br />  540   | AB|CDE ==&gt; выход в 1/8 финала<br />  594   | AB|CDE ==&gt; выход в 1/8 финала<br />  653   | AB|CDE ==&gt; выход в 1/8 финала<br />  548   | AB|CDE ==&gt; выход в 1/8 финала<br />  595   | AB|CDE ==&gt; выход в 1/8 финала<br />  658   | AB|CDE ==&gt; выход в 1/8 финала<br />  563   | AB|CDE ==&gt; выход в 1/8 финала<br />  601   | AB|CDE ==&gt; выход в 1/8 финала<br />  670   | AB|CDE ==&gt; выход в 1/8 финала<br />  520   | BC|DE  ==&gt; выход в 1/8 финала<br />  579   | AC|DE  ==&gt; выход в 1/8 финала<br />  544   | AB|CE  ==&gt; выход в 1/8 финала<br />  590   | AB|CE  ==&gt; выход в 1/8 финала<br />  547   | AB|DE  ==&gt; выход в 1/8 финала<br />  599   | BC|DE  ==&gt; выход в 1/8 финала<br />  567   | AB|CE  ==&gt; выход в 1/8 финала<br />  678   | AC|DE  ==&gt; выход в 1/8 финала<br />  568   | AB|CE  ==&gt; выход в 1/8 финала<br />  569   | AB|DE  ==&gt; выход в 1/8 финала<br />  551   | AC|D   ==&gt; выход в 1/8 финала<br />  618   | AD|E   ==&gt; выход в 1/8 финала<br />  561   | AC|D   ==&gt; выход в 1/8 финала<br />  641   | AB|E   ==&gt; выход в 1/8 финала<br />  591   | BD|E   ==&gt; выход в 1/8 финала<br />  646   | AB|C   ==&gt; выход в 1/8 финала<br />  592   | AB|E   ==&gt; выход в 1/8 финала<br />  648   | AB|D   ==&gt; выход в 1/8 финала<br />  515   | AC|E   ==&gt; выход в 1/8 финала<br />  607   | BC|E   ==&gt; выход в 1/8 финала<br />  672   | BC|D   ==&gt; выход в 1/8 финала<br />  532   | AC|E   ==&gt; выход в 1/8 финала<br />  609   | AC|D   ==&gt; выход в 1/8 финала<br />  673   | AB|C   ==&gt; выход в 1/8 финала<br />  509   | CD|   место: 43-56<br />  516   | AD|   место: 43-56<br />  518   | CE|   место: 43-56<br />  522   | AE|   место: 43-56<br />  523   | AC|   место: 43-56<br />  530   | CE|   место: 43-56<br />  542   | AB|   место: 43-56<br />  555   | CE|   место: 43-56<br />  583   | BD|   место: 43-56<br />  588   | AD|   место: 43-56<br />  600   | CE|   место: 43-56<br />  606   | DE|   место: 43-56<br />  615   | BD|   место: 43-56<br />  668   | AB|   место: 43-56<br />  503   | B |   место: 57-71<br />  512   | D |   место: 57-71<br />  525   | D |   место: 57-71<br />  533   | D |   место: 57-71<br />  571   | B |   место: 57-71<br />  572   | E |   место: 57-71<br />  575   | D |   место: 57-71<br />  587   | E |   место: 57-71<br />  593   | D |   место: 57-71<br />  604   | B |   место: 57-71<br />  611   | B |   место: 57-71<br />  616   | C |   место: 57-71<br />  628   | C |   место: 57-71<br />  664   | D |   место: 57-71<br />  667   | B |   место: 57-71<br />  507   |   |   место: 72-85<br />  527   |   |   место: 72-85<br />  534   |   |   место: 72-85<br />  558   |   |   место: 72-85<br />  560   |   |   место: 72-85<br />  565   |   |   место: 72-85<br />  570   |   |   место: 72-85<br />  645   |   |   место: 72-85<br />  650   |   |   место: 72-85<br />  655   |   |   место: 72-85<br />  661   |   |   место: 72-85<br />  663   |   |   место: 72-85<br />  669   |   |   место: 72-85<br />  676   |   |   место: 72-85<br />--------+---------------------------------<br /> <br /><b>DnD Beginner (ДЕВУШКИ): 1/8 финала</b><br />--------+---------------------------------<br /> Пары   |  Кресты (буквы судей)<br />--------+---------------------------------<br />  567   | AB|CDE ==&gt; выход в 1/4 финала<br />  634   | AB|CDE ==&gt; выход в 1/4 финала<br />  535   | AB|CDE ==&gt; выход в 1/4 финала<br />  594   | AB|CDE ==&gt; выход в 1/4 финала<br />  637   | AB|CDE ==&gt; выход в 1/4 финала<br />  506   | AB|DE  ==&gt; выход в 1/4 финала<br />  580   | BC|DE  ==&gt; выход в 1/4 финала<br />  609   | AC|DE  ==&gt; выход в 1/4 финала<br />  590   | AB|CE  ==&gt; выход в 1/4 финала<br />  678   | AC|DE  ==&gt; выход в 1/4 финала<br />  502   | AB|CE  ==&gt; выход в 1/4 финала<br />  540   | AC|DE  ==&gt; выход в 1/4 финала<br />  568   | AB|CE  ==&gt; выход в 1/4 финала<br />  547   | AB|D   ==&gt; выход в 1/4 финала<br />  601   | AB|D   ==&gt; выход в 1/4 финала<br />  646   | AB|D   ==&gt; выход в 1/4 финала<br />  551   | BC|D   ==&gt; выход в 1/4 финала<br />  563   | CD|E   ==&gt; выход в 1/4 финала<br />  599   | BC|D   ==&gt; выход в 1/4 финала<br />  544   | AB|C   ==&gt; выход в 1/4 финала<br />  640   | AC|E   ==&gt; выход в 1/4 финала<br />  658   | AD|E   ==&gt; выход в 1/4 финала<br />  548   | BE|   место: 23-30<br />  569   | BD|   место: 23-30<br />  576   | CD|   место: 23-30<br />  579   | AD|   место: 23-30<br />  595   | AC|   место: 23-30<br />  653   | AE|   место: 23-30<br />  670   | AB|   место: 23-30<br />  672   | BE|   место: 23-30<br />  515   | D |   место: 31-40<br />  520   | C |   место: 31-40<br />  532   | E |   место: 31-40<br />  561   | C |   место: 31-40<br />  564   | B |   место: 31-40<br />  591   | E |   место: 31-40<br />  592   | E |   место: 31-40<br />  618   | D |   место: 31-40<br />  648   | B |   место: 31-40<br />  673   | C |   место: 31-40<br />  607   |   |   место: 41-42<br />  641   |   |   место: 41-42<br />--------+---------------------------------<br /> <br /><b>DnD Beginner (ДЕВУШКИ): 1/4 финала</b><br />--------+---------------------------------<br /> Пары   |  Кресты (буквы судей)<br />--------+---------------------------------<br />  502   | BC|DE ==&gt; выход в 1/2 финала<br />  563   | BC|DE ==&gt; выход в 1/2 финала<br />  637   | BC|DE ==&gt; выход в 1/2 финала<br />  535   | AB|CE ==&gt; выход в 1/2 финала<br />  568   | AB|CE ==&gt; выход в 1/2 финала<br />  544   | AB|C  ==&gt; выход в 1/2 финала<br />  567   | AC|E  ==&gt; выход в 1/2 финала<br />  658   | AB|D  ==&gt; выход в 1/2 финала<br />  678   | AC|D  ==&gt; выход в 1/2 финала<br />  506   | BC|E  ==&gt; выход в 1/2 финала<br />  540   | AC|E  ==&gt; выход в 1/2 финала<br />  609   | CD|E  ==&gt; выход в 1/2 финала<br />  640   | CD|E  ==&gt; выход в 1/2 финала<br />  547   | AD|  место: 14-20<br />  551   | AB|  место: 14-20<br />  580   | BE|  место: 14-20<br />  594   | DE|  место: 14-20<br />  601   | AD|  место: 14-20<br />  634   | BD|  место: 14-20<br />  646   | AB|  место: 14-20<br />  590   | A |  место: 21-22<br />  599   | D |  место: 21-22<br />--------+---------------------------------<br /> <br /><b>DnD Beginner (ДЕВУШКИ): 1/2 финала</b><br />--------+---------------------------------<br /> Пары   |  Кресты (буквы судей)<br />--------+---------------------------------<br />  502   | AB|CDE ==&gt; выход в ФИНАЛ<br />  678   | AC|DE  ==&gt; выход в ФИНАЛ<br />  567   | AC|DE  ==&gt; выход в ФИНАЛ<br />  563   | BD|E   ==&gt; выход в ФИНАЛ<br />  637   | BC|E   ==&gt; выход в ФИНАЛ<br />  506   | AB|C   ==&gt; выход в ФИНАЛ<br />  535   | AB|C   ==&gt; выход в ФИНАЛ<br />  568   | AB|E   ==&gt; выход в ФИНАЛ<br />  544   | BE|   место: 9-11<br />  658   | AD|   место: 9-11<br />  609   | CD|   место: 9-11<br />  640   | D |   место: 12<br />  540   |   |   место: 13<br />--------+---------------------------------<br /> <br /><b>DnD Beginner (ДЕВУШКИ): ФИНАЛ</b><br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br />        | Места за 1-й.     &#9474; Место  &#9474; Места за 2-й.     &#9474; Место  &#9474; Места за 3-й.     &#9474; Место  &#9474;Сумма &#9474;Итоговое <br />        | танец             &#9474; пары в &#9474; танец             &#9474; пары в &#9474; танец             &#9474; пары в &#9474;мест  &#9474; место   <br />--------+-------------------+  1-м.  +-------------------+ 2-м.   &#9474;-------------------+ 3-м.   +за все&#9474; пары    <br /> Судьи  &#9474; A B C D E F G H I &#9474; танце  &#9474; A B C D E F G H I &#9474; танце  &#9474; A B C D E F G H I &#9474; танце  &#9474;танцы &#9474;         <br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br />  Пары  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;      &#9474;<br />  678   | 1 1 2 4 2         &#9474;     1  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;    1 &#9474;    1<br />  567   | 2 3 8 2 1         &#9474;     2  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;    2 &#9474;    2<br />  535   | 3 2 3 5 4         &#9474;     3  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;    3 &#9474;    3<br />  568   | 4 4 1 1 5         &#9474;     4  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;    4 &#9474;    4<br />  502   | 7 5 4 6 3         &#9474;     5  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;    5 &#9474;    5<br />  637   | 6 8 6 3 6         &#9474;     6  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;    6 &#9474;    6<br />  506   | 5 7 7 8 7         &#9474;     7  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;    7 &#9474;    7<br />  563   | 8 6 5 7 8         &#9474;     8  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;    8 &#9474;    8<br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br /></span><br /> </div>
+        <br /><br />--------------------<br />
+<div class='signature'><a href='http://hustle-samolet.ru/' target='_blank'>Обучением парным танцам хастл</a> на Красной Пресне, хастл и дискотеки в клубе Буфф&#33;</div>
+        <!-- THE POST -->
+      </td>
+    </tr>
+    <tr>
+      <td class='darkrow3' align='left'><b></b></td>
+      <td class='darkrow3' nowrap="nowrap" align='left'>
+      
+        <!-- PM / EMAIL / WWW / MSGR -->
+      
+        <div align='left' class='darkrow3' style='float:left;width:auto'>
+        <a href='http://hustle-sa.ru/forum/index.php?s=1e76f48e3bb4f6320a128e8b8f36c9e8&amp;act=Msg&amp;CODE=04&amp;MID=437'><img src='style_images/1/p_pm.gif' border='0'  alt='PM' /></a><a href='http://hustle-sa.ru/forum/index.php?s=1e76f48e3bb4f6320a128e8b8f36c9e8&amp;act=Mail&amp;CODE=00&amp;MID=437'><img src='style_images/1/p_email.gif' border='0'  alt='Письмо на e-mail пользователю' /></a><a href='http://best-hustle.ru' target='_blank'><img src='style_images/1/p_www.gif' border='0'  alt='Сайт пользователя' /></a>
+        </div>
+        
+        <!-- REPORT / UP -->
+         
+        <div align='right'>
+         <a href='javascript:scroll(0,0);'><img src='style_images/1/p_up.gif' alt='Top' border='0' /></a>
+        </div>
+      </td>
+    </tr>
+    </table>
+    <div class='darkrow1' style='height:5px'><!-- --></div>
+    
+	<!--Begin Msg Number 23024-->
+    <table width='100%' border='0' cellspacing='1' cellpadding='3'>
+    <tr>
+      <td align='center' valign='middle' class='row4' width="1%"><a name='entry23024'></a><span class='normalname'><a href="javascript:ins('Ivanov_Vladimir')">Ivanov_Vladimir</a></span></td>
+        <td class='row4' valign='top' width="99%">
+        
+        <!-- POSTED DATE DIV -->
+        
+        <div align='left' class='row4' style='float:left;padding-top:4px;padding-bottom:4px'>
+        <span class='postdetails'><b><a title="Показать ссылку этой темы" href="#" onclick="link_to_post(23024); return false;" style="text-decoration:underline">Дата</a></b> 27.08.2016 - 16:47</span>
+        </div>
+        
+        <!-- REPORT / DELETE / EDIT / QUOTE DIV -->
+        
+        <div align='right'>
+        <a href='http://hustle-sa.ru/forum/index.php?s=1e76f48e3bb4f6320a128e8b8f36c9e8&amp;act=Post&amp;CODE=06&amp;f=6&amp;t=3761&amp;p=23024'><img src='style_images/1/p_quote.gif' border='0'  alt='Цитировать сообщение' /></a>
+      </div>
+      
+      </td>
+    </tr>
+    <tr>
+      <td align='center' valign='top' class='post2'>
+        <span class='postdetails'><br /><br /><br /><br />
+        Специалист<br />
+        <img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><br /><br />
+        <a href='http://hustle-sa.ru/forum/index.php?s=1e76f48e3bb4f6320a128e8b8f36c9e8&amp;showuser=437'>Профиль</a><br />
+        Группа: Организатор турниров<br />
+        Сообщений: 391<br />
+        Пользователь №: 437<br />
+        Регистрация: 22.09.2008<br />
+        <br />
+        <br /><br />
+         </span><br />
+        <!--$ author[field_1]-->
+        <img src='style_images/1/spacer.gif' alt='' width='160' height='1' /><br /> 
+      </td>
+      <td width='100%' valign='top' class='post2'>
+        <!-- THE POST 23024 -->
+        <div class='postcolor'><span style='font-size:13pt;line-height:100%'><b>Результаты турнира:</b></span><br /><br /><b>Главный судья:</b> Милованов Александр<br /><br /><b>Судейская бригада:</b><br />1 (A) - Милованов Александр<br />2 (В) - Дубровин Игорь<br />3 (С) - Кудрявцева Ирина<br />4 (D) - Иентш Александр<br />5 (E) - Дутчак Татьяна <br /><br /><span style='font-size:13pt;line-height:100%'><b>DnD Beginner0 (ПАРТНЕРЫ). Участников: 30</b></span><br /><b>ФИНАЛ</b><br />1 место-№529-Колобов Николай Сергеевич(7148,Ivara,E,Bg)<br />2 место-№654-Иванов Александр Сергеевич(5880,Динамика,D,Bg)<br />3 место-№675-Ковалев Александр Владимирович(6848,Мегаполис,E,Bg)<br />4 место-№543-Трифонов Андрей Александрович(6923,Ivara,D,Bg)<br />5 место-№608-Малков Владимир Александрович(7865,Динамика,D,Bg)<br />6 место-№636-Саввин Руслан Петрович(7983,Движение,D,Bg)<br />7 место-№610-Томилов Александр Сергеевич(8280,Ivara,E,Bg)<br /><b>1/2 финала</b><br />8-10 место-№626-Башков Алексей Игоревич(8433,Ivara,E,Bg)<br />8-10 место-№584-Мещанинов Алексей Андреевич(8503,SunRise,D,Bg)<br />8-10 место-№620-Осначёв Евгений Геннадьевич(дебют,YouDance,E,Bg)<br />11 место-№582-Юдин Максим Геннадьевич(5862,Ivara,D,Bg)<br />12-14 место-№538-Моисеев Сергей Владимирович(8783,Ivara,Движение,E,Bg)<br />12-14 место-№539-Севостьянов Максим Александрович(8328,Движение,E,Bg)<br />12-14 место-№557-Попов Денис Анатольевич(8322,RedRose,E,Bg)<br /><b>1/4 финала</b><br />15-17 место-№528-Баранов Дмитрий Сергеевич(7623,Ivara,D,Bg)<br />15-17 место-№622-Аль-Натах Ренат Ибрагимович(8324,YouDance,D,Bg)<br />15-17 место-№666-Максимов Вадим Александрович(7970,AlphaDance,Движение,E,Bg)<br />18-22 место-№559-Суетин Игорь Сергеевич(дебют,RedRose,E,Bg)<br />18-22 место-№605-Кириллов Святослав Игоревич(дебют,Ivara,AlphaDance,E,Bg)<br />18-22 место-№627-Аливер Вячеслав Юрьевич(5584,Движение,Vesta,E,Bg)<br />18-22 место-№656-Сосновский Григорий Александрович(3701,Движение,D,Bg)<br />18-22 место-№665-Комаров Всеволод Сергеевич(6552,Динамика,D,Bg)<br />23-26 место-№573-Мосолов Валерий Валентинович(8655,Дизайн (г.Курск),E,Bg)<br />23-26 место-№589-Суслов Алексей Евгеньевич(дебют,Ivara,E,Bg)<br />23-26 место-№623-Шурмин Сергей Анатольевич(дебют,Движение,E,Bg)<br />23-26 место-№662-Обморошев Борис Леонидович(8165,RedRose,Движение,E,Bg)<br /><b>1/8 финала</b><br />27 место-№585-Новгородцев Дмитрий Дмитриевич(8335,SunRise,E,Bg)<br />28-29 место-№508-Живорыкин Андрей Алексеевич(дебют,Ivara,E,Bg)<br />28-29 место-№574-Коротков Дмитрий Вячеславович(8440,AlphaDance,E,Bg)<br />30 место-№657-Даренских Денис Андреевич(7985,Движение,E,Bg)<br /> <br /><b>Технические результаты:</b><br /><span style='font-family:courier'><br /><b>DnD Beginner0 (ПАРТНЕРЫ): 1/16 финала</b><br />--------+---------------------------------<br /> Пары   |  Кресты (буквы судей)<br />--------+---------------------------------<br />--------+---------------------------------<br /> <br /><b>DnD Beginner0 (ПАРТНЕРЫ): 1/8 финала</b><br />--------+---------------------------------<br /> Пары   |  Кресты (буквы судей)<br />--------+---------------------------------<br />  528   | AB|CDE ==&gt; выход в 1/4 финала<br />  557   | AB|CDE ==&gt; выход в 1/4 финала<br />  608   | AB|CDE ==&gt; выход в 1/4 финала<br />  654   | AB|CDE ==&gt; выход в 1/4 финала<br />  529   | AB|CDE ==&gt; выход в 1/4 финала<br />  573   | AB|CDE ==&gt; выход в 1/4 финала<br />  622   | AB|CDE ==&gt; выход в 1/4 финала<br />  665   | AB|CDE ==&gt; выход в 1/4 финала<br />  539   | AB|CDE ==&gt; выход в 1/4 финала<br />  582   | AB|CDE ==&gt; выход в 1/4 финала<br />  626   | AB|CDE ==&gt; выход в 1/4 финала<br />  666   | AB|CDE ==&gt; выход в 1/4 финала<br />  543   | AB|CDE ==&gt; выход в 1/4 финала<br />  584   | AB|CDE ==&gt; выход в 1/4 финала<br />  636   | AB|CDE ==&gt; выход в 1/4 финала<br />  675   | AB|CDE ==&gt; выход в 1/4 финала<br />  538   | BC|DE  ==&gt; выход в 1/4 финала<br />  656   | AB|CD  ==&gt; выход в 1/4 финала<br />  610   | AB|CD  ==&gt; выход в 1/4 финала<br />  662   | AB|CD  ==&gt; выход в 1/4 финала<br />  620   | AB|DE  ==&gt; выход в 1/4 финала<br />  623   | AC|DE  ==&gt; выход в 1/4 финала<br />  605   | AB|D   ==&gt; выход в 1/4 финала<br />  627   | BC|E   ==&gt; выход в 1/4 финала<br />  559   | AD|E   ==&gt; выход в 1/4 финала<br />  589   | AC|E   ==&gt; выход в 1/4 финала<br />  585   | CE|   место: 27<br />  508   | B |   место: 28-29<br />  574   | E |   место: 28-29<br />  657   |   |   место: 30<br />--------+---------------------------------<br /> <br /><b>DnD Beginner0 (ПАРТНЕРЫ): 1/4 финала</b><br />--------+---------------------------------<br /> Пары   |  Кресты (буквы судей)<br />--------+---------------------------------<br />  626   | AB|CDE ==&gt; выход в 1/2 финала<br />  654   | AB|CDE ==&gt; выход в 1/2 финала<br />  620   | AB|CDE ==&gt; выход в 1/2 финала<br />  675   | AB|CDE ==&gt; выход в 1/2 финала<br />  529   | AB|CE  ==&gt; выход в 1/2 финала<br />  543   | AB|CE  ==&gt; выход в 1/2 финала<br />  582   | AB|CD  ==&gt; выход в 1/2 финала<br />  636   | AB|CD  ==&gt; выход в 1/2 финала<br />  538   | AB|D   ==&gt; выход в 1/2 финала<br />  539   | CD|E   ==&gt; выход в 1/2 финала<br />  608   | BC|E   ==&gt; выход в 1/2 финала<br />  557   | AB|E   ==&gt; выход в 1/2 финала<br />  584   | BC|D   ==&gt; выход в 1/2 финала<br />  610   | BC|D   ==&gt; выход в 1/2 финала<br />  528   | AE|   место: 15-17<br />  622   | AE|   место: 15-17<br />  666   | AE|   место: 15-17<br />  559   | D |   место: 18-22<br />  605   | D |   место: 18-22<br />  627   | C |   место: 18-22<br />  656   | D |   место: 18-22<br />  665   | E |   место: 18-22<br />  573   |   |   место: 23-26<br />  589   |   |   место: 23-26<br />  623   |   |   место: 23-26<br />  662   |   |   место: 23-26<br />--------+---------------------------------<br /> <br /><b>DnD Beginner0 (ПАРТНЕРЫ): 1/2 финала</b><br />--------+---------------------------------<br /> Пары   |  Кресты (буквы судей)<br />--------+---------------------------------<br />  529   | AB|CDE ==&gt; выход в ФИНАЛ<br />  608   | AB|CDE ==&gt; выход в ФИНАЛ<br />  675   | AB|CDE ==&gt; выход в ФИНАЛ<br />  654   | AB|CE  ==&gt; выход в ФИНАЛ<br />  610   | BC|DE  ==&gt; выход в ФИНАЛ<br />  636   | AC|D   ==&gt; выход в ФИНАЛ<br />  543   | AE|P   ==&gt; выход в ФИНАЛ<br />  626   | BD|   место: 8-10<br />  584   | BC|   место: 8-10<br />  620   | AE|   место: 8-10<br />  582   | D |   место: 11<br />  538   |   |   место: 12-14<br />  539   |   |   место: 12-14<br />  557   |   |   место: 12-14<br />--------+---------------------------------<br /> <br /><b>DnD Beginner0 (ПАРТНЕРЫ): ФИНАЛ</b><br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br />        | Места за 1-й.     &#9474; Место  &#9474; Места за 2-й.     &#9474; Место  &#9474; Места за 3-й.     &#9474; Место  &#9474;Сумма &#9474;Итоговое <br />        | танец             &#9474; пары в &#9474; танец             &#9474; пары в &#9474; танец             &#9474; пары в &#9474;мест  &#9474; место   <br />--------+-------------------+  1-м.  +-------------------+ 2-м.   &#9474;-------------------+ 3-м.   +за все&#9474; пары    <br /> Судьи  &#9474; A B C D E F G H I &#9474; танце  &#9474; A B C D E F G H I &#9474; танце  &#9474; A B C D E F G H I &#9474; танце  &#9474;танцы &#9474;         <br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br />  Пары  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;      &#9474;<br />  529   | 3 1 4 1 1         &#9474;     1  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;    1 &#9474;    1<br />  654   | 2 2 1 2 5         &#9474;     2  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;    2 &#9474;    2<br />  675   | 1 3 3 4 4         &#9474;     3  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;    3 &#9474;    3<br />  543   | 5 4 2 3 2         &#9474;     4  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;    4 &#9474;    4<br />  608   | 4 7 5 5 3         &#9474;     5  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;    5 &#9474;    5<br />  636   | 6 5 6 7 7         &#9474;     6  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;    6 &#9474;    6<br />  610   | 7 6 7 6 6         &#9474;     7  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;    7 &#9474;    7<br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br /></span><br /><br /><span style='font-size:13pt;line-height:100%'><b>DnD Beginner0 (ДЕВУШКИ). Участников: 47</b></span><br /><b>ФИНАЛ</b><br />1 место-№520-Зыкова Анна Борисовна(8459,DanceLab,E,Bg)<br />2 место-№637-Архипова Марина Сергеевна(8711,Движение,E,Bg)<br />3 место-№540-Филиппова Анна Анатольевна(7829,Динамика,D,Bg)<br />4 место-№672-Горячкина Александра Евгеньевна(8184,Ivara,D,Bg)<br />5 место-№567-Иванова Татьяна Алексеевна(8608,Движение,E,Bg)<br />6 место-№599-Андрушко Евгения Юрьевна(8615,Движение,D,Bg)<br />7 место-№551-Сутормина Светлана Александровна(8569,Движение,D,Bg)<br /><b>1/2 финала</b><br />8-11 место-№600-Ханова Елена Юрьевна(дебют,Динамика,E,Bg)<br />8-11 место-№664-Родина Елена Александровна(8360,YouDance,D,Bg)<br />8-11 место-№569-Дементьева Наталья Валерьевна(8221,Движение,D,Bg)<br />8-11 место-№653-Санто Мария Дмитриевна(8350,Динамика,D,Bg)<br />12-14 место-№621-Переверзева Владислава Игоревна(8709,YouDance,E,Bg)<br />12-14 место-№607-Кобзева Ольга Сергеевна(8293,Мегаполис,D,Bg)<br />12-14 место-№616-Галкина Александра Сергеевна(7882,Динамика,E,Bg)<br /><b>1/4 финала</b><br />15-20 место-№515-Панасенко Марина Петровна(6504,Движение,D,Bg)<br />15-20 место-№525-Рябченко Елена Борисовна(8785,AlphaDance,E,Bg)<br />15-20 место-№591-Головкова Светлана Игоревна(8175,Ivara,D,Bg)<br />15-20 место-№592-Минаева Ирина Владимировна(3423,Дизайн,Ivara,D,Bg)<br />15-20 место-№663-Бодренкова Екатерина Викторовна(3708,Движение,E,Bg)<br />15-20 место-№668-Кодрик Екатерина Владимировна(8515,Движение,E,Bg)<br />21-23 место-№530-Лопунова Ольга Юрьевна(7916,Динамика,D,Bg)<br />21-23 место-№560-Ульдина Кристина Сергеевна(8358,RedRose,E,Bg)<br />21-23 место-№628-Ильина Татьяна Александровна(7347,Движение,E,Bg)<br />24 место-№655-Носенкова Александра Валерьевна(8359,Динамика,E,Bg)<br /><b>1/8 финала</b><br />25-32 место-№512-Савельева Ирина Юрьевна(7331,Дизайн (г.Курск),E,Bg)<br />25-32 место-№558-Нестерук Марина Юрьевна(8343,RedRose,E,Bg)<br />25-32 место-№572-Константинова Жанна Геннадьевна(7839,YouDance,E,Bg)<br />25-32 место-№575-Политова Ксения Владимировна(7700,AlphaDance,E,Bg)<br />25-32 место-№583-Пшеничникова Анастасия Юрьевна(8292,SunRise,D,Bg)<br />25-32 место-№604-Бушаева Елена Александровна(7345,Динамика,Движение,D,Bg)<br />25-32 место-№629-Шульц Галина Васильевна(8006,YouDance,E,Bg)<br />25-32 место-№676-Вовненко Мария Анатольевна(7436,YouDance,E,Bg)<br />33-36 место-№507-Копылова Лариса Васильева(дебют,Ivara,E,Bg)<br />33-36 место-№588-Горобец Екатерина Алексеевна(8789,Априори (г.Владивосток),E,Bg)<br />33-36 место-№611-Соколова Надежда Александровна(8288,Ivara,E,Bg)<br />33-36 место-№650-Мельникова Дарья Сергеевна(8050,Ivara,E,Bg)<br />37-47 место-№524-Сафонкина Татьяна Александровна(8520,Atlanta dance,D,Bg)<br />37-47 место-№527-Хамутова Елена Дмитриевна(7643,Ivara,D,Bg)<br />37-47 место-№534-Соловьева Анастасия Николаевна(7889,Хастл-Центр,E,Bg)<br />37-47 место-№565-Угарова Елена Владимировна(5927,Ivara,E,Bg)<br />37-47 место-№566-Закарян Эрмине Аваговна(дебют,Ivara,E,Bg)<br />37-47 место-№570-Шаляпина Ольга Игоревна(8788,самост.,E,Bg)<br />37-47 место-№593-Комкова Софья Павловна(8708,YouDance,E,Bg)<br />37-47 место-№624-Карданова Валерия Александровна(дебют,Движение,E,Bg)<br />37-47 место-№661-Майорова Галина Александровна(8682,RedRose,E,Bg)<br />37-47 место-№669-Тугаринова (Рико) Наталья Александровна(8514,Движение,E,Bg)<br />37-47 место-№674-Жулябина Анастасия Андреевна(8018,Движение,E,Bg)<br /> <br /><b>Технические результаты:</b><br /><span style='font-family:courier'><br /><b>DnD Beginner0 (ДЕВУШКИ): 1/8 финала</b><br />--------+---------------------------------<br /> Пары   |  Кресты (буквы судей)<br />--------+---------------------------------<br />  520   | AB|CDE ==&gt; выход в 1/4 финала<br />  599   | AB|CDE ==&gt; выход в 1/4 финала<br />  664   | AB|CDE ==&gt; выход в 1/4 финала<br />  515   | AB|CDE ==&gt; выход в 1/4 финала<br />  540   | AB|CDE ==&gt; выход в 1/4 финала<br />  607   | AB|CDE ==&gt; выход в 1/4 финала<br />  567   | AB|CDE ==&gt; выход в 1/4 финала<br />  637   | AB|CDE ==&gt; выход в 1/4 финала<br />  569   | AB|CDE ==&gt; выход в 1/4 финала<br />  653   | AB|CDE ==&gt; выход в 1/4 финала<br />  560   | BC|DE  ==&gt; выход в 1/4 финала<br />  668   | AB|CD  ==&gt; выход в 1/4 финала<br />  591   | AB|CE  ==&gt; выход в 1/4 финала<br />  672   | BC|DE  ==&gt; выход в 1/4 финала<br />  530   | AC|DE  ==&gt; выход в 1/4 финала<br />  592   | AB|CE  ==&gt; выход в 1/4 финала<br />  551   | AB|CE  ==&gt; выход в 1/4 финала<br />  628   | AB|CD  ==&gt; выход в 1/4 финала<br />  616   | AC|E   ==&gt; выход в 1/4 финала<br />  621   | BD|E   ==&gt; выход в 1/4 финала<br />  525   | AC|D   ==&gt; выход в 1/4 финала<br />  655   | AC|D   ==&gt; выход в 1/4 финала<br />  600   | CD|E   ==&gt; выход в 1/4 финала<br />  663   | AB|D   ==&gt; выход в 1/4 финала<br />  512   | BC|   место: 25-32<br />  558   | AE|   место: 25-32<br />  572   | BE|   место: 25-32<br />  575   | DE|   место: 25-32<br />  583   | CE|   место: 25-32<br />  604   | AD|   место: 25-32<br />  629   | BD|   место: 25-32<br />  676   | AD|   место: 25-32<br />  507   | B |   место: 33-36<br />  588   | A |   место: 33-36<br />  611   | B |   место: 33-36<br />  650   | E |   место: 33-36<br />  524   |   |   место: 37-47<br />  527   |   |   место: 37-47<br />  534   |   |   место: 37-47<br />  565   |   |   место: 37-47<br />  566   |   |   место: 37-47<br />  570   |   |   место: 37-47<br />  593   |   |   место: 37-47<br />  624   |   |   место: 37-47<br />  661   |   |   место: 37-47<br />  669   |   |   место: 37-47<br />  674   |   |   место: 37-47<br />--------+---------------------------------<br /> <br /><b>DnD Beginner0 (ДЕВУШКИ): 1/4 финала</b><br />--------+---------------------------------<br /> Пары   |  Кресты (буквы судей)<br />--------+---------------------------------<br />  567   | AB|CDE ==&gt; выход в 1/2 финала<br />  637   | AB|CDE ==&gt; выход в 1/2 финала<br />  599   | AB|CD  ==&gt; выход в 1/2 финала<br />  672   | BC|DE  ==&gt; выход в 1/2 финала<br />  540   | AC|DE  ==&gt; выход в 1/2 финала<br />  551   | AB|CD  ==&gt; выход в 1/2 финала<br />  520   | AB|C   ==&gt; выход в 1/2 финала<br />  600   | CD|E   ==&gt; выход в 1/2 финала<br />  621   | AB|C   ==&gt; выход в 1/2 финала<br />  664   | AB|D   ==&gt; выход в 1/2 финала<br />  569   | AB|D   ==&gt; выход в 1/2 финала<br />  607   | AC|E   ==&gt; выход в 1/2 финала<br />  616   | AC|E   ==&gt; выход в 1/2 финала<br />  653   | AC|E   ==&gt; выход в 1/2 финала<br />  515   | DE|   место: 15-20<br />  525   | CD|   место: 15-20<br />  591   | BE|   место: 15-20<br />  592   | BE|   место: 15-20<br />  663   | AD|   место: 15-20<br />  668   | BD|   место: 15-20<br />  530   | E |   место: 21-23<br />  560   | E |   место: 21-23<br />  628   | B |   место: 21-23<br />  655   |   |   место: 24<br />--------+---------------------------------<br /> <br /><b>DnD Beginner0 (ДЕВУШКИ): 1/2 финала</b><br />--------+---------------------------------<br /> Пары   |  Кресты (буквы судей)<br />--------+---------------------------------<br />  567   | AB|CDE ==&gt; выход в ФИНАЛ<br />  637   | BC|DE  ==&gt; выход в ФИНАЛ<br />  520   | AC|E   ==&gt; выход в ФИНАЛ<br />  599   | BC|D   ==&gt; выход в ФИНАЛ<br />  672   | BD|E   ==&gt; выход в ФИНАЛ<br />  540   | AC|E   ==&gt; выход в ФИНАЛ<br />  551   | AB|D   ==&gt; выход в ФИНАЛ<br />  600   | AE|   место: 8-11<br />  664   | BD|   место: 8-11<br />  569   | AD|   место: 8-11<br />  653   | AE|   место: 8-11<br />  621   | B |   место: 12-14<br />  607   | C |   место: 12-14<br />  616   | C |   место: 12-14<br />--------+---------------------------------<br /> <br /><b>DnD Beginner0 (ДЕВУШКИ): ФИНАЛ</b><br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br />        | Места за 1-й.     &#9474; Место  &#9474; Места за 2-й.     &#9474; Место  &#9474; Места за 3-й.     &#9474; Место  &#9474;Сумма &#9474;Итоговое <br />        | танец             &#9474; пары в &#9474; танец             &#9474; пары в &#9474; танец             &#9474; пары в &#9474;мест  &#9474; место   <br />--------+-------------------+  1-м.  +-------------------+ 2-м.   &#9474;-------------------+ 3-м.   +за все&#9474; пары    <br /> Судьи  &#9474; A B C D E F G H I &#9474; танце  &#9474; A B C D E F G H I &#9474; танце  &#9474; A B C D E F G H I &#9474; танце  &#9474;танцы &#9474;         <br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br />  Пары  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;      &#9474;<br />  520   | 3 1 4 1 1         &#9474;     1  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;    1 &#9474;    1<br />  637   | 2 2 1 2 5         &#9474;     2  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;    2 &#9474;    2<br />  540   | 1 3 3 4 4         &#9474;     3  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;    3 &#9474;    3<br />  672   | 5 4 2 3 2         &#9474;     4  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;    4 &#9474;    4<br />  567   | 4 7 5 5 3         &#9474;     5  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;    5 &#9474;    5<br />  599   | 6 5 6 7 7         &#9474;     6  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;    6 &#9474;    6<br />  551   | 7 6 7 6 6         &#9474;     7  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;    7 &#9474;    7<br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br /></span><br /> </div>
+        
+        <!-- THE POST -->
+      </td>
+    </tr>
+    <tr>
+      <td class='darkrow3' align='left'><b></b></td>
+      <td class='darkrow3' nowrap="nowrap" align='left'>
+      
+        <!-- PM / EMAIL / WWW / MSGR -->
+      
+        <div align='left' class='darkrow3' style='float:left;width:auto'>
+        <a href='http://hustle-sa.ru/forum/index.php?s=1e76f48e3bb4f6320a128e8b8f36c9e8&amp;act=Msg&amp;CODE=04&amp;MID=437'><img src='style_images/1/p_pm.gif' border='0'  alt='PM' /></a><a href='http://hustle-sa.ru/forum/index.php?s=1e76f48e3bb4f6320a128e8b8f36c9e8&amp;act=Mail&amp;CODE=00&amp;MID=437'><img src='style_images/1/p_email.gif' border='0'  alt='Письмо на e-mail пользователю' /></a><a href='http://best-hustle.ru' target='_blank'><img src='style_images/1/p_www.gif' border='0'  alt='Сайт пользователя' /></a>
+        </div>
+        
+        <!-- REPORT / UP -->
+         
+        <div align='right'>
+         <a href='javascript:scroll(0,0);'><img src='style_images/1/p_up.gif' alt='Top' border='0' /></a>
+        </div>
+      </td>
+    </tr>
+    </table>
+    <div class='darkrow1' style='height:5px'><!-- --></div>
+    
+	<!--Begin Msg Number 23025-->
+    <table width='100%' border='0' cellspacing='1' cellpadding='3'>
+    <tr>
+      <td align='center' valign='middle' class='row4' width="1%"><a name='entry23025'></a><span class='normalname'><a href="javascript:ins('Ivanov_Vladimir')">Ivanov_Vladimir</a></span></td>
+        <td class='row4' valign='top' width="99%">
+        
+        <!-- POSTED DATE DIV -->
+        
+        <div align='left' class='row4' style='float:left;padding-top:4px;padding-bottom:4px'>
+        <span class='postdetails'><b><a title="Показать ссылку этой темы" href="#" onclick="link_to_post(23025); return false;" style="text-decoration:underline">Дата</a></b> 27.08.2016 - 21:02</span>
+        </div>
+        
+        <!-- REPORT / DELETE / EDIT / QUOTE DIV -->
+        
+        <div align='right'>
+        <a href='http://hustle-sa.ru/forum/index.php?s=1e76f48e3bb4f6320a128e8b8f36c9e8&amp;act=Post&amp;CODE=06&amp;f=6&amp;t=3761&amp;p=23025'><img src='style_images/1/p_quote.gif' border='0'  alt='Цитировать сообщение' /></a>
+      </div>
+      
+      </td>
+    </tr>
+    <tr>
+      <td align='center' valign='top' class='post1'>
+        <span class='postdetails'><br /><br /><br /><br />
+        Специалист<br />
+        <img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><br /><br />
+        <a href='http://hustle-sa.ru/forum/index.php?s=1e76f48e3bb4f6320a128e8b8f36c9e8&amp;showuser=437'>Профиль</a><br />
+        Группа: Организатор турниров<br />
+        Сообщений: 391<br />
+        Пользователь №: 437<br />
+        Регистрация: 22.09.2008<br />
+        <br />
+        <br /><br />
+         </span><br />
+        <!--$ author[field_1]-->
+        <img src='style_images/1/spacer.gif' alt='' width='160' height='1' /><br /> 
+      </td>
+      <td width='100%' valign='top' class='post1'>
+        <!-- THE POST 23025 -->
+        <div class='postcolor'> <span style='font-size:13pt;line-height:100%'><b>Результаты турнира:</b></span><br /><br /><b>Главный судья:</b> Кудрявцев Михаил<br /><br /><b>Судейская бригада:</b><br />1 (A) - Кудрявцев Михаил<br />2 (В) - Дубровин Игорь<br />3 (С) - Кудрявцева Ирина<br />4 (D) - Иентш Александр<br />5 (E) - Литке Евгений<br /><br /><br /><span style='font-size:13pt;line-height:100%'><b>C класс. Участвовало пар: 6</b></span><br /><b>ФИНАЛ</b><br />1 место-№725-Скориков Евгений Александрович(8214,Динамика,D)-Паршукова Галина Сергеевна(3159,Динамика,D)<br />2 место-№740-Ларин Максим Геннадьевич(5944,Движение,C)-Тимофеева Юлия Андреевна(1956,Движение,C)<br />3 место-№710-Семенков Кирилл Валерьевич(6088,Движение,D)-Файзуллина Ольга Сергеевна(1670,Движение,C)<br />4 место-№687-Снегирев Андрей Иосифович(6496,Smile,C)-Кусраева Диана Юрьевна(3522,Smile,C)<br />5 место-№721-Малышев Роман Владимирович(4885,Динамика,C)-Мухомедова Лилия Равилевна(4846,Динамика,C)<br />6 место-№682-Хасанов Михаил Ленарович(1794,Движение,D)-Сластина Наталия Викторовна(5660,Движение,D)<br /> <br /><b>Технические результаты:</b><br /><span style='font-family:courier'><br /><b>C класс: ФИНАЛ</b><br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br />        | Места за 1-й.     &#9474; Место  &#9474; Места за 2-й.     &#9474; Место  &#9474; Места за 3-й.     &#9474; Место  &#9474;Сумма &#9474;Итоговое <br />        | танец             &#9474; пары в &#9474; танец             &#9474; пары в &#9474; танец             &#9474; пары в &#9474;мест  &#9474; место   <br />--------+-------------------+  1-м.  +-------------------+ 2-м.   &#9474;-------------------+ 3-м.   +за все&#9474; пары    <br /> Судьи  &#9474; A B C D E F G H I &#9474; танце  &#9474; A B C D E F G H I &#9474; танце  &#9474; A B C D E F G H I &#9474; танце  &#9474;танцы &#9474;         <br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br />  Пары  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;      &#9474;<br />  725   | 3 1 1 4 5         &#9474;     2  &#9474; 1 1 1 3 1         &#9474;     1  &#9474;                   &#9474;        &#9474;    3 &#9474;    1<br />  740   | 2 4 2 1 4         &#9474;     1  &#9474; 2 3 2 1 2         &#9474;     2  &#9474;                   &#9474;        &#9474;    3 &#9474;    2<br />  710   | 4 3 5 3 1         &#9474;     3  &#9474; 3 2 4 4 3         &#9474;     3  &#9474;                   &#9474;        &#9474;    6 &#9474;    3<br />  687   | 1 5 4 2 6         &#9474;     5  &#9474; 4 4 3 2 5         &#9474;     4  &#9474;                   &#9474;        &#9474;    9 &#9474;    4<br />  721   | 5 2 3 6 3         &#9474;     4  &#9474; 6 6 6 6 4         &#9474;     6  &#9474;                   &#9474;        &#9474;   10 &#9474;    5<br />  682   | 6 6 6 5 2         &#9474;     6  &#9474; 5 5 5 5 6         &#9474;     5  &#9474;                   &#9474;        &#9474;   11 &#9474;    6<br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br /></span><br /><br /><span style='font-size:13pt;line-height:100%'><b>DnD Star (ПАРТНЕРЫ). Участников: 9</b></span><br /><b>ФИНАЛ</b><br />1 место-№702-Зайцев Владимир Владимирович(2685,RedRose,YouDance,C,M)<br />2 место-№692-Гацко Виталий Геннадьевич(4870,YouDance,B,M)<br />3 место-№708-Карпунин Алексей Павлович(2984,Хастл-Центр,B,M)<br />4 место-№748-Хитянов Сергей Олегович(1729,Динамика,A,S)<br />5 место-№690-Сурнин Сергей Леонидович(4443,AlphaDance,B,S)<br />6 место-№716-Рыбин Андрей Владимирович(5367,AlphaDance,C,M)<br />7 место-№736-Серебряков Константин Борисович(1877,Ivara,B,M)<br /><b>1/2 финала</b><br />8-9 место-№707-Степочкин Андрей Игоревич(7325,YouDance,B,M)<br />8-9 место-№739-Ненадорин Евгений Олегович(7010,YouDance,D,M)<br /> <br /><b>Технические результаты:</b><br /><span style='font-family:courier'><br /><b>DnD Star (ПАРТНЕРЫ): 1/2 финала</b><br />--------+---------------------------------<br /> Пары   |  Кресты (буквы судей)<br />--------+---------------------------------<br />  690   | ABC|DE ==&gt; выход в ФИНАЛ<br />  692   | ABC|DE ==&gt; выход в ФИНАЛ<br />  702   | ABC|DE ==&gt; выход в ФИНАЛ<br />  708   | ABC|DE ==&gt; выход в ФИНАЛ<br />  716   | ABC|DE ==&gt; выход в ФИНАЛ<br />  748   | ABC|DE ==&gt; выход в ФИНАЛ<br />  736   | ABD|E  ==&gt; выход в ФИНАЛ<br />  707   | BCE|  место: 8-9<br />  739   | ACD|  место: 8-9<br />--------+---------------------------------<br /> <br /><b>DnD Star (ПАРТНЕРЫ): ФИНАЛ</b><br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br />        | Места за 1-й.     &#9474; Место  &#9474; Места за 2-й.     &#9474; Место  &#9474; Места за 3-й.     &#9474; Место  &#9474;Сумма &#9474;Итоговое <br />        | танец             &#9474; пары в &#9474; танец             &#9474; пары в &#9474; танец             &#9474; пары в &#9474;мест  &#9474; место   <br />--------+-------------------+  1-м.  +-------------------+ 2-м.   &#9474;-------------------+ 3-м.   +за все&#9474; пары    <br /> Судьи  &#9474; A B C D E F G H I &#9474; танце  &#9474; A B C D E F G H I &#9474; танце  &#9474; A B C D E F G H I &#9474; танце  &#9474;танцы &#9474;         <br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br />  Пары  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;      &#9474;<br />  702   | 1 3 4 2 1         &#9474;     1  &#9474; 3 1 3 1 1         &#9474;     1  &#9474;                   &#9474;        &#9474;    2 &#9474;    1<br />  692   | 4 6 2 1 4         &#9474;     3  &#9474; 2 6 1 2 3         &#9474;     2  &#9474;                   &#9474;        &#9474;    5 &#9474;    2<br />  708   | 2 2 5 6 3         &#9474;     2  &#9474; 4 3 5 6 2         &#9474;     4  &#9474;                   &#9474;        &#9474;    6 &#9474;    3<br />  748   | 5 1 1 5 5         &#9474;     5  &#9474; 1 5 2 3 5         &#9474;     3  &#9474;                   &#9474;        &#9474;    8 &#9474;    4<br />  690   | 3 7 7 4 2         &#9474;     4  &#9474; 6 7 7 4 4         &#9474;   6,5  &#9474;                   &#9474;        &#9474; 10,5 &#9474;    5<br />  716   | 7 5 6 3 6         &#9474;     6  &#9474; 5 4 4 5 7         &#9474;     5  &#9474;                   &#9474;        &#9474;   11 &#9474;    6<br />  736   | 6 4 3 7 7         &#9474;     7  &#9474; 7 2 6 7 6         &#9474;   6,5  &#9474;                   &#9474;        &#9474; 13,5 &#9474;    7<br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br /></span><br /><br /><span style='font-size:13pt;line-height:100%'><b>DnD Star (ДЕВУШКИ). Участников: 16</b></span><br /><b>ФИНАЛ</b><br />1 место-№697-Степочкина Яна Алексеевна(6945,YouDance,C,S)<br />2 место-№749-Цокур Регина Владимировна(3638,AlphaDance,B,S)<br />3 место-№742-Тынкович Инна Михайловна(1815,Динамика,C,M)<br />4 место-№706-Казакова Олеся Михайловна(6426,Мегаполис,B,S)<br />5 место-№746-Иентш Марина Анатольевна(6789,AlphaDance,B,S)<br />6 место-№751-Дутчак Татьяна Валерьевна(1658,Динамика,A,S)<br />7 место-№744-Егорова Екатерина Евгеньевна(2648,Ivara,Мегаполис,A,S)<br /><b>1/2 финала</b><br />8 место-№720-Платонова Наталья Алексеевна(6427,Dance Drive (г.СПб),B,M)<br />9-11 место-№511-Степнова Наталья Андреевна(6398,AlphaDance,D,M)<br />9-11 место-№691-Лучина Евгения Игоревна(4055,YouDance,C,M)<br />9-11 место-№715-Смирнова Анастасия Сергеевна(5243,Мегаполис,B,M)<br />12-16 место-№693-Степаненко Татьяна Владимировна(6302,DanceLab,C,M)<br />12-16 место-№696-Суслова Ирина Владимировна(5415,Динамика,YouDance,B,M)<br />12-16 место-№698-Полевая Вероника Александровна(4792,AlphaDance,C,M)<br />12-16 место-№737-Федотова Татьяна Васильевна(3618,Динамика,B,M)<br />12-16 место-№743-Вербицкая Дана Петровна(6944,Ivara,D,M)<br /> <br /><b>Технические результаты:</b><br /><span style='font-family:courier'><br /><b>DnD Star (ДЕВУШКИ): 1/2 финала</b><br />--------+---------------------------------<br /> Пары   |  Кресты (буквы судей)<br />--------+---------------------------------<br />  697   | ABC|DE ==&gt; выход в ФИНАЛ<br />  706   | ABC|DE ==&gt; выход в ФИНАЛ<br />  744   | ABC|DE ==&gt; выход в ФИНАЛ<br />  746   | ABC|DE ==&gt; выход в ФИНАЛ<br />  749   | ABC|DE ==&gt; выход в ФИНАЛ<br />  751   | ABC|DE ==&gt; выход в ФИНАЛ<br />  742   | ABC|D  ==&gt; выход в ФИНАЛ<br />  720   | ABD|  место: 8<br />  511   | E  |  место: 9-11<br />  691   | E  |  место: 9-11<br />  715   | C  |  место: 9-11<br />  693   |    |  место: 12-16<br />  696   |    |  место: 12-16<br />  698   |    |  место: 12-16<br />  737   |    |  место: 12-16<br />  743   |    |  место: 12-16<br />--------+---------------------------------<br /> <br /><b>DnD Star (ДЕВУШКИ): ФИНАЛ</b><br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br />        | Места за 1-й.     &#9474; Место  &#9474; Места за 2-й.     &#9474; Место  &#9474; Места за 3-й.     &#9474; Место  &#9474;Сумма &#9474;Итоговое <br />        | танец             &#9474; пары в &#9474; танец             &#9474; пары в &#9474; танец             &#9474; пары в &#9474;мест  &#9474; место   <br />--------+-------------------+  1-м.  +-------------------+ 2-м.   &#9474;-------------------+ 3-м.   +за все&#9474; пары    <br /> Судьи  &#9474; A B C D E F G H I &#9474; танце  &#9474; A B C D E F G H I &#9474; танце  &#9474; A B C D E F G H I &#9474; танце  &#9474;танцы &#9474;         <br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br />  Пары  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;      &#9474;<br />  697   | 1 3 4 2 1         &#9474;     1  &#9474; 3 1 3 1 1         &#9474;     1  &#9474;                   &#9474;        &#9474;    2 &#9474;    1<br />  749   | 4 6 2 1 4         &#9474;     3  &#9474; 2 6 1 2 3         &#9474;     2  &#9474;                   &#9474;        &#9474;    5 &#9474;    2<br />  742   | 2 2 5 6 3         &#9474;     2  &#9474; 4 3 5 6 2         &#9474;     4  &#9474;                   &#9474;        &#9474;    6 &#9474;    3<br />  706   | 5 1 1 5 5         &#9474;     5  &#9474; 1 5 2 3 5         &#9474;     3  &#9474;                   &#9474;        &#9474;    8 &#9474;    4<br />  746   | 3 7 7 4 2         &#9474;     4  &#9474; 6 7 7 4 4         &#9474;   6,5  &#9474;                   &#9474;        &#9474; 10,5 &#9474;    5<br />  751   | 7 5 6 3 6         &#9474;     6  &#9474; 5 4 4 5 7         &#9474;     5  &#9474;                   &#9474;        &#9474;   11 &#9474;    6<br />  744   | 6 4 3 7 7         &#9474;     7  &#9474; 7 2 6 7 6         &#9474;   6,5  &#9474;                   &#9474;        &#9474; 13,5 &#9474;    7<br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br /></span><br /><br /><span style='font-size:13pt;line-height:100%'><b>DnD Main (ПАРТНЕРЫ). Участников: 20</b></span><br /><b>ФИНАЛ</b><br />1 место-№725-Скориков Евгений Александрович(8214,Динамика,D,M)<br />2 место-№702-Зайцев Владимир Владимирович(2685,RedRose,YouDance,C,M)<br />3 место-№730-Федоров Роберт Геннадьевич(7629,YouDance,D,M)<br />4 место-№716-Рыбин Андрей Владимирович(5367,AlphaDance,C,M)<br />5 место-№701-Обернихин Константин Евгеньевич(5240,Мегаполис,B,M)<br />6 место-№694-Мажидов Тимур Каримович(3918,Движение,C,RS)<br /><b>1/2 финала</b><br />7-9 место-№692-Гацко Виталий Геннадьевич(4870,YouDance,B,M)<br />7-9 место-№739-Ненадорин Евгений Олегович(7010,YouDance,D,M)<br />7-9 место-№708-Карпунин Алексей Павлович(2984,Хастл-Центр,B,M)<br />10-11 место-№736-Серебряков Константин Борисович(1877,Ivara,B,M)<br />10-11 место-№707-Степочкин Андрей Игоревич(7325,YouDance,B,M)<br />12 место-№747-Камаев Андрей Владимирович(4821,Динамика,C,RS)<br /><b>1/4 финала</b><br />13-15 место-№649-Соломойченко Илья Дмитриевич(5045,Хастл-Центр,AlphaDance,C,RS)<br />13-15 место-№732-Жукович Максим Вячеславович(5544,Ivara,C,RS)<br />13-15 место-№745-Сивохин Алексей Александрович(6391,YouDance,D,RS)<br />16-20 место-№510-Потехин Алексей Викторович(6117,AlphaDance,D,RS)<br />16-20 место-№677-Дорин Александр Евгеньевич(6106,AlphaDance,DanceLab,D,RS)<br />16-20 место-№704-Мирошин Сергей Владимирович(2811,Движение,C,RS)<br />16-20 место-№713-Смурыгин Иван Митрофанович(5365,YouDance,B,M)<br />16-20 место-№734-Петрушев Александр Александрович(5176,Ivara,Dance Fox (г.Кемерово),D,RS)<br /> <br /><b>Технические результаты:</b><br /><span style='font-family:courier'><br /><b>DnD Main (ПАРТНЕРЫ): 1/4 финала</b><br />--------+---------------------------------<br /> Пары   |  Кресты (буквы судей)<br />--------+---------------------------------<br />  692   | AB|CDE ==&gt; выход в 1/2 финала<br />  702   | AB|CDE ==&gt; выход в 1/2 финала<br />  739   | AB|CDE ==&gt; выход в 1/2 финала<br />  701   | AB|CDE ==&gt; выход в 1/2 финала<br />  730   | AB|CDE ==&gt; выход в 1/2 финала<br />  716   | AB|CD  ==&gt; выход в 1/2 финала<br />  707   | AB|CE  ==&gt; выход в 1/2 финала<br />  725   | AB|CE  ==&gt; выход в 1/2 финала<br />  694   | BD|E   ==&gt; выход в 1/2 финала<br />  736   | AB|C   ==&gt; выход в 1/2 финала<br />  708   | AD|E   ==&gt; выход в 1/2 финала<br />  747   | CD|E   ==&gt; выход в 1/2 финала<br />  649   | BD|   место: 13-15<br />  732   | AE|   место: 13-15<br />  745   | CD|   место: 13-15<br />  510   |   |   место: 16-20<br />  677   |   |   место: 16-20<br />  704   |   |   место: 16-20<br />  713   |   |   место: 16-20<br />  734   |   |   место: 16-20<br />--------+---------------------------------<br /> <br /><b>DnD Main (ПАРТНЕРЫ): 1/2 финала</b><br />--------+---------------------------------<br /> Пары   |  Кресты (буквы судей)<br />--------+---------------------------------<br />  702   | ABC|DE ==&gt; выход в ФИНАЛ<br />  725   | ABC|DE ==&gt; выход в ФИНАЛ<br />  716   | ABC|D  ==&gt; выход в ФИНАЛ<br />  730   | BCD|E  ==&gt; выход в ФИНАЛ<br />  694   | BDE|N  ==&gt; выход в ФИНАЛ<br />  701   | BCD|N  ==&gt; выход в ФИНАЛ<br />  692   | ACE|  место: 7-9<br />  739   | ABC|  место: 7-9<br />  708   | ADE|  место: 7-9<br />  736   | A  |  место: 10-11<br />  707   | E  |  место: 10-11<br />  747   |    |  место: 12<br />--------+---------------------------------<br /> <br /><b>DnD Main (ПАРТНЕРЫ): ФИНАЛ</b><br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br />        | Места за 1-й.     &#9474; Место  &#9474; Места за 2-й.     &#9474; Место  &#9474; Места за 3-й.     &#9474; Место  &#9474;Сумма &#9474;Итоговое <br />        | танец             &#9474; пары в &#9474; танец             &#9474; пары в &#9474; танец             &#9474; пары в &#9474;мест  &#9474; место   <br />--------+-------------------+  1-м.  +-------------------+ 2-м.   &#9474;-------------------+ 3-м.   +за все&#9474; пары    <br /> Судьи  &#9474; A B C D E F G H I &#9474; танце  &#9474; A B C D E F G H I &#9474; танце  &#9474; A B C D E F G H I &#9474; танце  &#9474;танцы &#9474;         <br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br />  Пары  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;      &#9474;<br />  725   | 4 1 1 3 2         &#9474;     1  &#9474; 1 4 2 3 1         &#9474;     1  &#9474;                   &#9474;        &#9474;    2 &#9474;    1<br />  702   | 3 4 4 2 1         &#9474;     2  &#9474; 4 2 3 1 2         &#9474;     2  &#9474;                   &#9474;        &#9474;    4 &#9474;    2<br />  730   | 1 2 3 5 4         &#9474;     3  &#9474; 3 1 1 4 3         &#9474;     3  &#9474;                   &#9474;        &#9474;    6 &#9474;    3<br />  716   | 5 5 5 1 3         &#9474;     4  &#9474; 2 6 4 2 4         &#9474;     4  &#9474;                   &#9474;        &#9474;    8 &#9474;    4<br />  701   | 6 3 2 6 6         &#9474;     6  &#9474; 5 3 5 5 6         &#9474;     5  &#9474;                   &#9474;        &#9474;   11 &#9474;    5<br />  694   | 2 6 6 4 5         &#9474;     5  &#9474; 6 5 6 6 5         &#9474;     6  &#9474;                   &#9474;        &#9474;   11 &#9474;    6<br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br /></span><br /><br /><span style='font-size:13pt;line-height:100%'><b>DnD Main (ДЕВУШКИ). Участников: 20</b></span><br /><b>ФИНАЛ</b><br />1 место-№689-Чурилова Оксана Юрьевна(6782,Движение,B,M)<br />2 место-№691-Лучина Евгения Игоревна(4055,YouDance,C,M)<br />3 место-№742-Тынкович Инна Михайловна(1815,Динамика,C,M)<br />4 место-№651-Метельская Анастасия Валерьевна(5613,AlphaDance,YouDance,C,M)<br />5 место-№720-Платонова Наталья Алексеевна(6427,Dance Drive (г.СПб),B,M)<br />6 место-№731-Хисматуллина Раиса Раилевна(5804,Ivara,Dance Fox (г.Кемерово),B,M)<br /><b>1/2 финала</b><br />7-11 место-№511-Степнова Наталья Андреевна(6398,AlphaDance,D,M)<br />7-11 место-№743-Вербицкая Дана Петровна(6944,Ivara,D,M)<br />7-11 место-№597-Лесина Варвара Андреевна(5898,YouDance,D,RS)<br />7-11 место-№696-Суслова Ирина Владимировна(5415,Динамика,YouDance,B,M)<br />7-11 место-№698-Полевая Вероника Александровна(4792,AlphaDance,C,M)<br />12-13 место-№737-Федотова Татьяна Васильевна(3618,Динамика,B,M)<br />12-13 место-№693-Степаненко Татьяна Владимировна(6302,DanceLab,C,M)<br /><b>1/4 финала</b><br />14-16 место-№639-Скрябина Марина Николаевна(3809,Динамика,C,RS)<br />14-16 место-№703-Романчук Илона Андреевна(5432,Динамика,B,RS)<br />14-16 место-№715-Смирнова Анастасия Сергеевна(5243,Мегаполис,B,M)<br />17-20 место-№617-Глазырина Мария Игоревна(5764,Динамика,C,RS)<br />17-20 место-№684-Собко Анна Викторовна(7343,Движение,C,RS)<br />17-20 место-№712-Брюхова Виктория Евгеньевна(1857,YouDance,B,RS)<br />17-20 место-№723-Терентьева Анастасия Евгеньевна(4307,AlphaDance,D,RS)<br /> <br /><b>Технические результаты:</b><br /><span style='font-family:courier'><br /><b>DnD Main (ДЕВУШКИ): 1/4 финала</b><br />--------+---------------------------------<br /> Пары   |  Кресты (буквы судей)<br />--------+---------------------------------<br />  689   | AB|CDE ==&gt; выход в 1/2 финала<br />  720   | AB|CDE ==&gt; выход в 1/2 финала<br />  698   | AB|CDE ==&gt; выход в 1/2 финала<br />  731   | AB|CDE ==&gt; выход в 1/2 финала<br />  691   | BC|DE  ==&gt; выход в 1/2 финала<br />  693   | BC|DE  ==&gt; выход в 1/2 финала<br />  511   | BD|E   ==&gt; выход в 1/2 финала<br />  651   | AB|E   ==&gt; выход в 1/2 финала<br />  737   | AC|E   ==&gt; выход в 1/2 финала<br />  743   | AB|D   ==&gt; выход в 1/2 финала<br />  597   | AD|E   ==&gt; выход в 1/2 финала<br />  696   | BC|D   ==&gt; выход в 1/2 финала<br />  742   | AC|E   ==&gt; выход в 1/2 финала<br />  639   | BD|   место: 14-16<br />  703   | AC|   место: 14-16<br />  715   | AC|   место: 14-16<br />  617   |   |   место: 17-20<br />  684   |   |   место: 17-20<br />  712   |   |   место: 17-20<br />  723   |   |   место: 17-20<br />--------+---------------------------------<br /> <br /><b>DnD Main (ДЕВУШКИ): 1/2 финала</b><br />--------+---------------------------------<br /> Пары   |  Кресты (буквы судей)<br />--------+---------------------------------<br />  720   | AB|CDE ==&gt; выход в ФИНАЛ<br />  689   | BC|DE  ==&gt; выход в ФИНАЛ<br />  691   | AC|DE  ==&gt; выход в ФИНАЛ<br />  731   | AB|CD  ==&gt; выход в ФИНАЛ<br />  651   | AB|E   ==&gt; выход в ФИНАЛ<br />  742   | AC|D   ==&gt; выход в ФИНАЛ<br />  511   | DE|   место: 7-11<br />  743   | AB|   место: 7-11<br />  597   | AE|   место: 7-11<br />  696   | BD|   место: 7-11<br />  698   | CE|   место: 7-11<br />  737   | C |   место: 12-13<br />  693   | B |   место: 12-13<br />--------+---------------------------------<br /> <br /><b>DnD Main (ДЕВУШКИ): ФИНАЛ</b><br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br />        | Места за 1-й.     &#9474; Место  &#9474; Места за 2-й.     &#9474; Место  &#9474; Места за 3-й.     &#9474; Место  &#9474;Сумма &#9474;Итоговое <br />        | танец             &#9474; пары в &#9474; танец             &#9474; пары в &#9474; танец             &#9474; пары в &#9474;мест  &#9474; место   <br />--------+-------------------+  1-м.  +-------------------+ 2-м.   &#9474;-------------------+ 3-м.   +за все&#9474; пары    <br /> Судьи  &#9474; A B C D E F G H I &#9474; танце  &#9474; A B C D E F G H I &#9474; танце  &#9474; A B C D E F G H I &#9474; танце  &#9474;танцы &#9474;         <br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br />  Пары  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;      &#9474;<br />  689   | 4 1 1 3 2         &#9474;     1  &#9474; 1 4 2 3 1         &#9474;     1  &#9474;                   &#9474;        &#9474;    2 &#9474;    1<br />  691   | 3 4 4 2 1         &#9474;     2  &#9474; 4 2 3 1 2         &#9474;     2  &#9474;                   &#9474;        &#9474;    4 &#9474;    2<br />  742   | 1 2 3 5 4         &#9474;     3  &#9474; 3 1 1 4 3         &#9474;     3  &#9474;                   &#9474;        &#9474;    6 &#9474;    3<br />  651   | 5 5 5 1 3         &#9474;     4  &#9474; 2 6 4 2 4         &#9474;     4  &#9474;                   &#9474;        &#9474;    8 &#9474;    4<br />  720   | 6 3 2 6 6         &#9474;     6  &#9474; 5 3 5 5 6         &#9474;     5  &#9474;                   &#9474;        &#9474;   11 &#9474;    5<br />  731   | 2 6 6 4 5         &#9474;     5  &#9474; 6 5 6 6 5         &#9474;     6  &#9474;                   &#9474;        &#9474;   11 &#9474;    6<br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br /></span><br /><br /><span style='font-size:13pt;line-height:100%'><b>DnD RisingStar (ПАРТНЕРЫ). Участников: 27</b></span><br /><b>ФИНАЛ</b><br />1 место-№747-Камаев Андрей Владимирович(4821,Динамика,C,RS)<br />2 место-№732-Жукович Максим Вячеславович(5544,Ivara,C,RS)<br />3 место-№649-Соломойченко Илья Дмитриевич(5045,Хастл-Центр,AlphaDance,C,RS)<br />4 место-№777-Иволгин Александр Анатольевич(6554,Динамика,C,RS)<br />5 место-№745-Сивохин Алексей Александрович(6391,YouDance,D,RS)<br />6 место-№694-Мажидов Тимур Каримович(3918,Движение,C,RS)<br />7 место-№721-Малышев Роман Владимирович(4885,Динамика,C,RS)<br /><b>1/2 финала</b><br />8 место-№750-Кузнецов Сергей Сергеевич(8051,YouDance,D,RS)<br />9-10 место-№596-Пушкарев Алексей Сергеевич(4331,YouDance,D,RS)<br />9-10 место-№704-Мирошин Сергей Владимирович(2811,Движение,C,RS)<br />11 место-№581-Маврин Алексей Александрович(5878,Движение,D,RS)<br /><b>1/4 финала</b><br />12-15 место-№631-Кан Юрий Витальевич(7003,Smile,D,RS)<br />12-15 место-№677-Дорин Александр Евгеньевич(6106,AlphaDance,DanceLab,D,RS)<br />12-15 место-№714-Кучинский Михаил Николаевич(5865,Движение,D,RS)<br />12-15 место-№718-Дронов Игорь Владимирович(5746,Ivara,C,Bg)<br />16-18 место-№510-Потехин Алексей Викторович(6117,AlphaDance,D,RS)<br />16-18 место-№680-Максимов Максим Александрович(7191,Динамика,D,RS)<br />16-18 место-№726-Карпычев Алексей Анатольевич(5370,Мегаполис,C,RS)<br />19-20 место-№671-Устинов Алексей Сергеевич(8171,Ivara,D,Bg)<br />19-20 место-№685-Мейн Иван Сергеевич(4825,Движение,C,RS)<br /><b>1/8 финала</b><br />21-23 место-№526-Зиновьев Антон Алексеевич(8159,AlphaDance,D,Bg)<br />21-23 место-№695-Гуськов Павел Валерьевич(6551,Динамика,D,RS)<br />21-23 место-№729-Капитанов Ярослав Игоревич(6649,Ivara,YouDance,D,RS)<br />24-25 место-№513-Кретов Евгений Михайлович(8658,Дизайн (г.Курск),D,Bg)<br />24-25 место-№734-Петрушев Александр Александрович(5176,Ivara,Dance Fox (г.Кемерово),D,RS)<br />26-27 место-№552-Виноградов Виталий Александрович(8561,Движение,D,Bg)<br />26-27 место-№700-Александров Олег Борисович(6278,Динамика,Движение,D,Bg)<br /> <br /><b>Технические результаты:</b><br /><span style='font-family:courier'><br /><b>DnD RisingStar (ПАРТНЕРЫ): 1/8 финала</b><br />--------+---------------------------------<br /> Пары   |  Кресты (буквы судей)<br />--------+---------------------------------<br />  510   | ABC|DE ==&gt; выход в 1/4 финала<br />  714   | ABC|DE ==&gt; выход в 1/4 финала<br />  732   | ABC|DE ==&gt; выход в 1/4 финала<br />  745   | ABC|DE ==&gt; выход в 1/4 финала<br />  777   | ABC|DE ==&gt; выход в 1/4 финала<br />  596   | ABC|DE ==&gt; выход в 1/4 финала<br />  649   | ABC|DE ==&gt; выход в 1/4 финала<br />  677   | ABC|DE ==&gt; выход в 1/4 финала<br />  685   | ABC|DE ==&gt; выход в 1/4 финала<br />  747   | ABC|DE ==&gt; выход в 1/4 финала<br />  694   | ABC|DE ==&gt; выход в 1/4 финала<br />  704   | ABC|DE ==&gt; выход в 1/4 финала<br />  718   | ABC|DE ==&gt; выход в 1/4 финала<br />  721   | ABC|DE ==&gt; выход в 1/4 финала<br />  671   | ABC|E  ==&gt; выход в 1/4 финала<br />  750   | BCD|E  ==&gt; выход в 1/4 финала<br />  680   | ABC|D  ==&gt; выход в 1/4 финала<br />  726   | ABC|D  ==&gt; выход в 1/4 финала<br />  581   | ABD|E  ==&gt; выход в 1/4 финала<br />  631   | ACD|E  ==&gt; выход в 1/4 финала<br />  526   | BDE|  место: 21-23<br />  695   | ACE|  место: 21-23<br />  729   | CDE|  место: 21-23<br />  513   | A  |  место: 24-25<br />  734   | B  |  место: 24-25<br />  552   |    |  место: 26-27<br />  700   |    |  место: 26-27<br />--------+---------------------------------<br /> <br /><b>DnD RisingStar (ПАРТНЕРЫ): 1/4 финала</b><br />--------+---------------------------------<br /> Пары   |  Кресты (буквы судей)<br />--------+---------------------------------<br />  649   | AB|CDE ==&gt; выход в 1/2 финала<br />  704   | AB|CDE ==&gt; выход в 1/2 финала<br />  694   | AB|CDE ==&gt; выход в 1/2 финала<br />  745   | AB|CE  ==&gt; выход в 1/2 финала<br />  777   | AC|DE  ==&gt; выход в 1/2 финала<br />  721   | AB|CE  ==&gt; выход в 1/2 финала<br />  732   | AB|CE  ==&gt; выход в 1/2 финала<br />  750   | BC|DE  ==&gt; выход в 1/2 финала<br />  581   | AB|E   ==&gt; выход в 1/2 финала<br />  596   | BD|E   ==&gt; выход в 1/2 финала<br />  747   | BC|E   ==&gt; выход в 1/2 финала<br />  631   | CD|   место: 12-15<br />  677   | AB|   место: 12-15<br />  714   | CD|   место: 12-15<br />  718   | AD|   место: 12-15<br />  510   | D |   место: 16-18<br />  680   | A |   место: 16-18<br />  726   | D |   место: 16-18<br />  671   |   |   место: 19-20<br />  685   |   |   место: 19-20<br />--------+---------------------------------<br /> <br /><b>DnD RisingStar (ПАРТНЕРЫ): 1/2 финала</b><br />--------+---------------------------------<br /> Пары   |  Кресты (буквы судей)<br />--------+---------------------------------<br />  649   | AB|CDE ==&gt; выход в ФИНАЛ<br />  694   | AB|CDE ==&gt; выход в ФИНАЛ<br />  745   | AB|CDE ==&gt; выход в ФИНАЛ<br />  732   | AB|CDE ==&gt; выход в ФИНАЛ<br />  747   | AB|CDE ==&gt; выход в ФИНАЛ<br />  777   | AC|DE  ==&gt; выход в ФИНАЛ<br />  721   | AC|N   ==&gt; выход в ФИНАЛ<br />  750   | BD|   место: 8<br />  596   | E |   место: 9-10<br />  704   | B |   место: 9-10<br />  581   |   |   место: 11<br />--------+---------------------------------<br /> <br /><b>DnD RisingStar (ПАРТНЕРЫ): ФИНАЛ</b><br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br />        | Места за 1-й.     &#9474; Место  &#9474; Места за 2-й.     &#9474; Место  &#9474; Места за 3-й.     &#9474; Место  &#9474;Сумма &#9474;Итоговое <br />        | танец             &#9474; пары в &#9474; танец             &#9474; пары в &#9474; танец             &#9474; пары в &#9474;мест  &#9474; место   <br />--------+-------------------+  1-м.  +-------------------+ 2-м.   &#9474;-------------------+ 3-м.   +за все&#9474; пары    <br /> Судьи  &#9474; A B C D E F G H I &#9474; танце  &#9474; A B C D E F G H I &#9474; танце  &#9474; A B C D E F G H I &#9474; танце  &#9474;танцы &#9474;         <br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br />  Пары  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;      &#9474;<br />  747   | 3 3 2 1 2         &#9474;     1  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;    1 &#9474;    1<br />  732   | 6 2 6 2 1         &#9474;     2  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;    2 &#9474;    2<br />  649   | 4 1 3 3 3         &#9474;     3  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;    3 &#9474;    3<br />  777   | 1 4 4 7 4         &#9474;     4  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;    4 &#9474;    4<br />  745   | 7 7 1 4 5         &#9474;     5  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;    5 &#9474;    5<br />  694   | 2 5 7 5 7         &#9474;     6  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;    6 &#9474;    6<br />  721   | 5 6 5 6 6         &#9474;     7  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;    7 &#9474;    7<br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br /></span><br /><br /><span style='font-size:13pt;line-height:100%'><b>DnD RisingStar (ДЕВУШКИ). Участников: 42</b></span><br /><b>ФИНАЛ</b><br />1 место-№514-Березникова Анастасия Васильевна(4477,Дизайн (г.Курск),D,RS)<br />2 место-№712-Брюхова Виктория Евгеньевна(1857,YouDance,B,RS)<br />3 место-№711-Калита Ирина Юрьевна(8518,Движение,C,Bg)<br />4 место-№741-Тимофеева Юлия Андреевна(1956,Движение,C,RS)<br />5 место-№727-Титова Мария Александровна(4978,Ivara,Мегаполис,C,RS)<br />6 место-№617-Глазырина Мария Игоревна(5764,Динамика,C,RS)<br />7 место-№709-Селезнева Мария Сергеевна(7526,Динамика,D,RS)<br /><b>1/2 финала</b><br />8-9 место-№703-Романчук Илона Андреевна(5432,Динамика,B,RS)<br />8-9 место-№719-Бирюкова Дарья Константиновна(7346,AlphaDance,E,RS)<br />10-13 место-№639-Скрябина Марина Николаевна(3809,Динамика,C,RS)<br />10-13 место-№735-Колганова Марина Александровна(6199,DanceLab,D,Bg)<br />10-13 место-№681-Хисамутдинова Эльза Эдуардовна(7078,Ivara,D,RS)<br />10-13 место-№684-Собко Анна Викторовна(7343,Движение,C,RS)<br /><b>1/4 финала</b><br />14-16 место-№722-Мухомедова Лилия Равилевна(4846,Динамика,C,RS)<br />14-16 место-№723-Терентьева Анастасия Евгеньевна(4307,AlphaDance,D,RS)<br />14-16 место-№733-Андреева Валерия Васильевна(6125,Движение,YouDance,D,RS)<br />17-18 место-№683-Сластина Наталия Викторовна(5660,Движение,D,RS)<br />17-18 место-№705-Зарецкая Анна Владимировна(8363,Движение,E,Bg)<br /><b>1/8 финала</b><br />19-29 место-№502-Баринова Мария Александровна(8002,Динамика,D,Bg)<br />19-29 место-№509-Луковская Виктория Викторовна(5609,AlphaDance,C,Bg)<br />19-29 место-№547-Роцкова Мария Александровна(5964,Движение,D,Bg)<br />19-29 место-№567-Иванова Татьяна Алексеевна(8608,Движение,E,Bg)<br />19-29 место-№595-Иоффе Надежда Викторовна(7893,YouDance,D,Bg)<br />19-29 место-№640-Чудеса Полина Каримжанова(7427,Движение,Динамика,D,Bg)<br />19-29 место-№658-Петросян Лиана Павловна(8020,Движение,D,Bg)<br />19-29 место-№699-Высоцкая Виола Николаевна(6860,Движение,D,RS)<br />19-29 место-№717-Прокопьева Юлия Олеговна(6164,Ivara,D,RS)<br />19-29 место-№738-Сидорина Екатерина Александровна(6534,Smile,C,RS)<br />19-29 место-№752-Егорова Юлия Викторовна(8463,AlphaDance,E,Bg)<br />30-37 место-№520-Зыкова Анна Борисовна(8459,DanceLab,E,Bg)<br />30-37 место-№533-Красноход Дарья Александровна(7706,AlphaDance,Хастл-Центр,E,Bg)<br />30-37 место-№535-Билялова Гюльнара Максутовна(7645,Движение,D,Bg)<br />30-37 место-№561-Андреева Анастасия Андреевна(5986,Dance Fox (г.Кемерово),D,Bg)<br />30-37 место-№670-Иванова Наталья Николаевна(7850,Движение,YouDance,D,Bg)<br />30-37 место-№688-Миронова Анна Владимировна(5779,Open Dance Studio,D,RS)<br />30-37 место-№724-Каткова Татьяна Михайловна(3662,Движение,D,RS)<br />30-37 место-№728-Кирпа Татьяна Николаевна(7841,YouDance,Движение,D,RS)<br />38-42 место-№515-Панасенко Марина Петровна(6504,Движение,D,Bg)<br />38-42 место-№525-Рябченко Елена Борисовна(8785,AlphaDance,E,Bg)<br />38-42 место-№568-Летова Елена Олеговна(7656,Движение,E,Bg)<br />38-42 место-№600-Ханова Елена Юрьевна(дебют,Динамика,E,Bg)<br />38-42 место-№678-Нечаева Алена Сергеевна(6563,DanceLab,D,Bg)<br /> <br /><b>Технические результаты:</b><br /><span style='font-family:courier'><br /><b>DnD RisingStar (ДЕВУШКИ): 1/8 финала</b><br />--------+---------------------------------<br /> Пары   |  Кресты (буквы судей)<br />--------+---------------------------------<br />  703   | AB|CDE ==&gt; выход в 1/4 финала<br />  709   | AB|CDE ==&gt; выход в 1/4 финала<br />  712   | AB|CDE ==&gt; выход в 1/4 финала<br />  684   | AB|CDE ==&gt; выход в 1/4 финала<br />  735   | AB|CDE ==&gt; выход в 1/4 финала<br />  639   | AB|CDE ==&gt; выход в 1/4 финала<br />  741   | AB|CDE ==&gt; выход в 1/4 финала<br />  617   | AB|CE  ==&gt; выход в 1/4 финала<br />  723   | BC|DE  ==&gt; выход в 1/4 финала<br />  681   | AB|CE  ==&gt; выход в 1/4 финала<br />  711   | AB|CE  ==&gt; выход в 1/4 финала<br />  719   | AC|DE  ==&gt; выход в 1/4 финала<br />  514   | AB|CE  ==&gt; выход в 1/4 финала<br />  722   | AB|CE  ==&gt; выход в 1/4 финала<br />  705   | AD|E   ==&gt; выход в 1/4 финала<br />  683   | BC|E   ==&gt; выход в 1/4 финала<br />  727   | BC|D   ==&gt; выход в 1/4 финала<br />  733   | AB|E   ==&gt; выход в 1/4 финала<br />  502   | AC|   место: 19-29<br />  509   | BD|   место: 19-29<br />  547   | AB|   место: 19-29<br />  567   | AE|   место: 19-29<br />  595   | AC|   место: 19-29<br />  640   | AD|   место: 19-29<br />  658   | DE|   место: 19-29<br />  699   | CD|   место: 19-29<br />  717   | BC|   место: 19-29<br />  738   | BE|   место: 19-29<br />  752   | DE|   место: 19-29<br />  520   | A |   место: 30-37<br />  533   | D |   место: 30-37<br />  535   | B |   место: 30-37<br />  561   | C |   место: 30-37<br />  670   | D |   место: 30-37<br />  688   | D |   место: 30-37<br />  724   | D |   место: 30-37<br />  728   | D |   место: 30-37<br />  515   |   |   место: 38-42<br />  525   |   |   место: 38-42<br />  568   |   |   место: 38-42<br />  600   |   |   место: 38-42<br />  678   |   |   место: 38-42<br />--------+---------------------------------<br /> <br /><b>DnD RisingStar (ДЕВУШКИ): 1/4 финала</b><br />--------+---------------------------------<br /> Пары   |  Кресты (буквы судей)<br />--------+---------------------------------<br />  709   | AB|CDE ==&gt; выход в 1/2 финала<br />  741   | AB|CDE ==&gt; выход в 1/2 финала<br />  639   | AB|CD  ==&gt; выход в 1/2 финала<br />  735   | AC|DE  ==&gt; выход в 1/2 финала<br />  711   | AB|CE  ==&gt; выход в 1/2 финала<br />  727   | AB|CD  ==&gt; выход в 1/2 финала<br />  514   | BC|E   ==&gt; выход в 1/2 финала<br />  617   | AB|C   ==&gt; выход в 1/2 финала<br />  703   | AC|E   ==&gt; выход в 1/2 финала<br />  719   | AB|D   ==&gt; выход в 1/2 финала<br />  681   | AD|E   ==&gt; выход в 1/2 финала<br />  684   | AC|E   ==&gt; выход в 1/2 финала<br />  712   | CD|E   ==&gt; выход в 1/2 финала<br />  722   | BE|   место: 14-16<br />  723   | BD|   место: 14-16<br />  733   | BE|   место: 14-16<br />  683   | D |   место: 17-18<br />  705   | D |   место: 17-18<br />--------+---------------------------------<br /> <br /><b>DnD RisingStar (ДЕВУШКИ): 1/2 финала</b><br />--------+---------------------------------<br /> Пары   |  Кресты (буквы судей)<br />--------+---------------------------------<br />  709   | AB|CDE ==&gt; выход в ФИНАЛ<br />  741   | AB|CDE ==&gt; выход в ФИНАЛ<br />  514   | BC|DE  ==&gt; выход в ФИНАЛ<br />  711   | AB|CE  ==&gt; выход в ФИНАЛ<br />  617   | AB|C   ==&gt; выход в ФИНАЛ<br />  712   | AD|E   ==&gt; выход в ФИНАЛ<br />  727   | BC|D   ==&gt; выход в ФИНАЛ<br />  703   | AC|   место: 8-9<br />  719   | DE|   место: 8-9<br />  639   | B |   место: 10-13<br />  735   | D |   место: 10-13<br />  681   | A |   место: 10-13<br />  684   | E |   место: 10-13<br />--------+---------------------------------<br /> <br /><b>DnD RisingStar (ДЕВУШКИ): ФИНАЛ</b><br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br />        | Места за 1-й.     &#9474; Место  &#9474; Места за 2-й.     &#9474; Место  &#9474; Места за 3-й.     &#9474; Место  &#9474;Сумма &#9474;Итоговое <br />        | танец             &#9474; пары в &#9474; танец             &#9474; пары в &#9474; танец             &#9474; пары в &#9474;мест  &#9474; место   <br />--------+-------------------+  1-м.  +-------------------+ 2-м.   &#9474;-------------------+ 3-м.   +за все&#9474; пары    <br /> Судьи  &#9474; A B C D E F G H I &#9474; танце  &#9474; A B C D E F G H I &#9474; танце  &#9474; A B C D E F G H I &#9474; танце  &#9474;танцы &#9474;         <br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br />  Пары  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;      &#9474;<br />  514   | 3 3 2 1 2         &#9474;     1  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;    1 &#9474;    1<br />  712   | 6 2 6 2 1         &#9474;     2  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;    2 &#9474;    2<br />  711   | 4 1 3 3 3         &#9474;     3  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;    3 &#9474;    3<br />  741   | 1 4 4 7 4         &#9474;     4  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;    4 &#9474;    4<br />  727   | 7 7 1 4 5         &#9474;     5  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;    5 &#9474;    5<br />  617   | 2 5 7 5 7         &#9474;     6  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;    6 &#9474;    6<br />  709   | 5 6 5 6 6         &#9474;     7  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;    7 &#9474;    7<br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br /></span><br />  </div>
+        <br /><br />--------------------<br />
+<div class='signature'><a href='http://hustle-samolet.ru/' target='_blank'>Обучением парным танцам хастл</a> на Красной Пресне, хастл и дискотеки в клубе Буфф&#33;</div>
+        <!-- THE POST -->
+      </td>
+    </tr>
+    <tr>
+      <td class='darkrow3' align='left'><b></b></td>
+      <td class='darkrow3' nowrap="nowrap" align='left'>
+      
+        <!-- PM / EMAIL / WWW / MSGR -->
+      
+        <div align='left' class='darkrow3' style='float:left;width:auto'>
+        <a href='http://hustle-sa.ru/forum/index.php?s=1e76f48e3bb4f6320a128e8b8f36c9e8&amp;act=Msg&amp;CODE=04&amp;MID=437'><img src='style_images/1/p_pm.gif' border='0'  alt='PM' /></a><a href='http://hustle-sa.ru/forum/index.php?s=1e76f48e3bb4f6320a128e8b8f36c9e8&amp;act=Mail&amp;CODE=00&amp;MID=437'><img src='style_images/1/p_email.gif' border='0'  alt='Письмо на e-mail пользователю' /></a><a href='http://best-hustle.ru' target='_blank'><img src='style_images/1/p_www.gif' border='0'  alt='Сайт пользователя' /></a>
+        </div>
+        
+        <!-- REPORT / UP -->
+         
+        <div align='right'>
+         <a href='javascript:scroll(0,0);'><img src='style_images/1/p_up.gif' alt='Top' border='0' /></a>
+        </div>
+      </td>
+    </tr>
+    </table>
+    <div class='darkrow1' style='height:5px'><!-- --></div>
+    
+	<!--Begin Msg Number 23060-->
+    <table width='100%' border='0' cellspacing='1' cellpadding='3'>
+    <tr>
+      <td align='center' valign='middle' class='row4' width="1%"><a name='entry23060'></a><span class='normalname'><a href="javascript:ins('Denegin')">Denegin</a></span></td>
+        <td class='row4' valign='top' width="99%">
+        
+        <!-- POSTED DATE DIV -->
+        
+        <div align='left' class='row4' style='float:left;padding-top:4px;padding-bottom:4px'>
+        <span class='postdetails'><b><a title="Показать ссылку этой темы" href="#" onclick="link_to_post(23060); return false;" style="text-decoration:underline">Дата</a></b> 2.09.2016 - 14:01</span>
+        </div>
+        
+        <!-- REPORT / DELETE / EDIT / QUOTE DIV -->
+        
+        <div align='right'>
+        <a href='http://hustle-sa.ru/forum/index.php?s=1e76f48e3bb4f6320a128e8b8f36c9e8&amp;act=Post&amp;CODE=06&amp;f=6&amp;t=3761&amp;p=23060'><img src='style_images/1/p_quote.gif' border='0'  alt='Цитировать сообщение' /></a>
+      </div>
+      
+      </td>
+    </tr>
+    <tr>
+      <td align='center' valign='top' class='post2'>
+        <span class='postdetails'><br /><br /><img src='http://hustle-sa.ru/forum/uploads/av-3.jpg' border='0' width='80' height='74' alt='' /><br /><br />
+        Мудрец<br />
+        <img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><br /><br />
+        <a href='http://hustle-sa.ru/forum/index.php?s=1e76f48e3bb4f6320a128e8b8f36c9e8&amp;showuser=3'>Профиль</a><br />
+        Группа: Администраторы<br />
+        Сообщений: 7365<br />
+        Пользователь №: 3<br />
+        Регистрация: 13.02.2008<br />
+        <br />
+        <br /><br />
+         </span><br />
+        <!--$ author[field_1]-->
+        <img src='style_images/1/spacer.gif' alt='' width='160' height='1' /><br /> 
+      </td>
+      <td width='100%' valign='top' class='post2'>
+        <!-- THE POST 23060 -->
+        <div class='postcolor'> Исправлены результаты расчетов баллов за ДнД. <br />Ранее не были учтены результаты номинации DnD Star среди девушек. <br />Теперь данные обновлены. Новых переходов не появилось.   </div>
+        <br /><br />--------------------<br />
+<div class='signature'><b><a href='http://www.denegin.ru/hustle' target='_blank'>Руководитель и преподаватель Хастл-Центра</a></b></div>
+        <!-- THE POST -->
+      </td>
+    </tr>
+    <tr>
+      <td class='darkrow3' align='left'><b></b></td>
+      <td class='darkrow3' nowrap="nowrap" align='left'>
+      
+        <!-- PM / EMAIL / WWW / MSGR -->
+      
+        <div align='left' class='darkrow3' style='float:left;width:auto'>
+        <a href='http://hustle-sa.ru/forum/index.php?s=1e76f48e3bb4f6320a128e8b8f36c9e8&amp;act=Msg&amp;CODE=04&amp;MID=3'><img src='style_images/1/p_pm.gif' border='0'  alt='PM' /></a><a href='http://www.denegin.ru' target='_blank'><img src='style_images/1/p_www.gif' border='0'  alt='Сайт пользователя' /></a><a href="javascript:PopUp('http://hustle-sa.ru/forum/index.php?s=1e76f48e3bb4f6320a128e8b8f36c9e8&amp;act=ICQ&amp;MID=3','Pager','450','330','0','1','1','1')"><img src='style_images/1/p_icq.gif' border='0'  alt='ICQ' /></a>
+        </div>
+        
+        <!-- REPORT / UP -->
+         
+        <div align='right'>
+         <a href='javascript:scroll(0,0);'><img src='style_images/1/p_up.gif' alt='Top' border='0' /></a>
+        </div>
+      </td>
+    </tr>
+    </table>
+    <div class='darkrow1' style='height:5px'><!-- --></div>
+    
+	<!--Begin Msg Number 23065-->
+    <table width='100%' border='0' cellspacing='1' cellpadding='3'>
+    <tr>
+      <td align='center' valign='middle' class='row4' width="1%"><a name='entry23065'></a><span class='normalname'><a href="javascript:ins('Denegin')">Denegin</a></span></td>
+        <td class='row4' valign='top' width="99%">
+        
+        <!-- POSTED DATE DIV -->
+        
+        <div align='left' class='row4' style='float:left;padding-top:4px;padding-bottom:4px'>
+        <span class='postdetails'><b><a title="Показать ссылку этой темы" href="#" onclick="link_to_post(23065); return false;" style="text-decoration:underline">Дата</a></b> 7.09.2016 - 00:50</span>
+        </div>
+        
+        <!-- REPORT / DELETE / EDIT / QUOTE DIV -->
+        
+        <div align='right'>
+        <a href='http://hustle-sa.ru/forum/index.php?s=1e76f48e3bb4f6320a128e8b8f36c9e8&amp;act=Post&amp;CODE=06&amp;f=6&amp;t=3761&amp;p=23065'><img src='style_images/1/p_quote.gif' border='0'  alt='Цитировать сообщение' /></a>
+      </div>
+      
+      </td>
+    </tr>
+    <tr>
+      <td align='center' valign='top' class='post1'>
+        <span class='postdetails'><br /><br /><img src='http://hustle-sa.ru/forum/uploads/av-3.jpg' border='0' width='80' height='74' alt='' /><br /><br />
+        Мудрец<br />
+        <img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><br /><br />
+        <a href='http://hustle-sa.ru/forum/index.php?s=1e76f48e3bb4f6320a128e8b8f36c9e8&amp;showuser=3'>Профиль</a><br />
+        Группа: Администраторы<br />
+        Сообщений: 7365<br />
+        Пользователь №: 3<br />
+        Регистрация: 13.02.2008<br />
+        <br />
+        <br /><br />
+         </span><br />
+        <!--$ author[field_1]-->
+        <img src='style_images/1/spacer.gif' alt='' width='160' height='1' /><br /> 
+      </td>
+      <td width='100%' valign='top' class='post1'>
+        <!-- THE POST 23065 -->
+        <div class='postcolor'> Почему-то не выложилось с первого раза сообщение, поэтому дублирую:<br /><br />По итогам конкурса &#39;Летняя Динамиада&#39;, прошедшего 27.08.2016, посчитаны баллы танцоров.	<br /> 	<br />Произошли следующие изменения:	<br /> 	<br />1) Впервые выступавшим танцорам присвоены коды танцоров.	<br /> 	<br />2) В номинации &#39;хастл&#39; согласно набранным баллам следующим танцорам присвоены классы:	<br />05920	Гладырева Ольга Витальевна (Движение). В номин.&quot;хастл&quot; - класс &quot;C&quot;.<br />08463	Егорова Юлия Викторовна (AlphaDance). В номин.&quot;хастл&quot; - класс &quot;D&quot;.<br />08440	Коротков Дмитрий Вячеславович (AlphaDance). В номин.&quot;хастл&quot; - класс &quot;D&quot;.<br />07637	Курсов Денис Леонидович (Движение). В номин.&quot;хастл&quot; - класс &quot;C&quot;.<br />08445	Логинов Алексей Викторович (Ivara). В номин.&quot;хастл&quot; - класс &quot;D&quot;.<br />08601	Мелла Хамед Алан Лезгинович (Движение). В номин.&quot;хастл&quot; - класс &quot;D&quot;.<br />06941	Остапенко Ирина Юрьевна (Движение). В номин.&quot;хастл&quot; - класс &quot;D&quot;.<br />03159	Паршукова Галина Сергеевна (Динамика). В номин.&quot;хастл&quot; - класс &quot;C&quot;.<br />07050	Перевалова Ирина Сергеевна (Движение). В номин.&quot;хастл&quot; - класс &quot;C&quot;. В номин.&quot;DnD&quot; - класс &quot;RS&quot;.<br />07700	Политова Ксения Владимировна (AlphaDance). В номин.&quot;хастл&quot; - класс &quot;D&quot;.<br />08288	Соколова Надежда Александровна (Ivara). В номин.&quot;хастл&quot; - класс &quot;D&quot;.<br />05888	Суминов Антон Сергеевич (Движение). В номин.&quot;хастл&quot; - класс &quot;C&quot;.<br />08280	Томилов Александр Сергеевич (Ivara). В номин.&quot;хастл&quot; - класс &quot;D&quot;.<br />08464	Черепанова Жанна Валерьевна (YouDance). В номин.&quot;хастл&quot; - класс &quot;D&quot;.<br />08850	Беликов Александр Валерьевич (AlphaDance). В номин.&quot;хастл&quot; - класс &quot;D&quot;.<br />08857	Мызникова Анна Александровна (Ivara). В номин.&quot;хастл&quot; - класс &quot;D&quot;.<br /> 	<br />3) В номинации &#39;хастл-ДнД&#39; согласно набранным баллам следующим танцорам присвоены классы:	<br />05885	Афонский Александр Сергеевич (Движение). В номин.&quot;DnD&quot; - класс &quot;RS&quot;.<br />08002	Баринова Мария Александровна (Динамика). В номин.&quot;DnD&quot; - класс &quot;RS&quot;.<br />07645	Билялова Гюльнара Максутовна (Движение). В номин.&quot;DnD&quot; - класс &quot;RS&quot;.<br />01857	Брюхова Виктория Евгеньевна (YouDance). В номин.&quot;DnD&quot; - класс &quot;M&quot;.<br />07316	Захаржевский Виталий Викторович (Ivara). В номин.&quot;DnD&quot; - класс &quot;RS&quot;.<br />04821	Камаев Андрей Владимирович (Динамика). В номин.&quot;DnD&quot; - класс &quot;M&quot;.<br />06563	Нечаева Алена Сергеевна (DanceLab). В номин.&quot;DnD&quot; - класс &quot;RS&quot;.<br />07050	Перевалова Ирина Сергеевна (Движение). В номин.&quot;DnD&quot; - класс &quot;RS&quot;. В номин.&quot;хастл&quot; - класс &quot;C&quot;.<br />07427	Чудеса Полина Каримжанова (Движение,Динамика). В номин.&quot;DnD&quot; - класс &quot;RS&quot;.<br /> 	<br />Актуальную базу результатов и баллов можно посмотреть и скачать по адресу <a href='http://hustle-sa.ru/rating' target='_blank'>http://hustle-sa.ru/rating</a>	  </div>
+        <br /><br />--------------------<br />
+<div class='signature'><b><a href='http://www.denegin.ru/hustle' target='_blank'>Руководитель и преподаватель Хастл-Центра</a></b></div>
+        <!-- THE POST -->
+      </td>
+    </tr>
+    <tr>
+      <td class='darkrow3' align='left'><b></b></td>
+      <td class='darkrow3' nowrap="nowrap" align='left'>
+      
+        <!-- PM / EMAIL / WWW / MSGR -->
+      
+        <div align='left' class='darkrow3' style='float:left;width:auto'>
+        <a href='http://hustle-sa.ru/forum/index.php?s=1e76f48e3bb4f6320a128e8b8f36c9e8&amp;act=Msg&amp;CODE=04&amp;MID=3'><img src='style_images/1/p_pm.gif' border='0'  alt='PM' /></a><a href='http://www.denegin.ru' target='_blank'><img src='style_images/1/p_www.gif' border='0'  alt='Сайт пользователя' /></a><a href="javascript:PopUp('http://hustle-sa.ru/forum/index.php?s=1e76f48e3bb4f6320a128e8b8f36c9e8&amp;act=ICQ&amp;MID=3','Pager','450','330','0','1','1','1')"><img src='style_images/1/p_icq.gif' border='0'  alt='ICQ' /></a>
+        </div>
+        
+        <!-- REPORT / UP -->
+         
+        <div align='right'>
+         <a href='javascript:scroll(0,0);'><img src='style_images/1/p_up.gif' alt='Top' border='0' /></a>
+        </div>
+      </td>
+    </tr>
+    </table>
+    <div class='darkrow1' style='height:5px'><!-- --></div>
+          <!--IBF.QUICK_REPLY_NEW-->
+      <!--IBF.TOPIC_ACTIVE-->
+      <div class="activeuserstrip" align="center">&laquo; <a href='http://hustle-sa.ru/forum/index.php?s=1e76f48e3bb4f6320a128e8b8f36c9e8&amp;showtopic=3761&amp;view=old'>Предыдущая тема</a> &#0124; <strong><a href='http://hustle-sa.ru/forum/index.php?s=1e76f48e3bb4f6320a128e8b8f36c9e8&amp;showforum=6'>Конкурсы и соревнования АСХ</a></strong> &#0124; <a href='http://hustle-sa.ru/forum/index.php?s=1e76f48e3bb4f6320a128e8b8f36c9e8&amp;showtopic=3761&amp;view=new'>Следующая тема</a> &raquo;</div>
+</div>
+ 
+<br />
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+ <td align='left' width="20%" nowrap="nowrap"><a href="javascript:ShowHide('topic_open','topic_closed')" title="Раскрыть опции темы"><img src='style_images/1/t_options.gif' border='0'  alt='Опции темы' /></a></td>
+ <td align='right' width="80%"><a href='http://hustle-sa.ru/forum/index.php?s=1e76f48e3bb4f6320a128e8b8f36c9e8&amp;act=Post&amp;CODE=02&amp;f=6&amp;t=3761'><img src='style_images/1/t_reply.gif' border='0'  alt='Ответ в тему' /></a><!--IBF.QUICK_REPLY_CLOSED--><a href='http://hustle-sa.ru/forum/index.php?s=1e76f48e3bb4f6320a128e8b8f36c9e8&amp;act=Post&amp;CODE=00&amp;f=6' title='Создание новой темы'><img src='style_images/1/t_new.gif' border='0'  alt='Создание новой темы' /></a><a href='http://hustle-sa.ru/forum/index.php?s=1e76f48e3bb4f6320a128e8b8f36c9e8&amp;act=Post&amp;CODE=10&amp;f=6'><img src='style_images/1/t_poll.gif' border='0'  alt='Создание опроса' /></a></td>
+</tr>
+</table>
+
+<!--IBF.QUICK_REPLY_OPEN-->
+<div id='topic_open' style='display:none;z-index:2;'>
+    <div class="tableborder">
+	  <div class='maintitle'><img src='style_images/1/nav_m.gif' border='0'  alt='&gt;' width='8' height='8' />&nbsp;<a href="javascript:ShowHide('topic_open','topic_closed')">Скрыть опции темы</a></div>
+	  <div class='tablepad'>
+	   <b><a href='http://hustle-sa.ru/forum/index.php?s=1e76f48e3bb4f6320a128e8b8f36c9e8&amp;act=Track&amp;f=6&amp;t=3761'>Подписаться на тему</a></b>
+	   <br />
+	   <span class='desc'>Уведомление на e-mail об ответах в тему, во время Вашего отсутствия на форуме.</span>
+	   <br /><br />
+	   <b><a href='http://hustle-sa.ru/forum/index.php?s=1e76f48e3bb4f6320a128e8b8f36c9e8&amp;act=Track&amp;f=6&amp;type=forum'>Подписка на этот форум</a></b>
+	   <br />
+	   <span class='desc'>Уведомление на e-mail о новых темах на форуме, во время Вашего отсутствия на форуме.</span>
+	   <br /><br />
+	   <b><a href='http://hustle-sa.ru/forum/index.php?s=1e76f48e3bb4f6320a128e8b8f36c9e8&amp;act=Print&amp;client=choose&amp;f=6&amp;t=3761'>Скачать/Распечатать тему</a></b>
+	   <br />
+	   <span class='desc'>Скачивание темы в различных форматах или просмотр версии для печати этой темы.</span>
+	 </div>
+   </div>
+</div>
+
+<br />
+
+<div align='right'><form onsubmit="if(document.jumpmenu.f.value == -1){return false;}" action='http://hustle-sa.ru/forum/index.php?s=1e76f48e3bb4f6320a128e8b8f36c9e8&amp;act=SF' method='get' name='jumpmenu'>
+			             <input type='hidden' name='act' value='SF' />
+<input type='hidden' name='s' value='1e76f48e3bb4f6320a128e8b8f36c9e8' />
+			             <select name='f' onchange="if(this.options[this.selectedIndex].value != -1){ document.jumpmenu.submit() }" class='forminput'>
+			             <optgroup label="Перейти на сайт">
+			              <option value='sj_home'>Главная страница форума</option>
+			              <option value='sj_search'>Поиск</option>
+			              <option value='sj_help'>Помощь</option>
+			             </optgroup>
+			             <optgroup label="Переход по форумам"><option value='-1'>Ассоциация спортивного хастла</option>
+<option value="21">&nbsp;&nbsp;- Правила форума, Правила АСХ, решения РК АСХ </option><!--fx:21-->
+<option value="6" selected="selected">&nbsp;&nbsp;- Конкурсы и соревнования АСХ </option><!--fx:6-->
+<option value="4">&nbsp;&nbsp;- База данных и рейтинг танцоров, заявления на изменения в базе данных </option><!--fx:4-->
+<option value="8">&nbsp;&nbsp;---- Неправильные заявления, дубли </option>
+<option value="18">&nbsp;&nbsp;- Вопросы к РК АСХ, протесты, обсуждения документов и решений РК АСХ </option><!--fx:18-->
+</optgroup>
+</select>&nbsp;<input type='submit' value='ок!' class='forminput' /></form></div>
+
+<br /> 
+ 
+<!-- Copyright Information -->
+
+<br><div align='center' class='copyright'>Powered by <a href="http://www.invisionboard.com" target='_blank'>Invision Power Board</a>(U) v1.3 Final &copy; 2003 &nbsp;<a href='http://www.invisionpower.com' target='_blank'>IPS, Inc.</a><br>Русский Модифицированный IPB v1.3 Final &copy 2003 <a href='http://www.bestfilez.net' target='_blank'>BesTFileZ.Net</a> &amp; <a href='http://www.ibresource.ru' target='_blank'>IBR Team</a>
+		<br>Адаптация php5/MySql5<a href='http://psihiteam.narod.ru' target='_blank'>Lazutov Alexander [psihiteam]</a></div>
+		
+</div>
+</body> 
+</html>
