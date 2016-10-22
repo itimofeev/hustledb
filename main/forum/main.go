@@ -12,7 +12,9 @@ func main() {
 
 	res := forum.GetTextFromHtml(data)
 
-	fmt.Println("!!!", res) //TODO remove
+	results := forum.ParseForum([]byte(res))
+
+	fmt.Printf("!!!%+v\n", results)
 }
 
 //err := ioutil.WriteFile("/Users/ilyatimofee/prog/axxonsoft/src/github.com/itimofeev/hustlesa/tools/forum/3761.html", data, 0644)
