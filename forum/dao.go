@@ -1,8 +1,8 @@
 package forum
 
 import (
+	"errors"
 	"fmt"
-	"github.com/iris-contrib/errors"
 	"github.com/itimofeev/hustlesa/util"
 	"gopkg.in/mgutz/dat.v1/sqlx-runner"
 	"strings"

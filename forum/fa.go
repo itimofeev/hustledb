@@ -36,10 +36,10 @@ func initRegexps() {
 	stageFinalRegexp = compileRegexp("ФИНАЛ")                                       //1/2 финала | ФИНАЛ | 1/16 финала
 	placeRegexp = compileRegexp("\\d+(-\\d+)? место-№\\d+-.*")                      //7-11 место-№510-Потехин Алексей Викторович(6117,AlphaDance,D)-Степнова Наталья Андреевна(6398,AlphaDance,D) | 6 место-№553-Фадеев Алексей Сергеевич(8599,Движение,D,Bg)
 
-	techStageRegexp = compileRegexp(".*: 1/\\d+ финала")                        // D класс: 1/8 финала | DnD Beginner (ДЕВУШКИ): 1/16 финала
-	techFinalStageRegexp = compileRegexp(".*ФИНАЛ")                             // DnD Beginner (ДЕВУШКИ): ФИНАЛ
-	techResult = compileRegexp(".*\\d+.*\\|.*\\|.*((==> выход в)||(место:)).*") //   502   | AB|CDE ==> выход в 1/8 финала || 579   | AD|   место: 23-30
-	techFinalResult = compileRegexp("^.*\\d+.*│(.*\\d.*)+│(.*│)+.*\\d+$")       //  687   | 1 5 4 2 6         │     5  │ 4 4 3 2 5         │     4  │                   │        │    9 │    4
+	techStageRegexp = compileRegexp(".*: 1/\\d+ финала")                           // D класс: 1/8 финала | DnD Beginner (ДЕВУШКИ): 1/16 финала
+	techFinalStageRegexp = compileRegexp(".*ФИНАЛ")                                // DnD Beginner (ДЕВУШКИ): ФИНАЛ
+	techResult = compileRegexp(".*\\d+.*\\|.*\\|.*((==> выход в)||(место:)).*")    //   502   | AB|CDE ==> выход в 1/8 финала || 579   | AD|   место: 23-30
+	techFinalResult = compileRegexp("^.*\\d+.*[│¦](.*\\d.*)+[│¦](.*[│¦])+.*\\d+$") //  687   | 1 5 4 2 6         │     5  │ 4 4 3 2 5         │     4  │                   │        │    9 │    4
 
 	tableBorder = compileRegexp("(-+\\+)+-+") //--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------
 

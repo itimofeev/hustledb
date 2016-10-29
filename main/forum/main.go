@@ -26,7 +26,7 @@ func main() {
 	filler := forum.NewForumDbFiller(forum.NewDao(db))
 	filler.FillDbInfo(results)
 
-	inserter := forum.NewDbInserter(db)
+	inserter := forum.NewDbInserter(forum.NewInsertDao(db))
 	inserter.Insert(results)
 
 	jsonData, err := json.Marshal(results)

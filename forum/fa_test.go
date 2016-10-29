@@ -44,6 +44,7 @@ func TestTechnicalState_ProcessLine(t *testing.T) {
 	assert.Equal(t, techPreFinalType, reflect.TypeOf(techPre.ProcessLine(fr, "--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------")))
 	assert.Equal(t, techPreFinalType, reflect.TypeOf(techPre.ProcessLine(fr, "        | Места за 1-й.     │ Место  │ Места за 2-й.     │ Место  │ Места за 3-й.     │ Место  │Сумма │Итоговое ")))
 	assert.Equal(t, techFinalType, reflect.TypeOf(techPre.ProcessLine(fr, "  637   | 2 2 1 2 5         │     2  │                   │        │                   │        │    2 │    2")))
+	assert.Equal(t, techFinalType, reflect.TypeOf(techPre.ProcessLine(fr, "  007   ¦ 1 3 1 1 2         ¦     1  ¦                   ¦        ¦                   ¦        ¦   01 ¦    1")))
 
 	assert.Equal(t, techFinalType, reflect.TypeOf(techFinal.ProcessLine(fr, "  599   | 6 5 6 7 7         │     6  │                   │        │                   │        │    6 │    6")))
 	assert.Equal(t, judgeTeamType, reflect.TypeOf(techFinal.ProcessLine(fr, "--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------")))
@@ -71,4 +72,12 @@ func TestParseMainTitle(t *testing.T) {
 	assert.Equal(t, "Открытие сезона (г.Москва)", fr.Title)
 	assert.Equal(t, "ДК Буревестник, м.Сокольники", fr.Remaining)
 	assert.Equal(t, time.Date(2014, 9, 06, 0, 0, 0, 0, time.UTC), fr.Date)
+}
+
+func TestRegexpt(t *testing.T) {
+	r := compileRegexp("^.*\\d+.*[│¦](.*\\d.*)+[│¦](.*[│¦])+.*\\d+$")
+
+	line := "  007   ¦ 1 3 1 1 2         ¦     1  ¦                   ¦        ¦                   ¦        ¦   01 ¦    1"
+
+	assert.True(t, r.MatchString(line))
 }

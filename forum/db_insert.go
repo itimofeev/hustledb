@@ -1,17 +1,31 @@
 package forum
 
-import "gopkg.in/mgutz/dat.v1/sqlx-runner"
+import (
+	"fmt"
+)
 
-func NewDbInserter(db *runner.DB) *DbInserter {
+func NewDbInserter(dao InsertDao) *DbInserter {
 	return &DbInserter{
-		db: db,
+		dao: dao,
 	}
 }
 
 type DbInserter struct {
-	db *runner.DB
+	dao InsertDao
 }
 
-func (i *DbInserter) Insert(results *ForumResults) {
+func (in *DbInserter) Insert(results *ForumResults) {
+	in.clearRecordsForCompetitions(results.CompetitionId)
+	for i, jr := range results.JudgesResults {
+		in.insertPartition(i+1, results.CompetitionId, jr)
+	}
+}
 
+func (i *DbInserter) clearRecordsForCompetitions(compId int64) {
+	i.dao.DeletePartitionsByCompId(compId)
+}
+
+func (i *DbInserter) insertPartition(index int, compId int64, jt *JudgeTeam) {
+	partId := i.dao.CreatePartition(index, compId)
+	fmt.Println("!!!", partId) //TODO remove
 }
