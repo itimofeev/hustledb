@@ -131,3 +131,19 @@ func fixLetter(letter string) string {
 func isClass(letter string) bool {
 	return strings.Contains(jnjClasses, strings.ToLower(letter)) || strings.Contains(classicClasses, strings.ToLower(letter))
 }
+
+func parseNominationTitleCount(line string) (string, int) {
+	split := strings.Split(line, ".")
+	if len(split) != 2 {
+		return line, -1
+	}
+
+	countString := split[1]
+	countString = strings.Replace(countString, "Участников:", "", 1)
+	countString = strings.Replace(countString, "Участвовало", "", 1)
+	countString = strings.Replace(countString, "пар:", "", 1)
+	countString = strings.TrimSpace(countString)
+
+	count := util.Atoi(countString)
+	return split[0], count
+}

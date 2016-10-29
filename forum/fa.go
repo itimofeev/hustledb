@@ -6,7 +6,12 @@ import (
 	"fmt"
 	"github.com/itimofeev/hustlesa/util"
 	"regexp"
+	"strings"
+	"sync"
+	"time"
 )
+
+var once = sync.Once{}
 
 var (
 	judgeRegexp          *regexp.Regexp
@@ -20,11 +25,12 @@ var (
 	techFinalResult      *regexp.Regexp
 	tableBorder          *regexp.Regexp
 	resultsRegexp        *regexp.Regexp
+	mainTitleRegexp      *regexp.Regexp
 )
 
 func initRegexps() {
 	judgeRegexp = compileRegexp("\\d \\(.\\) - [\\W ]+") //1 (A) - Милованов Александр
-	resultsRegexp = compileRegexp("\\s*Результаты турнира:")
+	resultsRegexp = compileRegexp("\\s*Результаты турнира[,\\d\\W ]*:")
 	participantRegexp = compileRegexp(".* ((Участников)||(Участвовало.пар)):.\\d+") //DnD Beginner (ПАРТНЕРЫ). Участников: 49 |  DnD Beginner (ДЕВУШКИ). Участников: 85 | E класс. Участвовало пар: 23
 	stageRegexp = compileRegexp("1/\\d+ финала")                                    //1/2 финала | ФИНАЛ | 1/16 финала
 	stageFinalRegexp = compileRegexp("ФИНАЛ")                                       //1/2 финала | ФИНАЛ | 1/16 финала
@@ -36,6 +42,8 @@ func initRegexps() {
 	techFinalResult = compileRegexp("^.*\\d+.*│(.*\\d.*)+│(.*│)+.*\\d+$")       //  687   | 1 5 4 2 6         │     5  │ 4 4 3 2 5         │     4  │                   │        │    9 │    4
 
 	tableBorder = compileRegexp("(-+\\+)+-+") //--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------
+
+	mainTitleRegexp = compileRegexp("\\(\\d{4}-\\d{2}-\\d{2}\\) [\\W\\s.\\-\\d()]+,.*") //(2016-09-17) Открытие сезона 2016-2017г., г. Москва. УТВЕРЖДЕНО РК АСХ || (2014-09-06) Открытие сезона (г.Москва), ДК Буревестник, м.Сокольники
 }
 
 func compileRegexp(rx string) *regexp.Regexp {
@@ -44,8 +52,8 @@ func compileRegexp(rx string) *regexp.Regexp {
 	return compiled
 }
 
-func ParseForum(data []byte) *ForumResults {
-	initRegexps()
+func ParseForum(data []byte, mainTitle string) *ForumResults {
+	once.Do(initRegexps)
 
 	scanner := bufio.NewScanner(bytes.NewReader(data))
 
@@ -58,7 +66,32 @@ func ParseForum(data []byte) *ForumResults {
 		state = state.ProcessLine(results, curLine)
 	}
 
+	parseMainTitle(results, mainTitle)
+
 	return results
+}
+
+//(2016-09-17) Открытие сезона 2016-2017г., г. Москва. УТВЕРЖДЕНО РК АСХ
+//(2014-09-06) Открытие сезона (г.Москва), ДК Буревестник, м.Сокольники
+func parseMainTitle(results *ForumResults, mainTitle string) {
+	once.Do(initRegexps)
+
+	mainTitle = strings.Replace(mainTitle, ", УТВЕРЖДЕНО РК АСХ", ". УТВЕРЖДЕНО РК АСХ", 1)
+	mainTitle = strings.TrimSpace(mainTitle)
+	util.CheckMatchesRegexp(mainTitleRegexp.String(), mainTitle)
+
+	closeIndex := strings.Index(mainTitle, ")")
+	dateStr := mainTitle[1:closeIndex]
+
+	layout := "2006-01-02"
+	date, err := time.Parse(layout, dateStr)
+	util.CheckErr(err, "Time parse")
+	results.Date = date
+
+	commaIndex := strings.Index(mainTitle, ", ")
+	results.Title = strings.TrimSpace(mainTitle[closeIndex+1 : commaIndex])
+
+	results.Remaining = mainTitle[commaIndex+2:]
 }
 
 type BeginState struct {
@@ -75,6 +108,8 @@ type TechnicalFinalState struct {
 }
 
 func (s *BeginState) ProcessLine(fr *ForumResults, line string) FAState {
+	once.Do(initRegexps)
+
 	switch {
 	case resultsRegexp.MatchString(line):
 		return &JudgeTeamState{}

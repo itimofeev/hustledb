@@ -8,6 +8,7 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"strings"
 )
 
 func GetUrlContent(url string) []byte {
@@ -29,7 +30,17 @@ func GetUrlContent(url string) []byte {
 	return body
 }
 
-func GetTextFromHtml(body []byte) string {
+func GetMainContentFromForumHtml(body []byte) string {
+	return getTextOfNodesBySelector(body, ".postcolor")
+}
+
+func GetMainTitleFromForumHtml(body []byte) string {
+	mainTitle := getTextOfNodesBySelector(body, ".maintitle")
+	mainTitle = strings.Replace(mainTitle, "Скрыть опции темы", "", 1)
+	return strings.TrimSpace(mainTitle)
+}
+
+func getTextOfNodesBySelector(body []byte, selector string) string {
 	doc, err := goquery.NewDocumentFromReader(bytes.NewBuffer(body))
 	if err != nil {
 		log.Fatal(err)
@@ -38,7 +49,7 @@ func GetTextFromHtml(body []byte) string {
 	wholePage := ""
 
 	// Find the review items
-	doc.Find(".postcolor").Each(func(i int, s *goquery.Selection) {
+	doc.Find(selector).Each(func(i int, s *goquery.Selection) {
 		wholePage += getTextFromSelection(s)
 	})
 

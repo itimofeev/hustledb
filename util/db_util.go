@@ -1,4 +1,4 @@
-package main
+package util
 
 import (
 	"bufio"
@@ -12,16 +12,18 @@ import (
 	"os"
 	"strings"
 	"time"
-
-	"github.com/itimofeev/hustlesa/parser"
-	"github.com/itimofeev/hustlesa/server"
-	"net/http"
 )
+
+func GetDb() *runner.DB {
+	initEnvironment()
+	config := ReadConfig()
+	return initDb(config)
+}
 
 func initDb(config Config) *runner.DB {
 	db, err := sql.Open("postgres", config.Db().URL)
 
-	parser.CheckErr(err, "Open db")
+	CheckErr(err, "Open db")
 
 	runner.MustPing(db)
 
@@ -53,7 +55,7 @@ func initDb(config Config) *runner.DB {
 	return runner.NewDB(db, "postgres")
 }
 
-//Устанавливает переменные окружения, заданные в testing.env.list
+//Устанавливает переменные окружения, заданные в local.env
 func initEnvironment() {
 	file, err := os.Open("/Users/ilyatimofee/prog/axxonsoft/src/github.com/itimofeev/hustlesa/tools/local.env")
 	if err != nil {
@@ -75,18 +77,4 @@ func initEnvironment() {
 	if err := scanner.Err(); err != nil {
 		log.Fatal(err)
 	}
-}
-
-func main() {
-	//initEnvironment()
-
-	config := ReadConfig()
-
-	db := initDb(config)
-
-	//res := parser.Parse("config.App().JsonFilesPath")
-	//parser.InsertData(db, res)
-
-	log.Fatal(http.ListenAndServe(":8080", server.InitRouter(db)))
-
 }

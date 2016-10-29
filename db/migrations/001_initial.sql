@@ -40,7 +40,7 @@ CREATE TABLE dancer_club (
 CREATE TABLE competition (
        id BIGSERIAL PRIMARY KEY NOT NULL,
        title VARCHAR(256) NOT NULL,
-       date TIMESTAMP WITHOUT TIME ZONE NOT NULL,
+       date DATE NOT NULL,
        site VARCHAR(256)
 );
 

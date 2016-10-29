@@ -8,9 +8,9 @@ import (
 )
 
 // CheckErr check error is nil and if not panic with message
-func CheckErr(err error, msg string) {
+func CheckErr(err error, msg ...interface{}) {
 	if err != nil {
-		log.Panicln(msg, err)
+		log.Panicln(err, msg)
 	}
 }
 

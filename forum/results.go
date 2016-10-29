@@ -1,7 +1,14 @@
 package forum
 
+import "time"
+
 type ForumResults struct {
 	JudgesResults []*JudgeTeam
+	Date          time.Time
+	Title         string
+	Remaining     string
+
+	CompetitionId int64
 }
 
 type JudgeTeam struct {
@@ -17,6 +24,7 @@ type Judge struct {
 
 type Nomination struct {
 	Title           string
+	Count           int
 	Stages          []*Stage
 	TechStages      []*TechStage
 	FinalTechStage  string
@@ -72,8 +80,11 @@ func (fr *ForumResults) addJudge(line string) {
 func (fr *ForumResults) addNominationName(line string) {
 	lastJudgeResult := fr.JudgesResults[len(fr.JudgesResults)-1]
 
+	title, count := parseNominationTitleCount(line)
+
 	lastJudgeResult.Nominations = append(lastJudgeResult.Nominations, &Nomination{
-		Title: line,
+		Title: title,
+		Count: count,
 	})
 }
 

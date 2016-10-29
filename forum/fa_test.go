@@ -4,6 +4,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"reflect"
 	"testing"
+	"time"
 )
 
 var (
@@ -16,7 +17,6 @@ var (
 )
 
 func TestTechnicalState_ProcessLine(t *testing.T) {
-	initRegexps()
 	fr := &ForumResults{}
 
 	begin := &BeginState{}
@@ -29,6 +29,7 @@ func TestTechnicalState_ProcessLine(t *testing.T) {
 	assert.Equal(t, beginType, reflect.TypeOf(begin.ProcessLine(fr, "21.00 Окончание турнира  ")))
 
 	assert.Equal(t, judgeTeamType, reflect.TypeOf(begin.ProcessLine(fr, "Результаты турнира:")))
+	assert.Equal(t, judgeTeamType, reflect.TypeOf(begin.ProcessLine(fr, "Результаты турнира, 1 отделение:")))
 	assert.Equal(t, judgeTeamType, reflect.TypeOf(judge.ProcessLine(fr, "1 (A) - Милованов Александр")))
 	assert.Equal(t, placeType, reflect.TypeOf(judge.ProcessLine(fr, "C класс. Участвовало пар: 6")))
 	assert.Equal(t, placeType, reflect.TypeOf(place.ProcessLine(fr, "1/8 финала")))
@@ -46,4 +47,28 @@ func TestTechnicalState_ProcessLine(t *testing.T) {
 
 	assert.Equal(t, techFinalType, reflect.TypeOf(techFinal.ProcessLine(fr, "  599   | 6 5 6 7 7         │     6  │                   │        │                   │        │    6 │    6")))
 	assert.Equal(t, judgeTeamType, reflect.TypeOf(techFinal.ProcessLine(fr, "--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------")))
+}
+
+func TestParseMainTitle(t *testing.T) {
+	fr := &ForumResults{}
+
+	parseMainTitle(fr, "(2016-09-17) Открытие сезона 2016-2017г., г. Москва. УТВЕРЖДЕНО РК АСХ")
+	assert.Equal(t, "Открытие сезона 2016-2017г.", fr.Title)
+	assert.Equal(t, "г. Москва. УТВЕРЖДЕНО РК АСХ", fr.Remaining)
+	assert.Equal(t, time.Date(2016, 9, 17, 0, 0, 0, 0, time.UTC), fr.Date)
+
+	parseMainTitle(fr, "    (2016-10-22) Осенний кубок клуба Движение, г. Москва, УТВЕРЖДЕНО РК АСХ  ")
+	assert.Equal(t, "Осенний кубок клуба Движение", fr.Title)
+	assert.Equal(t, "г. Москва. УТВЕРЖДЕНО РК АСХ", fr.Remaining)
+	assert.Equal(t, time.Date(2016, 10, 22, 0, 0, 0, 0, time.UTC), fr.Date)
+
+	parseMainTitle(fr, "(2016-11-05) Огни Владимира, г. Владимир, УТВЕРЖДЕНО РК АСХ")
+	assert.Equal(t, "Огни Владимира", fr.Title)
+	assert.Equal(t, "г. Владимир. УТВЕРЖДЕНО РК АСХ", fr.Remaining)
+	assert.Equal(t, time.Date(2016, 11, 05, 0, 0, 0, 0, time.UTC), fr.Date)
+
+	parseMainTitle(fr, "(2014-09-06) Открытие сезона (г.Москва), ДК Буревестник, м.Сокольники")
+	assert.Equal(t, "Открытие сезона (г.Москва)", fr.Title)
+	assert.Equal(t, "ДК Буревестник, м.Сокольники", fr.Remaining)
+	assert.Equal(t, time.Date(2014, 9, 06, 0, 0, 0, 0, time.UTC), fr.Date)
 }
