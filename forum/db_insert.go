@@ -1,9 +1,5 @@
 package forum
 
-import (
-	"fmt"
-)
-
 func NewDbInserter(dao InsertDao) *DbInserter {
 	return &DbInserter{
 		dao: dao,
@@ -22,10 +18,19 @@ func (in *DbInserter) Insert(results *ForumResults) {
 }
 
 func (i *DbInserter) clearRecordsForCompetitions(compId int64) {
+	i.dao.DeleteJudgesByCompId(compId)
 	i.dao.DeletePartitionsByCompId(compId)
 }
 
 func (i *DbInserter) insertPartition(index int, compId int64, jt *JudgeTeam) {
 	partId := i.dao.CreatePartition(index, compId)
-	fmt.Println("!!!", partId) //TODO remove
+
+	for _, judge := range jt.Judges {
+		judge.PartitionId = partId
+		i.insertJudge(judge)
+	}
+}
+
+func (i *DbInserter) insertJudge(j *Judge) {
+	i.dao.CreateJudge(j)
 }

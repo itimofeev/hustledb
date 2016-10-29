@@ -17,9 +17,12 @@ type JudgeTeam struct {
 }
 
 type Judge struct {
-	DancerId int64
-	Letter   string
+	ID       int64  `db:"id"`
+	DancerId int64  `db:"dancer_id"`
+	Letter   string `db:"letter"`
 	Title    string
+
+	PartitionId int64 `db:"partition_id"`
 }
 
 type Nomination struct {
