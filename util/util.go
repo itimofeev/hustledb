@@ -1,6 +1,7 @@
 package util
 
 import (
+	"encoding/json"
 	"fmt"
 	"log"
 	"regexp"
@@ -32,4 +33,10 @@ func Atoi(s string) int {
 	r, err := strconv.Atoi(s)
 	CheckErr(err, "unable to parse string to int"+s)
 	return r
+}
+
+func PrintJson(i interface{}) {
+	j, err := json.Marshal(i)
+	CheckErr(err)
+	fmt.Println("JSON: ", string(j))
 }

@@ -32,15 +32,15 @@ func Parse(dirName string) model.RawParsingResults {
 	jnjNominations := make([]model.RawNomination, 0)
 	compResults := make([]model.RawCompetitionResult, 0)
 	jnjResults := make([]model.RawCompetitionResult, 0)
-	loadFromJSON(dirName+"clubs.json", &clubs)
-	loadFromJSON(dirName+"dancers.json", &dancers)
-	loadFromJSON(dirName+"dancerClubs.json", &dancerClubs)
-	loadFromJSON(dirName+"competitions.json", &competitions)
-	loadFromJSON(dirName+"nominations.json", &nominations)
-	loadFromJSON(dirName+"competitionsResults.json", &compResults)
-	loadFromJSON(dirName+"jnjCompetitions.json", jnjCompetitions)
-	loadFromJSON(dirName+"jnjNominations.json", jnjNominations)
-	loadFromJSON(dirName+"jnjResults.json", jnjResults)
+	LoadFromJSON(dirName+"clubs.json", &clubs)
+	LoadFromJSON(dirName+"dancers.json", &dancers)
+	LoadFromJSON(dirName+"dancerClubs.json", &dancerClubs)
+	LoadFromJSON(dirName+"competitions.json", &competitions)
+	LoadFromJSON(dirName+"nominations.json", &nominations)
+	LoadFromJSON(dirName+"competitionsResults.json", &compResults)
+	LoadFromJSON(dirName+"jnjCompetitions.json", &jnjCompetitions)
+	LoadFromJSON(dirName+"jnjNominations.json", &jnjNominations)
+	LoadFromJSON(dirName+"jnjResults.json", &jnjResults)
 
 	clubs = fixClubs(clubs)
 	dancers = fixDancers(dancers)
@@ -200,7 +200,8 @@ func fixJnjResults(results []model.RawCompetitionResult) []model.RawCompetitionR
 }
 
 func fixJnjResult(result *model.RawCompetitionResult) *model.RawCompetitionResult {
-	s := result.Result
+	res := result.Result
+	s := res
 	s = doCleanJnj(s)
 	split := strings.Split(s, ")")
 
@@ -213,8 +214,9 @@ func fixJnjResult(result *model.RawCompetitionResult) *model.RawCompetitionResul
 		placesStr = split[0]
 	}
 
-	className := placesStr[:1]
-	placesSplit := strings.Split(placesStr[1:], "/")
+	digitIndex := strings.IndexAny(placesStr, "0123456789")
+	className := placesStr[:digitIndex]
+	placesSplit := strings.Split(placesStr[digitIndex:], "/")
 	placeSplitOnPlus := strings.Split(placesSplit[1], "+")
 
 	points := 0
@@ -307,8 +309,8 @@ func fixJnjNomination(nomination *model.RawNomination) *model.RawNomination {
 	nomination.Type = "NEW_JNJ"
 	nomination.MaleCount = maleCount
 	nomination.FemaleCount = femaleCount
-	nomination.MinClass = minClass
-	nomination.MaxClass = maxClass
+	nomination.MinClass = uncompressJnjClass(minClass)
+	nomination.MaxClass = uncompressJnjClass(maxClass)
 
 	return nomination
 }
@@ -317,9 +319,11 @@ func doCleanJnj(s string) string {
 	s = strings.Replace(s, " ", "", -1)
 	s = strings.Replace(s, "уч.", "", -1)
 	s = strings.Replace(s, "B-RS1", "BG-RS1", -1)
+	s = strings.Replace(s, "S-Ch10/11", "S-C10/11", -1)
 	s = strings.Replace(s, "Ch10/11", "S10/11", -1)
 	s = strings.Replace(s, "B33/34", "BG33/34", -1)
 	s = strings.Replace(s, "BGG", "B", -1)
+	s = strings.Replace(s, "BgG", "B", -1)
 	s = strings.Replace(s, "BG", "B", -1)
 	s = strings.Replace(s, "Bg", "B", -1)
 	s = strings.Replace(s, "RS", "R", -1)
@@ -802,9 +806,10 @@ func fillName2Club(name2club map[string]int64, clubs []model.RawClub) {
 	}
 }
 
-func loadFromJSON(fileName string, v interface{}) {
+func LoadFromJSON(fileName string, v interface{}) {
 	data, err := ioutil.ReadFile(fileName)
 	util.CheckErr(err, "Read file: "+fileName)
 
-	json.Unmarshal(data, v)
+	err = json.Unmarshal(data, v)
+	util.CheckErr(err, "Unmarshal json")
 }

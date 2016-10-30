@@ -15,12 +15,12 @@ import (
 )
 
 func GetDb() *runner.DB {
-	initEnvironment()
+	InitEnvironment()
 	config := ReadConfig()
-	return initDb(config)
+	return InitDb(config)
 }
 
-func initDb(config Config) *runner.DB {
+func InitDb(config Config) *runner.DB {
 	db, err := sql.Open("postgres", config.Db().URL)
 
 	CheckErr(err, "Open db")
@@ -56,7 +56,7 @@ func initDb(config Config) *runner.DB {
 }
 
 //Устанавливает переменные окружения, заданные в local.env
-func initEnvironment() {
+func InitEnvironment() {
 	file, err := os.Open("/Users/ilyatimofee/prog/axxonsoft/src/github.com/itimofeev/hustlesa/tools/local.env")
 	if err != nil {
 		log.Fatal(err)

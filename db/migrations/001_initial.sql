@@ -82,10 +82,10 @@ CREATE TABLE result (
          all_places_min_class VARCHAR(10) NOT NULL,
          all_places_max_class VARCHAR(10) NOT NULL,
 
-         CONSTRAINT result__class_check CHECK (class in ('A', 'B', 'C', 'D', 'E')),
+         CONSTRAINT result__class_check CHECK (class in ('A', 'B', 'C', 'D', 'E', 'BG', 'RS', 'M', 'S', 'Ch')),
 
-         CONSTRAINT result__all_places_min_class_check CHECK (all_places_min_class in ('A', 'B', 'C', 'D', 'E')),
-         CONSTRAINT result__all_places_max_class_check CHECK (all_places_max_class in ('A', 'B', 'C', 'D', 'E'))
+         CONSTRAINT result__all_places_min_class_check CHECK (all_places_min_class in ('A', 'B', 'C', 'D', 'E', 'BG', 'RS', 'M', 'S', 'Ch')),
+         CONSTRAINT result__all_places_max_class_check CHECK (all_places_max_class in ('A', 'B', 'C', 'D', 'E', 'BG', 'RS', 'M', 'S', 'Ch'))
 
 );
 
