@@ -17,6 +17,7 @@ CREATE TABLE f_judge (
 CREATE TABLE f_nomination (
     id BIGSERIAL PRIMARY KEY NOT NULL,
     partition_id BIGINT NOT NULL REFERENCES f_partition,
+    r_nomination_id BIGINT NOT NULL REFERENCES nomination,
     title VARCHAR(256) NOT NULL
 );
 
@@ -28,7 +29,10 @@ CREATE TABLE f_place (
     stage_title VARCHAR(128) NOT NULL,
     nomination_id BIGINT NOT NULL REFERENCES f_nomination,
     dancer1_id BIGINT NOT NULL REFERENCES dancer,
-    dancer2_id BIGINT REFERENCES dancer
+    dancer2_id BIGINT REFERENCES dancer,
+
+    result1_id BIGINT REFERENCES result,
+    result2_id BIGINT REFERENCES result
 );
 
 

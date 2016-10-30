@@ -50,6 +50,7 @@ func (i *DbInserter) insertJudge(j *Judge) {
 }
 
 func (i *DbInserter) insertNomination(compId int64, n *Nomination) *Nomination {
+	n.RNominationId = i.findNominationId(compId, n)
 	n = i.dao.CreateNomination(n)
 
 	for _, stage := range n.Stages {
@@ -57,12 +58,16 @@ func (i *DbInserter) insertNomination(compId int64, n *Nomination) *Nomination {
 		for _, place := range stage.Places {
 			place.NominationId = n.ID
 			place.StageTitle = stageTitle
+
 			place.Dancer1Id = *i.findDancerId(compId, place.Dancer1)
+			place.Result1Id = NewNullInt64(i.findResultId(compId, n.RNominationId, place.Dancer1Id))
 			dancer2Id := i.findDancerId(compId, place.Dancer2)
 			if dancer2Id == nil {
 				place.Dancer2Id = sql.NullInt64{Valid: false}
+				place.Result2Id = sql.NullInt64{Valid: false}
 			} else {
 				place.Dancer2Id = sql.NullInt64{Valid: true, Int64: *dancer2Id}
+				place.Result2Id = NewNullInt64(i.findResultId(compId, n.RNominationId, *dancer2Id))
 			}
 
 			i.dao.CreatePlace(place)
@@ -70,6 +75,26 @@ func (i *DbInserter) insertNomination(compId int64, n *Nomination) *Nomination {
 	}
 
 	return n
+}
+
+func NewNullInt64(i *int64) sql.NullInt64 {
+	if i == nil {
+		return sql.NullInt64{}
+	} else {
+		return sql.NullInt64{Valid: true, Int64: *i}
+	}
+}
+
+func (i *DbInserter) findNominationId(compId int64, n *Nomination) int64 {
+	somePlace := n.Stages[0].Places[0]
+	dancerId := *i.findDancerId(compId, somePlace.Dancer1)
+	isJnj := somePlace.Dancer2 == nil
+
+	result := i.dao.FindResult(compId, dancerId, isJnj)
+
+	fmt.Printf("For comp: %d, nom: %s found result: %s and nomination: %d\n", compId, n.Title, result.Result, result.NominationID)
+
+	return result.NominationID
 }
 
 func (i *DbInserter) findDancerId(compId int64, dancer *Dancer) *int64 {
@@ -89,6 +114,10 @@ func (i *DbInserter) findDancerId(compId int64, dancer *Dancer) *int64 {
 	}
 
 	return dancerId
+}
+
+func (i *DbInserter) findResultId(compId, nomId, dancerId int64) *int64 {
+	return i.dao.FindResultNom(compId, nomId, dancerId)
 }
 
 func parseStageTitle(stage *Stage) string {

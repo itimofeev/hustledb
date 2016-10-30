@@ -2,6 +2,7 @@ package forum
 
 import (
 	"fmt"
+	"github.com/itimofeev/hustlesa/model"
 	"github.com/itimofeev/hustlesa/util"
 	"gopkg.in/mgutz/dat.v1/sqlx-runner"
 	"strings"
@@ -23,6 +24,8 @@ type InsertDao interface {
 	CreateNomination(n *Nomination) *Nomination
 	CreatePlace(p *Place) *Place
 	FindDancer(compId int64, dTitle string) *int64
+	FindResult(compId int64, dancerId int64, isJnj bool) *model.RawCompetitionResult
+	FindResultNom(compId, nomId, dancerId int64) *int64
 }
 
 type InsertDaoImpl struct {
@@ -104,7 +107,7 @@ func (d *InsertDaoImpl) CreateJudge(judge *Judge) *Judge {
 func (d *InsertDaoImpl) CreateNomination(nomination *Nomination) *Nomination {
 	err := d.db.
 		InsertInto("f_nomination").
-		Columns("title", "partition_id").
+		Columns("title", "partition_id", "r_nomination_id").
 		Record(nomination).
 		Returning("id").
 		QueryScalar(&nomination.ID)
@@ -144,11 +147,57 @@ func (d *InsertDaoImpl) FindDancer(compId int64, dTitle string) *int64 {
 func (d *InsertDaoImpl) CreatePlace(p *Place) *Place {
 	err := d.db.
 		InsertInto("f_place").
-		Columns("place_from", "place_to", "number", "stage_title", "nomination_id", "dancer1_id", "dancer2_id").
+		Columns("place_from", "place_to", "number", "stage_title", "nomination_id", "dancer1_id", "dancer2_id", "result1_id", "result2_id").
 		Record(p).
 		Returning("id").
 		QueryScalar(&p.ID)
 	util.CheckErr(err, fmt.Sprintf("%+v", p))
 
 	return p
+}
+
+func (d *InsertDaoImpl) FindResult(compId int64, dancerId int64, isJnj bool) *model.RawCompetitionResult {
+	var results []model.RawCompetitionResult
+	err := d.db.SQL(`
+		SELECT
+		  *
+		FROM
+		  result r
+		WHERE
+		  r.competition_id = $1 AND r.dancer_id = $2 AND r.is_jnj = $3
+	`, compId, dancerId, isJnj).
+		QueryStructs(&results)
+
+	util.CheckErr(err)
+
+	if len(results) != 1 {
+		util.CheckOk(false, "Len != 1|", len(results), compId, dancerId)
+	}
+
+	return &results[0]
+}
+
+func (d *InsertDaoImpl) FindResultNom(compId, nomId, dancerId int64) *int64 {
+	var results []model.RawCompetitionResult
+	err := d.db.SQL(`
+		SELECT
+		  *
+		FROM
+		  result r
+		WHERE
+		  r.competition_id = $1 AND r.nomination_id = $2 AND r.dancer_id = $3
+	`, compId, nomId, dancerId).
+		QueryStructs(&results)
+
+	util.CheckErr(err)
+
+	if len(results) == 0 {
+		return nil
+	}
+
+	if len(results) > 1 {
+		util.CheckOk(false, "Len > 1|", len(results), compId, nomId, dancerId)
+	}
+
+	return &results[0].ID
 }

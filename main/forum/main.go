@@ -1,8 +1,6 @@
 package main
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/itimofeev/hustlesa/forum"
 	"github.com/itimofeev/hustlesa/util"
 	"io/ioutil"
@@ -21,6 +19,8 @@ func main() {
 
 	results := forum.ParseForum([]byte(res), mainTitle)
 
+	util.PrintJson(results)
+
 	db := util.GetDb()
 
 	filler := forum.NewForumDbFiller(forum.NewDao(db))
@@ -28,11 +28,6 @@ func main() {
 
 	inserter := forum.NewDbInserter(forum.NewInsertDao(db))
 	inserter.Insert(results)
-
-	jsonData, err := json.Marshal(results)
-	util.CheckErr(err, "")
-
-	fmt.Println("!!!", string(jsonData)) //TODO remove
 }
 
 func downloadUrlToFile(url, path string) {

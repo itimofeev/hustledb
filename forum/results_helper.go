@@ -105,7 +105,7 @@ func parseDancer(str string) *Dancer {
 	}
 
 	return &Dancer{
-		Id:    dancerId,
+		Id:    int64(dancerId),
 		Title: title,
 		Clubs: clubs,
 	}

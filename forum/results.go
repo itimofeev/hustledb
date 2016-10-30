@@ -37,11 +37,12 @@ type Nomination struct {
 	FinalTechStage  string
 	FinalTechResult []*FinalTechResult
 
-	PartitionId int64 `db:"partition_id"`
+	PartitionId   int64 `db:"partition_id"`
+	RNominationId int64 `db:"r_nomination_id"`
 }
 
 type Dancer struct {
-	Id           int
+	Id           int64
 	Title        string
 	ClassClassic string
 	ClassJnj     string
@@ -60,6 +61,9 @@ type Place struct {
 	NominationId int64         `db:"nomination_id"`
 	Dancer1Id    int64         `db:"dancer1_id"`
 	Dancer2Id    sql.NullInt64 `db:"dancer2_id"`
+
+	Result1Id sql.NullInt64 `db:"result1_id"`
+	Result2Id sql.NullInt64 `db:"result2_id"`
 }
 
 type Stage struct {
