@@ -35,6 +35,13 @@ CREATE TABLE f_place (
     result2_id BIGINT REFERENCES result
 );
 
+CREATE TABLE f_dancer_club (
+    dancer_id BIGINT NOT NULL REFERENCES dancer,
+    competition_id BIGINT NOT NULL REFERENCES competition,
+    club_id BIGINT NOT NULL REFERENCES club,
+
+    CONSTRAINT f_dancer_club_pk PRIMARY KEY(dancer_id, competition_id, club_id)
+);
 
 -- +migrate Down
 -- SQL section 'Down' is executed when this migration is rolled back

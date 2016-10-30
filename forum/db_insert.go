@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	"fmt"
 	"github.com/itimofeev/hustlesa/util"
+	"github.com/labstack/gommon/log"
 	"strings"
 )
 
@@ -22,6 +23,8 @@ func (in *DbInserter) Insert(results *ForumResults) {
 	for i, jr := range results.JudgesResults {
 		in.insertPartition(i+1, results.CompetitionId, jr)
 	}
+
+	in.insertDancerClubs(results)
 }
 
 func (i *DbInserter) clearRecordsForCompetitions(compId int64) {
@@ -141,4 +144,59 @@ func parseStageTitle(stage *Stage) string {
 	}
 
 	return "error"
+}
+
+func (i *DbInserter) insertDancerClubs(fr *ForumResults) {
+	dancerToClubs := make(map[int64]map[int64]bool)
+
+	places := getAllPlaces(fr)
+
+	for _, place := range places {
+		i.addDancerClubs(dancerToClubs, place.Dancer1Id, place.Dancer1.Clubs)
+		if place.Dancer2Id.Valid {
+			i.addDancerClubs(dancerToClubs, place.Dancer2Id.Int64, place.Dancer2.Clubs)
+		}
+	}
+
+	for dancerId, clubs := range dancerToClubs {
+		for clubId := range clubs {
+			i.dao.InsertDancerClub(fr.CompetitionId, dancerId, clubId)
+		}
+	}
+}
+
+func (i *DbInserter) addDancerClubs(dancerToClubs map[int64]map[int64]bool, dancerId int64, clubs []string) {
+	if dancerId == 0 {
+		log.Fatalf("Dancer %+v has no id", dancerId)
+		return
+	}
+
+	if _, ok := dancerToClubs[dancerId]; ok {
+		return
+	}
+
+	dancerClubs := make(map[int64]bool)
+	for _, clubName := range clubs {
+		clubId := i.dao.FindClubByName(clubName)
+		if clubId == nil {
+			log.Fatalf("Club %s not found", clubName)
+		}
+		dancerClubs[*clubId] = true
+	}
+
+	dancerToClubs[dancerId] = dancerClubs
+}
+
+func getAllPlaces(fr *ForumResults) []*Place {
+	places := make([]*Place, 0)
+	for _, jr := range fr.JudgesResults {
+		for _, nom := range jr.Nominations {
+			for _, stage := range nom.Stages {
+				for _, place := range stage.Places {
+					places = append(places, place)
+				}
+			}
+		}
+	}
+	return places
 }

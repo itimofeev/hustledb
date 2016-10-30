@@ -26,6 +26,9 @@ type InsertDao interface {
 	FindDancer(compId int64, dTitle string) *int64
 	FindResult(compId int64, dancerId int64, isJnj bool) *model.RawCompetitionResult
 	FindResultNom(compId, nomId, dancerId int64) *int64
+
+	FindClubByName(clubName string) *int64
+	InsertDancerClub(compId, dancerId, clubId int64)
 }
 
 type InsertDaoImpl struct {
@@ -200,4 +203,44 @@ func (d *InsertDaoImpl) FindResultNom(compId, nomId, dancerId int64) *int64 {
 	}
 
 	return &results[0].ID
+}
+
+func (d *InsertDaoImpl) FindClubByName(clubName string) *int64 {
+	if "Джемм (г.Омск)" == clubName { // костыль
+		clubName = "JAM (г.Омск)"
+	}
+
+	var club model.RawClub
+	err := d.db.SQL(`
+		SELECT
+			*
+		FROM
+			club
+		WHERE
+			name = $1
+	`, clubName).
+		QueryStruct(&club)
+
+	util.CheckErr(err, clubName)
+
+	return &club.ID
+}
+
+func (d *InsertDaoImpl) InsertDancerClub(compId, dancerId, clubId int64) {
+	s := struct {
+		CompId   int64 `db:"competition_id"`
+		DancerId int64 `db:"dancer_id"`
+		ClubId   int64 `db:"club_id"`
+	}{
+		CompId:   compId,
+		DancerId: dancerId,
+		ClubId:   clubId,
+	}
+	_, err := d.db.
+		InsertInto("f_dancer_club").
+		Columns("competition_id", "dancer_id", "club_id").
+		Record(s).
+		Exec()
+	util.CheckErr(err, fmt.Sprint(compId, dancerId, clubId))
+
 }
