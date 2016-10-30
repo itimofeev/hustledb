@@ -1,6 +1,9 @@
 package forum
 
-import "time"
+import (
+	"database/sql"
+	"time"
+)
 
 type ForumResults struct {
 	JudgesResults []*JudgeTeam
@@ -26,12 +29,15 @@ type Judge struct {
 }
 
 type Nomination struct {
-	Title           string
+	ID              int64  `db:"id"`
+	Title           string `db:"title"`
 	Count           int
 	Stages          []*Stage
 	TechStages      []*TechStage
 	FinalTechStage  string
 	FinalTechResult []*FinalTechResult
+
+	PartitionId int64 `db:"partition_id"`
 }
 
 type Dancer struct {
@@ -43,11 +49,17 @@ type Dancer struct {
 }
 
 type Place struct {
-	PlaceFrom int
-	PlaceTo   int
-	Number    int
+	ID        int64 `db:"id"`
+	PlaceFrom int   `db:"place_from"`
+	PlaceTo   int   `db:"place_to"`
+	Number    int   `db:"number"`
 	Dancer1   *Dancer
 	Dancer2   *Dancer
+
+	StageTitle   string        `db:"stage_title"`
+	NominationId int64         `db:"nomination_id"`
+	Dancer1Id    int64         `db:"dancer1_id"`
+	Dancer2Id    sql.NullInt64 `db:"dancer2_id"`
 }
 
 type Stage struct {

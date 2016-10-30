@@ -15,7 +15,7 @@ func CheckErr(err error, msg ...interface{}) {
 }
 
 // CheckOk check ok
-func CheckOk(ok bool, msg string) {
+func CheckOk(ok bool, msg ...interface{}) {
 	if !ok {
 		log.Panicln(msg)
 	}
