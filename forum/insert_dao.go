@@ -115,7 +115,7 @@ func (d *InsertDaoImpl) CreateNomination(nomination *Nomination) *Nomination {
 
 func (d *InsertDaoImpl) FindDancer(compId int64, dTitle string) *int64 {
 	dTitle2 := strings.Replace(dTitle, "ё", "е", -1)
-	var dancerId int64
+	var dancerIds []int64
 	err := d.db.SQL(`
 		SELECT
 			d.id
@@ -123,13 +123,22 @@ func (d *InsertDaoImpl) FindDancer(compId int64, dTitle string) *int64 {
 			dancer d
 		WHERE
 			($1 ilike '%' || d.name || '%' OR $2 ilike '%' || d.name || '%') AND
-			($1 ilike d.surname || '%' OR $2 ilike d.surname || '%' OR $1 ilike d.prev_surname || '%')
-	`, dTitle, dTitle2).
-		QueryScalar(&dancerId)
+			($1 ilike d.surname || '%' OR $2 ilike d.surname || '%' OR $1 ilike d.prev_surname || '%') AND
+			NOT EXISTS (
+				SELECT NULL
+		                FROM result r
+		                WHERE r.competition_id < $3 AND r.dancer_id = d.id
+			)
+	`, dTitle, dTitle2, compId).
+		QuerySlice(&dancerIds)
 
 	util.CheckErr(err, dTitle)
 
-	return &dancerId
+	if len(dancerIds) != 1 {
+		util.CheckOk(false, "Len != 1", len(dancerIds), dTitle)
+	}
+
+	return &dancerIds[0]
 }
 
 func (d *InsertDaoImpl) CreatePlace(p *Place) *Place {
