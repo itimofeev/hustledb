@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-const judgeLetters = "ABCDEFGHI"
+const judgeLetters = "ABCDEFGHIJKL"
 const classicClasses = "abcde"
 const jnjClasses = "bgrsmsch"
 
@@ -61,6 +61,7 @@ func parsePlace(str string) *Place {
 
 func parsePlaces(str string) (int, int) {
 	str = strings.TrimSpace(str)
+	str = strings.TrimLeft(str, "\"")
 	split := strings.Split(str, "-")
 
 	if len(split) == 1 {
@@ -82,6 +83,8 @@ func parseDancers(str string) (*Dancer, *Dancer) {
 //Беликов Александр Валерьевич(дебют,AlphaDance,E)
 //Потапов Николай Олегович(7008,Движение,Ivara,D,Bg)
 func parseDancer(str string) *Dancer {
+	str = strings.TrimLeft(str, "\"")
+	str = strings.TrimRight(str, "\"")
 	r, _ := regexp.Compile("\\(((\\d+)||(дебют)),")
 
 	indexOpen := r.FindStringIndex(str)
@@ -129,7 +132,9 @@ func fixLetter(letter string) string {
 }
 
 func isClass(letter string) bool {
-	return strings.Contains(jnjClasses, strings.ToLower(letter)) || strings.Contains(classicClasses, strings.ToLower(letter))
+	letter = strings.TrimSpace(letter)
+	letter = strings.ToLower(letter)
+	return strings.Contains(jnjClasses, letter) || strings.Contains(classicClasses, letter)
 }
 
 func parseNominationTitleCount(line string) (string, int) {

@@ -168,6 +168,31 @@ func (d *InsertDaoImpl) FindDancer(compId int64, dTitle string) *int64 {
 
 	util.CheckErr(err, dTitle)
 
+	if len(dancerIds) == 1 {
+		return &dancerIds[0]
+	}
+
+	dancerIds = make([]int64, 0)
+
+	err = d.db.SQL(`
+		SELECT
+			distinct d.id
+		FROM
+			dancer d
+		WHERE
+			($1 ilike '%' || d.name || ' %' OR $2 ilike '%' || d.name || ' %') AND
+			($1 ilike d.surname || '%' OR $2 ilike d.surname || '%' OR $1 ilike d.prev_surname || '%') AND
+			($1 ilike '% ' || d.patronymic OR $2 ilike '% ' || d.patronymic)
+			 AND NOT EXISTS (
+				SELECT NULL
+		                FROM result r
+		                WHERE r.competition_id < $3 AND r.dancer_id = d.id
+			)
+	`, dTitle, dTitle2, compId).
+		QuerySlice(&dancerIds)
+
+	util.CheckErr(err, dTitle)
+
 	if len(dancerIds) != 1 {
 		util.CheckOk(false, fmt.Sprintf("Dancer ids: %v, len: %d, title: %s, compId: %d", dancerIds, len(dancerIds), dTitle, compId))
 	}
@@ -236,6 +261,9 @@ func (d *InsertDaoImpl) FindResultNom(compId, nomId, dancerId int64) *int64 {
 func (d *InsertDaoImpl) FindClubByName(clubName string) *int64 {
 	if "Джемм (г.Омск)" == clubName { // костыль
 		clubName = "JAM (г.Омск)"
+	}
+	if "DalyDance" == clubName { // костыль
+		clubName = "Daily dance"
 	}
 
 	var club model.RawClub

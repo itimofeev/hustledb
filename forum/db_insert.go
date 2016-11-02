@@ -119,6 +119,10 @@ func (i *DbInserter) findDancerId(compId int64, dancer *Dancer) *int64 {
 		return &id
 	}
 
+	if dancer.Title == "Кузнецов Мхаил Андреевич" { // костыль
+		dancer.Title = "Кузнецов Михаил Андреевич"
+	}
+
 	dancerId := i.dao.FindDancer(compId, dancer.Title)
 
 	if dancerId == nil {
@@ -137,7 +141,10 @@ func (i *DbInserter) findResultId(compId, dancerId int64, nomId *int64) *int64 {
 
 func parseStageTitle(stage *Stage) string {
 	switch {
-	case stage.Title == "ФИНАЛ":
+	case stage.Title == "ФИНАЛ" ||
+		stage.Title == "Стрикли: ФИНАЛ" || // костыль
+		stage.Title == "Хастл Про/Aм ДС (партнерши): ФИНАЛ" ||
+		stage.Title == "Хастл Про/Aм ДС (партнеры): ФИНАЛ":
 		return "1/1"
 	case strings.Contains(stage.Title, "1/64 "):
 		return "1/64"
@@ -164,8 +171,10 @@ func (i *DbInserter) insertDancerClubs(fr *ForumResults) {
 	places := getAllPlaces(fr)
 
 	for _, place := range places {
+		//fmt.Printf("!!!Insert dancer club for dancer: %d clubs: %+v\n", place.Dancer1Id, place.Dancer1.Clubs)//TODO remove
 		i.addDancerClubs(dancerToClubs, place.Dancer1Id, place.Dancer1.Clubs)
 		if place.Dancer2Id.Valid {
+			//fmt.Printf("!!!Insert dancer club for dancer: %d clubs: %+v\n", place.Dancer2Id.Int64, place.Dancer2.Clubs)//TODO remove
 			i.addDancerClubs(dancerToClubs, place.Dancer2Id.Int64, place.Dancer2.Clubs)
 		}
 	}

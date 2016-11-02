@@ -734,6 +734,17 @@ func fixDancers(dancers []model.RawDancer) []model.RawDancer {
 		}
 	}
 
+	dancers = append(dancers, model.RawDancer{
+		ID:        -10,
+		Code:      "-00010",
+		Name:      "Елена",
+		Surname:   "Заварухина",
+		Sex:       "f",
+		PairClass: "E",
+		JnjClass:  "BG",
+		Source:    "20140927 Восходящие звезды, г. Санкт-Петербург (Судья)",
+	})
+
 	return dancers
 }
 
@@ -745,6 +756,7 @@ func fixClubs(clubs []model.RawClub) []model.RawClub {
 	clubs = append(clubs, model.RawClub{ID: maxClubId + 3, Name: "Мартэ"})
 	clubs = append(clubs, model.RawClub{ID: maxClubId + 4, Name: "Kids Office"})
 	clubs = append(clubs, model.RawClub{ID: maxClubId + 4, Name: "Jumping Cats (г.Екатеринбург)"})
+	clubs = append(clubs, model.RawClub{ID: maxClubId + 4, Name: "Движение (г.Новосибирск)"})
 
 	return clubs
 }

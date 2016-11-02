@@ -44,24 +44,34 @@ func (f *ForumDaoImpl) FindCompetitionId(compUrl string) int64 {
 }
 
 func (f *ForumDaoImpl) FindJudgeIdByTitle(title string) int64 {
-	if "Кудрявцева Ирина" == title { // TODO переделать на prevSurname
+	switch title {
+	case "Лебедев Сергей", "Сергей Лебедев":
+		return 952
+	case "Кудрявцева Ирина":
 		return 1008
-	}
-	if "Графова Варвара" == title {
+	case "Графова Варвара":
 		return 1101
+	case "Потапов Вячеслав":
+		return 1410
 	}
-	var dancerId int64
+
+	var dancerIds []int64
 	err := f.db.SQL(`
 		SELECT
 			d.id
 		FROM
 			dancer d
 		WHERE
-			lower(d.surname || ' ' || d.name) = lower($1)
+			lower(d.surname || ' ' || d.name) = lower($1) OR
+			lower(d.name || ' ' || d.surname) = lower($1)
 	`, strings.TrimSpace(title)).
-		QueryScalar(&dancerId)
+		QuerySlice(&dancerIds)
 
 	util.CheckErr(err, fmt.Sprintf("Not found judge by title: %s", title))
 
-	return dancerId
+	if len(dancerIds) != 1 {
+		util.CheckOk(false, dancerIds, title)
+	}
+
+	return dancerIds[0]
 }

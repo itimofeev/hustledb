@@ -11,9 +11,15 @@ const forumDir = "/Users/ilyatimofee/prog/axxonsoft/src/github.com/itimofeev/hus
 const compUrl = "http://hustle-sa.ru/forum/index.php?showtopic="
 
 func main() {
-	//parseAndInsert("2969")//(2014-09-06) Открытие сезона (г.Москва), ДК Буревестник, м.Сокольники
-	//parseAndInsert("2929")//(2014-09-20,21) Hustle & Discofox Festival Cup, В рамках H&D RUSSIAN OPEN FESTIVAL
-	parseAndInsert("3007") //(2014-09-27) Восходящие звезды, г. Санкт-Петербург
+	//parseAndInsert("2969") //(2014-09-06) Открытие сезона (г.Москва), ДК Буревестник, м.Сокольники
+	//parseAndInsert("2929") //(2014-09-20,21) Hustle & Discofox Festival Cup, В рамках H&D RUSSIAN OPEN FESTIVAL
+	//parseAndInsert("3007") //(2014-09-27) Восходящие звезды, г. Санкт-Петербург
+	//parseAndInsert("3000") //(2014-09-28) Отрытый турнир для Е+D классов, г. Красноярск
+	//parseAndInsert("2988") //(2014-10-04) Огни большого города, г.Москва
+	//parseAndInsert("2981") //(2014-10-11) "Перезагрузка" (ТК"Движение"), г. Новосибирск, УТВЕРЖДЕН
+	//parseAndInsert("3029") //(2014-10-18) Танцевальный Weekend 2014, г. Санкт-Петербург, Утверждено
+	//parseAndInsert("3039") //(2014-10-25) Турнир "Красный октябрь", г. Москва, Утверждено РК АСХ
+	parseAndInsert("3058") //(2014-10-25) Шаг Вперед, г.Красноярск УТВЕРЖДЕНО
 }
 
 func parseAndInsert(topicId string) {

@@ -1,0 +1,531 @@
+<html> 
+<head> 
+<title>Форум АСХ -> (2014-10-18) Танцевальный Weekend 2014</title> 
+<meta http-equiv="content-type" content="text/html; charset=windows-1251" /> 
+ 
+<style type='text/css'>
+/* FIX IE6 Scrollbars bug - Leave this in! */
+/* FIX IE6 Scrollbars bug - Leave this in! */
+html { overflow-x: auto; } 
+
+/* Body entry, change forum page background colour, default font, font size, etc. Leave text-align:center to center board content
+   #ipwrapper will set text-align back to left for the forum. Any other tables / divs you use must use text-align:left to re-align
+   the content properly. This is a work around to a known Internet Explorer bug */
+BODY { font-family: Verdana, Tahoma, Arial, sans-serif; font-size: 11px; color: #000; margin:0px;padding:0px;background-color:#FFF; text-align:center }
+TABLE, TR, TD { font-family: Verdana, Tahoma, Arial, sans-serif; font-size: 11px; color: #000; }
+
+/* MAIN WRAPPER: Adjust forum width here. Leave margins alone to auto-center content */
+#ipbwrapper { text-align:left; width:95%; margin-left:auto;margin-right:auto }
+
+a:link, a:visited, a:active { text-decoration: underline; color: #000 }
+a:hover { color: #465584; text-decoration:underline }
+
+fieldset.search { padding:6px; line-height:150% }
+label      { cursor:pointer; }
+form       { display:inline; }
+img        { vertical-align:middle; border:0px }
+img.attach { border:2px outset #EEF2F7;padding:2px }
+
+.googleroot  { padding:6px; line-height:130% }
+.googlechild { padding:6px; margin-left:30px; line-height:130% }
+.googlebottom, .googlebottom a:link, .googlebottom a:visited, .googlebottom a:active { font-size:11px; color: #3A4F6C; }
+.googlish, .googlish a:link, .googlish a:visited, .googlish a:active { font-size:14px; font-weight:bold; color:#00D; }
+.googlepagelinks { font-size:1.1em; letter-spacing:1px }
+.googlesmall, .googlesmall a:link, .googlesmall a:active, .googlesmall a:visited { font-size:10px; color:#434951 }
+
+li.helprow { padding:0px; margin:0px 0px 10px 0px }
+ul#help    { padding:0px 0px 0px 15px }
+
+option.cat { font-weight:bold; }
+option.sub { font-weight:bold;color:#555 }
+.caldate   { text-align:right;font-weight:bold;font-size:11px;color:#777;background-color:#DFE6EF;padding:4px;margin:0px }
+
+.warngood { color:green }
+.warnbad  { color:red }
+
+#padandcenter { margin-left:auto;margin-right:auto;text-align:center;padding:14px 0px 14px 0px }
+
+#profilename { font-size:28px; font-weight:bold; }
+#calendarname { font-size:22px; font-weight:bold; }
+
+#photowrap { padding:6px; }
+#phototitle { font-size:24px; border-bottom:1px solid black }
+#photoimg   { text-align:center; margin-top:15px } 
+
+#ucpmenu    { line-height:150%;width:22%; border:1px solid #345487;background-color: #F5F9FD }
+#ucpmenu p  { padding:2px 5px 6px 9px;margin:0px; }
+#ucpcontent { background-color: #F5F9FD; border:1px solid #345487;line-height:150%; width:auto }
+#ucpcontent p  { padding:10px;margin:0px; }
+
+#ipsbanner { position:absolute;top:1px;right:5%; }
+#logostrip { border:1px solid #345487;background-color: #3860BB;background-image:url(style_images/1/tile_back.gif);padding:0px;margin:0px; }
+#submenu   { border:1px solid #BCD0ED;background-color: #DFE6EF;font-size:10px;margin:3px 0px 3px 0px;color:#3A4F6C;font-weight:bold;}
+#submenu a:link, #submenu  a:visited, #submenu a:active { font-weight:bold;font-size:10px;text-decoration: none; color: #3A4F6C; }
+#userlinks { border:1px solid #C2CFDF; background-color: #F0F5FA }
+
+#navstrip  { font-weight:bold;padding:6px 0px 6px 0px; }
+
+.activeuserstrip { background-color:#BCD0ED; padding:6px }
+
+/* Form stuff (post / profile / etc) */
+.pformstrip { background-color: #D1DCEB; color:#3A4F6C;font-weight:bold;padding:7px;margin-top:1px }
+.pformleft  { background-color: #F5F9FD; padding:6px; margin-top:1px;width:25%; border-top:1px solid #C2CFDF; border-right:1px solid #C2CFDF; }
+.pformleftw { background-color: #F5F9FD; padding:6px; margin-top:1px;width:40%; border-top:1px solid #C2CFDF; border-right:1px solid #C2CFDF; }
+.pformright { background-color: #F5F9FD; padding:6px; margin-top:1px;border-top:1px solid #C2CFDF; }
+
+/* Topic View elements */
+.signature   { font-size: 10px; color: #339; line-height:150% }
+.postdetails { font-size: 10px }
+.postcolor   { font-size: 12px; line-height: 160% }
+
+.normalname { font-size: 12px; font-weight: bold; color: #003 }
+.normalname a:link, .normalname a:visited, .normalname a:active { font-size: 12px }
+.unreg { font-size: 11px; font-weight: bold; color: #900 }
+
+.post1 { background-color: #F5F9FD }
+.post2 { background-color: #EEF2F7 }
+.postlinksbar { background-color:#D1DCEB;padding:7px;margin-top:1px;font-size:10px; background-image: url(style_images/1/tile_sub.gif) }
+
+/* Common elements */
+.row1 { background-color: #F5F9FD }
+.row2 { background-color: #DFE6EF }
+.row3 { background-color: #EEF2F7 }
+.row4 { background-color: #E4EAF2 }
+
+.darkrow1 { background-color: #C2CFDF; color:#4C77B6; }
+.darkrow2 { background-color: #BCD0ED; color:#3A4F6C; }
+.darkrow3 { background-color: #D1DCEB; color:#3A4F6C; }
+
+.hlight { background-color: #DFE6EF }
+.dlight { background-color: #EEF2F7 }
+
+.titlemedium { font-weight:bold; color:#3A4F6C; padding:7px; margin:0px; background-image: url(style_images/1/tile_sub.gif) }
+.titlemedium  a:link, .titlemedium  a:visited, .titlemedium  a:active  { text-decoration: underline; color: #3A4F6C }
+
+/* Main table top (dark blue gradient by default) */
+.maintitle { vertical-align:middle;font-weight:bold; color:#FFF; padding:8px 0px 8px 5px; background-image: url(style_images/1/tile_back.gif) }
+.maintitle a:link, .maintitle  a:visited, .maintitle  a:active { text-decoration: none; color: #FFF }
+.maintitle a:hover { text-decoration: underline }
+
+/* tableborders gives the white column / row lines effect */
+.plainborder { border:1px solid #345487;background-color:#F5F9FD }
+.tableborder { border:1px solid #345487;background-color:#FFF; padding:0; margin:0 }
+.tablefill   { border:1px solid #345487;background-color:#F5F9FD;padding:6px;  }
+.tablepad    { background-color:#F5F9FD;padding:6px }
+.tablebasic  { width:100%; padding:0px 0px 0px 0px; margin:0px; border:0px }
+
+.wrapmini    { float:left;line-height:1.5em;width:25% }
+.pagelinks   { float:left;line-height:1.2em;width:35% }
+
+.desc { font-size:10px; color:#434951 }
+.edit { font-size: 9px }
+
+
+.searchlite { font-weight:bold; color:#F00; background-color:#FF0 }
+
+#QUOTE { white-space:normal; font-family: Verdana, Arial; font-size: 11px; color: #465584; background-color: #FAFCFE; border: 1px solid #000; padding-top: 2px; padding-right: 2px; padding-bottom: 2px; padding-left: 2px }
+#SPOILER { font-family: Verdana, Arial; font-size: 8pt; color: #FAFCFE; background-color: #FAFCFE; border: 1px solid Black; padding-top: 2px; padding-right: 2px; padding-bottom: 2px; padding-left: 2px }
+#CODE  { white-space:normal; font-family: Courier, Courier New, Verdana, Arial;  font-size: 11px; color: #465584; background-color: #FAFCFE; border: 1px solid #000; padding-top: 2px; padding-right: 2px; padding-bottom: 2px; padding-left: 2px }
+
+.copyright { font-family: Verdana, Tahoma, Arial, Sans-Serif; font-size: 9px; line-height: 12px }
+
+.codebuttons  { font-size: 10px; font-family: verdana, helvetica, sans-serif; vertical-align: middle }
+.forminput, .textinput, .radiobutton, .checkbox  { font-size: 11px; font-family: verdana, helvetica, sans-serif; vertical-align: middle }
+
+.thin { padding:6px 0px 6px 0px;line-height:140%;margin:2px 0px 2px 0px;border-top:1px solid #FFF;border-bottom:1px solid #FFF }
+
+.purple { color:purple;font-weight:bold }
+.red    { color:red;font-weight:bold }
+.green  { color:green;font-weight:bold }
+.blue   { color:blue;font-weight:bold }
+.orange { color:#F90;font-weight:bold }
+</style> 
+<script language="javascript" src="./html/quote.js"></script> 
+</head> 
+<body>
+<div id="ipbwrapper">
+<script language='JavaScript' type="text/javascript">
+<!--
+function buddy_pop() { window.open('index.php?act=buddy&s=d2c412e25e9af80b1869d178785bc4fe','BrowserBuddy','width=250,height=500,resizable=yes,scrollbars=yes'); }
+function chat_pop(cw,ch)  { window.open('index.php?s=d2c412e25e9af80b1869d178785bc4fe&act=chat&pop=1','Chat','width='+cw+',height='+ch+',resizable=yes,scrollbars=yes'); }
+function multi_page_jump( url_bit, total_posts, per_page )
+{
+pages = 1; cur_st = parseInt(""); cur_page  = 1;
+if ( total_posts % per_page == 0 ) { pages = total_posts / per_page; }
+ else { pages = Math.ceil( total_posts / per_page ); }
+msg = "Введите номер страницы, к которой хотите перейти." + " " + pages;
+if ( cur_st > 0 ) { cur_page = cur_st / per_page; cur_page = cur_page -1; }
+show_page = 1;
+if ( cur_page < pages )  { show_page = cur_page + 1; }
+if ( cur_page >= pages ) { show_page = cur_page - 1; }
+ else { show_page = cur_page + 1; }
+userPage = prompt( msg, show_page );
+if ( userPage > 0  ) {
+	if ( userPage < 1 )     {    userPage = 1;  }
+	if ( userPage > pages ) { userPage = pages; }
+	if ( userPage == 1 )    {     start = 0;    }
+	else { start = (userPage - 1) * per_page; }
+	window.location = url_bit + "&st=" + start;
+}
+}
+//-->
+</script>
+ 
+<!-- IE6/Win TABLE FIX -->
+<table  width="100%" cellspacing="6" id="submenu">
+<tr>
+ <td><a href='http://hustle-sa.ru'>Перейти на главную страницу сайта АСХ</a>&nbsp;&middot; <a href="http://hustle-sa.ru/forum/index.php?s=d2c412e25e9af80b1869d178785bc4fe&amp;act=boardrules">Правила форума</a></td>
+ <td align="right">
+   <img src="style_images/1/atb_help.gif" border="0" alt="" />&nbsp;<a href='http://hustle-sa.ru/forum/index.php?s=d2c412e25e9af80b1869d178785bc4fe&amp;act=Help'>Помощь</a>
+   &nbsp; &nbsp;&nbsp;<img src="style_images/1/atb_search.gif" border="0" alt="" />&nbsp;<a href='http://hustle-sa.ru/forum/index.php?s=d2c412e25e9af80b1869d178785bc4fe&amp;act=Search&amp;f=6'>Поиск</a>
+   &nbsp; &nbsp;&nbsp;<img src="style_images/1/atb_members.gif" border="0" alt="" />&nbsp;<a href='http://hustle-sa.ru/forum/index.php?s=d2c412e25e9af80b1869d178785bc4fe&amp;act=Members'>Участники</a>
+   &nbsp; &nbsp;&nbsp;<img src="style_images/1/atb_calendar.gif" border="0" alt="" />&nbsp;<a href='http://hustle-sa.ru/forum/index.php?s=d2c412e25e9af80b1869d178785bc4fe&amp;act=calendar'>Календарь</a>
+   <!--IBF.CHATLINK-->
+   <!--IBF.TSLLINK-->
+ </td>
+</tr>
+</table>
+<table width="100%" id="userlinks" cellspacing="6">
+   <tr>
+    <td>Здравствуйте Гость ( <a href='http://hustle-sa.ru/forum/index.php?s=d2c412e25e9af80b1869d178785bc4fe&amp;act=Login&amp;CODE=00'>Вход</a> | <a href='http://hustle-sa.ru/forum/index.php?s=d2c412e25e9af80b1869d178785bc4fe&amp;act=Reg&amp;CODE=00'>Регистрация</a> )</td>
+    <td align='right'><a href='http://hustle-sa.ru/forum/index.php?s=d2c412e25e9af80b1869d178785bc4fe&amp;act=Reg&amp;CODE=reval'>Выслать повторно письмо для активации</a></td>
+   </tr>
+  </table>
+<br /> 
+<div id='navstrip' align='left'><img src='style_images/1/nav.gif' border='0'  alt='&gt;' />&nbsp;<a href='http://hustle-sa.ru/forum/index.php?s=d2c412e25e9af80b1869d178785bc4fe&amp;act=idx'>Форум АСХ</a>&nbsp;-&gt;&nbsp;<a href='http://hustle-sa.ru/forum/index.php?s=d2c412e25e9af80b1869d178785bc4fe&amp;act=SC&amp;c=1'>Ассоциация спортивного хастла</a>&nbsp;-&gt;&nbsp;<a href='http://hustle-sa.ru/forum/index.php?s=d2c412e25e9af80b1869d178785bc4fe&amp;showforum=6'>Конкурсы и соревнования АСХ</a></div>
+<br /> 
+    <script language='javascript' type='text/javascript'>
+    <!--
+    
+    function link_to_post(pid)
+    {
+    	temp = prompt( "Копирование прямой ссылки этой темы, для сохранения ссылки в буфере обмена Вашего компьютера", "http://hustle-sa.ru/forum/index.php?s=d2c412e25e9af80b1869d178785bc4fe&amp;showtopic=3029&view=findpost&p=" + pid );
+    	return false;
+    }
+    
+    function delete_post(theURL) {
+       if (confirm('Вы действительно хотите удалить это сообщение?')) {
+          window.location.href=theURL;
+       }
+       else {
+          alert ('Не хотите, как хотите :)');
+       } 
+    }
+    
+    function PopUp(url, name, width,height,center,resize,scroll,posleft,postop) {
+    if (posleft != 0) { x = posleft }
+    if (postop  != 0) { y = postop  }
+
+    if (!scroll) { scroll = 1 }
+    if (!resize) { resize = 1 }
+
+    if ((parseInt (navigator.appVersion) >= 4 ) && (center)) {
+      X = (screen.width  - width ) / 2;
+      Y = (screen.height - height) / 2;
+    }
+    if (scroll != 0) { scroll = 1 }
+
+    var Win = window.open( url, name, 'width='+width+',height='+height+',top='+Y+',left='+X+',resizable='+resize+',scrollbars='+scroll+',location=no,directories=no,status=no,menubar=no,toolbar=no');
+	}
+	
+	function ShowHide(id1, id2) {
+	  if (id1 != '') expMenu(id1);
+	  if (id2 != '') expMenu(id2);
+	}
+	
+	function expMenu(id) {
+	  var itm = null;
+	  if (document.getElementById) {
+		itm = document.getElementById(id);
+	  } else if (document.all){
+		itm = document.all[id];
+	  } else if (document.layers){
+		itm = document.layers[id];
+	  }
+	
+	  if (!itm) {
+	   // do nothing
+	  }
+	  else if (itm.style) {
+		if (itm.style.display == "none") { itm.style.display = ""; }
+		else { itm.style.display = "none"; }
+	  }
+	  else { itm.visibility = "show"; }
+	}
+    //-->
+    </script>
+    
+<a name='top'></a>
+<!-- Show FAQ/Forum Rules -->
+    <div align='left'><img src='style_images/1/forum_rules.gif' border='0'  alt='Правила форума' />&nbsp;<b>НАЗНАЧЕНИЕ ДАННОГО РАЗДЕЛА</b><br /><br />Раздел предназначен для запросов на проведение и анонсов рейтинговых турниров АСХ. Правила создания тем читайте в <a target=_new href=http://hustle-sa.ru/forum/index.php?showtopic=31>отдельной ветке =>></a></div>
+	<br />
+   <!-- End FAQ/Forum Rules -->
+
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+ <td align='left' width="20%" nowrap="nowrap">&nbsp;</td>
+ <td align='right' width="80%"><a href='http://hustle-sa.ru/forum/index.php?s=d2c412e25e9af80b1869d178785bc4fe&amp;act=Post&amp;CODE=02&amp;f=6&amp;t=3029'><img src='style_images/1/t_reply.gif' border='0'  alt='Ответ в тему' /></a><a href='http://hustle-sa.ru/forum/index.php?s=d2c412e25e9af80b1869d178785bc4fe&amp;act=Post&amp;CODE=00&amp;f=6' title='Создание новой темы'><img src='style_images/1/t_new.gif' border='0'  alt='Создание новой темы' /></a><a href='http://hustle-sa.ru/forum/index.php?s=d2c412e25e9af80b1869d178785bc4fe&amp;act=Post&amp;CODE=10&amp;f=6'><img src='style_images/1/t_poll.gif' border='0'  alt='Создание опроса' /></a></td>
+</tr>
+</table>
+<br />
+<div class="tableborder">
+    <div class='maintitle'><img src='style_images/1/nav_m.gif' border='0'  alt='&gt;' width='8' height='8' />&nbsp;<b>(2014-10-18) Танцевальный Weekend 2014</b>, г. Санкт-Петербург, Утверждено</div>
+	<!--{IBF.POLL}-->
+	<div align='right' class='postlinksbar'>
+	  <strong><!--{IBF.START_NEW_POLL}--><a href='http://hustle-sa.ru/forum/index.php?s=d2c412e25e9af80b1869d178785bc4fe&amp;act=Track&amp;f=6&amp;t=3029'>Подписка на тему</a> |
+	  <a href='http://hustle-sa.ru/forum/index.php?s=d2c412e25e9af80b1869d178785bc4fe&amp;act=Forward&amp;f=6&amp;t=3029'>Сообщить другу</a> |
+	  <a href='http://hustle-sa.ru/forum/index.php?s=d2c412e25e9af80b1869d178785bc4fe&amp;act=Print&amp;client=printer&amp;f=6&amp;t=3029'>Версия для печати</a></strong>
+	</div>
+	
+	<!--Begin Msg Number 19267-->
+    <table width='100%' border='0' cellspacing='1' cellpadding='3'>
+    <tr>
+      <td align='center' valign='middle' class='row4' width="1%"><a name='entry19267'></a><span class='normalname'><a href="javascript:ins('DarkAngel')">DarkAngel</a></span></td>
+        <td class='row4' valign='top' width="99%">
+        
+        <!-- POSTED DATE DIV -->
+        
+        <div align='left' class='row4' style='float:left;padding-top:4px;padding-bottom:4px'>
+        <span class='postdetails'><b><a title="Показать ссылку этой темы" href="#" onclick="link_to_post(19267); return false;" style="text-decoration:underline">Дата</a></b> 25.09.2014 - 02:27</span>
+        </div>
+        
+        <!-- REPORT / DELETE / EDIT / QUOTE DIV -->
+        
+        <div align='right'>
+        <a href='http://hustle-sa.ru/forum/index.php?s=d2c412e25e9af80b1869d178785bc4fe&amp;act=Post&amp;CODE=06&amp;f=6&amp;t=3029&amp;p=19267'><img src='style_images/1/p_quote.gif' border='0'  alt='Цитировать сообщение' /></a>
+      </div>
+      
+      </td>
+    </tr>
+    <tr>
+      <td align='center' valign='top' class='post2'>
+        <span class='postdetails'><br /><br /><br /><br />
+        Активист<br />
+        <img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><br /><br />
+        <a href='http://hustle-sa.ru/forum/index.php?s=d2c412e25e9af80b1869d178785bc4fe&amp;showuser=1024'>Профиль</a><br />
+        Группа: РК АСХ<br />
+        Сообщений: 85<br />
+        Пользователь №: 1024<br />
+        Регистрация: 15.04.2010<br />
+        <br />
+        <br /><br />
+         </span><br />
+        <!--$ author[field_1]-->
+        <img src='style_images/1/spacer.gif' alt='' width='160' height='1' /><br /> 
+      </td>
+      <td width='100%' valign='top' class='post2'>
+        <!-- THE POST 19267 -->
+        <div class='postcolor'> Дата: 18-19 октября (суб, вскр)<br />Адрес: отель Ольгино (пригород СПб)<br /><a href='http://www.hotel-olgino.ru/hotel-olgino.nsf/main/ru' target='_blank'>http://www.hotel-olgino.ru/hotel-olgino.nsf/main/ru</a><br />Организатор: Пузанова Ирина и студия &quot;Мегаполис&quot;<br /><br />Номинации:<br />Хастл Е (рейтинг АСХ)<br />Хастл Д (рейтинг АСХ)<br />Хастл С (рейтинг АСХ)<br />Хастл В (рейтинг АСХ)<br /><br />JnJ E+D  по правилам орг-ра<br />JnJ D+C - по правилам орг-ра<br />JnJ C+В  - по правилам орг-ра<br />JnJ A+B - по правилам орг-ра<br /><br />Правила: АСХ <a href='http://hustle-sa.ru/pages.html' target='_blank'>http://hustle-sa.ru/pages.html</a><br />Регистрация - danceconvention.net<br />Расписание: <a href='http://vk.com/topic-42404423_28936065' target='_blank'>http://vk.com/topic-42404423_28936065</a><br /><br />Главный судья: Лебедев Сергей<br /><br />Судьи (для номинаций с рейтингом АСХ):<br />Катунин (1 кат)<br />Лебедев (1 кат)<br />Дубровин (1 кат)<br />Ярков (2 кат)<br />Колмогорлов (3 кат) <br />Колмогорлова (3 кат)<br />Корнеев Евгений (2 кат) <br /><br /><br />Счетная комисия: Обшадко Илья<br />DJ : Богданов Евгений<br />Ведущий: уточняется<br />Координатор: Пузанова Ирина<br /><br />Награды:<br />Победителям и призерам: памятные награды, медали<br />Финалистам: грамоты <br /><br /><span class='edit'>Это сообщение отредактировал <b>DarkAngel</b> - 20.10.2014 - 12:39</span> </div>
+        
+        <!-- THE POST -->
+      </td>
+    </tr>
+    <tr>
+      <td class='darkrow3' align='left'><b></b></td>
+      <td class='darkrow3' nowrap="nowrap" align='left'>
+      
+        <!-- PM / EMAIL / WWW / MSGR -->
+      
+        <div align='left' class='darkrow3' style='float:left;width:auto'>
+        <a href='http://hustle-sa.ru/forum/index.php?s=d2c412e25e9af80b1869d178785bc4fe&amp;act=Msg&amp;CODE=04&amp;MID=1024'><img src='style_images/1/p_pm.gif' border='0'  alt='PM' /></a><a href='http://hustle-sa.ru/forum/index.php?s=d2c412e25e9af80b1869d178785bc4fe&amp;act=Mail&amp;CODE=00&amp;MID=1024'><img src='style_images/1/p_email.gif' border='0'  alt='Письмо на e-mail пользователю' /></a>
+        </div>
+        
+        <!-- REPORT / UP -->
+         
+        <div align='right'>
+         <a href='javascript:scroll(0,0);'><img src='style_images/1/p_up.gif' alt='Top' border='0' /></a>
+        </div>
+      </td>
+    </tr>
+    </table>
+    <div class='darkrow1' style='height:5px'><!-- --></div>
+    
+	<!--Begin Msg Number 19425-->
+    <table width='100%' border='0' cellspacing='1' cellpadding='3'>
+    <tr>
+      <td align='center' valign='middle' class='row4' width="1%"><a name='entry19425'></a><span class='normalname'><a href="javascript:ins('axis')">axis</a></span></td>
+        <td class='row4' valign='top' width="99%">
+        
+        <!-- POSTED DATE DIV -->
+        
+        <div align='left' class='row4' style='float:left;padding-top:4px;padding-bottom:4px'>
+        <span class='postdetails'><b><a title="Показать ссылку этой темы" href="#" onclick="link_to_post(19425); return false;" style="text-decoration:underline">Дата</a></b> 22.10.2014 - 01:49</span>
+        </div>
+        
+        <!-- REPORT / DELETE / EDIT / QUOTE DIV -->
+        
+        <div align='right'>
+        <a href='http://hustle-sa.ru/forum/index.php?s=d2c412e25e9af80b1869d178785bc4fe&amp;act=Post&amp;CODE=06&amp;f=6&amp;t=3029&amp;p=19425'><img src='style_images/1/p_quote.gif' border='0'  alt='Цитировать сообщение' /></a>
+      </div>
+      
+      </td>
+    </tr>
+    <tr>
+      <td align='center' valign='top' class='post1'>
+        <span class='postdetails'><br /><br /><br /><br />
+        Новичок<br />
+        <img src='style_images/1/pip.gif' border='0'  alt='*' /><br /><br />
+        <a href='http://hustle-sa.ru/forum/index.php?s=d2c412e25e9af80b1869d178785bc4fe&amp;showuser=21889'>Профиль</a><br />
+        Группа: Организатор турниров<br />
+        Сообщений: 7<br />
+        Пользователь №: 21889<br />
+        Регистрация: 28.03.2013<br />
+        <br />
+        <br /><br />
+         </span><br />
+        <!--$ author[field_1]-->
+        <img src='style_images/1/spacer.gif' alt='' width='160' height='1' /><br /> 
+      </td>
+      <td width='100%' valign='top' class='post1'>
+        <!-- THE POST 19425 -->
+        <div class='postcolor'><span style='font-size:13pt;line-height:100%'><b>Результаты турнира:</b></span><br /><br /><b>Пояснения к нижеследующим таблицам отборочных туров:</b><br />В таблицах напротив каждой пары проставлены буквы. Это &quot;буквенный номер&quot; судей (см.список судей), которые оценили эту пару, как достойную для выхода в следующий тур. В бальной терминологии - это так называемые &quot;кресты&quot;, которые судьи ставят понравившимся парам. Но чтобы вы могли понять, какой из судей вас оценил, а какой нет, здесь указывается именно &quot;буквенный номер&quot; судьи. <br />Вторая вертикальная черта - это граница, показывающая, какие пары вышли в следующий тур, а какие нет. Если пара &quot;пересекла&quot; эту черту, набрав достаточное количество &quot;крестов&quot;, значит она вышла в следующий тур.<br />Ну а теперь сами результаты:<br /><br /><b>Главный судья:</b> Сергей Лебедев<br /><br /><b>Судейская бригада:</b><br />1 (A) - Игорь Дубровин<br />2 (В) - Павел Катунин<br />3 (С) - Сергей Лебедев<br />4 (D) - Игорь Мельников<br />5 (E) - Татьяна Шинкевич<br />6 (F) - Евгений Корнеев<br />7 (G) - Дмитрий Колмогорлов<br />8 (H) - Вероника Карева<br />9 (I) - Ольга Рагимова<br />10 (J) - Юрий Ярков<br />11 (K) - Светлана Колмогорлова<br />12 (L) - Евгения Нижнева<br /><br /><span style='font-size:13pt;line-height:100%'><b>E класс. Участвовало пар: 13</b></span><br /> <br /><b>ФИНАЛ</b><br />1 место-№83-Кормашов Алексей Валентинович(6606,Dance Drive (г.СПб),E)-Маркова Кристина Васильевна(6612,Dance Drive (г.СПб),E)<br />2 место-№93-Лавренов Евгений Анатольевич(6711,Мегаполис (г.СПб),E)-Новикова Зоя Андреевна(6804,Мегаполис (г.СПб),E)<br />3 место-№59-Канюка Юрий Геннадьевич(6542,Мегаполис (г.СПб),E)-Лукманова Анастасия Радиковна(дебют,Strikly (г.СПб),E)<br />4 место-№117-Панов Дмитрий Вадимович(6799,Мегаполис (г.СПб),E)-Давыденко Ольга Михайловна(6805,Мегаполис (г.СПб),E)<br />5 место-№71-Федоренко Дмитрий Александрович(5441,Strikly (г.СПб),E)-Смирнова Мария Владимировна(5822,NON-STOP (г.СПб),E)<br /><b>1/2 финала</b><br />6 место-№75-Мельников Николай Николаевич(6681,Strikly (г.СПб),E)-Коваленко Ольга Григорьевна(6693,Strikly (г.СПб),E)<br />7-8 место-№111-Харитоненков Андрей Валерьевич(5813,NON-STOP (г.СПб),E)-Налисина Ольга Юрьевна(6803,Созвездие (г.СПб),E)<br />7-8 место-№153-Баранов Александр Николаевич(5990,Мегаполис (г.СПб),E)-Фёдорова Екатерина Алексеевна(6002,Мегаполис (г.СПб),E)<br />9-10 место-№159-Заремба Александр Владимирович(дебют,Мегаполис (г.СПб),E)-Постика Анастасия Сергеевна(дебют,Мегаполис (г.СПб),E)<br />9-10 место-№161-Шупляков Дмитрий Яковлевич(дебют,Мегаполис (г.СПб),E)-Веревкина Ольга Михайловна(дебют,Мегаполис (г.СПб),E)<br /><b>1/4 финала</b><br />11-13 место-№177-Егоров Александр Александрович(6710,Мегаполис (г.СПб),E)-Дружинина Мария Сергеевна(6722,Мегаполис (г.СПб),E)<br />11-13 место-№189-Шолопин Андрей Владимирович(6715,Мегаполис (г.СПб),E)-Хмелёва Татьяна Владимировна(6431,Мегаполис (г.СПб),E)<br />11-13 место-№777-Ботвиньев Роман Сергеевич(дебют,Мегаполис (г.СПб),E)-Дроботова Юлия Сергеевна(6723,Мегаполис (г.СПб),E)<br /> <br /><b>Технические результаты:</b><br /><span style='font-family:courier'><br /><b>E класс: 1/4 финала</b><br />---------+---------------------------------<br />  Пары   &#9474;  Кресты (буквы судей)<br />---------+---------------------------------<br />   059   | GJ|CBK ==&gt; выход в 1/2 финала<br />   071   | BC|KJG ==&gt; выход в 1/2 финала<br />   075   | KB|GCJ ==&gt; выход в 1/2 финала<br />   083   | KJ|GBC ==&gt; выход в 1/2 финала<br />   093   | CJ|KBG ==&gt; выход в 1/2 финала<br />   111   | BC|KJG ==&gt; выход в 1/2 финала<br />   117   | KB|GCJ ==&gt; выход в 1/2 финала<br />   153   | GJ|CBK ==&gt; выход в 1/2 финала<br />   161   | CK|GJ  ==&gt; выход в 1/2 финала<br />   159   | CB|G   ==&gt; выход в 1/2 финала<br />   177   | B |   11-13<br />   189   | J |   11-13<br />   777   | K |   11-13<br />---------+---------------------------------<br /> <br /><b>E класс: 1/2 финала</b><br />---------+---------------------------------<br />  Пары   &#9474;  Кресты (буквы судей)<br />---------+---------------------------------<br />   059   | KG|BCJ ==&gt; выход в ФИНАЛ<br />   083   | GB|CKJ ==&gt; выход в ФИНАЛ<br />   093   | CG|JB  ==&gt; выход в ФИНАЛ<br />   117   | GC|KB  ==&gt; выход в ФИНАЛ<br />   071   | JK|G   ==&gt; выход в ФИНАЛ<br />   075   | JB|   6<br />   111   | K |   7-8<br />   153   | C |   7-8<br />   159   |   |   9-10<br />   161   |   |   9-10<br />---------+---------------------------------<br /> <br /><b>E класс: ФИНАЛ</b><br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br />        &#9474; Места за 1-й.     &#9474; Место  &#9474; Места за 2-й.     &#9474; Место  &#9474; Места за 3-й.     &#9474; Место  &#9474;Сумма &#9474;Итоговое <br />        &#9474; танец             &#9474; пары в &#9474; танец             &#9474; пары в &#9474; танец             &#9474; пары в &#9474;мест  &#9474; место   <br />--------+-------------------+  1-м.  +-------------------+ 2-м.   &#9474;-------------------+ 3-м.   +за все&#9474; пары    <br /> Судьи  &#9474; A B C D E F G H I &#9474; танце  &#9474; A B C D E F G H I &#9474; танце  &#9474; A B C D E F G H I &#9474; танце  &#9474;танцы &#9474;         <br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br />  Пары  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;      &#9474;<br />  083   &#9474; 1 1 2 3 1         &#9474;     1  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;   01 &#9474;    1<br />  093   &#9474; 2 2 1 1 5         &#9474;     2  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;   02 &#9474;    2<br />  059   &#9474; 3 3 3 2 3         &#9474;     3  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;   03 &#9474;    3<br />  117   &#9474; 4 4 4 4 2         &#9474;     4  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;   04 &#9474;    4<br />  071   &#9474; 5 5 5 5 4         &#9474;     5  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;   05 &#9474;    5<br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br /></span><br /><br /><br /><span style='font-size:13pt;line-height:100%'><b>D класс. Участвовало пар: 20</b></span><br /> <br /><b>ФИНАЛ</b><br />1 место-№37-Смердов Александр Сергеевич(4927,Мегаполис (г.СПб),D)-Никулина Ирина Сергеевна(4756,Мегаполис (г.СПб),D)<br />2 место-№19-Тагиров Александр Мидхатович(6101,Ivara,D)-Сапелкина Ольга Сергеевна(6170,Ivara,D)<br />3 место-№131-Корочкин Фёдор Фёдорович(5993,Dance Drive (г.СПб),D)-Васинёва Полина Александровна(6004,Dance Drive (г.СПб),D)<br />4 место-№25-Коростелёв Павел Владимирович(5226,Мегаполис,D)-Бапаева Лейла Жуматовна(4831,Мегаполис,D)<br />5 место-№33-Шандриков Артемий Михайлович(5992,Мегаполис (г.СПб),D)-Войналович Кристина Евгеньевна(6335,Мегаполис (г.СПб),D)<br />6 место-№73-Юрков Андрей Александрович(2640,Casablanca (г.Ростов-на-Дону),D)-Брагинец Ирина Александровна(4906,Casablanca (г.Ростов-на-Дону),D)<br /><b>1/2 финала</b><br />7 место-№163-Мельник Игорь Вячеславович(5994,Dance Drive (г.СПб),D)-Платонова Наталья Алексеевна(6427,Dance Drive (г.СПб),D)<br />8 место-№77-Боков Сергей Константинович(5684,Мегаполис (г.СПб),D)-Смирнова Анна Александровна(6338,Мегаполис (г.СПб),D)<br />9 место-№183-Нестеров Дмитрий Алексеевич(4852,Strikly (г.СПб),D)-Саблина Татьяна Михайловна(5462,Strikly (г.СПб),D)<br /><b>1/4 финала</b><br />10-11 место-№17-Пашкевич Игорь Яковлевич(6314,Мегаполис (г.СПб),D)-Ржевская Яна Сергеевна(6618,Мегаполис (г.СПб),D)<br />10-11 место-№141-Леонтьев Андрей Александрович(5819,Мегаполис (г.СПб),D)-Мищенко Анна Анатольевна(6348,Мегаполис,E)<br />12 место-№43-Львов Александр Анатольевич(3735,Мегаполис (г.СПб),D)-Любимая Анастасия Михайловна(5535,Мегаполис (г.СПб),D)<br />13-14 место-№5-Щеринов Сергей Александрович(5677,Strikly (г.СПб),D)-Сошникова Ольга Александровна(6005,Strikly (г.СПб),D)<br />13-14 место-№47-Лобанов Павел Геннадьевич(2193,Strikly (г.СПб),Мегаполис (г.СПб),D)-Мартынова Ольга Игоревна(6013,самост. (г.СПб),E)<br /><b>1/8 финала</b><br />15-17 место-№59-Канюка Юрий Геннадьевич(6542,Мегаполис (г.СПб),E)-Лукманова Анастасия Радиковна(дебют,Strikly (г.СПб),E)<br />15-17 место-№119-Околодков Андрей Анатольевич(6120,NON-STOP (г.СПб),Strikly (г.СПб),D)-Николаева Татьяна Юрьевна(4405,ДНК (г.СПб),D)<br />15-17 место-№187-ТимАшев Руслан Камилевич(5820,Strikly (г.СПб),D)-Локтысева Алина Петровна(5453,Strikly (г.СПб),D)<br />18-19 место-№49-Салатенков Илья Сергеевич(4463,ДНК (г.СПб),D)-Шварц Ольга Алексеевна(6020,Мегаполис (г.СПб),D)<br />18-19 место-№181-Климкин Даниил Евгеньевич(5680,Strikly (г.СПб),D)-Лодыгина Дарья Николаевна(5825,Strikly (г.СПб),D)<br />20 место-№125-Платонович Алексей Евгеньевич(6714,Strikly (г.СПб),D)-Комарова Ольга Николаевна(6546,Strikly (г.СПб),D)<br /> <br /><b>Технические результаты:</b><br /><span style='font-family:courier'><br /><b>D класс: 1/8 финала</b><br />---------+---------------------------------<br />  Пары   &#9474;  Кресты (буквы судей)<br />---------+---------------------------------<br />   019   | JCF|AK ==&gt; выход в 1/4 финала<br />   025   | FAK|JC ==&gt; выход в 1/4 финала<br />   033   | CAF|KJ ==&gt; выход в 1/4 финала<br />   037   | FAJ|CK ==&gt; выход в 1/4 финала<br />   047   | CJK|FA ==&gt; выход в 1/4 финала<br />   073   | JKA|FC ==&gt; выход в 1/4 финала<br />   077   | JCF|AK ==&gt; выход в 1/4 финала<br />   131   | JFC|KA ==&gt; выход в 1/4 финала<br />   141   | AFK|CJ ==&gt; выход в 1/4 финала<br />   163   | JFC|KA ==&gt; выход в 1/4 финала<br />   183   | AKC|FJ ==&gt; выход в 1/4 финала<br />   005   | AJF|C  ==&gt; выход в 1/4 финала<br />   017   | JCF|A  ==&gt; выход в 1/4 финала<br />   043   | JAK|F  ==&gt; выход в 1/4 финала<br />   059   | KFJ|  место: 15-17<br />   119   | KCF|  место: 15-17<br />   187   | KAC|  место: 15-17<br />   049   | JA |  место: 18-19<br />   181   | CK |  место: 18-19<br />   125   |    |  место: 20<br />---------+---------------------------------<br /> <br /><b>D класс: 1/4 финала</b><br />---------+---------------------------------<br />  Пары   &#9474;  Кресты (буквы судей)<br />---------+---------------------------------<br />   025   | KAF|CJ ==&gt; выход в 1/2 финала<br />   033   | JFA|CK ==&gt; выход в 1/2 финала<br />   037   | FJC|AK ==&gt; выход в 1/2 финала<br />   073   | ACJ|FK ==&gt; выход в 1/2 финала<br />   131   | JFK|AC ==&gt; выход в 1/2 финала<br />   163   | CAF|JK ==&gt; выход в 1/2 финала<br />   019   | JFA|C  ==&gt; выход в 1/2 финала<br />   077   | ACJ|F  ==&gt; выход в 1/2 финала<br />   183   | FKJ|C  ==&gt; выход в 1/2 финала<br />   017   | AKC|  место: 10-11<br />   141   | FKA|  место: 10-11<br />   043   | KJ |  место: 12<br />   005   |    |  место: 13-14<br />   047   |    |  место: 13-14<br />---------+---------------------------------<br /> <br /><b>D класс: 1/2 финала</b><br />---------+---------------------------------<br />  Пары   &#9474;  Кресты (буквы судей)<br />---------+---------------------------------<br />   019   | JA|CF ==&gt; выход в ФИНАЛ<br />   025   | FA|CK ==&gt; выход в ФИНАЛ<br />   073   | CK|AJ ==&gt; выход в ФИНАЛ<br />   131   | AF|CK ==&gt; выход в ФИНАЛ<br />   033   | FJ|K  ==&gt; выход в ФИНАЛ<br />   037   | AK|F  ==&gt; выход в ФИНАЛ<br />   163   | JC|  место: 7<br />   077   | J |  место: 8<br />   183   |   |  место: 9<br />---------+---------------------------------<br /> <br /><b>D класс: ФИНАЛ</b><br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br />        &#9474; Места за 1-й.     &#9474; Место  &#9474; Места за 2-й.     &#9474; Место  &#9474; Места за 3-й.     &#9474; Место  &#9474;Сумма &#9474;Итоговое <br />        &#9474; танец             &#9474; пары в &#9474; танец             &#9474; пары в &#9474; танец             &#9474; пары в &#9474;мест  &#9474; место   <br />--------+-------------------+  1-м.  +-------------------+ 2-м.   &#9474;-------------------+ 3-м.   +за все&#9474; пары    <br /> Судьи  &#9474; A B C D E F G H I &#9474; танце  &#9474; A B C D E F G H I &#9474; танце  &#9474; A B C D E F G H I &#9474; танце  &#9474;танцы &#9474;         <br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br />  Пары  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;      &#9474;<br />  037   &#9474; 1 1 1 3 2         &#9474;        &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;   00 &#9474;    1<br />  019   &#9474; 4 3 3 1 5         &#9474;        &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;   00 &#9474;    2<br />  131   &#9474; 2 4 2 6 3         &#9474;        &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;   00 &#9474;    3<br />  025   &#9474; 5 2 4 4 4         &#9474;        &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;   00 &#9474;    4<br />  033   &#9474; 3 5 5 5 1         &#9474;        &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;   00 &#9474;    5<br />  073   &#9474; 6 6 6 2 6         &#9474;        &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;   00 &#9474;    6<br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br /></span><br /><br /><br /><span style='font-size:13pt;line-height:100%'><b>C класс. Участвовало пар: 10</b></span><br /> <br /><b>ФИНАЛ</b><br />1 место-№61-Пустовой Мирослав Игоревич(3768,Танцующий город (г.Ростов-на-Дону),C)-Грибоедова Елена Николаевна(6669,Танцующий город (г.Ростов-на-Дону),C)<br />2 место-№155-Вобликов Владимир Игоревич(4395,ДНК (г.СПб),C)-Дрёмина Валентина Владимировна(3743,Dance Drive (г.СПб),C)<br />3 место-№37-Смердов Александр Сергеевич(4927,Мегаполис (г.СПб),D)-Никулина Ирина Сергеевна(4756,Мегаполис (г.СПб),D)<br />4 место-№21-Карпычев Алексей Анатольевич(5370,Альтернатива,C)-Завелева Ольга Витальевна(5780,Альтернатива,D)<br />5 место-№7-Рындин Виталий Витальевич(4923,Мегаполис (г.СПб),C)-Тюрнер Екатерина Николаевна(6019,Мегаполис (г.СПб),D)<br />6 место-№179-Тимофеев Станислав Константинович(2359,Созвездие (г.СПб),C)-Короткова Дарья Дмитриевна(6445,Созвездие (г.СПб),C)<br /><b>1/2 финала</b><br />7-9 место-№29-Масловский Денис Николаевич(4673,A-class (г.Минск),D)-Валюшицкая Наталья Васильевна(4710,A-class (г.Минск),D)<br />7-9 место-№147-Чубаров Александр Андреевич(4580,самост. (г.СПб),D)-Берзина Ольга Владимировна(4082,Созвездие (г.СПб),C)<br />7-9 место-№175-Белоус Роман Олегович(2466,MMDance (г.СПб),Мегаполис (г.СПб),C)-Константинова Надежда Игоревна(3473,MMDance (г.СПб),Мегаполис (г.СПб),C)<br />10 место-№25-Коростелёв Павел Владимирович(5226,Мегаполис,D)-Бапаева Лейла Жуматовна(4831,Мегаполис,D)<br /> <br /><b>Технические результаты:</b><br /><span style='font-family:courier'><br /> <br /><b>C класс: 1/2 финала</b><br />---------+---------------------------------<br />  Пары   &#9474;  Кресты (буквы судей)<br />---------+---------------------------------<br />   037   | CF|ABG ==&gt; выход в ФИНАЛ<br />   061   | AG|FBC ==&gt; выход в ФИНАЛ<br />   007   | FB|AG  ==&gt; выход в ФИНАЛ<br />   155   | FA|CB  ==&gt; выход в ФИНАЛ<br />   021   | CB|G   ==&gt; выход в ФИНАЛ<br />   179   | CF|A   ==&gt; выход в ФИНАЛ<br />   029   | FC|   7-9<br />   147   | GA|   7-9<br />   175   | GB|   7-9<br />   025   |   |   10<br />---------+---------------------------------<br /> <br /><b>C класс: ФИНАЛ</b><br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br />        &#9474; Места за 1-й.     &#9474; Место  &#9474; Места за 2-й.     &#9474; Место  &#9474; Места за 3-й.     &#9474; Место  &#9474;Сумма &#9474;Итоговое <br />        &#9474; танец             &#9474; пары в &#9474; танец             &#9474; пары в &#9474; танец             &#9474; пары в &#9474;мест  &#9474; место   <br />--------+-------------------+  1-м.  +-------------------+ 2-м.   &#9474;-------------------+ 3-м.   +за все&#9474; пары    <br /> Судьи  &#9474; A B C D E F G H I &#9474; танце  &#9474; A B C D E F G H I &#9474; танце  &#9474; A B C D E F G H I &#9474; танце  &#9474;танцы &#9474;         <br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br />  Пары  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;      &#9474;<br />  061   &#9474; 1 1 2 1 1         &#9474;        &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;   00 &#9474;    1<br />  155   &#9474; 2 2 1 2 2         &#9474;        &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;   00 &#9474;    2<br />  037   &#9474; 3 3 3 4 5         &#9474;        &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;   00 &#9474;    3<br />  021   &#9474; 4 5 5 3 3         &#9474;        &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;   00 &#9474;    4<br />  007   &#9474; 5 4 4 5 4         &#9474;        &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;   00 &#9474;    5<br />  179   &#9474; 6 6 6 6 6         &#9474;        &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;   00 &#9474;    6<br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br /></span><br /><br /><span style='font-size:13pt;line-height:100%'><b>B класс. Участвовало пар: 3</b></span><br /> <br /><b>ФИНАЛ</b><br />1 место-№95-Макаренков Владимир Григорьевич(2366,Мегаполис (г.СПб),B)-Ляпустина Маргарита Игоревна(3016,Мегаполис (г.СПб),C)<br />2-3 место-№81-Фурман Ростислав Владимирович(3454,ДНК (г.СПб),B)-Дьяченко Светлана Леонидовна(2228,Мегаполис (г.СПб),B)<br />2-3 место-№185-Лебедев Андрей Андреевич(2371,ШкоLa Magnit (г.СПб),B)-Горбунова Ирина Михайловна(3029,Мегаполис (г.СПб),B)<br /> <br /><b>Технические результаты:</b><br /><span style='font-family:courier'><br /> <br /><b>B класс: ФИНАЛ</b><br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br />        &#9474; Места за 1-й.     &#9474; Место  &#9474; Места за 2-й.     &#9474; Место  &#9474; Места за 3-й.     &#9474; Место  &#9474;Сумма &#9474;Итоговое <br />        &#9474; танец             &#9474; пары в &#9474; танец             &#9474; пары в &#9474; танец             &#9474; пары в &#9474;мест  &#9474; место   <br />--------+-------------------+  1-м.  +-------------------+ 2-м.   &#9474;-------------------+ 3-м.   +за все&#9474; пары    <br /> Судьи  &#9474; A B C D E F G H I &#9474; танце  &#9474; A B C D E F G H I &#9474; танце  &#9474; A B C D E F G H I &#9474; танце  &#9474;танцы &#9474;         <br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br />  Пары  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;      &#9474;<br />  095   &#9474; 1 1 1 1 1         &#9474;     1  &#9474; 1 1 1 1 1         &#9474;     1  &#9474;                   &#9474;        &#9474;   02 &#9474;    1<br />  081   &#9474; 2 2 2 2 2         &#9474;     2  &#9474; 3 3 3 3 3         &#9474;     3  &#9474;                   &#9474;        &#9474;   05 &#9474;    2<br />  185   &#9474; 3 3 3 3 3         &#9474;     3  &#9474; 2 2 2 2 2         &#9474;     2  &#9474;                   &#9474;        &#9474;   05 &#9474;    2<br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br /></span><br /><br /><span class='edit'>Это сообщение отредактировал <b>axis</b> - 22.10.2014 - 14:53</span> </div>
+        
+        <!-- THE POST -->
+      </td>
+    </tr>
+    <tr>
+      <td class='darkrow3' align='left'><b></b></td>
+      <td class='darkrow3' nowrap="nowrap" align='left'>
+      
+        <!-- PM / EMAIL / WWW / MSGR -->
+      
+        <div align='left' class='darkrow3' style='float:left;width:auto'>
+        <a href='http://hustle-sa.ru/forum/index.php?s=d2c412e25e9af80b1869d178785bc4fe&amp;act=Msg&amp;CODE=04&amp;MID=21889'><img src='style_images/1/p_pm.gif' border='0'  alt='PM' /></a><a href='http://hustle-sa.ru/forum/index.php?s=d2c412e25e9af80b1869d178785bc4fe&amp;act=Mail&amp;CODE=00&amp;MID=21889'><img src='style_images/1/p_email.gif' border='0'  alt='Письмо на e-mail пользователю' /></a>
+        </div>
+        
+        <!-- REPORT / UP -->
+         
+        <div align='right'>
+         <a href='javascript:scroll(0,0);'><img src='style_images/1/p_up.gif' alt='Top' border='0' /></a>
+        </div>
+      </td>
+    </tr>
+    </table>
+    <div class='darkrow1' style='height:5px'><!-- --></div>
+    
+	<!--Begin Msg Number 19460-->
+    <table width='100%' border='0' cellspacing='1' cellpadding='3'>
+    <tr>
+      <td align='center' valign='middle' class='row4' width="1%"><a name='entry19460'></a><span class='normalname'><a href="javascript:ins('Denegin')">Denegin</a></span></td>
+        <td class='row4' valign='top' width="99%">
+        
+        <!-- POSTED DATE DIV -->
+        
+        <div align='left' class='row4' style='float:left;padding-top:4px;padding-bottom:4px'>
+        <span class='postdetails'><b><a title="Показать ссылку этой темы" href="#" onclick="link_to_post(19460); return false;" style="text-decoration:underline">Дата</a></b> 24.10.2014 - 11:37</span>
+        </div>
+        
+        <!-- REPORT / DELETE / EDIT / QUOTE DIV -->
+        
+        <div align='right'>
+        <a href='http://hustle-sa.ru/forum/index.php?s=d2c412e25e9af80b1869d178785bc4fe&amp;act=Post&amp;CODE=06&amp;f=6&amp;t=3029&amp;p=19460'><img src='style_images/1/p_quote.gif' border='0'  alt='Цитировать сообщение' /></a>
+      </div>
+      
+      </td>
+    </tr>
+    <tr>
+      <td align='center' valign='top' class='post2'>
+        <span class='postdetails'><br /><br /><img src='http://hustle-sa.ru/forum/uploads/av-3.jpg' border='0' width='80' height='74' alt='' /><br /><br />
+        Мудрец<br />
+        <img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><br /><br />
+        <a href='http://hustle-sa.ru/forum/index.php?s=d2c412e25e9af80b1869d178785bc4fe&amp;showuser=3'>Профиль</a><br />
+        Группа: Администраторы<br />
+        Сообщений: 7381<br />
+        Пользователь №: 3<br />
+        Регистрация: 13.02.2008<br />
+        <br />
+        <br /><br />
+         </span><br />
+        <!--$ author[field_1]-->
+        <img src='style_images/1/spacer.gif' alt='' width='160' height='1' /><br /> 
+      </td>
+      <td width='100%' valign='top' class='post2'>
+        <!-- THE POST 19460 -->
+        <div class='postcolor'> По итогам конкурса &#39;Танцевальный Weekend г.СПб&#39;, прошедшего 18.10.2014, посчитаны баллы танцоров. Актуальную базу результатов и баллов можно скачать или посмотреть по адресу <a href='http://hustle-sa.ru/rating' target='_blank'>http://hustle-sa.ru/rating</a>	<br />Также произошли следующие изменения:	<br />1) Впервые выступавшим танцорам присвоены коды танцоров.	<br />2) Согласно набранным баллам в номинациях &#39;хастл&#39; следующим танцорам присвоены классы:	<br />06606	Кормашов Алексей Валентинович (Dance Drive (г.СПб)). В номинации &#39;хастл&#39; присвоен класс &#39;D&#39;. В номинации &#39;ДнД&#39; остался класс &#39;Beginner&#39;.<br />06711	Лавренов Евгений Анатольевич (Мегаполис (г.СПб)). В номинации &#39;хастл&#39; присвоен класс &#39;D&#39;. В номинации &#39;ДнД&#39; остался класс &#39;Beginner&#39;.<br />06612	Маркова Кристина Васильевна (Dance Drive (г.СПб)). В номинации &#39;хастл&#39; присвоен класс &#39;D&#39;. В номинации &#39;ДнД&#39; остался класс &#39;Beginner&#39;.<br />04756	Никулина Ирина Сергеевна (Мегаполис (г.СПб)). В номинации &#39;хастл&#39; присвоен класс &#39;C&#39;. В номинации &#39;ДнД&#39; присвоен класс &#39;Rising Star&#39;.<br />06804	Новикова Зоя Андреевна (Мегаполис (г.СПб)). В номинации &#39;хастл&#39; присвоен класс &#39;D&#39;. В номинации &#39;ДнД&#39; остался класс &#39;Beginner&#39;.<br />04927	Смердов Александр Сергеевич (Мегаполис (г.СПб)). В номинации &#39;хастл&#39; присвоен класс &#39;C&#39;. В номинации &#39;ДнД&#39; присвоен класс &#39;Rising Star&#39;.<br />05822	Смирнова Мария Владимировна (NON-STOP (г.СПб)). В номинации &#39;хастл&#39; присвоен класс &#39;D&#39;. В номинации &#39;ДнД&#39; остался класс &#39;Beginner&#39;.<br />05441	Федоренко Дмитрий Александрович (Strikly (г.СПб)). В номинации &#39;хастл&#39; присвоен класс &#39;D&#39;. В номинации &#39;ДнД&#39; остался класс &#39;Beginner&#39;.<br />  </div>
+        <br /><br />--------------------<br />
+<div class='signature'><b><a href='http://www.denegin.ru/hustle' target='_blank'>Руководитель и преподаватель Хастл-Центра</a></b></div>
+        <!-- THE POST -->
+      </td>
+    </tr>
+    <tr>
+      <td class='darkrow3' align='left'><b></b></td>
+      <td class='darkrow3' nowrap="nowrap" align='left'>
+      
+        <!-- PM / EMAIL / WWW / MSGR -->
+      
+        <div align='left' class='darkrow3' style='float:left;width:auto'>
+        <a href='http://hustle-sa.ru/forum/index.php?s=d2c412e25e9af80b1869d178785bc4fe&amp;act=Msg&amp;CODE=04&amp;MID=3'><img src='style_images/1/p_pm.gif' border='0'  alt='PM' /></a><a href='http://www.denegin.ru' target='_blank'><img src='style_images/1/p_www.gif' border='0'  alt='Сайт пользователя' /></a><a href="javascript:PopUp('http://hustle-sa.ru/forum/index.php?s=d2c412e25e9af80b1869d178785bc4fe&amp;act=ICQ&amp;MID=3','Pager','450','330','0','1','1','1')"><img src='style_images/1/p_icq.gif' border='0'  alt='ICQ' /></a>
+        </div>
+        
+        <!-- REPORT / UP -->
+         
+        <div align='right'>
+         <a href='javascript:scroll(0,0);'><img src='style_images/1/p_up.gif' alt='Top' border='0' /></a>
+        </div>
+      </td>
+    </tr>
+    </table>
+    <div class='darkrow1' style='height:5px'><!-- --></div>
+          <!--IBF.QUICK_REPLY_NEW-->
+      <!--IBF.TOPIC_ACTIVE-->
+      <div class="activeuserstrip" align="center">&laquo; <a href='http://hustle-sa.ru/forum/index.php?s=d2c412e25e9af80b1869d178785bc4fe&amp;showtopic=3029&amp;view=old'>Предыдущая тема</a> &#0124; <strong><a href='http://hustle-sa.ru/forum/index.php?s=d2c412e25e9af80b1869d178785bc4fe&amp;showforum=6'>Конкурсы и соревнования АСХ</a></strong> &#0124; <a href='http://hustle-sa.ru/forum/index.php?s=d2c412e25e9af80b1869d178785bc4fe&amp;showtopic=3029&amp;view=new'>Следующая тема</a> &raquo;</div>
+</div>
+ 
+<br />
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+ <td align='left' width="20%" nowrap="nowrap"><a href="javascript:ShowHide('topic_open','topic_closed')" title="Раскрыть опции темы"><img src='style_images/1/t_options.gif' border='0'  alt='Опции темы' /></a></td>
+ <td align='right' width="80%"><a href='http://hustle-sa.ru/forum/index.php?s=d2c412e25e9af80b1869d178785bc4fe&amp;act=Post&amp;CODE=02&amp;f=6&amp;t=3029'><img src='style_images/1/t_reply.gif' border='0'  alt='Ответ в тему' /></a><!--IBF.QUICK_REPLY_CLOSED--><a href='http://hustle-sa.ru/forum/index.php?s=d2c412e25e9af80b1869d178785bc4fe&amp;act=Post&amp;CODE=00&amp;f=6' title='Создание новой темы'><img src='style_images/1/t_new.gif' border='0'  alt='Создание новой темы' /></a><a href='http://hustle-sa.ru/forum/index.php?s=d2c412e25e9af80b1869d178785bc4fe&amp;act=Post&amp;CODE=10&amp;f=6'><img src='style_images/1/t_poll.gif' border='0'  alt='Создание опроса' /></a></td>
+</tr>
+</table>
+
+<!--IBF.QUICK_REPLY_OPEN-->
+<div id='topic_open' style='display:none;z-index:2;'>
+    <div class="tableborder">
+	  <div class='maintitle'><img src='style_images/1/nav_m.gif' border='0'  alt='&gt;' width='8' height='8' />&nbsp;<a href="javascript:ShowHide('topic_open','topic_closed')">Скрыть опции темы</a></div>
+	  <div class='tablepad'>
+	   <b><a href='http://hustle-sa.ru/forum/index.php?s=d2c412e25e9af80b1869d178785bc4fe&amp;act=Track&amp;f=6&amp;t=3029'>Подписаться на тему</a></b>
+	   <br />
+	   <span class='desc'>Уведомление на e-mail об ответах в тему, во время Вашего отсутствия на форуме.</span>
+	   <br /><br />
+	   <b><a href='http://hustle-sa.ru/forum/index.php?s=d2c412e25e9af80b1869d178785bc4fe&amp;act=Track&amp;f=6&amp;type=forum'>Подписка на этот форум</a></b>
+	   <br />
+	   <span class='desc'>Уведомление на e-mail о новых темах на форуме, во время Вашего отсутствия на форуме.</span>
+	   <br /><br />
+	   <b><a href='http://hustle-sa.ru/forum/index.php?s=d2c412e25e9af80b1869d178785bc4fe&amp;act=Print&amp;client=choose&amp;f=6&amp;t=3029'>Скачать/Распечатать тему</a></b>
+	   <br />
+	   <span class='desc'>Скачивание темы в различных форматах или просмотр версии для печати этой темы.</span>
+	 </div>
+   </div>
+</div>
+
+<br />
+
+<div align='right'><form onsubmit="if(document.jumpmenu.f.value == -1){return false;}" action='http://hustle-sa.ru/forum/index.php?s=d2c412e25e9af80b1869d178785bc4fe&amp;act=SF' method='get' name='jumpmenu'>
+			             <input type='hidden' name='act' value='SF' />
+<input type='hidden' name='s' value='d2c412e25e9af80b1869d178785bc4fe' />
+			             <select name='f' onchange="if(this.options[this.selectedIndex].value != -1){ document.jumpmenu.submit() }" class='forminput'>
+			             <optgroup label="Перейти на сайт">
+			              <option value='sj_home'>Главная страница форума</option>
+			              <option value='sj_search'>Поиск</option>
+			              <option value='sj_help'>Помощь</option>
+			             </optgroup>
+			             <optgroup label="Переход по форумам"><option value='-1'>Ассоциация спортивного хастла</option>
+<option value="21">&nbsp;&nbsp;- Правила форума, Правила АСХ, решения РК АСХ </option><!--fx:21-->
+<option value="6" selected="selected">&nbsp;&nbsp;- Конкурсы и соревнования АСХ </option><!--fx:6-->
+<option value="4">&nbsp;&nbsp;- База данных и рейтинг танцоров, заявления на изменения в базе данных </option><!--fx:4-->
+<option value="8">&nbsp;&nbsp;---- Неправильные заявления, дубли </option>
+<option value="18">&nbsp;&nbsp;- Вопросы к РК АСХ, протесты, обсуждения документов и решений РК АСХ </option><!--fx:18-->
+</optgroup>
+</select>&nbsp;<input type='submit' value='ок!' class='forminput' /></form></div>
+
+<br /> 
+ 
+<!-- Copyright Information -->
+
+<br><div align='center' class='copyright'>Powered by <a href="http://www.invisionboard.com" target='_blank'>Invision Power Board</a>(U) v1.3 Final &copy; 2003 &nbsp;<a href='http://www.invisionpower.com' target='_blank'>IPS, Inc.</a><br>Русский Модифицированный IPB v1.3 Final &copy 2003 <a href='http://www.bestfilez.net' target='_blank'>BesTFileZ.Net</a> &amp; <a href='http://www.ibresource.ru' target='_blank'>IBR Team</a>
+		<br>Адаптация php5/MySql5<a href='http://psihiteam.narod.ru' target='_blank'>Lazutov Alexander [psihiteam]</a></div>
+		
+</div>
+</body> 
+</html>
