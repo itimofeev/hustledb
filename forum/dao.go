@@ -53,6 +53,8 @@ func (f *ForumDaoImpl) FindJudgeIdByTitle(title string) int64 {
 		return 1101
 	case "Потапов Вячеслав":
 		return 1410
+	case "Новикова Екатерина":
+		return 3221
 	}
 
 	var dancerIds []int64
