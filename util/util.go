@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"log"
+	"os"
 	"regexp"
 	"strconv"
 )
@@ -39,4 +40,13 @@ func PrintJson(i interface{}) {
 	j, err := json.Marshal(i)
 	CheckErr(err)
 	fmt.Println("JSON: ", string(j))
+}
+
+func IsFileExists(name string) bool {
+	if _, err := os.Stat(name); err != nil {
+		if os.IsNotExist(err) {
+			return false
+		}
+	}
+	return true
 }

@@ -28,6 +28,7 @@ func (in *DbInserter) Insert(results *ForumResults) {
 }
 
 func (i *DbInserter) clearRecordsForCompetitions(compId int64) {
+	i.dao.DeleteDancerClubsByCompId(compId)
 	i.dao.DeletePlacesByCompId(compId)
 	i.dao.DeleteJudgesByCompId(compId)
 	i.dao.DeleteNominationsByCompId(compId)
@@ -53,7 +54,8 @@ func (i *DbInserter) insertJudge(j *Judge) {
 }
 
 func (i *DbInserter) insertNomination(compId int64, n *Nomination) *Nomination {
-	n.RNominationId = i.findNominationId(compId, n)
+	nominationId := i.findNominationId(compId, n)
+	n.RNominationId = NewNullInt64(nominationId)
 	n = i.dao.CreateNomination(n)
 
 	for _, stage := range n.Stages {
@@ -63,14 +65,14 @@ func (i *DbInserter) insertNomination(compId int64, n *Nomination) *Nomination {
 			place.StageTitle = stageTitle
 
 			place.Dancer1Id = *i.findDancerId(compId, place.Dancer1)
-			place.Result1Id = NewNullInt64(i.findResultId(compId, n.RNominationId, place.Dancer1Id))
+			place.Result1Id = NewNullInt64(i.findResultId(compId, place.Dancer1Id, nominationId))
 			dancer2Id := i.findDancerId(compId, place.Dancer2)
 			if dancer2Id == nil {
 				place.Dancer2Id = sql.NullInt64{Valid: false}
 				place.Result2Id = sql.NullInt64{Valid: false}
 			} else {
 				place.Dancer2Id = sql.NullInt64{Valid: true, Int64: *dancer2Id}
-				place.Result2Id = NewNullInt64(i.findResultId(compId, n.RNominationId, *dancer2Id))
+				place.Result2Id = NewNullInt64(i.findResultId(compId, *dancer2Id, nominationId))
 			}
 
 			i.dao.CreatePlace(place)
@@ -88,16 +90,23 @@ func NewNullInt64(i *int64) sql.NullInt64 {
 	}
 }
 
-func (i *DbInserter) findNominationId(compId int64, n *Nomination) int64 {
-	somePlace := n.Stages[0].Places[0]
-	dancerId := *i.findDancerId(compId, somePlace.Dancer1)
-	isJnj := somePlace.Dancer2 == nil
+func (i *DbInserter) findNominationId(compId int64, n *Nomination) *int64 {
+	for _, stage := range n.Stages {
+		for _, somePlace := range stage.Places {
+			dancerId := *i.findDancerId(compId, somePlace.Dancer1)
+			isJnj := somePlace.Dancer2 == nil
 
-	result := i.dao.FindResult(compId, dancerId, isJnj)
+			result := i.dao.FindResult(compId, dancerId, isJnj)
 
-	fmt.Printf("For comp: %d, nom: %s found result: %s and nomination: %d\n", compId, n.Title, result.Result, result.NominationID)
+			if result != nil {
+				return &result.NominationID
+			}
+		}
+	}
 
-	return result.NominationID
+	log.Warnf("Unable to find nomination_id for comp: %d and title %s", compId, n.Title)
+
+	return nil
 }
 
 func (i *DbInserter) findDancerId(compId int64, dancer *Dancer) *int64 {
@@ -119,8 +128,11 @@ func (i *DbInserter) findDancerId(compId int64, dancer *Dancer) *int64 {
 	return dancerId
 }
 
-func (i *DbInserter) findResultId(compId, nomId, dancerId int64) *int64 {
-	return i.dao.FindResultNom(compId, nomId, dancerId)
+func (i *DbInserter) findResultId(compId, dancerId int64, nomId *int64) *int64 {
+	if nomId == nil {
+		return nil
+	}
+	return i.dao.FindResultNom(compId, *nomId, dancerId)
 }
 
 func parseStageTitle(stage *Stage) string {

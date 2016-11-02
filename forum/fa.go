@@ -43,7 +43,7 @@ func initRegexps() {
 
 	tableBorder = compileRegexp("(-+\\+)+-+") //--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------
 
-	mainTitleRegexp = compileRegexp("\\(\\d{4}-\\d{2}-\\d{2}\\) [\\W\\s.\\-\\d()]+,.*") //(2016-09-17) Открытие сезона 2016-2017г., г. Москва. УТВЕРЖДЕНО РК АСХ || (2014-09-06) Открытие сезона (г.Москва), ДК Буревестник, м.Сокольники
+	mainTitleRegexp = compileRegexp("\\(\\d{4}-\\d{2}-\\d{2}(,\\d+)?\\) [\\W\\s.\\-\\d()&a-zA-Z]+,.*") //(2016-09-17) Открытие сезона 2016-2017г., г. Москва. УТВЕРЖДЕНО РК АСХ || (2014-09-06) Открытие сезона (г.Москва), ДК Буревестник, м.Сокольники
 }
 
 func compileRegexp(rx string) *regexp.Regexp {
@@ -82,6 +82,10 @@ func parseMainTitle(results *ForumResults, mainTitle string) {
 
 	closeIndex := strings.Index(mainTitle, ")")
 	dateStr := mainTitle[1:closeIndex]
+
+	if commaIndex := strings.Index(dateStr, ","); commaIndex > 0 {
+		dateStr = dateStr[:commaIndex]
+	}
 
 	layout := "2006-01-02"
 	date, err := time.Parse(layout, dateStr)

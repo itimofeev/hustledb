@@ -37,8 +37,8 @@ type Nomination struct {
 	FinalTechStage  string
 	FinalTechResult []*FinalTechResult
 
-	PartitionId   int64 `db:"partition_id"`
-	RNominationId int64 `db:"r_nomination_id"`
+	PartitionId   int64         `db:"partition_id"`
+	RNominationId sql.NullInt64 `db:"r_nomination_id"`
 }
 
 type Dancer struct {

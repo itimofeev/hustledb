@@ -6,7 +6,6 @@ import (
 	"github.com/itimofeev/hustlesa/util"
 	"gopkg.in/mgutz/dat.v1/sqlx-runner"
 	"strings"
-	"time"
 )
 
 func NewDao(db *runner.DB) ForumDao {
@@ -17,15 +16,14 @@ func NewDao(db *runner.DB) ForumDao {
 
 type ForumDao interface {
 	FindJudgeIdByTitle(title string) int64
-	FindCompetitionId(time time.Time, title string) int64
+	FindCompetitionId(compUrl string) int64
 }
 
 type ForumDaoImpl struct {
 	db *runner.DB
 }
 
-func (f *ForumDaoImpl) FindCompetitionId(time time.Time, title string) int64 {
-	split := strings.Split(title, " ")
+func (f *ForumDaoImpl) FindCompetitionId(compUrl string) int64 {
 	var compIds []int64
 	err := f.db.SQL(`
 		SELECT
@@ -33,13 +31,13 @@ func (f *ForumDaoImpl) FindCompetitionId(time time.Time, title string) int64 {
 		FROM
 			competition c
 		WHERE
-			c.title ilike $1 || '%' AND c.date = $2
-	`, split[0], time).
+			c.site = $1
+	`, compUrl).
 		QuerySlice(&compIds)
 
-	util.CheckErr(err, fmt.Sprintf("Not found judge by title: %s", title))
+	util.CheckErr(err, fmt.Sprintf("Not found judge by title: %s", compUrl))
 	if len(compIds) != 1 {
-		util.CheckErr(errors.New("WTF"), title, time)
+		util.CheckErr(errors.New("WTF"), compUrl)
 	}
 
 	return compIds[0]

@@ -8,10 +8,21 @@ import (
 
 const forumDir = "/Users/ilyatimofee/prog/axxonsoft/src/github.com/itimofeev/hustlesa/tools/forum/"
 
-func main() {
-	//downloadUrlToFile("http://hustle-sa.ru/forum/index.php?showtopic=2969", forumDir + "2969.html")
+const compUrl = "http://hustle-sa.ru/forum/index.php?showtopic="
 
-	data, err := ioutil.ReadFile(forumDir + "2969.html")
+func main() {
+	//parseAndInsert("2969")//(2014-09-06) Открытие сезона (г.Москва), ДК Буревестник, м.Сокольники
+	//parseAndInsert("2929")//(2014-09-20,21) Hustle & Discofox Festival Cup, В рамках H&D RUSSIAN OPEN FESTIVAL
+	parseAndInsert("3007") //(2014-09-27) Восходящие звезды, г. Санкт-Петербург
+}
+
+func parseAndInsert(topicId string) {
+	filePath := forumDir + topicId + ".html"
+	if !util.IsFileExists(filePath) {
+		downloadUrlToFile(compUrl+topicId, filePath)
+	}
+
+	data, err := ioutil.ReadFile(filePath)
 	util.CheckErr(err, "")
 
 	res := forum.GetMainContentFromForumHtml(data)
@@ -23,7 +34,7 @@ func main() {
 
 	db := util.GetDb()
 
-	filler := forum.NewForumDbFiller(forum.NewDao(db))
+	filler := forum.NewForumDbFiller(compUrl+topicId, forum.NewDao(db))
 	filler.FillDbInfo(results)
 
 	inserter := forum.NewDbInserter(forum.NewInsertDao(db))

@@ -744,6 +744,7 @@ func fixClubs(clubs []model.RawClub) []model.RawClub {
 	clubs = append(clubs, model.RawClub{ID: maxClubId + 2, Name: "Intensity (г.Иваново)"})
 	clubs = append(clubs, model.RawClub{ID: maxClubId + 3, Name: "Мартэ"})
 	clubs = append(clubs, model.RawClub{ID: maxClubId + 4, Name: "Kids Office"})
+	clubs = append(clubs, model.RawClub{ID: maxClubId + 4, Name: "Jumping Cats (г.Екатеринбург)"})
 
 	return clubs
 }

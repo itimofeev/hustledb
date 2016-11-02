@@ -20,6 +20,7 @@ type InsertDao interface {
 	DeleteJudgesByCompId(compId int64)
 	DeletePlacesByCompId(compId int64)
 	DeleteNominationsByCompId(compId int64)
+	DeleteDancerClubsByCompId(compId int64)
 	CreateJudge(j *Judge) *Judge
 	CreateNomination(n *Nomination) *Nomination
 	CreatePlace(p *Place) *Place
@@ -75,6 +76,14 @@ func (d *InsertDaoImpl) DeletePlacesByCompId(compId int64) {
 	util.CheckErr(err)
 }
 
+func (d *InsertDaoImpl) DeleteDancerClubsByCompId(compId int64) {
+	_, err := d.db.
+		DeleteFrom("f_dancer_club dc").
+		Where("competition_id = $1", compId).
+		Exec()
+	util.CheckErr(err)
+}
+
 func (d *InsertDaoImpl) CreatePartition(index int, compId int64) int64 {
 	partition := struct {
 		ID     int64 `db:"id"`
@@ -121,16 +130,35 @@ func (d *InsertDaoImpl) CreateNomination(nomination *Nomination) *Nomination {
 
 func (d *InsertDaoImpl) FindDancer(compId int64, dTitle string) *int64 {
 	dTitle2 := strings.Replace(dTitle, "ё", "е", -1)
-	var dancerIds []int64
+	var dancerIds []int64 = make([]int64, 0)
 	err := d.db.SQL(`
 		SELECT
 			d.id
 		FROM
 			dancer d
 		WHERE
-			($1 ilike '%' || d.name || '%' OR $2 ilike '%' || d.name || '%') AND
-			($1 ilike d.surname || '%' OR $2 ilike d.surname || '%' OR $1 ilike d.prev_surname || '%') AND
-			NOT EXISTS (
+			($1 ilike '%' || d.name || ' %' OR $2 ilike '%' || d.name || ' %') AND
+			($1 ilike d.surname || '%' OR $2 ilike d.surname || '%' OR $1 ilike d.prev_surname || '%')
+	`, dTitle, dTitle2).
+		QuerySlice(&dancerIds)
+
+	util.CheckErr(err, dTitle)
+
+	if len(dancerIds) == 1 {
+		return &dancerIds[0]
+	}
+
+	dancerIds = make([]int64, 0)
+
+	err = d.db.SQL(`
+		SELECT
+			distinct d.id
+		FROM
+			dancer d
+		WHERE
+			($1 ilike '%' || d.name || ' %' OR $2 ilike '%' || d.name || ' %') AND
+			($1 ilike d.surname || '%' OR $2 ilike d.surname || '%' OR $1 ilike d.prev_surname || '%')
+			 AND NOT EXISTS (
 				SELECT NULL
 		                FROM result r
 		                WHERE r.competition_id < $3 AND r.dancer_id = d.id
@@ -141,7 +169,7 @@ func (d *InsertDaoImpl) FindDancer(compId int64, dTitle string) *int64 {
 	util.CheckErr(err, dTitle)
 
 	if len(dancerIds) != 1 {
-		util.CheckOk(false, "Len != 1", len(dancerIds), dTitle)
+		util.CheckOk(false, fmt.Sprintf("Dancer ids: %v, len: %d, title: %s, compId: %d", dancerIds, len(dancerIds), dTitle, compId))
 	}
 
 	return &dancerIds[0]
@@ -174,7 +202,7 @@ func (d *InsertDaoImpl) FindResult(compId int64, dancerId int64, isJnj bool) *mo
 	util.CheckErr(err)
 
 	if len(results) != 1 {
-		util.CheckOk(false, "Len != 1|", len(results), compId, dancerId)
+		return nil
 	}
 
 	return &results[0]
@@ -217,7 +245,7 @@ func (d *InsertDaoImpl) FindClubByName(clubName string) *int64 {
 		FROM
 			club
 		WHERE
-			name = $1
+			lower(name) = lower($1)
 	`, clubName).
 		QueryStruct(&club)
 
