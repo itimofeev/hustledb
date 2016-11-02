@@ -1,0 +1,721 @@
+<html> 
+<head> 
+<title>Форум АСХ -> (2014-11-01) Чемпионат Сибири по хастлу 2014.</title> 
+<meta http-equiv="content-type" content="text/html; charset=windows-1251" /> 
+ 
+<style type='text/css'>
+/* FIX IE6 Scrollbars bug - Leave this in! */
+/* FIX IE6 Scrollbars bug - Leave this in! */
+html { overflow-x: auto; } 
+
+/* Body entry, change forum page background colour, default font, font size, etc. Leave text-align:center to center board content
+   #ipwrapper will set text-align back to left for the forum. Any other tables / divs you use must use text-align:left to re-align
+   the content properly. This is a work around to a known Internet Explorer bug */
+BODY { font-family: Verdana, Tahoma, Arial, sans-serif; font-size: 11px; color: #000; margin:0px;padding:0px;background-color:#FFF; text-align:center }
+TABLE, TR, TD { font-family: Verdana, Tahoma, Arial, sans-serif; font-size: 11px; color: #000; }
+
+/* MAIN WRAPPER: Adjust forum width here. Leave margins alone to auto-center content */
+#ipbwrapper { text-align:left; width:95%; margin-left:auto;margin-right:auto }
+
+a:link, a:visited, a:active { text-decoration: underline; color: #000 }
+a:hover { color: #465584; text-decoration:underline }
+
+fieldset.search { padding:6px; line-height:150% }
+label      { cursor:pointer; }
+form       { display:inline; }
+img        { vertical-align:middle; border:0px }
+img.attach { border:2px outset #EEF2F7;padding:2px }
+
+.googleroot  { padding:6px; line-height:130% }
+.googlechild { padding:6px; margin-left:30px; line-height:130% }
+.googlebottom, .googlebottom a:link, .googlebottom a:visited, .googlebottom a:active { font-size:11px; color: #3A4F6C; }
+.googlish, .googlish a:link, .googlish a:visited, .googlish a:active { font-size:14px; font-weight:bold; color:#00D; }
+.googlepagelinks { font-size:1.1em; letter-spacing:1px }
+.googlesmall, .googlesmall a:link, .googlesmall a:active, .googlesmall a:visited { font-size:10px; color:#434951 }
+
+li.helprow { padding:0px; margin:0px 0px 10px 0px }
+ul#help    { padding:0px 0px 0px 15px }
+
+option.cat { font-weight:bold; }
+option.sub { font-weight:bold;color:#555 }
+.caldate   { text-align:right;font-weight:bold;font-size:11px;color:#777;background-color:#DFE6EF;padding:4px;margin:0px }
+
+.warngood { color:green }
+.warnbad  { color:red }
+
+#padandcenter { margin-left:auto;margin-right:auto;text-align:center;padding:14px 0px 14px 0px }
+
+#profilename { font-size:28px; font-weight:bold; }
+#calendarname { font-size:22px; font-weight:bold; }
+
+#photowrap { padding:6px; }
+#phototitle { font-size:24px; border-bottom:1px solid black }
+#photoimg   { text-align:center; margin-top:15px } 
+
+#ucpmenu    { line-height:150%;width:22%; border:1px solid #345487;background-color: #F5F9FD }
+#ucpmenu p  { padding:2px 5px 6px 9px;margin:0px; }
+#ucpcontent { background-color: #F5F9FD; border:1px solid #345487;line-height:150%; width:auto }
+#ucpcontent p  { padding:10px;margin:0px; }
+
+#ipsbanner { position:absolute;top:1px;right:5%; }
+#logostrip { border:1px solid #345487;background-color: #3860BB;background-image:url(style_images/1/tile_back.gif);padding:0px;margin:0px; }
+#submenu   { border:1px solid #BCD0ED;background-color: #DFE6EF;font-size:10px;margin:3px 0px 3px 0px;color:#3A4F6C;font-weight:bold;}
+#submenu a:link, #submenu  a:visited, #submenu a:active { font-weight:bold;font-size:10px;text-decoration: none; color: #3A4F6C; }
+#userlinks { border:1px solid #C2CFDF; background-color: #F0F5FA }
+
+#navstrip  { font-weight:bold;padding:6px 0px 6px 0px; }
+
+.activeuserstrip { background-color:#BCD0ED; padding:6px }
+
+/* Form stuff (post / profile / etc) */
+.pformstrip { background-color: #D1DCEB; color:#3A4F6C;font-weight:bold;padding:7px;margin-top:1px }
+.pformleft  { background-color: #F5F9FD; padding:6px; margin-top:1px;width:25%; border-top:1px solid #C2CFDF; border-right:1px solid #C2CFDF; }
+.pformleftw { background-color: #F5F9FD; padding:6px; margin-top:1px;width:40%; border-top:1px solid #C2CFDF; border-right:1px solid #C2CFDF; }
+.pformright { background-color: #F5F9FD; padding:6px; margin-top:1px;border-top:1px solid #C2CFDF; }
+
+/* Topic View elements */
+.signature   { font-size: 10px; color: #339; line-height:150% }
+.postdetails { font-size: 10px }
+.postcolor   { font-size: 12px; line-height: 160% }
+
+.normalname { font-size: 12px; font-weight: bold; color: #003 }
+.normalname a:link, .normalname a:visited, .normalname a:active { font-size: 12px }
+.unreg { font-size: 11px; font-weight: bold; color: #900 }
+
+.post1 { background-color: #F5F9FD }
+.post2 { background-color: #EEF2F7 }
+.postlinksbar { background-color:#D1DCEB;padding:7px;margin-top:1px;font-size:10px; background-image: url(style_images/1/tile_sub.gif) }
+
+/* Common elements */
+.row1 { background-color: #F5F9FD }
+.row2 { background-color: #DFE6EF }
+.row3 { background-color: #EEF2F7 }
+.row4 { background-color: #E4EAF2 }
+
+.darkrow1 { background-color: #C2CFDF; color:#4C77B6; }
+.darkrow2 { background-color: #BCD0ED; color:#3A4F6C; }
+.darkrow3 { background-color: #D1DCEB; color:#3A4F6C; }
+
+.hlight { background-color: #DFE6EF }
+.dlight { background-color: #EEF2F7 }
+
+.titlemedium { font-weight:bold; color:#3A4F6C; padding:7px; margin:0px; background-image: url(style_images/1/tile_sub.gif) }
+.titlemedium  a:link, .titlemedium  a:visited, .titlemedium  a:active  { text-decoration: underline; color: #3A4F6C }
+
+/* Main table top (dark blue gradient by default) */
+.maintitle { vertical-align:middle;font-weight:bold; color:#FFF; padding:8px 0px 8px 5px; background-image: url(style_images/1/tile_back.gif) }
+.maintitle a:link, .maintitle  a:visited, .maintitle  a:active { text-decoration: none; color: #FFF }
+.maintitle a:hover { text-decoration: underline }
+
+/* tableborders gives the white column / row lines effect */
+.plainborder { border:1px solid #345487;background-color:#F5F9FD }
+.tableborder { border:1px solid #345487;background-color:#FFF; padding:0; margin:0 }
+.tablefill   { border:1px solid #345487;background-color:#F5F9FD;padding:6px;  }
+.tablepad    { background-color:#F5F9FD;padding:6px }
+.tablebasic  { width:100%; padding:0px 0px 0px 0px; margin:0px; border:0px }
+
+.wrapmini    { float:left;line-height:1.5em;width:25% }
+.pagelinks   { float:left;line-height:1.2em;width:35% }
+
+.desc { font-size:10px; color:#434951 }
+.edit { font-size: 9px }
+
+
+.searchlite { font-weight:bold; color:#F00; background-color:#FF0 }
+
+#QUOTE { white-space:normal; font-family: Verdana, Arial; font-size: 11px; color: #465584; background-color: #FAFCFE; border: 1px solid #000; padding-top: 2px; padding-right: 2px; padding-bottom: 2px; padding-left: 2px }
+#SPOILER { font-family: Verdana, Arial; font-size: 8pt; color: #FAFCFE; background-color: #FAFCFE; border: 1px solid Black; padding-top: 2px; padding-right: 2px; padding-bottom: 2px; padding-left: 2px }
+#CODE  { white-space:normal; font-family: Courier, Courier New, Verdana, Arial;  font-size: 11px; color: #465584; background-color: #FAFCFE; border: 1px solid #000; padding-top: 2px; padding-right: 2px; padding-bottom: 2px; padding-left: 2px }
+
+.copyright { font-family: Verdana, Tahoma, Arial, Sans-Serif; font-size: 9px; line-height: 12px }
+
+.codebuttons  { font-size: 10px; font-family: verdana, helvetica, sans-serif; vertical-align: middle }
+.forminput, .textinput, .radiobutton, .checkbox  { font-size: 11px; font-family: verdana, helvetica, sans-serif; vertical-align: middle }
+
+.thin { padding:6px 0px 6px 0px;line-height:140%;margin:2px 0px 2px 0px;border-top:1px solid #FFF;border-bottom:1px solid #FFF }
+
+.purple { color:purple;font-weight:bold }
+.red    { color:red;font-weight:bold }
+.green  { color:green;font-weight:bold }
+.blue   { color:blue;font-weight:bold }
+.orange { color:#F90;font-weight:bold }
+</style> 
+<script language="javascript" src="./html/quote.js"></script> 
+</head> 
+<body>
+<div id="ipbwrapper">
+<script language='JavaScript' type="text/javascript">
+<!--
+function buddy_pop() { window.open('index.php?act=buddy&s=ec86e01ce9fe1067d3a9738bcba61fc7','BrowserBuddy','width=250,height=500,resizable=yes,scrollbars=yes'); }
+function chat_pop(cw,ch)  { window.open('index.php?s=ec86e01ce9fe1067d3a9738bcba61fc7&act=chat&pop=1','Chat','width='+cw+',height='+ch+',resizable=yes,scrollbars=yes'); }
+function multi_page_jump( url_bit, total_posts, per_page )
+{
+pages = 1; cur_st = parseInt(""); cur_page  = 1;
+if ( total_posts % per_page == 0 ) { pages = total_posts / per_page; }
+ else { pages = Math.ceil( total_posts / per_page ); }
+msg = "Введите номер страницы, к которой хотите перейти." + " " + pages;
+if ( cur_st > 0 ) { cur_page = cur_st / per_page; cur_page = cur_page -1; }
+show_page = 1;
+if ( cur_page < pages )  { show_page = cur_page + 1; }
+if ( cur_page >= pages ) { show_page = cur_page - 1; }
+ else { show_page = cur_page + 1; }
+userPage = prompt( msg, show_page );
+if ( userPage > 0  ) {
+	if ( userPage < 1 )     {    userPage = 1;  }
+	if ( userPage > pages ) { userPage = pages; }
+	if ( userPage == 1 )    {     start = 0;    }
+	else { start = (userPage - 1) * per_page; }
+	window.location = url_bit + "&st=" + start;
+}
+}
+//-->
+</script>
+ 
+<!-- IE6/Win TABLE FIX -->
+<table  width="100%" cellspacing="6" id="submenu">
+<tr>
+ <td><a href='http://hustle-sa.ru'>Перейти на главную страницу сайта АСХ</a>&nbsp;&middot; <a href="http://hustle-sa.ru/forum/index.php?s=ec86e01ce9fe1067d3a9738bcba61fc7&amp;act=boardrules">Правила форума</a></td>
+ <td align="right">
+   <img src="style_images/1/atb_help.gif" border="0" alt="" />&nbsp;<a href='http://hustle-sa.ru/forum/index.php?s=ec86e01ce9fe1067d3a9738bcba61fc7&amp;act=Help'>Помощь</a>
+   &nbsp; &nbsp;&nbsp;<img src="style_images/1/atb_search.gif" border="0" alt="" />&nbsp;<a href='http://hustle-sa.ru/forum/index.php?s=ec86e01ce9fe1067d3a9738bcba61fc7&amp;act=Search&amp;f=6'>Поиск</a>
+   &nbsp; &nbsp;&nbsp;<img src="style_images/1/atb_members.gif" border="0" alt="" />&nbsp;<a href='http://hustle-sa.ru/forum/index.php?s=ec86e01ce9fe1067d3a9738bcba61fc7&amp;act=Members'>Участники</a>
+   &nbsp; &nbsp;&nbsp;<img src="style_images/1/atb_calendar.gif" border="0" alt="" />&nbsp;<a href='http://hustle-sa.ru/forum/index.php?s=ec86e01ce9fe1067d3a9738bcba61fc7&amp;act=calendar'>Календарь</a>
+   <!--IBF.CHATLINK-->
+   <!--IBF.TSLLINK-->
+ </td>
+</tr>
+</table>
+<table width="100%" id="userlinks" cellspacing="6">
+   <tr>
+    <td>Здравствуйте Гость ( <a href='http://hustle-sa.ru/forum/index.php?s=ec86e01ce9fe1067d3a9738bcba61fc7&amp;act=Login&amp;CODE=00'>Вход</a> | <a href='http://hustle-sa.ru/forum/index.php?s=ec86e01ce9fe1067d3a9738bcba61fc7&amp;act=Reg&amp;CODE=00'>Регистрация</a> )</td>
+    <td align='right'><a href='http://hustle-sa.ru/forum/index.php?s=ec86e01ce9fe1067d3a9738bcba61fc7&amp;act=Reg&amp;CODE=reval'>Выслать повторно письмо для активации</a></td>
+   </tr>
+  </table>
+<br /> 
+<div id='navstrip' align='left'><img src='style_images/1/nav.gif' border='0'  alt='&gt;' />&nbsp;<a href='http://hustle-sa.ru/forum/index.php?s=ec86e01ce9fe1067d3a9738bcba61fc7&amp;act=idx'>Форум АСХ</a>&nbsp;-&gt;&nbsp;<a href='http://hustle-sa.ru/forum/index.php?s=ec86e01ce9fe1067d3a9738bcba61fc7&amp;act=SC&amp;c=1'>Ассоциация спортивного хастла</a>&nbsp;-&gt;&nbsp;<a href='http://hustle-sa.ru/forum/index.php?s=ec86e01ce9fe1067d3a9738bcba61fc7&amp;showforum=6'>Конкурсы и соревнования АСХ</a></div>
+<br /> 
+    <script language='javascript' type='text/javascript'>
+    <!--
+    
+    function link_to_post(pid)
+    {
+    	temp = prompt( "Копирование прямой ссылки этой темы, для сохранения ссылки в буфере обмена Вашего компьютера", "http://hustle-sa.ru/forum/index.php?s=ec86e01ce9fe1067d3a9738bcba61fc7&amp;showtopic=3035&view=findpost&p=" + pid );
+    	return false;
+    }
+    
+    function delete_post(theURL) {
+       if (confirm('Вы действительно хотите удалить это сообщение?')) {
+          window.location.href=theURL;
+       }
+       else {
+          alert ('Не хотите, как хотите :)');
+       } 
+    }
+    
+    function PopUp(url, name, width,height,center,resize,scroll,posleft,postop) {
+    if (posleft != 0) { x = posleft }
+    if (postop  != 0) { y = postop  }
+
+    if (!scroll) { scroll = 1 }
+    if (!resize) { resize = 1 }
+
+    if ((parseInt (navigator.appVersion) >= 4 ) && (center)) {
+      X = (screen.width  - width ) / 2;
+      Y = (screen.height - height) / 2;
+    }
+    if (scroll != 0) { scroll = 1 }
+
+    var Win = window.open( url, name, 'width='+width+',height='+height+',top='+Y+',left='+X+',resizable='+resize+',scrollbars='+scroll+',location=no,directories=no,status=no,menubar=no,toolbar=no');
+	}
+	
+	function ShowHide(id1, id2) {
+	  if (id1 != '') expMenu(id1);
+	  if (id2 != '') expMenu(id2);
+	}
+	
+	function expMenu(id) {
+	  var itm = null;
+	  if (document.getElementById) {
+		itm = document.getElementById(id);
+	  } else if (document.all){
+		itm = document.all[id];
+	  } else if (document.layers){
+		itm = document.layers[id];
+	  }
+	
+	  if (!itm) {
+	   // do nothing
+	  }
+	  else if (itm.style) {
+		if (itm.style.display == "none") { itm.style.display = ""; }
+		else { itm.style.display = "none"; }
+	  }
+	  else { itm.visibility = "show"; }
+	}
+    //-->
+    </script>
+    
+<a name='top'></a>
+<!-- Show FAQ/Forum Rules -->
+    <div align='left'><img src='style_images/1/forum_rules.gif' border='0'  alt='Правила форума' />&nbsp;<b>НАЗНАЧЕНИЕ ДАННОГО РАЗДЕЛА</b><br /><br />Раздел предназначен для запросов на проведение и анонсов рейтинговых турниров АСХ. Правила создания тем читайте в <a target=_new href=http://hustle-sa.ru/forum/index.php?showtopic=31>отдельной ветке =>></a></div>
+	<br />
+   <!-- End FAQ/Forum Rules -->
+
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+ <td align='left' width="20%" nowrap="nowrap">&nbsp;</td>
+ <td align='right' width="80%"><a href='http://hustle-sa.ru/forum/index.php?s=ec86e01ce9fe1067d3a9738bcba61fc7&amp;act=Post&amp;CODE=02&amp;f=6&amp;t=3035'><img src='style_images/1/t_reply.gif' border='0'  alt='Ответ в тему' /></a><a href='http://hustle-sa.ru/forum/index.php?s=ec86e01ce9fe1067d3a9738bcba61fc7&amp;act=Post&amp;CODE=00&amp;f=6' title='Создание новой темы'><img src='style_images/1/t_new.gif' border='0'  alt='Создание новой темы' /></a><a href='http://hustle-sa.ru/forum/index.php?s=ec86e01ce9fe1067d3a9738bcba61fc7&amp;act=Post&amp;CODE=10&amp;f=6'><img src='style_images/1/t_poll.gif' border='0'  alt='Создание опроса' /></a></td>
+</tr>
+</table>
+<br />
+<div class="tableborder">
+    <div class='maintitle'><img src='style_images/1/nav_m.gif' border='0'  alt='&gt;' width='8' height='8' />&nbsp;<b>(2014-11-01) Чемпионат Сибири по хастлу 2014.</b>, г. Красноярск, УТВЕРЖДЕНО</div>
+	<!--{IBF.POLL}-->
+	<div align='right' class='postlinksbar'>
+	  <strong><!--{IBF.START_NEW_POLL}--><a href='http://hustle-sa.ru/forum/index.php?s=ec86e01ce9fe1067d3a9738bcba61fc7&amp;act=Track&amp;f=6&amp;t=3035'>Подписка на тему</a> |
+	  <a href='http://hustle-sa.ru/forum/index.php?s=ec86e01ce9fe1067d3a9738bcba61fc7&amp;act=Forward&amp;f=6&amp;t=3035'>Сообщить другу</a> |
+	  <a href='http://hustle-sa.ru/forum/index.php?s=ec86e01ce9fe1067d3a9738bcba61fc7&amp;act=Print&amp;client=printer&amp;f=6&amp;t=3035'>Версия для печати</a></strong>
+	</div>
+	
+	<!--Begin Msg Number 19293-->
+    <table width='100%' border='0' cellspacing='1' cellpadding='3'>
+    <tr>
+      <td align='center' valign='middle' class='row4' width="1%"><a name='entry19293'></a><span class='normalname'><a href="javascript:ins('Slavka')">Slavka</a></span></td>
+        <td class='row4' valign='top' width="99%">
+        
+        <!-- POSTED DATE DIV -->
+        
+        <div align='left' class='row4' style='float:left;padding-top:4px;padding-bottom:4px'>
+        <span class='postdetails'><b><a title="Показать ссылку этой темы" href="#" onclick="link_to_post(19293); return false;" style="text-decoration:underline">Дата</a></b> 29.09.2014 - 06:33</span>
+        </div>
+        
+        <!-- REPORT / DELETE / EDIT / QUOTE DIV -->
+        
+        <div align='right'>
+        <a href='http://hustle-sa.ru/forum/index.php?s=ec86e01ce9fe1067d3a9738bcba61fc7&amp;act=Post&amp;CODE=06&amp;f=6&amp;t=3035&amp;p=19293'><img src='style_images/1/p_quote.gif' border='0'  alt='Цитировать сообщение' /></a>
+      </div>
+      
+      </td>
+    </tr>
+    <tr>
+      <td align='center' valign='top' class='post2'>
+        <span class='postdetails'><br /><br /><br /><br />
+        Старожил<br />
+        <img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><br /><br />
+        <a href='http://hustle-sa.ru/forum/index.php?s=ec86e01ce9fe1067d3a9738bcba61fc7&amp;showuser=761'>Профиль</a><br />
+        Группа: РК АСХ<br />
+        Сообщений: 281<br />
+        Пользователь №: 761<br />
+        Регистрация: 9.02.2009<br />
+        <br />
+        <br /><br />
+         </span><br />
+        <!--$ author[field_1]-->
+        <img src='style_images/1/spacer.gif' alt='' width='160' height='1' /><br /> 
+      </td>
+      <td width='100%' valign='top' class='post2'>
+        <!-- THE POST 19293 -->
+        <div class='postcolor'><b><span style='font-size:19pt;line-height:100%'><span style='color:red'>Чемпионат Сибири по хастлу.</span></span></b><br />г. Красноярск<br /><br />ОБЩИЕ ПРАВИЛА И ПОЛОЖЕНИЯ<br /><br />Дата проведения: 01 ноября<br />Место проведения: НК &quot;Гавана&quot;, Бограда 134.<br />Правила и рейтинг: АСХ<br />Организаторы: Красноярский Хастл-клуб «Движение», АСХ<br /><br />Номинации:<br /><b>** Хастл - D класс</b><br /><b>** Хастл - C класс</b><br /><b>** Хастл Абсолют </b><br /><b>** Хастл ДнД (Begginers)</b><br /><b>** Хастл ДнД (Rs-M-S)</b><br /><br />ОБЩИЕ ПОЛОЖЕНИЯ:<br /><br />Пояснения к каждой номинации:<br /><b>- Хастл - D класс:</b> Рейтинг АСХ. Ограничения по D-классу. Участвовать в этой номинации имеют право только пары не выше D класса, согласно рейтингу АСХ. <br /><b>- Хастл - С класс:</b> Рейтинг АСХ. Ограничения по С-классу. Участвовать в этой номинации имеют право только пары не выше С класса, согласно рейтингу АСХ. <br /><b> - Хастл Абсолют: </b>Рейтинг АСХ. Ограничения по А-классу. Участвовать в этой номинации имеют право пары всех классов, согласно рейтингу АСХ. <br /><b>- Хастл ДнД (Begginers): </b> Рейтинговая номинация.  Участвовать в этой номинации имеют право танцоры класса не выше &quot;Begginers&quot;, согласно рейтингу АСХ по ДнД. Танцоры меняются партнерами и партнершами в течении одного тура и после каждого отборочного. Оцениваются партнеры и партнерши отдельно.<br /><b>- Хастл ДнД (Rs-M-S): </b> Рейтинговая номинация.  Участвовать в этой номинации имеют право танцоры всех классов, кроме класса &quot;Begginers&quot;, согласно рейтингу АСХ по ДнД. Танцоры меняются партнерами и партнершами в течении одного тура и после каждого отборочного. Оцениваются партнеры и партнерши отдельно.<br /><br />Подробнее о Правилах АСХ о проведении турниров по Хастлу можно ознакомиться вот тут:<br /><a href='http://hustle-sa.ru/pages-view-11.html' target='_blank'>http://hustle-sa.ru/pages-view-11.html</a><br />Что оценивается на конкурсах в Д-классе<br /><a href='http://hustledance.ru/forum/viewtopic.php?f=2&amp;t=1351' target='_blank'>http://hustledance.ru/index.php?name=Forum...opic&amp;t=1351</a><br />Что оценивается на конкурсах в С-классе<br /><a href='http://hustledance.ru/forum/viewtopic.php?f=2&amp;t=3441' target='_blank'>http://hustledance.ru/index.php?name=Forum...opic&amp;t=1358</a><br /><br />Заявки на участие в соревнованиях принимаются до 30 октября:<br />1. <span style='color:red'><b><a href='http://www.liveindance.ru/contest/reg.php?id=143' target='_blank'>--&#62;&gt;РЕГИСТРАЦИЯ&lt;&lt;--</a></span></b><br /><br /><b>Предварительная программа:</b><br /><br />Суббота, 01 ноября:<br /><br />10:30 до 11:30 регистрация пар, проба паркета.<br />12:00-17:30 Начало турнира, парад пар. Отборочные туры и финалы.<br />Награждения. Заключительная часть. <br /><br /><b>Судейская бригада турнира:</b><br />Литке Евгений (главный судья)<br /><br /> Линейные судьи:<br />1. Литке Евгений (г. Москва)<br />2. Пузанова Ирина (г. Санкт-Петербург)<br />3. Селиванова Алёна (г. Барнаул)<br />4. Дмитриенко Денис (г. Новосибирск) (переаттестация)<br />5. Воробьев Степан (г. Красноярск)<br />6. Суворов Илья (г. Красноярск)<br />7. Самарцев Андрей (г. Красноярск)<br /><br />Запасной судья: Короткова Любовь (г. Красноярск)<br /><br />Аттестующиеся судьи:<br />1. Хмель Кристина<br />2. Якимов Сергей<br />3. Похабов Александр<br /><br /><br />Отборочные туры проводятся по заходам, не более 7 пар в одном заходе.<br />В финал выводится не более 7 пар.<br />Регламент финала номинации &quot;абсолют&quot;: быстрая мелодия (по группам и в общем заходе), медленная мелодия (по группам и в общем заходе). Итого для каждой пары 4 мелодии.<br />Регламент финала номинации &quot;Д класс&quot;: быстрая мелодия (по группам и в общем заходе). Итого для каждой пары 2 мелодии.<br />Регламент финала номинации &quot;С-класс&quot;: быстрая мелодия (по группам и в общем заходе). Итого для каждой пары 2 мелодии.<br />За каждый танец (быстрый, медленный) выставляется отдельная оценка. <br /><br /><b>Музыкальное сопровождение финала номинации хастл-абсолют:</b><br /><br />1. Каждая пара, которая, как она считает, окажется финалистом, предоставляет диджею по 1 композиции на каждый танец (быстрый и медленный) ДО окончания предварительной регистрации. Для того чтобы успеть проверить мелодии по ритму и прочих возможных миксованых моментов. Присылается одним архивом на адрес slavka_slon@mail.ru. (Или же, закачать на любой файл-обменник, например, на files.mail.ru, а на электронную почту прислать ссылку на скачивание.) Архив должен быть назван по фамилиям участников (например, Иванов-Иванова.zip), внутри архива 2 папки, Fast и Slow в которых лежит по 1 выбранной композиций. Параметры композиций должны соответствовать правилам АСХ по скорости/стилистике и т.д., использование миксованных композиций не допускается.<br /><br />2. При танцевании пары в формате &quot;одна пара на паркете&quot; диджей включает одну мелодию из предоставленных парой фонограмм (для данного танца - быстрого/медленного); <br /><br />3. В случае если пара не смогла предоставить фонограммы до финала - тогда для этой пары ставится любая композиция, доступная диджею, соответствующая правилам АСХ для данной номинации.<br /><br /><b>Стоимость (по предварительной регистрации):</b><br />Вход для зрителей и участников: 250 рублей<br />Участие в одной номинации, с человека (Регистрационный сбор): 200 рублей<br />Участие в каждой последующей номинации, с человека (регистрационный сбор): + 100 рублей<br /><br />При регистрации в день турнира стоимость регистрации возрастает на 200 рублей с человека.<br />(лист предварительной регистрации находится вот тут: <br /><b><a href='http://www.liveindance.ru/contest/registration/list.php?id=143' target='_blank'>--&#62;&gt; Списки регистрации &lt;&lt;--</a></b><br /><br />При нарушении сроков подачи заявки на участие организатор оставляет за собой право на увеличение регистрационного сбора или отказ в регистрации.<br /><br /><span class='edit'>Это сообщение отредактировал <b>Slavka</b> - 26.10.2014 - 07:11</span> </div>
+        
+        <!-- THE POST -->
+      </td>
+    </tr>
+    <tr>
+      <td class='darkrow3' align='left'><b></b></td>
+      <td class='darkrow3' nowrap="nowrap" align='left'>
+      
+        <!-- PM / EMAIL / WWW / MSGR -->
+      
+        <div align='left' class='darkrow3' style='float:left;width:auto'>
+        <a href='http://hustle-sa.ru/forum/index.php?s=ec86e01ce9fe1067d3a9738bcba61fc7&amp;act=Msg&amp;CODE=04&amp;MID=761'><img src='style_images/1/p_pm.gif' border='0'  alt='PM' /></a><a href='http://hustle-sa.ru/forum/index.php?s=ec86e01ce9fe1067d3a9738bcba61fc7&amp;act=Mail&amp;CODE=00&amp;MID=761'><img src='style_images/1/p_email.gif' border='0'  alt='Письмо на e-mail пользователю' /></a>
+        </div>
+        
+        <!-- REPORT / UP -->
+         
+        <div align='right'>
+         <a href='javascript:scroll(0,0);'><img src='style_images/1/p_up.gif' alt='Top' border='0' /></a>
+        </div>
+      </td>
+    </tr>
+    </table>
+    <div class='darkrow1' style='height:5px'><!-- --></div>
+    
+	<!--Begin Msg Number 19558-->
+    <table width='100%' border='0' cellspacing='1' cellpadding='3'>
+    <tr>
+      <td align='center' valign='middle' class='row4' width="1%"><a name='entry19558'></a><span class='normalname'><a href="javascript:ins('Slavka')">Slavka</a></span></td>
+        <td class='row4' valign='top' width="99%">
+        
+        <!-- POSTED DATE DIV -->
+        
+        <div align='left' class='row4' style='float:left;padding-top:4px;padding-bottom:4px'>
+        <span class='postdetails'><b><a title="Показать ссылку этой темы" href="#" onclick="link_to_post(19558); return false;" style="text-decoration:underline">Дата</a></b> 31.10.2014 - 12:44</span>
+        </div>
+        
+        <!-- REPORT / DELETE / EDIT / QUOTE DIV -->
+        
+        <div align='right'>
+        <a href='http://hustle-sa.ru/forum/index.php?s=ec86e01ce9fe1067d3a9738bcba61fc7&amp;act=Post&amp;CODE=06&amp;f=6&amp;t=3035&amp;p=19558'><img src='style_images/1/p_quote.gif' border='0'  alt='Цитировать сообщение' /></a>
+      </div>
+      
+      </td>
+    </tr>
+    <tr>
+      <td align='center' valign='top' class='post1'>
+        <span class='postdetails'><br /><br /><br /><br />
+        Старожил<br />
+        <img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><br /><br />
+        <a href='http://hustle-sa.ru/forum/index.php?s=ec86e01ce9fe1067d3a9738bcba61fc7&amp;showuser=761'>Профиль</a><br />
+        Группа: РК АСХ<br />
+        Сообщений: 281<br />
+        Пользователь №: 761<br />
+        Регистрация: 9.02.2009<br />
+        <br />
+        <br /><br />
+         </span><br />
+        <!--$ author[field_1]-->
+        <img src='style_images/1/spacer.gif' alt='' width='160' height='1' /><br /> 
+      </td>
+      <td width='100%' valign='top' class='post1'>
+        <!-- THE POST 19558 -->
+        <div class='postcolor'>Списки предварительной регистрации:<br />,<br /><br /><i><b>Хастл &quot;D&quot; класс:</b></i><br />1. Шмыгов Тимофей Васильевич (6259, Вираж (г.Новосибирск), E) - Кожевникова Дина Сергеевна (5647, Вираж (г.Новосибирск), D)<br />2. Федурин Константин Юрьевич (6820, Движение (г.Красноярск), E) - Гусева Анна Викторовна (6836, Движение (г.Красноярск), E)<br />3. Уливанов Никита Андреевич (4252, Бродвей (г.Красноярск),Движение (г.Красноярск), D) - Зданович Ольга Сергеевна (4268, Бродвей (г.Красноярск),Движение (г.Красноярск), D)<br />4. Тарасов Максим Иванович (5467, Dance Fox (г.Кемерово), D) - Хисматуллина Раиса Раилевна (5804, Dance Fox (г.Кемерово), D)<br />5. Симаков Дмитрий Иванович (6229, Движение (г.Красноярск), E) - Сафина Люция Хамисовна (6243, Движение (г.Красноярск), E)<br />6. Савин Денис Анатольевич (5811, Движение (г.Красноярск), D) - Головинская Ольга Александровна (5806, Движение (г.Красноярск), D)<br />7. Петрушев Александр Александрович (5176, Dance Fox (г.Кемерово), D) - Андреева Анастасия Андреевна (5986, Dance Fox (г.Кемерово), D)<br />8. Першин Александр Николаевич (6808, Чердак (г.Красноярск), D) - Тимербаева Дания Нургалеевна (6825, Чердак (г.Красноярск), D)<br />9. Могучих Иван Викторович (6231, Движение (г.Красноярск), D) - Гришина Виктория Валерьевна (5006, Движение (г.Красноярск), D)<br />10. Малютин Павел Геннадьевич (6071, Движение (г.Красноярск), E) - Дмитриева Екатерина Александровна (5212, Бродвей (г.Красноярск), E)<br />11. Лукьяненко Сергей Олегович (5783, Чердак (г.Красноярск), D) - Николаева Ксения Сергеевна (6237, Чердак (г.Красноярск), D)<br />12. Лесников Игорь Владимирович (6068, Движение (г.Красноярск), D) - Ершова Любовь Павловна (6072, Движение (г.Красноярск), D)<br />13. Косых Иван Петрович (5318, Вираж (г.Новосибирск), D) - Мордовская Елена Сергеевна (5336, Вираж (г.Новосибирск), D)<br />14. Королёв Валентин Александрович (5787, Движение (г.Красноярск), D) - Троян Юлия Александровна (5014, Движение (г.Красноярск), D)<br />15. Коржов Алексей Павлович (2520, Движение (г.Новосибирск), D) - Кучер Александра Игоревна (6749, Вираж (г.Новосибирск), E)<br />16. Иванов Дмитрий Александрович (5788, Чердак (г.Красноярск), D) - Круглова Ульяна Николаевна (6842, Чердак (г.Красноярск), E)<br />17. Ефремов Валентин Валерьевич (5667, Движение (г.Красноярск), D) - Ефремова Елена Петровна (5673, Движение (г.Красноярск), D)<br />18. Доронин Дмитрий Михайлович (5271, LaVida (г.Железногорск), D) - Вячеславова Полина Юрьевна (5279, LaVida (г.Железногорск), D)<br />19. Горелов Максим Юрьевич (5273, Чердак (г.Красноярск), D) - Никотина Дарья Юрьевна (6075, Чердак (г.Красноярск), E)<br />20. Виноградов Владимир Евгеньевич (6046, Вираж (г.Новосибирск), D) - Булдакова Елена Анатольевна (5637, Вираж (г.Новосибирск), E)<br />21. Ванислав Дмитрий Владимирович (6234, Движение (г.Красноярск), D) - Камалова Ольга Халиловна (6248, Движение (г.Красноярск), D)<br />22. Астафуров Сергей Владимирович (5549, Движение (г.Красноярск), D) - Борисова Елена Владимировна (6413, Движение (г.Красноярск), E)<br /><br /><i><b>Хастл &quot;C&quot; класс:</b></i><br />1. Шкуропацкий Павел Александрович (5973, DEF (г.Барнаул), D) - Новикова Екатерина Павловна (5980, DEF (г.Барнаул), C)<br />2. Чередник Александр Сергеевич (5548, Движение (г.Красноярск), C) - Вересова Софья Николаевна (4270, Бродвей (г.Красноярск),Движение (г.Красноярск), C)<br />3. Хохлов Дмитрий Анатольевич (3666, Движение (г.Красноярск), D) - Виноградова Серафима Павловна (2335, Чердак (г.Красноярск), B)<br />4. Трошкин Игорь Владимирович (5274, Чердак (г.Красноярск), C) - Стрельченко Мария Юрьевна (5792, Чердак (г.Красноярск), C)<br />5. Сальников Алексей Андреевич (5566, Dance Fox (г.Кемерово), D) - Антонова Татьяна Александровна (4277, Альтернатива (г.Кемерово), C)<br />6. Парфёнов Евгений Евгеньевич (3286, Чердак (г.Красноярск),Движение (г.Красноярск), C) - Ашурова Ирина Исмаиловна (5562, Чердак (г.Красноярск), C)<br />7. Лыков Антон Евгеньевич (4110, Ренессанс (г.Барнаул), C) - Гирякова Наталья Валерьевна (4137, Ренессанс (г.Барнаул), C)<br />8. Кулеш Сергей Евгеньевич (5433, Движение (г.Красноярск), C) - Панфилова Нина Сергеевна (5435, Движение (г.Красноярск), D)<br />9. Козлов Павел Сергеевич (3955, Ренессанс (г.Барнаул), C) - Стукова Екатерина Евгеньевна (4133, Ренессанс (г.Барнаул), D)<br />10. Иванов Дмитрий Владимирович (3936, Движение (г.Красноярск), C) - Кокова Мария Игоревна (3383, Движение (г.Красноярск), C)<br />11. Зонов Олег Викторович (2590, Движение (г.Красноярск), C) - Данилова Ксения Валерьевна (6590, Движение (г.Красноярск), D)<br />12. Заволокин Глеб Игоревич (5071, Чердак (г.Красноярск), C) - Вахи Екатерина Павловна (2973, Движение (г.Красноярск), C)<br />13. Горенский Антон Валерьевич (2002, Движение (г.Красноярск), C) - Олифиренко Дарья Андреевна (5798, Движение (г.Красноярск), D)<br />14. Горелов Евгений Юрьевич (3291, Движение (г.Красноярск), C) - Андгуладзе Ирина Сергеевна (5671, Движение (г.Красноярск), E)<br /><br /><i><b>Хастл АБСОЛЮТ:</b></i><br />1. Якимов Сергей Николаевич (3283, Движение (г.Красноярск), B) - Копич Ксения Алексеевна (3546, Движение (г.Красноярск), B)<br />2. Чередник Александр Сергеевич (5548, Движение (г.Красноярск), C) - Вересова Софья Николаевна (4270, Бродвей (г.Красноярск),Движение (г.Красноярск), C)<br />3. Хохлов Дмитрий Анатольевич (3666, Движение (г.Красноярск), D) - Виноградова Серафима Павловна (2335, Чердак (г.Красноярск), B)<br />4. Трошкин Игорь Владимирович (5274, Чердак (г.Красноярск), C) - Стрельченко Мария Юрьевна (5792, Чердак (г.Красноярск), C)<br />5. Северин Алексей Сергеевич (4256, Чердак (г.Красноярск),Бродвей (г.Красноярск), C) - Кобыльских Лидия Анатольевна (4276, Чердак (г.Красноярск), B)<br />6. Сальников Алексей Андреевич (5566, Dance Fox (г.Кемерово), D) - Антонова Татьяна Александровна (4277, Альтернатива (г.Кемерово), C)<br />7. Похабов Александр Михайлович (2324, Движение (г.Красноярск), B) - Околова Людмила Сергеевна (2032, Движение (г.Красноярск), B)<br />8. Потапов Вячеслав Николаевич (1410, Движение (г.Красноярск), A) - Потапова Елена Александровна (1428, Движение (г.Красноярск), A)<br />9. Михайлов Сергей Андреевич (2323, Движение (г.Красноярск), B) - Емельяненко Анна Владимировна (1499, Движение (г.Красноярск), B)<br />10. Лыков Антон Евгеньевич (4110, Ренессанс (г.Барнаул), C) - Гирякова Наталья Валерьевна (4137, Ренессанс (г.Барнаул), C)<br />11. Коржов Алексей Павлович (2520, Движение (г.Новосибирск), D) - Кучер Александра Игоревна (6749, Вираж (г.Новосибирск), E)<br />12. Козлов Павел Сергеевич (3955, Ренессанс (г.Барнаул), C) - Стукова Екатерина Евгеньевна (4133, Ренессанс (г.Барнаул), D)<br />13. Зонов Олег Викторович (2590, Движение (г.Красноярск), C) - Данилова Ксения Валерьевна (6590, Движение (г.Красноярск), D)<br />14. Заволокин Глеб Игоревич (5071, Чердак (г.Красноярск), C) - Фёдорова Дария Эдуардовна (2969, Чердак (г.Красноярск), B)<br />15. Жбанков Александр Валерьевич (3530, Движение (г.Красноярск), B) - Хмель Кристина Артуровна (3387, Движение (г.Красноярск), B)<br />16. Евдокимов Алексей Николаевич (3565, Вираж (г.Новосибирск), A) - Васильева Маргарита Михайловна (2137, Вираж (г.Новосибирск), A)<br />17. Горенский Антон Валерьевич (2002, Движение (г.Красноярск), C) - Олифиренко Дарья Андреевна (5798, Движение (г.Красноярск), D)<br /><br /><i><b>DnD-Beginner - Партнеры:</b></i><br />1. Шуфер Михаил Борисович (4320, Движение (г.Красноярск), E)<br />2. Шолохов Александр Анатольевич (6818, Чердак (г.Красноярск), E)<br />3. Шмыгов Тимофей Васильевич (6259, Вираж (г.Новосибирск), E) <br />4. Шкуропацкий Павел Александрович (5973, DEF (г.Барнаул), D)<br />5. Чеусов Денис Валерьевич (2952, Движение (г.Красноярск), D)<br />6. Хохлов Дмитрий Анатольевич (3666, Движение (г.Красноярск), D)<br />7. Уливанов Никита Андреевич (4252, Бродвей (г.Красноярск),Движение (г.Красноярск), D) <br />(г.Красноярск),Движение (г.Красноярск), D)<br />8. Тарасов Максим Иванович (5467, Dance Fox (г.Кемерово), D) <br />9. Сальников Алексей Андреевич (5566, Dance Fox (г.Кемерово), D)<br />10. Савин Денис Анатольевич (5811, Движение (г.Красноярск), D)<br />11. Петрушев Александр Александрович (5176, Dance Fox (г.Кемерово), D) <br />12. Могучих Иван Викторович (6231, Движение (г.Красноярск), D)<br />13. Малютин Павел Геннадьевич (6071, Движение (г.Красноярск), E) <br />14. Лукьяненко Сергей Олегович (5783, Чердак (г.Красноярск), D) <br />15. Косых Иван Петрович (5318, Вираж (г.Новосибирск), D) <br />16. Королёв Валентин Александрович (5787, Движение (г.Красноярск), D) <br />17. Коржов Алексей Павлович (2520, Движение (г.Новосибирск), D)<br />18. Доронин Дмитрий Михайлович (5271, LaVida (г.Железногорск), D) <br />19. Горелов Максим Юрьевич (5273, Чердак (г.Красноярск), D)<br />20. Виноградов Владимир Евгеньевич (6046, Вираж (г.Новосибирск), D) <br />21. Ванислав Дмитрий Владимирович (6234, Движение (г.Красноярск), D) <br /><br /><i><b>DnD-Beginner - Партнерши:</b></i><br />1. Кожевникова Дина Сергеевна (5647, Вираж (г.Новосибирск), D)<br />2. Зданович Ольга Сергеевна (4268, Бродвей (г.Красноярск),Движение (г.Красноярск), D)<br />3. Хисматуллина Раиса Раилевна (5804, Dance Fox (г.Кемерово), D)<br />4. Головинская Ольга Александровна (5806, Движение (г.Красноярск), D)<br />5. Андреева Анастасия Андреевна (5986, Dance Fox (г.Кемерово), D)<br />6. Гришина Виктория Валерьевна (5006, Движение (г.Красноярск), D)<br />7. Дмитриева Екатерина Александровна (5212, Бродвей (г.Красноярск), E)<br />8. Николаева Ксения Сергеевна (6237, Чердак (г.Красноярск), D)<br />9.  Мордовская Елена Сергеевна (5336, Вираж (г.Новосибирск), D)<br />10. Троян Юлия Александровна (5014, Движение (г.Красноярск), D)<br />11. Кучер Александра Игоревна (6749, Вираж (г.Новосибирск), E)<br />12. Вячеславова Полина Юрьевна (5279, LaVida (г.Железногорск), D)<br />13. Булдакова Елена Анатольевна (5637, Вираж (г.Новосибирск), E)<br />14. Камалова Ольга Халиловна (6248, Движение (г.Красноярск), D)<br />15.  () - Олифиренко Дарья Андреевна (5798, Движение (г.Красноярск), D)<br />16.  () - Марсель Елизавета Павловна (6309, Движение (г.Красноярск), E)<br />17.  () - Валиуллина Яна Романовна (6074, Движение (г.Красноярск), D)<br />18.  () - Осенкова Юлия Сергеевна (6240, Движение (г.Красноярск), E)<br />19.  () - Павленко Юлия Игоревна (дебют, Движение (г.Красноярск), E)<br />20.  () - Погорельченко Мария Сергеевна (6822, Движение (г.Красноярск), E)<br />21.  () - Круглова Ульяна Николаевна (6842, Чердак (г.Красноярск), E)<br /><br /><br /><b>DnD RS-M-S Партнеры :</b>[/i]<br />1. Якимов Сергей Николаевич (3283, Движение (г.Красноярск), B)<br />2. Шуфер Михаил Борисович (4320, Движение (г.Красноярск), E)<br />3. Шкуропацкий Павел Александрович (5973, DEF (г.Барнаул), D) <br />4. Чеусов Денис Валерьевич (2952, Движение (г.Красноярск), D)<br />5. Хохлов Дмитрий Анатольевич (3666, Движение (г.Красноярск), D) <br />6. Трошкин Игорь Владимирович (5274, Чердак (г.Красноярск), C) <br />7. Северин Алексей Сергеевич (4256, Чердак (г.Красноярск),Бродвей (г.Красноярск), C) <br />8. Савченко Пётр Александрович (3535, Движение (г.Красноярск), B)<br />9. Похабов Александр Михайлович (2324, Движение (г.Красноярск), B) <br />10. Потапов Вячеслав Николаевич (1410, Движение (г.Красноярск), A) <br />11. Михайлов Сергей Андреевич (2323, Движение (г.Красноярск), B)<br />12. Кулеш Сергей Евгеньевич (5433, Движение (г.Красноярск), C)<br />13. Королёв Валентин Александрович (5787, Движение (г.Красноярск), D)<br />14. Коржов Алексей Павлович (2520, Движение (г.Новосибирск), D) <br />15. Козлов Павел Сергеевич (3955, Ренессанс (г.Барнаул), C) <br />16. Иванов Максим Александрович (3531, Чердак (г.Красноярск), C)<br />17. Зонов Олег Викторович (2590, Движение (г.Красноярск), C)<br />18. Заволокин Глеб Игоревич (5071, Чердак (г.Красноярск), C) <br />19. Жбанков Александр Валерьевич (3530, Движение (г.Красноярск), B) <br />20. Евдокимов Алексей Николаевич (3565, Вираж (г.Новосибирск), A) <br />21. Горенский Антон Валерьевич (2002, Движение (г.Красноярск), C)<br />22. Горелов Максим Юрьевич (5273, Чердак (г.Красноярск), D)<br />23. Гаврилин Дмитрий Владимирович (2942, Движение (г.Красноярск), C)<br />24. Андреев Марк Нюргунович (1692, Вираж (г.Новосибирск), C)<br /><br /><b>DnD RS-M-S Партнерши :</b>[/i]<br />1. Копич Ксения Алексеевна (3546, Движение (г.Красноярск), B)<br />2. Новикова Екатерина Павловна (5980, DEF (г.Барнаул), C)<br />3. Виноградова Серафима Павловна (2335, Чердак (г.Красноярск), B)<br />4. Стрельченко Мария Юрьевна (5792, Чердак (г.Красноярск), C)<br />5. Кобыльских Лидия Анатольевна (4276, Чердак (г.Красноярск), B)<br />6. Савченко Пётр Александрович (3535, Движение (г.Красноярск), B)<br />7. Околова Людмила Сергеевна (2032, Движение (г.Красноярск), B)<br />8. Потапова Елена Александровна (1428, Движение (г.Красноярск), A)<br />9. Емельяненко Анна Владимировна (1499, Движение (г.Красноярск), B)<br />10. Панфилова Нина Сергеевна (5435, Движение (г.Красноярск), D)<br />11.  Троян Юлия Александровна (5014, Движение (г.Красноярск), D)<br />12.  Кучер Александра Игоревна (6749, Вираж (г.Новосибирск), E)<br />13. Стукова Екатерина Евгеньевна (4133, Ренессанс (г.Барнаул), D)<br />14. Данилова Ксения Валерьевна (6590, Движение (г.Красноярск), D)<br />15. Фёдорова Дария Эдуардовна (2969, Чердак (г.Красноярск), B)<br />16. Хмель Кристина Артуровна (3387, Движение (г.Красноярск), B)<br />17. Васильева Маргарита Михайловна (2137, Вираж (г.Новосибирск), A)<br />18. Олифиренко Дарья Андреевна (5798, Движение (г.Красноярск), D)<br />19.  () - Марсель Елизавета Павловна (6309, Движение (г.Красноярск), E)<br />20.  () - Вересова Софья Николаевна (4270, Бродвей (г.Красноярск),Движение (г.Красноярск), C)<br />21.  () - Литвишко Екатерина Юрьевна (5016, Чердак (г.Красноярск), C)<br />22.  () - Антонова Татьяна Александровна (4277, Альтернатива (г.Кемерово), C)<br />23.  () - Гончарова Наталья Владимировна (3548, Движение (г.Красноярск), C)<br />24.  () - Кот Олеся Юрьевна (5076, Движение (г.Красноярск), B)<br />25.  () - Мордовская Елена Сергеевна (5336, Вираж (г.Новосибирск), D)<br />26.  () - Вырупаева Евгения Игоревна (2965, Движение (г.Красноярск), C)<br />27.  () - Ашурова Ирина Исмаиловна (5562, Чердак (г.Красноярск), C)<br />28.  () - Гирякова Наталья Валерьевна (4137, Ренессанс (г.Барнаул), C)<br />29.  () - Круглова Ульяна Николаевна (6842, Чердак (г.Красноярск), E)<br />30.  () - Вахи Екатерина Павловна (2973, Движение (г.Красноярск), C)<br />31.  () - Андгуладзе Ирина Сергеевна (5671, Движение (г.Красноярск), E)<br /><br /> </div>
+        
+        <!-- THE POST -->
+      </td>
+    </tr>
+    <tr>
+      <td class='darkrow3' align='left'><b></b></td>
+      <td class='darkrow3' nowrap="nowrap" align='left'>
+      
+        <!-- PM / EMAIL / WWW / MSGR -->
+      
+        <div align='left' class='darkrow3' style='float:left;width:auto'>
+        <a href='http://hustle-sa.ru/forum/index.php?s=ec86e01ce9fe1067d3a9738bcba61fc7&amp;act=Msg&amp;CODE=04&amp;MID=761'><img src='style_images/1/p_pm.gif' border='0'  alt='PM' /></a><a href='http://hustle-sa.ru/forum/index.php?s=ec86e01ce9fe1067d3a9738bcba61fc7&amp;act=Mail&amp;CODE=00&amp;MID=761'><img src='style_images/1/p_email.gif' border='0'  alt='Письмо на e-mail пользователю' /></a>
+        </div>
+        
+        <!-- REPORT / UP -->
+         
+        <div align='right'>
+         <a href='javascript:scroll(0,0);'><img src='style_images/1/p_up.gif' alt='Top' border='0' /></a>
+        </div>
+      </td>
+    </tr>
+    </table>
+    <div class='darkrow1' style='height:5px'><!-- --></div>
+    
+	<!--Begin Msg Number 19574-->
+    <table width='100%' border='0' cellspacing='1' cellpadding='3'>
+    <tr>
+      <td align='center' valign='middle' class='row4' width="1%"><a name='entry19574'></a><span class='normalname'><a href="javascript:ins('Slavka')">Slavka</a></span></td>
+        <td class='row4' valign='top' width="99%">
+        
+        <!-- POSTED DATE DIV -->
+        
+        <div align='left' class='row4' style='float:left;padding-top:4px;padding-bottom:4px'>
+        <span class='postdetails'><b><a title="Показать ссылку этой темы" href="#" onclick="link_to_post(19574); return false;" style="text-decoration:underline">Дата</a></b> 2.11.2014 - 22:44</span>
+        </div>
+        
+        <!-- REPORT / DELETE / EDIT / QUOTE DIV -->
+        
+        <div align='right'>
+        <a href='http://hustle-sa.ru/forum/index.php?s=ec86e01ce9fe1067d3a9738bcba61fc7&amp;act=Post&amp;CODE=06&amp;f=6&amp;t=3035&amp;p=19574'><img src='style_images/1/p_quote.gif' border='0'  alt='Цитировать сообщение' /></a>
+      </div>
+      
+      </td>
+    </tr>
+    <tr>
+      <td align='center' valign='top' class='post2'>
+        <span class='postdetails'><br /><br /><br /><br />
+        Старожил<br />
+        <img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><br /><br />
+        <a href='http://hustle-sa.ru/forum/index.php?s=ec86e01ce9fe1067d3a9738bcba61fc7&amp;showuser=761'>Профиль</a><br />
+        Группа: РК АСХ<br />
+        Сообщений: 281<br />
+        Пользователь №: 761<br />
+        Регистрация: 9.02.2009<br />
+        <br />
+        <br /><br />
+         </span><br />
+        <!--$ author[field_1]-->
+        <img src='style_images/1/spacer.gif' alt='' width='160' height='1' /><br /> 
+      </td>
+      <td width='100%' valign='top' class='post2'>
+        <!-- THE POST 19574 -->
+        <div class='postcolor'><span style='font-size:13pt;line-height:100%'><b>Результаты турнира:</b></span><br /><br /><b>Пояснения к нижеследующим таблицам отборочных туров:</b><br />В таблицах напротив каждой пары проставлены буквы. Это &quot;буквенный номер&quot; судей (см.список судей), которые оценили эту пару, как достойную для выхода в следующий тур. В бальной терминологии - это так называемые &quot;кресты&quot;, которые судьи ставят понравившимся парам. Но чтобы вы могли понять, какой из судей вас оценил, а какой нет, здесь указывается именно &quot;буквенный номер&quot; судьи. <br />Вторая вертикальная черта - это граница, показывающая, какие пары вышли в следующий тур, а какие нет. Если пара &quot;пересекла&quot; эту черту, набрав достаточное количество &quot;крестов&quot;, значит она вышла в следующий тур.<br />Ну а теперь сами результаты:<br /><br /><b>Главный судья:</b> Литке Евгений<br /><br /><b>Судейская бригада:</b><br />1 (A) - Литке Евгений<br />2 (В) - Пузанова Ирина<br />3 (С) - Самарцев Андрей<br />4 (D) - Селиванова Алёна<br />5 (E) - Дмитриенко Денис<br />6 (F) - Суворов Илья<br />7 (G) - Воробьев Степан<br /><br /><br /><span style='font-size:13pt;line-height:100%'><b>Хастл D-класс. Участвовало пар: 22</b></span><br /> <br /><b>ФИНАЛ</b><br />1 место-№21-Могучих Иван Викторович(6231,Движение (г.Красноярск),D)-Гришина Виктория Валерьевна(5006,Движение (г.Красноярск),D)<br />2 место-№30-Тарасов Максим Иванович(5467,Dance Fox (г.Кемерово),D)-Хисматуллина Раиса Раилевна(5804,Dance Fox (г.Кемерово),D)<br />3 место-№16-Лукьяненко Сергей Олегович(5783,Чердак (г.Красноярск),D)-Николаева Ксения Сергеевна(6237,Чердак (г.Красноярск),D)<br />4 место-№13-Уливанов Никита Андреевич(4252,Бродвей (г.Красноярск),Движение (г.Красноярск),D)-Зданович Ольга Сергеевна(4268,Бродвей (г.Красноярск),Движение (г.Красноярск),D)<br />5 место-№43-Королёв Валентин Александрович(5787,Движение (г.Красноярск),D)-Троян Юлия Александровна(5014,Движение (г.Красноярск),D)<br /><b>1/2 финала</b><br />6-8 место-№18-Симаков Дмитрий Иванович(6229,Движение (г.Красноярск),E)-Сафина Люция Хамисовна(6243,Движение (г.Красноярск),E)<br />6-8 место-№35-Иванов Дмитрий Александрович(5788,Чердак (г.Красноярск),D)-Круглова Ульяна Николаевна(6842,Чердак (г.Красноярск),E)<br />6-8 место-№36-Косых Иван Петрович(5318,Вираж (г.Новосибирск),D)-Мордовская Елена Сергеевна(5336,Вираж (г.Новосибирск),D)<br />9-10 место-№32-Петрушев Александр Александрович(5176,Dance Fox (г.Кемерово),D)-Андреева Анастасия Андреевна(5986,Dance Fox (г.Кемерово),D)<br />9-10 место-№41-Шмыгов Тимофей Васильевич(6259,Вираж (г.Новосибирск),E)-Кожевникова Дина Сергеевна(5647,Вираж (г.Новосибирск),D)<br />11 место-№38-Коржов Алексей Павлович(2520,Движение (г.Новосибирск),D)-Кучер Александра Игоревна(6749,Вираж (г.Новосибирск),E)<br /><b>1/4 финала</b><br />12-14 место-№12-Ванислав Дмитрий Владимирович(6234,Движение (г.Красноярск),D)-Камалова Ольга Халиловна(6248,Движение (г.Красноярск),D)<br />12-14 место-№10-Лесников Игорь Владимирович(6068,Движение (г.Красноярск),D)-Ершова Любовь Павловна(6072,Движение (г.Красноярск),D)<br />12-14 место-№37-Виноградов Владимир Евгеньевич(6046,Вираж (г.Новосибирск),D)-Булдакова Елена Анатольевна(5637,Вираж (г.Новосибирск),E)<br />15 место-№27-Астафуров Сергей Владимирович(5549,Движение (г.Красноярск),D)-Борисова Елена Владимировна(6413,Движение (г.Красноярск),E)<br />16 место-№33-Савин Денис Анатольевич(5811,Движение (г.Красноярск),D)-Головинская Ольга Александровна(5806,Движение (г.Красноярск),D)<br />17 место-№9-Доронин Дмитрий Михайлович(5271,LaVida (г.Железногорск),D)-Вячеславова Полина Юрьевна(5279,LaVida (г.Железногорск),D)<br /><b>1/8 финала</b><br />18-19 место-№8-Малютин Павел Геннадьевич(6071,Движение (г.Красноярск),E)-Дмитриева Екатерина Александровна(5212,Бродвей (г.Красноярск),E)<br />18-19 место-№25-Сенегин Ярослав Владимирович(5669,Движение (г.Красноярск),D)-Шереметьева Ольга Александровна(5807,Движение (г.Красноярск),D)<br />20 место-№34-Федурин Константин Юрьевич(6820,Движение (г.Красноярск),E)-Гусева Анна Викторовна(6836,Движение (г.Красноярск),E)<br />21-22 место-№44-Ефремов Валентин Валерьевич(5667,Движение (г.Красноярск),D)-Ефремова Елена Петровна(5673,Движение (г.Красноярск),D)<br />21-22 место-№40-Першин Александр Николаевич(6808,Чердак (г.Красноярск),D)-Тимербаева Дания Нургалеевна(6825,Чердак (г.Красноярск),D)<br /><br /><b>Технические результаты:</b><br /><span style='font-family:courier new'><br /><b>Хастл D-класс: 1/8 финала</b><br />---------+---------------------------------<br />  Пары   &#9474;  Кресты (буквы судей)<br />---------+---------------------------------<br />   013   | ABC|DEFG ==&gt; выход в 1/4 финала<br />   016   | ABC|DEFG ==&gt; выход в 1/4 финала<br />   012   | ABC|DEFG ==&gt; выход в 1/4 финала<br />   038   | ABD|EFG  ==&gt; выход в 1/4 финала<br />   018   | ACD|FG   ==&gt; выход в 1/4 финала<br />   027   | CDF|G    ==&gt; выход в 1/4 финала<br />   043   | ABC|DEFG ==&gt; выход в 1/4 финала<br />   030   | ABC|DEFG ==&gt; выход в 1/4 финала<br />   021   | ABC|DEFG ==&gt; выход в 1/4 финала<br />   032   | BCD|EFG  ==&gt; выход в 1/4 финала<br />   041   | BCE|FG   ==&gt; выход в 1/4 финала<br />   010   | BCF|G    ==&gt; выход в 1/4 финала<br />   009   | ABC|DEFG ==&gt; выход в 1/4 финала<br />   035   | ABC|DEFG ==&gt; выход в 1/4 финала<br />   036   | ABC|DEFG ==&gt; выход в 1/4 финала<br />   033   | BCD|EF   ==&gt; выход в 1/4 финала<br />   037   | BDE|G    ==&gt; выход в 1/4 финала<br />   008   | ABE|    18-19<br />   025   | ACD|    18-19<br />   034   | AE |    20<br />   044   | A  |    21-22<br />   040   | A  |    21-22<br />---------+---------------------------------<br /> <br /><b>Хастл D-класс: 1/4 финала</b><br />---------+---------------------------------<br />  Пары   &#9474;  Кресты (буквы судей)<br />---------+---------------------------------<br />   043   | ABCD|EFG ==&gt; выход в 1/2 финала<br />   030   | ABCD|EFG ==&gt; выход в 1/2 финала<br />   021   | ABCD|EFG ==&gt; выход в 1/2 финала<br />   036   | ABCD|EFG ==&gt; выход в 1/2 финала<br />   013   | ABCD|FG  ==&gt; выход в 1/2 финала<br />   016   | ABCD|FG  ==&gt; выход в 1/2 финала<br />   018   | ACDE|FG  ==&gt; выход в 1/2 финала<br />   038   | ABEF|G   ==&gt; выход в 1/2 финала<br />   032   | ABCD|G   ==&gt; выход в 1/2 финала<br />   041   | ABDE|F   ==&gt; выход в 1/2 финала<br />   035   | BCEF|G   ==&gt; выход в 1/2 финала<br />   012   | ABCF|   12-14<br />   010   | BEFG|   12-14<br />   037   | CDEG|   12-14<br />   027   | ADE |   15<br />   033   | CD  |   16<br />   009   | E   |   17<br />---------+---------------------------------<br /> <br /><b>Хастл D-класс: 1/2 финала</b><br />---------+---------------------------------<br />  Пары   &#9474;  Кресты (буквы судей)<br />---------+---------------------------------<br />   021   | ABC|DEFG ==&gt; выход в ФИНАЛ<br />   013   | ABC|DEFG ==&gt; выход в ФИНАЛ<br />   016   | ABC|DEFG ==&gt; выход в ФИНАЛ<br />   030   | BCD|EFG  ==&gt; выход в ФИНАЛ<br />   043   | ABE|F    ==&gt; выход в ФИНАЛ<br />   018   | ADG|    6-8<br />   035   | CEG|    6-8<br />   036   | BCF|    6-8<br />   032   | D  |    9-10<br />   041   | A  |    9-10<br />   038   |    |    11<br />---------+---------------------------------<br /> <br /><b>Хастл D-класс: ФИНАЛ</b><br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br />        &#9474; Места за 1-й.     &#9474; Место  &#9474; Места за 2-й.     &#9474; Место  &#9474; Места за 3-й.     &#9474; Место  &#9474;Сумма &#9474;Итоговое <br />        &#9474; танец             &#9474; пары в &#9474; танец             &#9474; пары в &#9474; танец             &#9474; пары в &#9474;мест  &#9474; место   <br />--------+-------------------+  1-м.  +-------------------+ 2-м.   &#9474;-------------------+ 3-м.   +за все&#9474; пары    <br /> Судьи  &#9474; A B C D E F G H I &#9474; танце  &#9474; A B C D E F G H I &#9474; танце  &#9474; A B C D E F G H I &#9474; танце  &#9474;танцы &#9474;         <br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br />  Пары  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;      &#9474;<br />  021   &#9474; 2 2 3 1 3 1 2     &#9474;        &#9474;                   &#9474;        &#9474;                   &#9474;     1  &#9474;   01 &#9474;    1<br />  030   &#9474; 1 1 2 4 1 5 5     &#9474;        &#9474;                   &#9474;        &#9474;                   &#9474;     2  &#9474;   02 &#9474;    2<br />  016   &#9474; 5 5 1 3 4 3 1     &#9474;        &#9474;                   &#9474;        &#9474;                   &#9474;     3  &#9474;   03 &#9474;    3<br />  013   &#9474; 4 4 4 2 5 2 3     &#9474;        &#9474;                   &#9474;        &#9474;                   &#9474;     4  &#9474;   04 &#9474;    4<br />  043   &#9474; 3 3 5 5 2 4 4     &#9474;        &#9474;                   &#9474;        &#9474;                   &#9474;     5  &#9474;   05 &#9474;    5<br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br /></span><br /><br /><span style='font-size:13pt;line-height:100%'><b>Хастл C-класс. Участвовало пар: 13</b></span><br /> <br /><b>ФИНАЛ</b><br />1 место-№3-Лыков Антон Евгеньевич(4110,Ренессанс (г.Барнаул),C)-Гирякова Наталья Валерьевна(4137,Ренессанс (г.Барнаул),C)<br />2 место-№26-Козлов Павел Сергеевич(3955,Ренессанс (г.Барнаул),C)-Стукова Екатерина Евгеньевна(4133,Ренессанс (г.Барнаул),D)<br />3 место-№24-Трошкин Игорь Владимирович(5274,Чердак (г.Красноярск),C)-Стрельченко Мария Юрьевна(5792,Чердак (г.Красноярск),C)<br />4 место-№20-Парфёнов Евгений Евгеньевич(3286,Чердак (г.Красноярск),Движение (г.Красноярск),C)-Ашурова Ирина Исмаиловна(5562,Чердак (г.Красноярск),C)<br />5 место-№1-Чередник Александр Сергеевич(5548,Движение (г.Красноярск),C)-Вересова Софья Николаевна(4270,Бродвей (г.Красноярск),Движение (г.Красноярск),C)<br />6 место-№22-Заволокин Глеб Игоревич(5071,Чердак (г.Красноярск),C)-Вахи Екатерина Павловна(2973,Движение (г.Красноярск),C)<br />7 место-№4-Хохлов Дмитрий Анатольевич(3666,Движение (г.Красноярск),D)-Виноградова Серафима Павловна(2335,Чердак (г.Красноярск),B)<br /><b>1/2 финала</b><br />8 место-№2-Иванов Дмитрий Владимирович(3936,Движение (г.Красноярск),C)-Кокова Мария Игоревна(3383,Движение (г.Красноярск),C)<br />9-10 место-№29-Кулеш Сергей Евгеньевич(5433,Движение (г.Красноярск),C)-Панфилова Нина Сергеевна(5435,Движение (г.Красноярск),D)<br />9-10 место-№48-Сальников Алексей Андреевич(5566,Dance Fox (г.Кемерово),D)-Антонова Татьяна Александровна(4277,Альтернатива (г.Кемерово),C)<br />11 место-№15-Горелов Евгений Юрьевич(3291,Движение (г.Красноярск),C)-Андгуладзе Ирина Сергеевна(5671,Движение (г.Красноярск),E)<br />12-13 место-№19-Зонов Олег Викторович(2590,Движение (г.Красноярск),C)-Данилова Ксения Валерьевна(6590,Движение (г.Красноярск),D)<br />12-13 место-№11-Горенский Антон Валерьевич(2002,Движение (г.Красноярск),C)-Олифиренко Дарья Андреевна(5798,Движение (г.Красноярск),D)<br /> <br /><b>Технические результаты:</b><br /><span style='font-family:courier new'><br /><b>Хастл C-класс: 1/2 финала</b><br />---------+---------------------------------<br />  Пары   &#9474;  Кресты (буквы судей)<br />---------+---------------------------------<br />   004   | ABC|DEFG ==&gt; выход в ФИНАЛ<br />   024   | ABC|DEG  ==&gt; выход в ФИНАЛ<br />   003   | ABC|DFG  ==&gt; выход в ФИНАЛ<br />   020   | ABC|DEG  ==&gt; выход в ФИНАЛ<br />   026   | BCD|EFG  ==&gt; выход в ФИНАЛ<br />   001   | ADE|FG   ==&gt; выход в ФИНАЛ<br />   022   | ABC|FG   ==&gt; выход в ФИНАЛ<br />   002   | DEF|    8<br />   029   | AF |    9-10<br />   048   | BE |    9-10<br />   015   | C  |    11<br />   019   |    |    12-13<br />   011   |    |    12-13<br />---------+---------------------------------<br /> <br /><b>Хастл C-класс: ФИНАЛ</b><br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br />        &#9474; Места за 1-й.     &#9474; Место  &#9474; Места за 2-й.     &#9474; Место  &#9474; Места за 3-й.     &#9474; Место  &#9474;Сумма &#9474;Итоговое <br />        &#9474; танец             &#9474; пары в &#9474; танец             &#9474; пары в &#9474; танец             &#9474; пары в &#9474;мест  &#9474; место   <br />--------+-------------------+  1-м.  +-------------------+ 2-м.   &#9474;-------------------+ 3-м.   +за все&#9474; пары    <br /> Судьи  &#9474; A B C D E F G H I &#9474; танце  &#9474; A B C D E F G H I &#9474; танце  &#9474; A B C D E F G H I &#9474; танце  &#9474;танцы &#9474;         <br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br />  Пары  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;      &#9474;<br />  003   &#9474; 1 1 1 1 1 1 3     &#9474;     1  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;   01 &#9474;    1<br />  026   &#9474; 4 2 2 2 4 2 2     &#9474;     2  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;   02 &#9474;    2<br />  024   &#9474; 2 4 3 5 3 3 1     &#9474;     3  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;   03 &#9474;    3<br />  020   &#9474; 3 5 5 4 7 4 4     &#9474;     4  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;   04 &#9474;    4<br />  001   &#9474; 5 6 7 3 2 5 7     &#9474;     5  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;   05 &#9474;    5<br />  022   &#9474; 6 3 4 6 6 6 5     &#9474;     6  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;   06 &#9474;    6<br />  004   &#9474; 7 7 6 7 5 7 6     &#9474;     7  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;   07 &#9474;    7<br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br /></span><br /><br /><span style='font-size:13pt;line-height:100%'><b>Хастл Абсолют. Участвовало пар: 14</b></span><br /> <br /><b>ФИНАЛ</b><br />1 место-№94-Потапов Вячеслав Николаевич(1410,Движение (г.Красноярск),A)-Потапова Елена Александровна(1428,Движение (г.Красноярск),A)<br />2 место-№46-Евдокимов Алексей Николаевич(3565,Вираж (г.Новосибирск),A)-Васильева Маргарита Михайловна(2137,Вираж (г.Новосибирск),A)<br />3 место-№26-Козлов Павел Сергеевич(3955,Ренессанс (г.Барнаул),C)-Стукова Екатерина Евгеньевна(4133,Ренессанс (г.Барнаул),D)<br />4 место-№3-Лыков Антон Евгеньевич(4110,Ренессанс (г.Барнаул),C)-Гирякова Наталья Валерьевна(4137,Ренессанс (г.Барнаул),C)<br />5 место-№42-Жбанков Александр Валерьевич(3530,Движение (г.Красноярск),B)-Хмель Кристина Артуровна(3387,Движение (г.Красноярск),B)<br />6 место-№39-Северин Алексей Сергеевич(4256,Чердак (г.Красноярск),Бродвей (г.Красноярск),C)-Кобыльских Лидия Анатольевна(4276,Чердак (г.Красноярск),B)<br />7 место-№24-Трошкин Игорь Владимирович(5274,Чердак (г.Красноярск),C)-Стрельченко Мария Юрьевна(5792,Чердак (г.Красноярск),C)<br /><b>1/2 финала</b><br />8 место-№22-Заволокин Глеб Игоревич(5071,Чердак (г.Красноярск),C)-Фёдорова Дария Эдуардовна(2969,Чердак (г.Красноярск),B)<br />9 место-№5-Похабов Александр Михайлович(2324,Движение (г.Красноярск),B)-Околова Людмила Сергеевна(2032,Движение (г.Красноярск),B)<br />10 место-№17-Якимов Сергей Николаевич(3283,Движение (г.Красноярск),B)-Копич Ксения Алексеевна(3546,Движение (г.Красноярск),B)<br />11 место-№49-Михайлов Сергей Андреевич(2323,Движение (г.Красноярск),B)-Емельяненко Анна Владимировна(1499,Движение (г.Красноярск),B)<br /><b>1/4 финала</b><br />12 место-№48-Сальников Алексей Андреевич(5566,Dance Fox (г.Кемерово),D)-Антонова Татьяна Александровна(4277,Альтернатива (г.Кемерово),C)<br />13 место-№19-Зонов Олег Викторович(2590,Движение (г.Красноярск),C)-Данилова Ксения Валерьевна(6590,Движение (г.Красноярск),D)<br />14 место-№11-Горенский Антон Валерьевич(2002,Движение (г.Красноярск),C)-Олифиренко Дарья Андреевна(5798,Движение (г.Красноярск),D)<br /> <br /><b>Технические результаты:</b><br /><span style='font-family:courier new'><br /><b>Хастл Абсолют: 1/4 финала</b><br />---------+---------------------------------<br />  Пары   &#9474;  Кресты (буквы судей)<br />---------+---------------------------------<br />   026   | ABC|DEFG ==&gt; выход в 1/2 финала<br />   042   | ABC|DEFG ==&gt; выход в 1/2 финала<br />   022   | ABC|DEFG ==&gt; выход в 1/2 финала<br />   046   | ABC|DEFG ==&gt; выход в 1/2 финала<br />   094   | ABC|DEFG ==&gt; выход в 1/2 финала<br />   003   | ABD|EFG  ==&gt; выход в 1/2 финала<br />   005   | CDE|FG   ==&gt; выход в 1/2 финала<br />   039   | ABC|DG   ==&gt; выход в 1/2 финала<br />   017   | BCD|EF   ==&gt; выход в 1/2 финала<br />   049   | CEF|G    ==&gt; выход в 1/2 финала<br />   024   | ABD|G    ==&gt; выход в 1/2 финала<br />   048   | BCF|    12<br />   019   | AE |    13<br />   011   | A  |    14<br />---------+---------------------------------<br /> <br /><b>Хастл Абсолют: 1/2 финала</b><br />---------+---------------------------------<br />  Пары   &#9474;  Кресты (буквы судей)<br />---------+---------------------------------<br />   042   | ABCDEFG|ABCDEFG ==&gt; выход в ФИНАЛ<br />   046   | ABCDEFG|ABCDEFG ==&gt; выход в ФИНАЛ<br />   094   | ABCDEFG|ABCDEFG ==&gt; выход в ФИНАЛ<br />   026   | ABCDEFG|DEFG    ==&gt; выход в ФИНАЛ<br />   039   | ABCEGAB|CEG     ==&gt; выход в ФИНАЛ<br />   003   | ABDEFAB|DEF     ==&gt; выход в ФИНАЛ<br />   024   | ABCGABC|G       ==&gt; выход в ФИНАЛ<br />   022   | DGABDFG|       8<br />   005   | CEFEF  |       9<br />   017   | DCD    |       10<br />   049   | FC     |       11<br />---------+---------------------------------<br /> <br /><b>Хастл Абсолют: ФИНАЛ</b><br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br />        &#9474; Места за 1-й.     &#9474; Место  &#9474; Места за 2-й.     &#9474; Место  &#9474; Места за 3-й.     &#9474; Место  &#9474;Сумма &#9474;Итоговое <br />        &#9474; танец             &#9474; пары в &#9474; танец             &#9474; пары в &#9474; танец             &#9474; пары в &#9474;мест  &#9474; место   <br />--------+-------------------+  1-м.  +-------------------+ 2-м.   &#9474;-------------------+ 3-м.   +за все&#9474; пары    <br /> Судьи  &#9474; A B C D E F G H I &#9474; танце  &#9474; A B C D E F G H I &#9474; танце  &#9474; A B C D E F G H I &#9474; танце  &#9474;танцы &#9474;         <br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br />  Пары  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;      &#9474;<br />  094   &#9474; 1 1 1 1 1 1 1     &#9474;     1  &#9474; 1 1 1 1 2 1 1     &#9474;     1  &#9474;                   &#9474;        &#9474;   02 &#9474;    1<br />  046   &#9474; 3 3 2 3 2 3 2     &#9474;     2  &#9474; 2 2 2 2 1 2 2     &#9474;     2  &#9474;                   &#9474;        &#9474;   04 &#9474;    2<br />  026   &#9474; 4 2 4 4 3 4 7     &#9474;     3  &#9474; 5 5 7 4 4 3 7     &#9474;     4  &#9474;                   &#9474;        &#9474;   07 &#9474;    3<br />  003   &#9474; 2 6 7 5 6 5 5     &#9474;     5  &#9474; 3 4 5 3 3 5 3     &#9474;     3  &#9474;                   &#9474;        &#9474;   08 &#9474;    4<br />  042   &#9474; 5 4 6 2 4 2 3     &#9474;     4  &#9474; 7 6 3 5 5 4 5     &#9474;     5  &#9474;                   &#9474;        &#9474;   09 &#9474;    5<br />  039   &#9474; 6 7 3 7 5 7 4     &#9474;     7  &#9474; 6 7 4 6 6 6 4     &#9474;     6  &#9474;                   &#9474;        &#9474;   13 &#9474;    6<br />  024   &#9474; 7 5 5 6 7 6 6     &#9474;     6  &#9474; 4 3 6 7 7 7 6     &#9474;     7  &#9474;                   &#9474;        &#9474;   13 &#9474;    7<br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br /></span><br /><br /><br /><span style='font-size:13pt;line-height:100%'><b>Хастл DnD Begginer (партнеры). Участников: 21</b></span><br /> <br /><b>ФИНАЛ</b><br />1 место-№16-Лукьяненко Сергей Олегович(5783,Чердак (г.Красноярск),D,B)<br />2 место-№38-Коржов Алексей Павлович(2520,Движение (г.Новосибирск),D,B)<br />3 место-№13-Уливанов Никита Андреевич(4252,Бродвей (г.Красноярск),Движение (г.Красноярск),D,B)<br />4 место-№7-Чеусов Денис Валерьевич(2952,Движение (г.Красноярск),D,B)<br />5 место-№4-Хохлов Дмитрий Анатольевич(3666,Движение (г.Красноярск),D,B)<br />6 место-№14-Шуфер Михаил Борисович(4320,Движение (г.Красноярск),E,B)<br />7 место-№43-Королёв Валентин Александрович(5787,Движение (г.Красноярск),D,B)<br /><b>1/2 финала</b><br />8-10 место-№30-Тарасов Максим Иванович(5467,Dance Fox (г.Кемерово),D,B)<br />8-10 место-№48-Сальников Алексей Андреевич(5566,Dance Fox (г.Кемерово),D,B)<br />8-10 место-№31-Горелов Максим Юрьевич(5273,Чердак (г.Красноярск),D,B)<br />11-12 место-№32-Петрушев Александр Александрович(5176,Dance Fox (г.Кемерово),D,B)<br />11-12 место-№9-Доронин Дмитрий Михайлович(5271,LaVida (г.Железногорск),D,B)<br /><b>1/4 финала</b><br />13-14 место-№21-Могучих Иван Викторович(6231,Движение (г.Красноярск),D,B)<br />13-14 место-№36-Косых Иван Петрович(5318,Вираж (г.Новосибирск),D,B)<br />15 место-№37-Виноградов Владимир Евгеньевич(6046,Вираж (г.Новосибирск),D,B)<br />16 место-№41-Шмыгов Тимофей Васильевич(6259,Вираж (г.Новосибирск),E,B)<br /><b>1/8 финала</b><br />17 место-№12-Ванислав Дмитрий Владимирович(6234,Движение (г.Красноярск),D,B)<br />18 место-№51-Кузнецов Сергей Николаевич(5167,Вираж (г.Новосибирск),E,B)<br />19-20 место-№33-Савин Денис Анатольевич(5811,Движение (г.Красноярск),D,B)<br />19-20 место-№28-Попов Виталий Владимирович(2945,Движение (г.Красноярск),D,B)<br />21 место-№47-Шолохов Александр Анатольевич(6818,Чердак (г.Красноярск),E,B)<br /><br /><b>Технические результаты:</b><br /><span style='font-family:courier new'><br /><b>Хастл DnD Begginer (партнеры): 1/8 финала</b><br />--------+---------------------------------<br /> Пары   &#9474;  Кресты (буквы судей)<br />--------+---------------------------------<br />   004   | ABCD|EFG ==&gt; выход в 1/4 финала<br />   016   | ABCD|EFG ==&gt; выход в 1/4 финала<br />   038   | ABCD|EFG ==&gt; выход в 1/4 финала<br />   007   | ABCD|EFG ==&gt; выход в 1/4 финала<br />   021   | ABCD|EFG ==&gt; выход в 1/4 финала<br />   014   | ABCD|EFG ==&gt; выход в 1/4 финала<br />   032   | ABCD|EFG ==&gt; выход в 1/4 финала<br />   037   | ABCD|EFG ==&gt; выход в 1/4 финала<br />   043   | ABCD|EFG ==&gt; выход в 1/4 финала<br />   030   | ABCD|EG  ==&gt; выход в 1/4 финала<br />   013   | ABCD|FG  ==&gt; выход в 1/4 финала<br />   031   | ABDE|FG  ==&gt; выход в 1/4 финала<br />   041   | ACDE|FG  ==&gt; выход в 1/4 финала<br />   009   | ABCE|FG  ==&gt; выход в 1/4 финала<br />   036   | ABCD|F   ==&gt; выход в 1/4 финала<br />   048   | BCDE|G   ==&gt; выход в 1/4 финала<br />   012   | ADEF|   17<br />   051   | BEG |   18<br />   033   | F   |   19-20<br />   028   | C   |   19-20<br />   047   |     |   21<br />--------+---------------------------------<br /> <br /><b>Хастл DnD Begginer (партнеры): 1/4 финала</b><br />--------+---------------------------------<br /> Пары   &#9474;  Кресты (буквы судей)<br />--------+---------------------------------<br />   004   | ABCD|EFG ==&gt; выход в 1/2 финала<br />   030   | ABCD|EFG ==&gt; выход в 1/2 финала<br />   048   | ABCD|EG  ==&gt; выход в 1/2 финала<br />   014   | BCDE|FG  ==&gt; выход в 1/2 финала<br />   031   | ABDE|FG  ==&gt; выход в 1/2 финала<br />   013   | ABDF|G   ==&gt; выход в 1/2 финала<br />   007   | ABCD|EFG ==&gt; выход в 1/2 финала<br />   032   | ABCD|EF  ==&gt; выход в 1/2 финала<br />   038   | ABCD|EG  ==&gt; выход в 1/2 финала<br />   043   | ABCE|FG  ==&gt; выход в 1/2 финала<br />   016   | ACDF|G   ==&gt; выход в 1/2 финала<br />   009   | ABCE|G   ==&gt; выход в 1/2 финала<br />   021   | DEFG|   13-14<br />   036   | ABCF|   13-14<br />   037   | CDF |   15<br />   041   | E   |   16<br />--------+---------------------------------<br /> <br /><b>Хастл DnD Begginer (партнеры): 1/2 финала</b><br />--------+---------------------------------<br /> Пары   &#9474;  Кресты (буквы судей)<br />--------+---------------------------------<br />   016   | ABC|DEFG ==&gt; выход в ФИНАЛ<br />   004   | ABD|EFG  ==&gt; выход в ФИНАЛ<br />   007   | ABC|EFG  ==&gt; выход в ФИНАЛ<br />   014   | BCD|EG   ==&gt; выход в ФИНАЛ<br />   013   | ABD|FG   ==&gt; выход в ФИНАЛ<br />   043   | ABC|EF   ==&gt; выход в ФИНАЛ<br />   038   | ABF|G    ==&gt; выход в ФИНАЛ<br />   030   | CDE|    8-10<br />   048   | CDE|    8-10<br />   031   | AFG|    8-10<br />   032   | D  |    11-12<br />   009   | C  |    11-12<br />--------+---------------------------------<br /> <br /><b>Хастл DnD Begginer (партнеры): ФИНАЛ</b><br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br />        &#9474; Места за 1-й.     &#9474; Место  &#9474; Места за 2-й.     &#9474; Место  &#9474; Места за 3-й.     &#9474; Место  &#9474;Сумма &#9474;Итоговое <br />        &#9474; танец             &#9474; пары в &#9474; танец             &#9474; пары в &#9474; танец             &#9474; пары в &#9474;мест  &#9474; место   <br />--------+-------------------+  1-м.  +-------------------+ 2-м.   &#9474;-------------------+ 3-м.   +за все&#9474; пары    <br /> Судьи  &#9474; A B C D E F G H I &#9474; танце  &#9474; A B C D E F G H I &#9474; танце  &#9474; A B C D E F G H I &#9474; танце  &#9474;танцы &#9474;         <br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br />  Пары  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;      &#9474;<br />  016   &#9474; 1 1 1 2 7 6 1   &#9474;     1  &#9474;          &#9474;        &#9474;                   &#9474;        &#9474;   01 &#9474;    1<br />  038   &#9474; 2 4 4 3 2 1 4   &#9474;     2  &#9474;          &#9474;        &#9474;                   &#9474;        &#9474;   02 &#9474;    2<br />  013   &#9474; 7 2 5 1 3 2 5   &#9474;     3  &#9474;          &#9474;        &#9474;                   &#9474;        &#9474;   03 &#9474;    3<br />  007   &#9474; 4 3 3 5 1 3 6   &#9474;     4  &#9474;          &#9474;        &#9474;                   &#9474;        &#9474;   04 &#9474;    4<br />  004   &#9474; 3 6 2 4 5 4 2   &#9474;     5  &#9474;          &#9474;        &#9474;                   &#9474;        &#9474;   05 &#9474;    5<br />  014   &#9474; 5 5 6 7 6 7 3   &#9474;     6  &#9474;          &#9474;        &#9474;                   &#9474;        &#9474;   06 &#9474;    6<br />  043   &#9474; 6 7 7 6 4 5 7   &#9474;     7  &#9474;          &#9474;        &#9474;                   &#9474;        &#9474;   07 &#9474;    7<br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br /></span><br /><br /><span style='font-size:13pt;line-height:100%'><b>Хастл DnD Begginer (партнерши). Участников: 22</b></span><br /> <br /><b>ФИНАЛ</b><br />1 место-№111-Олифиренко Дарья Андреевна(5798,Движение (г.Красноярск),D,B)<br />2 место-№126-Стукова Екатерина Евгеньевна(4133,Ренессанс (г.Барнаул),D,B)<br />3 место-№130-Хисматуллина Раиса Раилевна(5804,Dance Fox (г.Кемерово),D,B)<br />4 место-№118-Марсель Елизавета Павловна(6309,Движение (г.Красноярск),E,B)<br />5 место-№135-Круглова Ульяна Николаевна(6842,Чердак (г.Красноярск),E,B)<br />6 место-№121-Гришина Виктория Валерьевна(5006,Движение (г.Красноярск),D,B)<br />7 место-№113-Зданович Ольга Сергеевна(4268,Бродвей (г.Красноярск),Движение (г.Красноярск),D,B)<br /><b>1/2 финала</b><br />8-10 место-№93-Троян Юлия Александровна(5014,Движение (г.Красноярск),D,B)<br />8-10 место-№132-Андреева Анастасия Андреевна(5986,Dance Fox (г.Кемерово),D,B)<br />8-10 место-№119-Данилова Ксения Валерьевна(6590,Движение (г.Красноярск),D,B)<br />11 место-№136-Мордовская Елена Сергеевна(5336,Вираж (г.Новосибирск),D,B)<br />12 место-№112-Камалова Ольга Халиловна(6248,Движение (г.Красноярск),D,B)<br />13 место-№193-Кожевникова Дина Сергеевна(5647,Вираж (г.Новосибирск),D,B)<br /><b>1/4 финала</b><br />14-15 место-№115-Дмитриева Екатерина Александровна(5212,Бродвей (г.Красноярск),E,B)<br />14-15 место-№106-Погорельченко Мария Сергеевна(6822,Движение (г.Красноярск),E,B)<br /><b>1/8 финала</b><br />16-17 место-№191-Кучер Александра Игоревна(6749,Вираж (г.Новосибирск),E,B)<br />16-17 место-№116-Николаева Ксения Сергеевна(6237,Чердак (г.Красноярск),D,B)<br />18 место-№110-Ершова Любовь Павловна(6072,Движение (г.Красноярск),D,B)<br />19 место-№133-Головинская Ольга Александровна(5806,Движение (г.Красноярск),D,B)<br />20-21 место-№107-Павленко Юлия Игоревна(дебют,Движение (г.Красноярск),E,B)<br />20-21 место-№109-Вячеславова Полина Юрьевна(5279,LaVida (г.Железногорск),D,B)<br />22 место-№190-Булдакова Елена Анатольевна(5637,Вираж (г.Новосибирск),E,B)<br /><br /><b>Технические результаты:</b><br /><span style='font-family:courier new'><br /><b>Хастл DnD Begginer (партнерши): 1/8 финала</b><br />--------+---------------------------------<br /> Пары   &#9474;  Кресты (буквы судей)<br />--------+---------------------------------<br />   093   | ABCD|EFG ==&gt; выход в 1/4 финала<br />   121   | ABCD|EFG ==&gt; выход в 1/4 финала<br />   106   | ABCD|EFG ==&gt; выход в 1/4 финала<br />   111   | ABCD|EFG ==&gt; выход в 1/4 финала<br />   126   | ABCD|EFG ==&gt; выход в 1/4 финала<br />   130   | ABCD|EFG ==&gt; выход в 1/4 финала<br />   136   | ABCD|EFG ==&gt; выход в 1/4 финала<br />   119   | ABCD|EFG ==&gt; выход в 1/4 финала<br />   132   | ABCD|EFG ==&gt; выход в 1/4 финала<br />   115   | ABCD|EF  ==&gt; выход в 1/4 финала<br />   135   | ABCE|FG  ==&gt; выход в 1/4 финала<br />   118   | ABCD|FG  ==&gt; выход в 1/4 финала<br />   113   | ABDE|FG  ==&gt; выход в 1/4 финала<br />   193   | ACDE|G   ==&gt; выход в 1/4 финала<br />   112   | ACDE|F   ==&gt; выход в 1/4 финала<br />   191   | CEFG|   16-17<br />   116   | BDEG|   16-17<br />   110   | ABF |   18<br />   133   | BG  |   19<br />   107   | D   |   20-21<br />   109   | C   |   20-21<br />   190   |     |   22<br />--------+---------------------------------<br /> <br /><b>Хастл DnD Begginer (партнерши): 1/4 финала</b><br />--------+---------------------------------<br /> Пары   &#9474;  Кресты (буквы судей)<br />--------+---------------------------------<br />   093   | ABC|DEFG ==&gt; выход в 1/2 финала<br />   121   | ABC|DEFG ==&gt; выход в 1/2 финала<br />   130   | ABC|DEFG ==&gt; выход в 1/2 финала<br />   135   | ABC|DFG  ==&gt; выход в 1/2 финала<br />   132   | BCD|EFG  ==&gt; выход в 1/2 финала<br />   119   | ABE|FG   ==&gt; выход в 1/2 финала<br />   112   | ACE|F    ==&gt; выход в 1/2 финала<br />   113   | ABC|DEFG ==&gt; выход в 1/2 финала<br />   126   | ABC|DEFG ==&gt; выход в 1/2 финала<br />   111   | ABD|EFG  ==&gt; выход в 1/2 финала<br />   193   | ABC|DEG  ==&gt; выход в 1/2 финала<br />   118   | ABC|DFG  ==&gt; выход в 1/2 финала<br />   136   | BCE|G    ==&gt; выход в 1/2 финала<br />   115   | DEF|    14-15<br />   106   | ACD|    14-15<br />--------+---------------------------------<br /> <br /><b>Хастл DnD Begginer (партнерши): 1/2 финала</b><br />--------+---------------------------------<br /> Пары   &#9474;  Кресты (буквы судей)<br />--------+---------------------------------<br />   130   | ABD|EFG ==&gt; выход в ФИНАЛ<br />   126   | BCD|EFG ==&gt; выход в ФИНАЛ<br />   121   | ABE|FG  ==&gt; выход в ФИНАЛ<br />   135   | ACE|FG  ==&gt; выход в ФИНАЛ<br />   113   | ABC|DE  ==&gt; выход в ФИНАЛ<br />   111   | ABD|EG  ==&gt; выход в ФИНАЛ<br />   118   | ABC|DF  ==&gt; выход в ФИНАЛ<br />   093   | BEF|   8-10<br />   132   | CDG|   8-10<br />   119   | ACD|   8-10<br />   136   | CG |   11<br />   112   | F  |   12<br />   193   |    |   13<br />--------+---------------------------------<br /><br /> <br /><b>Хастл DnD Begginer (партнерши): ФИНАЛ</b><br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br />        &#9474; Места за 1-й.     &#9474; Место  &#9474; Места за 2-й.     &#9474; Место  &#9474; Места за 3-й.     &#9474; Место  &#9474;Сумма &#9474;Итоговое <br />        &#9474; танец             &#9474; пары в &#9474; танец             &#9474; пары в &#9474; танец             &#9474; пары в &#9474;мест  &#9474; место   <br />--------+-------------------+  1-м.  +-------------------+ 2-м.   &#9474;-------------------+ 3-м.   +за все&#9474; пары    <br /> Судьи  &#9474; A B C D E F G H I &#9474; танце  &#9474; A B C D E F G H I &#9474; танце  &#9474; A B C D E F G H I &#9474; танце  &#9474;танцы &#9474;         <br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br />  Пары  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;      &#9474;<br />  111   &#9474; 1 1 1 2 7 6 1   &#9474;     1  &#9474;          &#9474;        &#9474;                   &#9474;        &#9474;   01 &#9474;    1<br />  126   &#9474; 2 4 4 3 2 1 4   &#9474;     2  &#9474;          &#9474;        &#9474;                   &#9474;        &#9474;   02 &#9474;    2<br />  130   &#9474; 7 2 5 1 3 2 5   &#9474;     3  &#9474;          &#9474;        &#9474;                   &#9474;        &#9474;   03 &#9474;    3<br />  118   &#9474; 4 3 3 5 1 3 6   &#9474;     4  &#9474;          &#9474;        &#9474;                   &#9474;        &#9474;   04 &#9474;    4<br />  135   &#9474; 3 6 2 4 5 4 2   &#9474;     5  &#9474;          &#9474;        &#9474;                   &#9474;        &#9474;   05 &#9474;    5<br />  121   &#9474; 5 5 6 7 6 7 3   &#9474;     6  &#9474;          &#9474;        &#9474;                   &#9474;        &#9474;   06 &#9474;    6<br />  113   &#9474; 6 7 7 6 4 5 7   &#9474;     7  &#9474;          &#9474;        &#9474;                   &#9474;        &#9474;   07 &#9474;    7<br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br /></span><br /><br /><span style='font-size:13pt;line-height:100%'><b>Хастл DnD RS-M-S (партнеры). Участников: 27</b></span><br /> <br /><b>ФИНАЛ</b><br />1 место-№22-Заволокин Глеб Игоревич(5071,Чердак (г.Красноярск),C,RS)<br />2 место-№26-Козлов Павел Сергеевич(3955,Ренессанс (г.Барнаул),C,RS)<br />3 место-№39-Северин Алексей Сергеевич(4256,Чердак (г.Красноярск),Бродвей (г.Красноярск),C,RS)<br />4 место-№90-Андреев Марк Нюргунович(1692,Вираж (г.Новосибирск),C,RS)<br />5 место-№94-Потапов Вячеслав Николаевич(1410,Движение (г.Красноярск),A,S)<br />6 место-№46-Евдокимов Алексей Николаевич(3565,Вираж (г.Новосибирск),A,S)<br />7 место-№49-Михайлов Сергей Андреевич(2323,Движение (г.Красноярск),B,M)<br /><b>1/2 финала</b><br />8-9 место-№42-Жбанков Александр Валерьевич(3530,Движение (г.Красноярск),B,M)<br />8-9 место-№17-Якимов Сергей Николаевич(3283,Движение (г.Красноярск),B,M)<br />10-11 место-№23-Леонов Валентин Владимирович(3667,Бродвей (г.Красноярск),C,RS)<br />10-11 место-№4-Хохлов Дмитрий Анатольевич(3666,Движение (г.Красноярск),D,B)<br /><b>1/4 финала</b><br />12-17 место-№51-Кузнецов Сергей Николаевич(5167,Вираж (г.Новосибирск),E,B)<br />12-17 место-№2-Иванов Дмитрий Владимирович(3936,Движение (г.Красноярск),C,RS)<br />12-17 место-№29-Кулеш Сергей Евгеньевич(5433,Движение (г.Красноярск),C,RS)<br />12-17 место-№7-Чеусов Денис Валерьевич(2952,Движение (г.Красноярск),D,B)<br />12-17 место-№24-Трошкин Игорь Владимирович(5274,Чердак (г.Красноярск),C,RS)<br />12-17 место-№14-Шуфер Михаил Борисович(4320,Движение (г.Красноярск),E,B)<br />18 место-№43-Королёв Валентин Александрович(5787,Движение (г.Красноярск),D,B)<br />19 место-№32-Петрушев Александр Александрович(5176,Dance Fox (г.Кемерово),D,B)<br /><b>1/8 финала</b><br />20-22 место-№6-Савченко Пётр Александрович(3535,Движение (г.Красноярск),B,M)<br />20-22 место-№15-Горелов Евгений Юрьевич(3291,Движение (г.Красноярск),C,RS)<br />20-22 место-№16-Лукьяненко Сергей Олегович(5783,Чердак (г.Красноярск),D,B)<br />23 место-№19-Зонов Олег Викторович(2590,Движение (г.Красноярск),C,RS)<br />24-26 место-№11-Горенский Антон Валерьевич(2002,Движение (г.Красноярск),C,RS)<br />24-26 место-№31-Горелов Максим Юрьевич(5273,Чердак (г.Красноярск),D,B)<br />24-26 место-№45-Гаврилин Дмитрий Владимирович(2942,Движение (г.Красноярск),C,RS)<br />27 место-№30-Тарасов Максим Иванович(5467,Dance Fox (г.Кемерово),D,B)<br /><br /> <br /><b>Технические результаты:</b><br /><span style='font-family:courier new'><br /><b>Хастл DnD RS-M-S (партнеры): 1/8 финала</b><br />--------+---------------------------------<br /> Пары   &#9474;  Кресты (буквы судей)<br />--------+---------------------------------<br />   017   | ABCD|EFG ==&gt; выход в 1/4 финала<br />   051   | ABCD|EFG ==&gt; выход в 1/4 финала<br />   026   | ABCD|EFG ==&gt; выход в 1/4 финала<br />   090   | ABCD|EFG ==&gt; выход в 1/4 финала<br />   022   | ABCD|EFG ==&gt; выход в 1/4 финала<br />   029   | ABCD|EFG ==&gt; выход в 1/4 финала<br />   046   | ABCD|EFG ==&gt; выход в 1/4 финала<br />   094   | ABCD|EFG ==&gt; выход в 1/4 финала<br />   007   | ABCD|EFG ==&gt; выход в 1/4 финала<br />   049   | ABCD|EFG ==&gt; выход в 1/4 финала<br />   039   | ABCD|FG  ==&gt; выход в 1/4 финала<br />   023   | BCDE|FG  ==&gt; выход в 1/4 финала<br />   042   | ABCD|FG  ==&gt; выход в 1/4 финала<br />   002   | ABEF|G   ==&gt; выход в 1/4 финала<br />   024   | ABCD|G   ==&gt; выход в 1/4 финала<br />   043   | ABCD|F   ==&gt; выход в 1/4 финала<br />   004   | BDEF|G   ==&gt; выход в 1/4 финала<br />   014   | ACEF|G   ==&gt; выход в 1/4 финала<br />   032   | ACDE|G   ==&gt; выход в 1/4 финала<br />   006   | BDEF|   20-22<br />   015   | BCDF|   20-22<br />   016   | ACEG|   20-22<br />   019   | ACF |   23<br />   011   | AE  |   24-26<br />   031   | DG  |   24-26<br />   045   | BE  |   24-26<br />   030   | E   |   27<br />--------+---------------------------------<br /> <br /><b>Хастл DnD RS-M-S (партнеры): 1/4 финала</b><br />--------+---------------------------------<br /> Пары   &#9474;  Кресты (буквы судей)<br />--------+---------------------------------<br />   046   | ABC|DEFG ==&gt; выход в 1/2 финала<br />   022   | ABC|DEFG ==&gt; выход в 1/2 финала<br />   090   | ABC|EFG  ==&gt; выход в 1/2 финала<br />   039   | ABC|DFG  ==&gt; выход в 1/2 финала<br />   049   | BCD|FG   ==&gt; выход в 1/2 финала<br />   023   | CEF|G    ==&gt; выход в 1/2 финала<br />   042   | ABC|DEFG ==&gt; выход в 1/2 финала<br />   017   | ABC|DEF  ==&gt; выход в 1/2 финала<br />   094   | ABD|EFG  ==&gt; выход в 1/2 финала<br />   026   | BCD|EFG  ==&gt; выход в 1/2 финала<br />   004   | ABD|FG   ==&gt; выход в 1/2 финала<br />   051   | AEG|    12-17<br />   002   | ACE|    12-17<br />   029   | DEF|    12-17<br />   007   | ABC|    12-17<br />   024   | ABE|    12-17<br />   014   | CDG|    12-17<br />   043   | D  |    18<br />   032   |    |    19<br />--------+---------------------------------<br /> <br /><b>Хастл DnD RS-M-S (партнеры): 1/2 финала</b><br />--------+---------------------------------<br /> Пары   &#9474;  Кресты (буквы судей)<br />--------+---------------------------------<br />   046   | ABC|DEFG ==&gt; выход в ФИНАЛ<br />   022   | ABC|DEFG ==&gt; выход в ФИНАЛ<br />   094   | ABC|DEFG ==&gt; выход в ФИНАЛ<br />   039   | ABC|DFG  ==&gt; выход в ФИНАЛ<br />   026   | ABC|DFG  ==&gt; выход в ФИНАЛ<br />   090   | ABE|F    ==&gt; выход в ФИНАЛ<br />   049   | BCE|G    ==&gt; выход в ФИНАЛ<br />   042   | DEG|    8-9<br />   017   | ADE|    8-9<br />   023   | C  |    10-11<br />   004   | F  |    10-11<br />--------+---------------------------------<br /> <br /><b>Хастл DnD RS-M-S (партнеры): ФИНАЛ</b><br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br />        &#9474; Места за 1-й.     &#9474; Место  &#9474; Места за 2-й.     &#9474; Место  &#9474; Места за 3-й.     &#9474; Место  &#9474;Сумма &#9474;Итоговое <br />        &#9474; танец             &#9474; пары в &#9474; танец             &#9474; пары в &#9474; танец             &#9474; пары в &#9474;мест  &#9474; место   <br />--------+-------------------+  1-м.  +-------------------+ 2-м.   &#9474;-------------------+ 3-м.   +за все&#9474; пары    <br /> Судьи  &#9474; A B C D E F G H I &#9474; танце  &#9474; A B C D E F G H I &#9474; танце  &#9474; A B C D E F G H I &#9474; танце  &#9474;танцы &#9474;         <br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br />  Пары  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;      &#9474;<br />  022   &#9474; 3 3 1 2 3 1 1   &#9474;     1  &#9474; 7 4 4 4 3 1 1   &#9474;     3  &#9474;                   &#9474;        &#9474;   04 &#9474;    1<br />  026   &#9474; 5 1 3 1 1 2 4   &#9474;     2  &#9474; 1 3 2 2 7 2 3   &#9474;     2  &#9474;                   &#9474;        &#9474;   04 &#9474;    2<br />  039   &#9474; 6 6 2 4 6 6 2   &#9474;     5  &#9474; 2 1 1 7 1 3 2   &#9474;     1  &#9474;                   &#9474;        &#9474;   06 &#9474;    3<br />  090   &#9474; 1 2 4 3 2 3 3   &#9474;     3  &#9474; 3 6 3 3 4 4 4   &#9474;     4  &#9474;                   &#9474;        &#9474;   07 &#9474;    4<br />  094   &#9474; 2 4 5 5 4 4 5   &#9474;     4  &#9474; 4 2 6 1 2 5 5   &#9474;     5  &#9474;                   &#9474;        &#9474;   09 &#9474;    5<br />  046   &#9474; 7 5 7 7 7 5 6   &#9474;     7  &#9474; 6 5 5 6 6 6 7   &#9474;     6  &#9474;                   &#9474;        &#9474;   13 &#9474;    6<br />  049   &#9474; 4 7 6 6 5 7 7   &#9474;     6  &#9474; 5 7 7 5 5 7 6   &#9474;     7  &#9474;                   &#9474;        &#9474;   13 &#9474;    7<br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br /></span><br /><br /><span style='font-size:13pt;line-height:100%'><b>Хастл DnD RS-M-S (партнерши). Участников: 36</b></span><br /> <br /><b>ФИНАЛ</b><br />1 место-№194-Потапова Елена Александровна(1428,Движение (г.Красноярск),A,S)<br />2 место-№124-Стрельченко Мария Юрьевна(5792,Чердак (г.Красноярск),C,RS)<br />3 место-№146-Васильева Маргарита Михайловна(2137,Вираж (г.Новосибирск),A,S)<br />4 место-№108-Чертыгашева Алёна Сергеевна(2040,Движение (г.Красноярск),A,S)<br />5 место-№122-Фёдорова Дария Эдуардовна(2969,Чердак (г.Красноярск),B,M)<br />6 место-№101-Хмель Кристина Артуровна(3387,Движение (г.Красноярск),B,M)<br />7 место-№103-Гирякова Наталья Валерьевна(4137,Ренессанс (г.Барнаул),C,RS)<br /><b>1/2 финала</b><br />8 место-№104-Виноградова Серафима Павловна(2335,Чердак (г.Красноярск),B,M)<br />9-10 место-№91-Антонова Татьяна Александровна(4277,Альтернатива (г.Кемерово),C,RS)<br />9-10 место-№117-Копич Ксения Алексеевна(3546,Движение (г.Красноярск),B,M)<br />11-12 место-№125-Казанцева Александра Сергеевна(3951,Чердак (г.Красноярск),C,RS)<br />11-12 место-№123-Вахи Екатерина Павловна(2973,Движение (г.Красноярск),C,RS)<br />13-14 место-№126-Стукова Екатерина Евгеньевна(4133,Ренессанс (г.Барнаул),D,B)<br />13-14 место-№92-Петренко Евгения Геннадьевна(4654,Чердак (г.Красноярск),Движение (г.Красноярск),C,RS)<br /><b>1/4 финала</b><br />15-16 место-№192-Кобыльских Лидия Анатольевна(4276,Чердак (г.Красноярск),B,M)<br />15-16 место-№131-Новикова Екатерина Павловна(5980,DEF (г.Барнаул),C,RS)<br />17-19 место-№95-Кот Олеся Юрьевна(5076,Движение (г.Красноярск),B,M)<br />17-19 место-№120-Ашурова Ирина Исмаиловна(5562,Чердак (г.Красноярск),C,RS)<br />17-19 место-№114-Короткова Любовь Юрьевна(2345,Движение (г.Красноярск),B,M)<br /><b>1/8 финала</b><br />20-22 место-№50-Емельяненко Анна Владимировна(1499,Движение (г.Красноярск),B,M)<br />20-22 место-№128-Литвишко Екатерина Юрьевна(5016,Чердак (г.Красноярск),C,RS)<br />20-22 место-№130-Хисматуллина Раиса Раилевна(5804,Dance Fox (г.Кемерово),D,B)<br />23-29 место-№119-Данилова Ксения Валерьевна(6590,Движение (г.Красноярск),D,B)<br />23-29 место-№135-Круглова Ульяна Николаевна(6842,Чердак (г.Красноярск),E,B)<br />23-29 место-№52-Вересова Софья Николаевна(4270,Бродвей (г.Красноярск),Движение (г.Красноярск),C,RS)<br />23-29 место-№111-Олифиренко Дарья Андреевна(5798,Движение (г.Красноярск),D,B)<br />23-29 место-№127-Гончарова Наталья Владимировна(3548,Движение (г.Красноярск),C,RS)<br />23-29 место-№118-Марсель Елизавета Павловна(6309,Движение (г.Красноярск),E,B)<br />23-29 место-№132-Андреева Анастасия Андреевна(5986,Dance Fox (г.Кемерово),D,B)<br />30-32 место-№53-Андгуладзе Ирина Сергеевна(5671,Движение (г.Красноярск),E,B)<br />30-32 место-№102-Кокова Мария Игоревна(3383,Движение (г.Красноярск),C,RS)<br />30-32 место-№116-Николаева Ксения Сергеевна(6237,Чердак (г.Красноярск),D,B)<br />33-36 место-№136-Мордовская Елена Сергеевна(5336,Вираж (г.Новосибирск),D,B)<br />33-36 место-№93-Троян Юлия Александровна(5014,Движение (г.Красноярск),D,B)<br />33-36 место-№105-Околова Людмила Сергеевна(2032,Движение (г.Красноярск),B,M)<br />33-36 место-№195-Панфилова Нина Сергеевна(5435,Движение (г.Красноярск),D,B)<br /><br /><b>Технические результаты:</b><br /><span style='font-family:courier new'><br /><b>Хастл DnD RS-M-S (партнерши): 1/8 финала</b><br />--------+---------------------------------<br /> Пары   &#9474;  Кресты (буквы судей)<br />--------+---------------------------------<br />   095   | ABC|DEFG ==&gt; выход в 1/4 финала<br />   108   | ABC|DEFG ==&gt; выход в 1/4 финала<br />   122   | ABC|DEFG ==&gt; выход в 1/4 финала<br />   146   | ABC|DEFG ==&gt; выход в 1/4 финала<br />   123   | ABC|DEFG ==&gt; выход в 1/4 финала<br />   104   | ABC|DEFG ==&gt; выход в 1/4 финала<br />   124   | ABC|DEFG ==&gt; выход в 1/4 финала<br />   194   | ABC|DEFG ==&gt; выход в 1/4 финала<br />   126   | ABC|DEF  ==&gt; выход в 1/4 финала<br />   101   | ABD|EFG  ==&gt; выход в 1/4 финала<br />   120   | ABC|DFG  ==&gt; выход в 1/4 финала<br />   091   | BCD|EFG  ==&gt; выход в 1/4 финала<br />   192   | BCD|EFG  ==&gt; выход в 1/4 финала<br />   092   | ABC|EFG  ==&gt; выход в 1/4 финала<br />   117   | BCD|EF   ==&gt; выход в 1/4 финала<br />   125   | ACD|FG   ==&gt; выход в 1/4 финала<br />   114   | ABD|F    ==&gt; выход в 1/4 финала<br />   103   | ADE|F    ==&gt; выход в 1/4 финала<br />   131   | BDE|G    ==&gt; выход в 1/4 финала<br />   050   | BEG|    20-22<br />   128   | CFG|    20-22<br />   130   | BDE|    20-22<br />   119   | AC |    23-29<br />   135   | CG |    23-29<br />   052   | AF |    23-29<br />   111   | AD |    23-29<br />   127   | BE |    23-29<br />   118   | AC |    23-29<br />   132   | CG |    23-29<br />   053   | A  |    30-32<br />   102   | G  |    30-32<br />   116   | E  |    30-32<br />   136   |    |    33-36<br />   093   |    |    33-36<br />   105   |    |    33-36<br />   195   |    |    33-36<br />--------+---------------------------------<br /> <br /><b>Хастл DnD RS-M-S (партнерши): 1/4 финала</b><br />--------+---------------------------------<br /> Пары   &#9474;  Кресты (буквы судей)<br />--------+---------------------------------<br />   146   | AB|CDEFG ==&gt; выход в 1/2 финала<br />   108   | AB|CDEFG ==&gt; выход в 1/2 финала<br />   194   | AB|CDEFG ==&gt; выход в 1/2 финала<br />   104   | AB|CDEFG ==&gt; выход в 1/2 финала<br />   091   | BC|DEFG  ==&gt; выход в 1/2 финала<br />   125   | AC|G     ==&gt; выход в 1/2 финала<br />   126   | BD|E     ==&gt; выход в 1/2 финала<br />   101   | AB|CDEFG ==&gt; выход в 1/2 финала<br />   123   | AB|CDEFG ==&gt; выход в 1/2 финала<br />   122   | AB|CDEFG ==&gt; выход в 1/2 финала<br />   124   | BC|DEFG  ==&gt; выход в 1/2 финала<br />   117   | AC|DF    ==&gt; выход в 1/2 финала<br />   092   | AE|F     ==&gt; выход в 1/2 финала<br />   103   | AD|F     ==&gt; выход в 1/2 финала<br />   192   | CG|     15-16<br />   131   | AE|     15-16<br />   095   | B |     17-19<br />   120   | G |     17-19<br />   114   | B |     17-19<br />--------+---------------------------------<br /> <br /><b>Хастл DnD RS-M-S (партнерши): 1/2 финала</b><br />--------+---------------------------------<br /> Пары   &#9474;  Кресты (буквы судей)<br />--------+---------------------------------<br />   146   | ABC|DEFG ==&gt; выход в ФИНАЛ<br />   194   | ABC|DEFG ==&gt; выход в ФИНАЛ<br />   124   | ABC|DEFG ==&gt; выход в ФИНАЛ<br />   108   | ABD|EFG  ==&gt; выход в ФИНАЛ<br />   122   | ACD|FG   ==&gt; выход в ФИНАЛ<br />   101   | ABE|G    ==&gt; выход в ФИНАЛ<br />   103   | ACD|F    ==&gt; выход в ФИНАЛ<br />   104   | CEG|    8<br />   091   | BC |    9-10<br />   117   | EF |    9-10<br />   125   | D  |    11-12<br />   123   | B  |    11-12<br />   126   |    |    13-14<br />   092   |    |    13-14<br />--------+---------------------------------<br /><br /> <br /><b>Хастл DnD RS-M-S (партнерши): ФИНАЛ</b><br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br />        &#9474; Места за 1-й.     &#9474; Место  &#9474; Места за 2-й.     &#9474; Место  &#9474; Места за 3-й.     &#9474; Место  &#9474;Сумма &#9474;Итоговое <br />        &#9474; танец             &#9474; пары в &#9474; танец             &#9474; пары в &#9474; танец             &#9474; пары в &#9474;мест  &#9474; место   <br />--------+-------------------+  1-м.  +-------------------+ 2-м.   &#9474;-------------------+ 3-м.   +за все&#9474; пары    <br /> Судьи  &#9474; A B C D E F G H I &#9474; танце  &#9474; A B C D E F G H I &#9474; танце  &#9474; A B C D E F G H I &#9474; танце  &#9474;танцы &#9474;         <br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br />  Пары  &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;                   &#9474;        &#9474;      &#9474;<br />  194   &#9474; 3 3 1 2 3 1 1   &#9474;     1  &#9474; 7 4 4 4 3 1 1   &#9474;     3  &#9474;                   &#9474;        &#9474;   04 &#9474;    1<br />  124   &#9474; 5 1 3 1 1 2 4   &#9474;     2  &#9474; 1 3 2 2 7 2 3   &#9474;     2  &#9474;                   &#9474;        &#9474;   04 &#9474;    2<br />  146   &#9474; 6 6 2 4 6 6 2   &#9474;     5  &#9474; 2 1 1 7 1 3 2   &#9474;     1  &#9474;                   &#9474;        &#9474;   06 &#9474;    3<br />  108   &#9474; 1 2 4 3 2 3 3   &#9474;     3  &#9474; 3 6 3 3 4 4 4   &#9474;     4  &#9474;                   &#9474;        &#9474;   07 &#9474;    4<br />  122   &#9474; 2 4 5 5 4 4 5   &#9474;     4  &#9474; 4 2 6 1 2 5 5   &#9474;     5  &#9474;                   &#9474;        &#9474;   09 &#9474;    5<br />  101   &#9474; 7 5 7 7 7 5 6   &#9474;     7  &#9474; 6 5 5 6 6 6 7   &#9474;     6  &#9474;                   &#9474;        &#9474;   13 &#9474;    6<br />  103   &#9474; 4 7 6 6 5 7 7   &#9474;     6  &#9474; 5 7 7 5 5 7 6   &#9474;     7  &#9474;                   &#9474;        &#9474;   13 &#9474;    7<br />--------+-------------------+--------+-------------------+--------+-------------------+--------+------+---------<br /></span><br /><br /><span class='edit'>Это сообщение отредактировал <b>Slavka</b> - 5.11.2014 - 19:57</span> </div>
+        
+        <!-- THE POST -->
+      </td>
+    </tr>
+    <tr>
+      <td class='darkrow3' align='left'><b></b></td>
+      <td class='darkrow3' nowrap="nowrap" align='left'>
+      
+        <!-- PM / EMAIL / WWW / MSGR -->
+      
+        <div align='left' class='darkrow3' style='float:left;width:auto'>
+        <a href='http://hustle-sa.ru/forum/index.php?s=ec86e01ce9fe1067d3a9738bcba61fc7&amp;act=Msg&amp;CODE=04&amp;MID=761'><img src='style_images/1/p_pm.gif' border='0'  alt='PM' /></a><a href='http://hustle-sa.ru/forum/index.php?s=ec86e01ce9fe1067d3a9738bcba61fc7&amp;act=Mail&amp;CODE=00&amp;MID=761'><img src='style_images/1/p_email.gif' border='0'  alt='Письмо на e-mail пользователю' /></a>
+        </div>
+        
+        <!-- REPORT / UP -->
+         
+        <div align='right'>
+         <a href='javascript:scroll(0,0);'><img src='style_images/1/p_up.gif' alt='Top' border='0' /></a>
+        </div>
+      </td>
+    </tr>
+    </table>
+    <div class='darkrow1' style='height:5px'><!-- --></div>
+    
+	<!--Begin Msg Number 19591-->
+    <table width='100%' border='0' cellspacing='1' cellpadding='3'>
+    <tr>
+      <td align='center' valign='middle' class='row4' width="1%"><a name='entry19591'></a><span class='normalname'><a href="javascript:ins('Denegin')">Denegin</a></span></td>
+        <td class='row4' valign='top' width="99%">
+        
+        <!-- POSTED DATE DIV -->
+        
+        <div align='left' class='row4' style='float:left;padding-top:4px;padding-bottom:4px'>
+        <span class='postdetails'><b><a title="Показать ссылку этой темы" href="#" onclick="link_to_post(19591); return false;" style="text-decoration:underline">Дата</a></b> 5.11.2014 - 11:03</span>
+        </div>
+        
+        <!-- REPORT / DELETE / EDIT / QUOTE DIV -->
+        
+        <div align='right'>
+        <a href='http://hustle-sa.ru/forum/index.php?s=ec86e01ce9fe1067d3a9738bcba61fc7&amp;act=Post&amp;CODE=06&amp;f=6&amp;t=3035&amp;p=19591'><img src='style_images/1/p_quote.gif' border='0'  alt='Цитировать сообщение' /></a>
+      </div>
+      
+      </td>
+    </tr>
+    <tr>
+      <td align='center' valign='top' class='post1'>
+        <span class='postdetails'><br /><br /><img src='http://hustle-sa.ru/forum/uploads/av-3.jpg' border='0' width='80' height='74' alt='' /><br /><br />
+        Мудрец<br />
+        <img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><br /><br />
+        <a href='http://hustle-sa.ru/forum/index.php?s=ec86e01ce9fe1067d3a9738bcba61fc7&amp;showuser=3'>Профиль</a><br />
+        Группа: Администраторы<br />
+        Сообщений: 7382<br />
+        Пользователь №: 3<br />
+        Регистрация: 13.02.2008<br />
+        <br />
+        <br /><br />
+         </span><br />
+        <!--$ author[field_1]-->
+        <img src='style_images/1/spacer.gif' alt='' width='160' height='1' /><br /> 
+      </td>
+      <td width='100%' valign='top' class='post1'>
+        <!-- THE POST 19591 -->
+        <div class='postcolor'> Кажется есть ошибка&#33; <br /><br /><!--QuoteBegin--></div><table border='0' align='center' width='95%' cellpadding='3' cellspacing='1'><tr><td><b>Цитата</b> </td></tr><tr><td id='QUOTE'><!--QuoteEBegin-->Хастл Абсолют: ФИНАЛ<!--QuoteEnd--></td></tr></table><div class='postcolor'><!--QuoteEEnd--><br /><br />Мне прислали вопрос:<br />Сергей здравствуй&#33; у меня вопрос<br />по абсолюту <a href='http://hustle-sa.ru/forum/index.php?showtopic=3035' target='_blank'>http://hustle-sa.ru/forum/index.php?showtopic=3035</a><br />как так получилось что пара 26 на 4 месте хотя у нее места за танцы 3 и 4<br />ее обошла пара 3 у которой места за танцы 5 и 3?<br /><br />========<br />Действительно ошибка. Ощущение, что сортировка пар произведена по медленному танцу, т.к. конечные места полностью совпадают с местами за него. <br /><br />  </div>
+        <br /><br />--------------------<br />
+<div class='signature'><b><a href='http://www.denegin.ru/hustle' target='_blank'>Руководитель и преподаватель Хастл-Центра</a></b></div>
+        <!-- THE POST -->
+      </td>
+    </tr>
+    <tr>
+      <td class='darkrow3' align='left'><b></b></td>
+      <td class='darkrow3' nowrap="nowrap" align='left'>
+      
+        <!-- PM / EMAIL / WWW / MSGR -->
+      
+        <div align='left' class='darkrow3' style='float:left;width:auto'>
+        <a href='http://hustle-sa.ru/forum/index.php?s=ec86e01ce9fe1067d3a9738bcba61fc7&amp;act=Msg&amp;CODE=04&amp;MID=3'><img src='style_images/1/p_pm.gif' border='0'  alt='PM' /></a><a href='http://www.denegin.ru' target='_blank'><img src='style_images/1/p_www.gif' border='0'  alt='Сайт пользователя' /></a><a href="javascript:PopUp('http://hustle-sa.ru/forum/index.php?s=ec86e01ce9fe1067d3a9738bcba61fc7&amp;act=ICQ&amp;MID=3','Pager','450','330','0','1','1','1')"><img src='style_images/1/p_icq.gif' border='0'  alt='ICQ' /></a>
+        </div>
+        
+        <!-- REPORT / UP -->
+         
+        <div align='right'>
+         <a href='javascript:scroll(0,0);'><img src='style_images/1/p_up.gif' alt='Top' border='0' /></a>
+        </div>
+      </td>
+    </tr>
+    </table>
+    <div class='darkrow1' style='height:5px'><!-- --></div>
+    
+	<!--Begin Msg Number 19593-->
+    <table width='100%' border='0' cellspacing='1' cellpadding='3'>
+    <tr>
+      <td align='center' valign='middle' class='row4' width="1%"><a name='entry19593'></a><span class='normalname'><a href="javascript:ins('Slavka')">Slavka</a></span></td>
+        <td class='row4' valign='top' width="99%">
+        
+        <!-- POSTED DATE DIV -->
+        
+        <div align='left' class='row4' style='float:left;padding-top:4px;padding-bottom:4px'>
+        <span class='postdetails'><b><a title="Показать ссылку этой темы" href="#" onclick="link_to_post(19593); return false;" style="text-decoration:underline">Дата</a></b> 5.11.2014 - 20:03</span>
+        </div>
+        
+        <!-- REPORT / DELETE / EDIT / QUOTE DIV -->
+        
+        <div align='right'>
+        <a href='http://hustle-sa.ru/forum/index.php?s=ec86e01ce9fe1067d3a9738bcba61fc7&amp;act=Post&amp;CODE=06&amp;f=6&amp;t=3035&amp;p=19593'><img src='style_images/1/p_quote.gif' border='0'  alt='Цитировать сообщение' /></a>
+      </div>
+      
+      </td>
+    </tr>
+    <tr>
+      <td align='center' valign='top' class='post2'>
+        <span class='postdetails'><br /><br /><br /><br />
+        Старожил<br />
+        <img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><br /><br />
+        <a href='http://hustle-sa.ru/forum/index.php?s=ec86e01ce9fe1067d3a9738bcba61fc7&amp;showuser=761'>Профиль</a><br />
+        Группа: РК АСХ<br />
+        Сообщений: 281<br />
+        Пользователь №: 761<br />
+        Регистрация: 9.02.2009<br />
+        <br />
+        <br /><br />
+         </span><br />
+        <!--$ author[field_1]-->
+        <img src='style_images/1/spacer.gif' alt='' width='160' height='1' /><br /> 
+      </td>
+      <td width='100%' valign='top' class='post2'>
+        <!-- THE POST 19593 -->
+        <div class='postcolor'>Действительно.<br />Ошибка счетной комиссии<br />Я сам недосмотрел, при проверке результатов. (Все таки сказывается трехдневный недосып.)<br /><br />По ошибке счетной комиссии на турнире была допущена ошибка, перепутались места 3 и 4.<br />В итоге, Пара<br /> №26-Козлов Павел Сергеевич(3955,Ренессанс (г.Барнаул),C)-Стукова Екатерина Евгеньевна(4133,Ренессанс (г.Барнаул),D)<br />Занимает 3 место, а пара<br />№3-Лыков Антон Евгеньевич(4110,Ренессанс (г.Барнаул),C)-Гирякова Наталья Валерьевна(4137,Ренессанс (г.Барнаул),C)<br />занимает 4 место.<br /><br />Правильный результат уже опубликован.<br />Орг. комитет организатора турнира приносит свои искренние извинения за эту ошибку.<br /> </div>
+        
+        <!-- THE POST -->
+      </td>
+    </tr>
+    <tr>
+      <td class='darkrow3' align='left'><b></b></td>
+      <td class='darkrow3' nowrap="nowrap" align='left'>
+      
+        <!-- PM / EMAIL / WWW / MSGR -->
+      
+        <div align='left' class='darkrow3' style='float:left;width:auto'>
+        <a href='http://hustle-sa.ru/forum/index.php?s=ec86e01ce9fe1067d3a9738bcba61fc7&amp;act=Msg&amp;CODE=04&amp;MID=761'><img src='style_images/1/p_pm.gif' border='0'  alt='PM' /></a><a href='http://hustle-sa.ru/forum/index.php?s=ec86e01ce9fe1067d3a9738bcba61fc7&amp;act=Mail&amp;CODE=00&amp;MID=761'><img src='style_images/1/p_email.gif' border='0'  alt='Письмо на e-mail пользователю' /></a>
+        </div>
+        
+        <!-- REPORT / UP -->
+         
+        <div align='right'>
+         <a href='javascript:scroll(0,0);'><img src='style_images/1/p_up.gif' alt='Top' border='0' /></a>
+        </div>
+      </td>
+    </tr>
+    </table>
+    <div class='darkrow1' style='height:5px'><!-- --></div>
+    
+	<!--Begin Msg Number 19610-->
+    <table width='100%' border='0' cellspacing='1' cellpadding='3'>
+    <tr>
+      <td align='center' valign='middle' class='row4' width="1%"><a name='entry19610'></a><span class='normalname'><a href="javascript:ins('Denegin')">Denegin</a></span></td>
+        <td class='row4' valign='top' width="99%">
+        
+        <!-- POSTED DATE DIV -->
+        
+        <div align='left' class='row4' style='float:left;padding-top:4px;padding-bottom:4px'>
+        <span class='postdetails'><b><a title="Показать ссылку этой темы" href="#" onclick="link_to_post(19610); return false;" style="text-decoration:underline">Дата</a></b> 7.11.2014 - 00:43</span>
+        </div>
+        
+        <!-- REPORT / DELETE / EDIT / QUOTE DIV -->
+        
+        <div align='right'>
+        <a href='http://hustle-sa.ru/forum/index.php?s=ec86e01ce9fe1067d3a9738bcba61fc7&amp;act=Post&amp;CODE=06&amp;f=6&amp;t=3035&amp;p=19610'><img src='style_images/1/p_quote.gif' border='0'  alt='Цитировать сообщение' /></a>
+      </div>
+      
+      </td>
+    </tr>
+    <tr>
+      <td align='center' valign='top' class='post1'>
+        <span class='postdetails'><br /><br /><img src='http://hustle-sa.ru/forum/uploads/av-3.jpg' border='0' width='80' height='74' alt='' /><br /><br />
+        Мудрец<br />
+        <img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><img src='style_images/1/pip.gif' border='0'  alt='*' /><br /><br />
+        <a href='http://hustle-sa.ru/forum/index.php?s=ec86e01ce9fe1067d3a9738bcba61fc7&amp;showuser=3'>Профиль</a><br />
+        Группа: Администраторы<br />
+        Сообщений: 7382<br />
+        Пользователь №: 3<br />
+        Регистрация: 13.02.2008<br />
+        <br />
+        <br /><br />
+         </span><br />
+        <!--$ author[field_1]-->
+        <img src='style_images/1/spacer.gif' alt='' width='160' height='1' /><br /> 
+      </td>
+      <td width='100%' valign='top' class='post1'>
+        <!-- THE POST 19610 -->
+        <div class='postcolor'> По итогам конкурса &#39;Чемпионат Сибири г. Красноярск&#39;, прошедшего 01.11.2014, посчитаны баллы танцоров.	<br /> 	<br />Произошли следующие изменения:	<br /> 	<br />1) Впервые выступавшим танцорам присвоены коды танцоров.	<br /> 	<br />2) В номинациях &#39;хастл&#39; согласно набранным баллам следующим танцорам присвоены классы:	<br />03955	Козлов Павел Сергеевич (Ренессанс (г.Барнаул)). В номинации &#39;хастл&#39; присвоен класс &#39;B&#39;. В номинации &#39;ДнД&#39; присвоен класс &#39;Main&#39;.<br />06842	Круглова Ульяна Николаевна (Чердак (г.Красноярск)). В номинации &#39;хастл&#39; присвоен класс &#39;D&#39;. В номинации &#39;ДнД&#39; остался класс &#39;Beginner&#39;.<br />05783	Лукьяненко Сергей Олегович (Чердак (г.Красноярск)). В номинации &#39;хастл&#39; присвоен класс &#39;C&#39;. В номинации &#39;ДнД&#39; присвоен класс &#39;Rising Star&#39;.<br />06237	Николаева Ксения Сергеевна (Чердак (г.Красноярск)). В номинации &#39;хастл&#39; присвоен класс &#39;C&#39;. В номинации &#39;ДнД&#39; присвоен класс &#39;Rising Star&#39;.<br />06243	Сафина Люция Хамисовна (Движение (г.Красноярск)). В номинации &#39;хастл&#39; присвоен класс &#39;D&#39;. В номинации &#39;ДнД&#39; остался класс &#39;Beginner&#39;.<br />06229	Симаков Дмитрий Иванович (Движение (г.Красноярск)). В номинации &#39;хастл&#39; присвоен класс &#39;D&#39;. В номинации &#39;ДнД&#39; остался класс &#39;Beginner&#39;.<br />04133	Стукова Екатерина Евгеньевна (Ренессанс (г.Барнаул)). В номинации &#39;хастл&#39; присвоен класс &#39;C&#39;. В номинации &#39;ДнД&#39; присвоен класс &#39;Rising Star&#39;.<br />04252	Уливанов Никита Андреевич (Бродвей (г.Красноярск),Движение (г.Красноярск)). В номинации &#39;хастл&#39; присвоен класс &#39;C&#39;. В номинации &#39;ДнД&#39; присвоен класс &#39;Rising Star&#39;.<br />06259	Шмыгов Тимофей Васильевич (Вираж (г.Новосибирск)). В номинации &#39;хастл&#39; присвоен класс &#39;D&#39;. В номинации &#39;ДнД&#39; остался класс &#39;Beginner&#39;.<br /> 	<br />3) В номинации &#39;хастл-Днд&#39; переводов между классами не производилось.	<br /> 	<br />Актуальную базу результатов и баллов можно посмотреть и скачать по адресу <a href='http://hustle-sa.ru/rating' target='_blank'>http://hustle-sa.ru/rating</a>	<br />  </div>
+        <br /><br />--------------------<br />
+<div class='signature'><b><a href='http://www.denegin.ru/hustle' target='_blank'>Руководитель и преподаватель Хастл-Центра</a></b></div>
+        <!-- THE POST -->
+      </td>
+    </tr>
+    <tr>
+      <td class='darkrow3' align='left'><b></b></td>
+      <td class='darkrow3' nowrap="nowrap" align='left'>
+      
+        <!-- PM / EMAIL / WWW / MSGR -->
+      
+        <div align='left' class='darkrow3' style='float:left;width:auto'>
+        <a href='http://hustle-sa.ru/forum/index.php?s=ec86e01ce9fe1067d3a9738bcba61fc7&amp;act=Msg&amp;CODE=04&amp;MID=3'><img src='style_images/1/p_pm.gif' border='0'  alt='PM' /></a><a href='http://www.denegin.ru' target='_blank'><img src='style_images/1/p_www.gif' border='0'  alt='Сайт пользователя' /></a><a href="javascript:PopUp('http://hustle-sa.ru/forum/index.php?s=ec86e01ce9fe1067d3a9738bcba61fc7&amp;act=ICQ&amp;MID=3','Pager','450','330','0','1','1','1')"><img src='style_images/1/p_icq.gif' border='0'  alt='ICQ' /></a>
+        </div>
+        
+        <!-- REPORT / UP -->
+         
+        <div align='right'>
+         <a href='javascript:scroll(0,0);'><img src='style_images/1/p_up.gif' alt='Top' border='0' /></a>
+        </div>
+      </td>
+    </tr>
+    </table>
+    <div class='darkrow1' style='height:5px'><!-- --></div>
+          <!--IBF.QUICK_REPLY_NEW-->
+      <!--IBF.TOPIC_ACTIVE-->
+      <div class="activeuserstrip" align="center">&laquo; <a href='http://hustle-sa.ru/forum/index.php?s=ec86e01ce9fe1067d3a9738bcba61fc7&amp;showtopic=3035&amp;view=old'>Предыдущая тема</a> &#0124; <strong><a href='http://hustle-sa.ru/forum/index.php?s=ec86e01ce9fe1067d3a9738bcba61fc7&amp;showforum=6'>Конкурсы и соревнования АСХ</a></strong> &#0124; <a href='http://hustle-sa.ru/forum/index.php?s=ec86e01ce9fe1067d3a9738bcba61fc7&amp;showtopic=3035&amp;view=new'>Следующая тема</a> &raquo;</div>
+</div>
+ 
+<br />
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+ <td align='left' width="20%" nowrap="nowrap"><a href="javascript:ShowHide('topic_open','topic_closed')" title="Раскрыть опции темы"><img src='style_images/1/t_options.gif' border='0'  alt='Опции темы' /></a></td>
+ <td align='right' width="80%"><a href='http://hustle-sa.ru/forum/index.php?s=ec86e01ce9fe1067d3a9738bcba61fc7&amp;act=Post&amp;CODE=02&amp;f=6&amp;t=3035'><img src='style_images/1/t_reply.gif' border='0'  alt='Ответ в тему' /></a><!--IBF.QUICK_REPLY_CLOSED--><a href='http://hustle-sa.ru/forum/index.php?s=ec86e01ce9fe1067d3a9738bcba61fc7&amp;act=Post&amp;CODE=00&amp;f=6' title='Создание новой темы'><img src='style_images/1/t_new.gif' border='0'  alt='Создание новой темы' /></a><a href='http://hustle-sa.ru/forum/index.php?s=ec86e01ce9fe1067d3a9738bcba61fc7&amp;act=Post&amp;CODE=10&amp;f=6'><img src='style_images/1/t_poll.gif' border='0'  alt='Создание опроса' /></a></td>
+</tr>
+</table>
+
+<!--IBF.QUICK_REPLY_OPEN-->
+<div id='topic_open' style='display:none;z-index:2;'>
+    <div class="tableborder">
+	  <div class='maintitle'><img src='style_images/1/nav_m.gif' border='0'  alt='&gt;' width='8' height='8' />&nbsp;<a href="javascript:ShowHide('topic_open','topic_closed')">Скрыть опции темы</a></div>
+	  <div class='tablepad'>
+	   <b><a href='http://hustle-sa.ru/forum/index.php?s=ec86e01ce9fe1067d3a9738bcba61fc7&amp;act=Track&amp;f=6&amp;t=3035'>Подписаться на тему</a></b>
+	   <br />
+	   <span class='desc'>Уведомление на e-mail об ответах в тему, во время Вашего отсутствия на форуме.</span>
+	   <br /><br />
+	   <b><a href='http://hustle-sa.ru/forum/index.php?s=ec86e01ce9fe1067d3a9738bcba61fc7&amp;act=Track&amp;f=6&amp;type=forum'>Подписка на этот форум</a></b>
+	   <br />
+	   <span class='desc'>Уведомление на e-mail о новых темах на форуме, во время Вашего отсутствия на форуме.</span>
+	   <br /><br />
+	   <b><a href='http://hustle-sa.ru/forum/index.php?s=ec86e01ce9fe1067d3a9738bcba61fc7&amp;act=Print&amp;client=choose&amp;f=6&amp;t=3035'>Скачать/Распечатать тему</a></b>
+	   <br />
+	   <span class='desc'>Скачивание темы в различных форматах или просмотр версии для печати этой темы.</span>
+	 </div>
+   </div>
+</div>
+
+<br />
+
+<div align='right'><form onsubmit="if(document.jumpmenu.f.value == -1){return false;}" action='http://hustle-sa.ru/forum/index.php?s=ec86e01ce9fe1067d3a9738bcba61fc7&amp;act=SF' method='get' name='jumpmenu'>
+			             <input type='hidden' name='act' value='SF' />
+<input type='hidden' name='s' value='ec86e01ce9fe1067d3a9738bcba61fc7' />
+			             <select name='f' onchange="if(this.options[this.selectedIndex].value != -1){ document.jumpmenu.submit() }" class='forminput'>
+			             <optgroup label="Перейти на сайт">
+			              <option value='sj_home'>Главная страница форума</option>
+			              <option value='sj_search'>Поиск</option>
+			              <option value='sj_help'>Помощь</option>
+			             </optgroup>
+			             <optgroup label="Переход по форумам"><option value='-1'>Ассоциация спортивного хастла</option>
+<option value="21">&nbsp;&nbsp;- Правила форума, Правила АСХ, решения РК АСХ </option><!--fx:21-->
+<option value="6" selected="selected">&nbsp;&nbsp;- Конкурсы и соревнования АСХ </option><!--fx:6-->
+<option value="4">&nbsp;&nbsp;- База данных и рейтинг танцоров, заявления на изменения в базе данных </option><!--fx:4-->
+<option value="8">&nbsp;&nbsp;---- Неправильные заявления, дубли </option>
+<option value="18">&nbsp;&nbsp;- Вопросы к РК АСХ, протесты, обсуждения документов и решений РК АСХ </option><!--fx:18-->
+</optgroup>
+</select>&nbsp;<input type='submit' value='ок!' class='forminput' /></form></div>
+
+<br /> 
+ 
+<!-- Copyright Information -->
+
+<br><div align='center' class='copyright'>Powered by <a href="http://www.invisionboard.com" target='_blank'>Invision Power Board</a>(U) v1.3 Final &copy; 2003 &nbsp;<a href='http://www.invisionpower.com' target='_blank'>IPS, Inc.</a><br>Русский Модифицированный IPB v1.3 Final &copy 2003 <a href='http://www.bestfilez.net' target='_blank'>BesTFileZ.Net</a> &amp; <a href='http://www.ibresource.ru' target='_blank'>IBR Team</a>
+		<br>Адаптация php5/MySql5<a href='http://psihiteam.narod.ru' target='_blank'>Lazutov Alexander [psihiteam]</a></div>
+		
+</div>
+</body> 
+</html>
