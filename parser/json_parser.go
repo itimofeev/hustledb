@@ -745,6 +745,17 @@ func fixDancers(dancers []model.RawDancer) []model.RawDancer {
 		Source:    "20140927 Восходящие звезды, г. Санкт-Петербург (Судья)",
 	})
 
+	dancers = append(dancers, model.RawDancer{
+		ID:        -11,
+		Code:      "-00011",
+		Name:      "результаты ",
+		Surname:   "перетанцовки",
+		Sex:       "f",
+		PairClass: "E",
+		JnjClass:  "BG",
+		Source:    "20141109 КУБОК МОРСКОЙ СЛАВЫ 2014 (Судья)",
+	})
+
 	return dancers
 }
 
