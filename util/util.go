@@ -7,6 +7,9 @@ import (
 	"os"
 	"regexp"
 	"strconv"
+	"golang.org/x/net/html/charset"
+	"io/ioutil"
+	"net/http"
 )
 
 // CheckErr check error is nil and if not panic with message
@@ -42,6 +45,12 @@ func PrintJson(i interface{}) {
 	fmt.Println("JSON: ", string(j))
 }
 
+func GetJson(i interface{}) string {
+	j, err := json.Marshal(i)
+	CheckErr(err)
+	return string(j)
+}
+
 func IsFileExists(name string) bool {
 	if _, err := os.Stat(name); err != nil {
 		if os.IsNotExist(err) {
@@ -49,4 +58,43 @@ func IsFileExists(name string) bool {
 		}
 	}
 	return true
+}
+
+func GetUrlContent(url string) []byte {
+	resp, err := http.Get(url)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	defer resp.Body.Close()
+	utf8, err := charset.NewReader(resp.Body, resp.Header.Get("Content-Type"))
+	if err != nil {
+		log.Fatal(err)
+	}
+	body, err := ioutil.ReadAll(utf8)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	return body
+}
+
+
+func DownloadUrlToFile(url, path string) []byte {
+	data := GetUrlContent(url)
+
+	err := ioutil.WriteFile(path, data, 0644)
+
+	CheckErr(err, "")
+	return data
+}
+func DownloadUrlToFileIfNotExists(url, path string) []byte {
+	if !IsFileExists(path) {
+		return DownloadUrlToFile(url, path)
+	}
+
+	data, err := ioutil.ReadFile(path)
+	CheckErr(err, "")
+
+	return data
 }

@@ -4,31 +4,9 @@ import (
 	"bytes"
 	"github.com/PuerkitoBio/goquery"
 	"golang.org/x/net/html"
-	"golang.org/x/net/html/charset"
-	"io/ioutil"
 	"log"
-	"net/http"
 	"strings"
 )
-
-func GetUrlContent(url string) []byte {
-	resp, err := http.Get(url)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	defer resp.Body.Close()
-	utf8, err := charset.NewReader(resp.Body, resp.Header.Get("Content-Type"))
-	if err != nil {
-		log.Fatal(err)
-	}
-	body, err := ioutil.ReadAll(utf8)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	return body
-}
 
 func GetMainContentFromForumHtml(body []byte) string {
 	return getTextOfNodesBySelector(body, ".postcolor")

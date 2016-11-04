@@ -30,12 +30,7 @@ func main() {
 
 func parseAndInsert(topicId string) {
 	filePath := forumDir + topicId + ".html"
-	if !util.IsFileExists(filePath) {
-		downloadUrlToFile(compUrl+topicId, filePath)
-	}
-
-	data, err := ioutil.ReadFile(filePath)
-	util.CheckErr(err, "")
+	data := util.DownloadUrlToFileIfNotExists(compUrl+topicId, filePath)
 
 	res := forum.GetMainContentFromForumHtml(data)
 	mainTitle := forum.GetMainTitleFromForumHtml(data)
@@ -51,10 +46,4 @@ func parseAndInsert(topicId string) {
 
 	inserter := forum.NewDbInserter(forum.NewInsertDao(db))
 	inserter.Insert(results)
-}
-
-func downloadUrlToFile(url, path string) {
-	data := forum.GetUrlContent(url)
-
-	ioutil.WriteFile(path, data, 0644)
 }
