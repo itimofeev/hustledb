@@ -9,8 +9,8 @@ rm ${PROJECT_PATH}/target/*
 mkdir ${PROJECT_PATH}/target
 
 
-docker build --force-rm=true -t nginxhustlesa -f ${PROJECT_PATH}/tools/nginx.Dockerfile .
-docker save -o "$PROJECT_PATH/target/nginxhustlesa.img" "nginxhustlesa"
+docker build --force-rm=true -t nginxhustledb -f ${PROJECT_PATH}/tools/nginx.Dockerfile .
+docker save -o "$PROJECT_PATH/target/nginxhustledb.img" "nginxhustledb"
 
 export GOOS=linux
 export GOARCH=amd64
@@ -18,11 +18,11 @@ go build -v github.com/itimofeev/hustledb
 
 
 
-docker build --force-rm=true -t hustlesa -f ${PROJECT_PATH}/tools/hustlesa.Dockerfile .
-docker save -o "$PROJECT_PATH/target/hustlesa.img" "hustlesa"
+docker build --force-rm=true -t hustledb -f ${PROJECT_PATH}/tools/hustledb.Dockerfile .
+docker save -o "$PROJECT_PATH/target/hustledb.img" "hustledb"
 
 
-rm hustlesa
+rm hustledb
 
 cp ${PROJECT_PATH}/tools/prod.docker-compose.yml ${PROJECT_PATH}/tools/run.sh ${PROJECT_PATH}/tools/prod.env ${PROJECT_PATH}/tools/postgres.env ${PROJECT_PATH}/target/
 
