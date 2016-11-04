@@ -25,12 +25,14 @@ var (
 	techFinalResult      *regexp.Regexp
 	tableBorder          *regexp.Regexp
 	resultsRegexp        *regexp.Regexp
+	results2Regexp       *regexp.Regexp
 	mainTitleRegexp      *regexp.Regexp
 )
 
 func initRegexps() {
 	judgeRegexp = compileRegexp("\\d \\(.\\) - [\\W ]+") //1 (A) - Милованов Александр
 	resultsRegexp = compileRegexp("\\s*Результаты турнира[,\\d\\W ]*:")
+	results2Regexp = compileRegexp("\\s*Ну а теперь сами результаты[,\\d\\W ]*:")
 	participantRegexp = compileRegexp(".* ((Участников)||(Участвовало.пар)):.\\d+") //DnD Beginner (ПАРТНЕРЫ). Участников: 49 |  DnD Beginner (ДЕВУШКИ). Участников: 85 | E класс. Участвовало пар: 23
 	stageRegexp = compileRegexp("1/\\d+ финала")                                    //1/2 финала | ФИНАЛ | 1/16 финала
 	stageFinalRegexp = compileRegexp("ФИНАЛ")                                       //1/2 финала | ФИНАЛ | 1/16 финала
@@ -115,7 +117,7 @@ func (s *BeginState) ProcessLine(fr *ForumResults, line string) FAState {
 	once.Do(initRegexps)
 
 	switch {
-	case resultsRegexp.MatchString(line):
+	case resultsRegexp.MatchString(line) || results2Regexp.MatchString(line):
 		return &JudgeTeamState{}
 	default:
 		return s
