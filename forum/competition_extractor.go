@@ -6,7 +6,13 @@ import (
 	"github.com/itimofeev/hustledb/util"
 	"regexp"
 	"strings"
+	"fmt"
 )
+
+const baseUrl = "http://hustle-sa.ru/forum/index.php?showforum=6&prune_day=100&sort_by=Z-A&sort_key=title&st=%d"
+const countOnPage = 15
+const forumDir = "/Users/ilyatimofee/prog/axxonsoft/src/github.com/itimofeev/hustledb/tools/forum-comp/"
+
 
 type LinkAndTitle struct {
 	Link    string
@@ -15,7 +21,23 @@ type LinkAndTitle struct {
 	Desc    string
 }
 
-func GetCompetitionsFromPage(body []byte) []LinkAndTitle {
+func ParseCompetitionsFromForum() []LinkAndTitle {
+	var content []LinkAndTitle
+	for page := 0; page < 1000; page += countOnPage {
+		url := fmt.Sprintf(baseUrl, page)
+		data := util.GetUrlContent(url)
+		//data := util.DownloadUrlToFileIfNotExists(url, fmt.Sprintf("%s%d.html", forumDir, page))
+		comps := getCompetitionsFromPage(data)
+		if len(comps) == 0 {
+			return content
+		}
+		content = append(content, comps...)
+	}
+
+	return content
+}
+
+func getCompetitionsFromPage(body []byte) []LinkAndTitle {
 	doc, err := goquery.NewDocumentFromReader(bytes.NewBuffer(body))
 	util.CheckErr(err)
 	r, err := regexp.Compile("^\\(\\d{4}-\\d{2}-\\d{2}(,\\d+)*\\) .*$")
