@@ -2,7 +2,7 @@
 
 export GOPATH=/Users/ilyatimofee/prog/axxonsoft/
 
-PROJECT_PATH=/Users/ilyatimofee/prog/axxonsoft/src/github.com/itimofeev/hustlesa
+PROJECT_PATH=/Users/ilyatimofee/prog/axxonsoft/src/github.com/itimofeev/hustledb
 FRONTEND_PROJECT_PATH=/Users/ilyatimofee/prog/js/hustlesa-ui
 
 rm ${PROJECT_PATH}/target/*
@@ -14,7 +14,7 @@ docker save -o "$PROJECT_PATH/target/nginxhustlesa.img" "nginxhustlesa"
 
 export GOOS=linux
 export GOARCH=amd64
-go build -v github.com/itimofeev/hustlesa
+go build -v github.com/itimofeev/hustledb
 
 
 

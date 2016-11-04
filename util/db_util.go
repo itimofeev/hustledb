@@ -3,7 +3,7 @@ package util
 import (
 	"bufio"
 	"database/sql"
-	"github.com/itimofeev/hustlesa/db/migrations"
+	"github.com/itimofeev/hustledb/db/migrations"
 	_ "github.com/lib/pq" //postgres driver
 	"github.com/rubenv/sql-migrate"
 	"gopkg.in/mgutz/dat.v1"
@@ -57,7 +57,7 @@ func InitDb(config Config) *runner.DB {
 
 //Устанавливает переменные окружения, заданные в local.env
 func InitEnvironment() {
-	file, err := os.Open("/Users/ilyatimofee/prog/axxonsoft/src/github.com/itimofeev/hustlesa/tools/local.env")
+	file, err := os.Open("/Users/ilyatimofee/prog/axxonsoft/src/github.com/itimofeev/hustledb/tools/local.env")
 	if err != nil {
 		log.Fatal(err)
 	}

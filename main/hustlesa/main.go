@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/itimofeev/hustlesa/server"
-	"github.com/itimofeev/hustlesa/util"
+	"github.com/itimofeev/hustledb/server"
+	"github.com/itimofeev/hustledb/util"
 	"log"
 	"net/http"
 )

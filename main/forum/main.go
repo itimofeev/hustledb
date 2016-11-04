@@ -1,12 +1,12 @@
 package main
 
 import (
-	"github.com/itimofeev/hustlesa/forum"
-	"github.com/itimofeev/hustlesa/util"
+	"github.com/itimofeev/hustledb/forum"
+	"github.com/itimofeev/hustledb/util"
 	"io/ioutil"
 )
 
-const forumDir = "/Users/ilyatimofee/prog/axxonsoft/src/github.com/itimofeev/hustlesa/tools/forum/"
+const forumDir = "/Users/ilyatimofee/prog/axxonsoft/src/github.com/itimofeev/hustledb/tools/forum/"
 
 const compUrl = "http://hustle-sa.ru/forum/index.php?showtopic="
 
@@ -58,5 +58,3 @@ func downloadUrlToFile(url, path string) {
 
 	ioutil.WriteFile(path, data, 0644)
 }
-
-//err := ioutil.WriteFile("/Users/ilyatimofee/prog/axxonsoft/src/github.com/itimofeev/hustlesa/tools/forum/3761.html", data, 0644)

@@ -2,8 +2,8 @@ package forum
 
 import (
 	"fmt"
-	"github.com/itimofeev/hustlesa/model"
-	"github.com/itimofeev/hustlesa/util"
+	"github.com/itimofeev/hustledb/model"
+	"github.com/itimofeev/hustledb/util"
 	"gopkg.in/mgutz/dat.v1/sqlx-runner"
 	"strings"
 )

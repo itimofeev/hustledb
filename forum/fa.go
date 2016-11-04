@@ -4,7 +4,7 @@ import (
 	"bufio"
 	"bytes"
 	"fmt"
-	"github.com/itimofeev/hustlesa/util"
+	"github.com/itimofeev/hustledb/util"
 	"regexp"
 	"strings"
 	"sync"

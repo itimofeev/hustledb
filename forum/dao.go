@@ -3,7 +3,7 @@ package forum
 import (
 	"errors"
 	"fmt"
-	"github.com/itimofeev/hustlesa/util"
+	"github.com/itimofeev/hustledb/util"
 	"gopkg.in/mgutz/dat.v1/sqlx-runner"
 	"strings"
 )

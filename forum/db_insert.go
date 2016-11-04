@@ -3,7 +3,7 @@ package forum
 import (
 	"database/sql"
 	"fmt"
-	"github.com/itimofeev/hustlesa/util"
+	"github.com/itimofeev/hustledb/util"
 	"github.com/labstack/gommon/log"
 	"strings"
 )
