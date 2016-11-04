@@ -14,7 +14,7 @@ docker save -o "$PROJECT_PATH/target/nginxhustledb.img" "nginxhustledb"
 
 export GOOS=linux
 export GOARCH=amd64
-go build -v github.com/itimofeev/hustledb
+go build -v github.com/itimofeev/hustledb/main/hustledb
 
 
 

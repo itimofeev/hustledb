@@ -15,7 +15,7 @@ import (
 )
 
 func GetDb() *runner.DB {
-	InitEnvironment()
+	//InitEnvironment()
 	config := ReadConfig()
 	return InitDb(config)
 }
