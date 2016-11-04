@@ -1,6 +1,6 @@
 go-bindata -pkg migrations -o db/migrations/bindata.go db/migrations/
 
-scp -r target/* ilyaufo@188.166.26.165:/home/ilyaufo/hustlesa
+scp -r target/* ilyaufo@188.166.26.165:/home/ilyaufo/hustledb
 
 
 

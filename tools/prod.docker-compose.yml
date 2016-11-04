@@ -1,22 +1,22 @@
 version: '2'
 services:
   nginx:
-    image: nginxhustlesa
+    image: nginxhustledb
     ports:
       - "18080:80"
       - "18443:443"
     depends_on:
-      - hustlesa
+      - hustledb
     volumes:
 #      - /var/log/nginx:/var/log/nginx
-      - /home/ilyaufo/hustlesa/frontend:/etc/nginx/html/
+      - /home/ilyaufo/hustledb/frontend:/etc/nginx/html/
   db:
     image: postgres:9.5
     env_file: postgres.env
 #    volumes:
 #      - /var/lib/postgresql/data/pgdata:/var/lib/postgresql/data/pgdata
-  hustlesa:
-    image: hustlesa
+  hustledb:
+    image: hustledb
     env_file: prod.env
     depends_on:
       - db
