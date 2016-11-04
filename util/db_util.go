@@ -1,9 +1,9 @@
-package main
+package util
 
 import (
 	"bufio"
 	"database/sql"
-	"github.com/itimofeev/hustlesa/db/migrations"
+	"github.com/itimofeev/hustledb/db/migrations"
 	_ "github.com/lib/pq" //postgres driver
 	"github.com/rubenv/sql-migrate"
 	"gopkg.in/mgutz/dat.v1"
@@ -12,16 +12,18 @@ import (
 	"os"
 	"strings"
 	"time"
-
-	"github.com/itimofeev/hustlesa/parser"
-	"github.com/itimofeev/hustlesa/server"
-	"net/http"
 )
 
-func initDb(config Config) *runner.DB {
+func GetDb() *runner.DB {
+	InitEnvironment()
+	config := ReadConfig()
+	return InitDb(config)
+}
+
+func InitDb(config Config) *runner.DB {
 	db, err := sql.Open("postgres", config.Db().URL)
 
-	parser.CheckErr(err, "Open db")
+	CheckErr(err, "Open db")
 
 	runner.MustPing(db)
 
@@ -53,9 +55,9 @@ func initDb(config Config) *runner.DB {
 	return runner.NewDB(db, "postgres")
 }
 
-//Устанавливает переменные окружения, заданные в testing.env.list
-func initEnvironment() {
-	file, err := os.Open("/Users/ilyatimofee/prog/axxonsoft/src/github.com/itimofeev/hustlesa/tools/local.env")
+//Устанавливает переменные окружения, заданные в local.env
+func InitEnvironment() {
+	file, err := os.Open("/Users/ilyatimofee/prog/axxonsoft/src/github.com/itimofeev/hustledb/tools/local.env")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -75,18 +77,4 @@ func initEnvironment() {
 	if err := scanner.Err(); err != nil {
 		log.Fatal(err)
 	}
-}
-
-func main() {
-	//initEnvironment()
-
-	config := ReadConfig()
-
-	db := initDb(config)
-
-	//res := parser.Parse("config.App().JsonFilesPath")
-	//parser.InsertData(db, res)
-
-	log.Fatal(http.ListenAndServe(":8080", server.InitRouter(db)))
-
 }

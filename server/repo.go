@@ -3,7 +3,7 @@ package server
 import (
 	"database/sql"
 	"fmt"
-	"github.com/itimofeev/hustlesa/model"
+	"github.com/itimofeev/hustledb/model"
 	"gopkg.in/mgutz/dat.v1/sqlx-runner"
 )
 

@@ -2,7 +2,8 @@ package parser
 
 import (
 	"fmt"
-	"github.com/itimofeev/hustlesa/model"
+	"github.com/itimofeev/hustledb/model"
+	"github.com/itimofeev/hustledb/util"
 	"gopkg.in/mgutz/dat.v1"
 	"gopkg.in/mgutz/dat.v1/sqlx-runner"
 	"reflect"
@@ -14,14 +15,14 @@ func InsertData(db *runner.DB, res model.RawParsingResults) {
 		fixString(&club)
 		_, err := insertClub(db, &club)
 
-		CheckErr(err, "insert club")
+		util.CheckErr(err, "insert club")
 	}
 
 	for _, dancer := range res.Dancers {
 		fixString(&dancer)
 		_, err := insertDancer(db, &dancer)
 
-		CheckErr(err, fmt.Sprintf("insert dancer: %+v", dancer))
+		util.CheckErr(err, fmt.Sprintf("insert dancer: %+v", dancer))
 	}
 
 	for _, dc := range res.DancerClubs {
@@ -29,7 +30,7 @@ func InsertData(db *runner.DB, res model.RawParsingResults) {
 
 		_, err := insertDancerClub(db, &dc)
 
-		CheckErr(err, "insert dancerClub")
+		util.CheckErr(err, "insert dancerClub")
 	}
 
 	for _, c := range res.Competitions {
@@ -37,7 +38,7 @@ func InsertData(db *runner.DB, res model.RawParsingResults) {
 
 		_, err := insertCompetition(db, &c)
 
-		CheckErr(err, "insert competition")
+		util.CheckErr(err, "insert competition")
 	}
 
 	for _, n := range res.Nominations {
@@ -45,7 +46,7 @@ func InsertData(db *runner.DB, res model.RawParsingResults) {
 
 		_, err := insertNomination(db, &n)
 
-		CheckErr(err, "insert nomination")
+		util.CheckErr(err, "insert nomination")
 	}
 
 	for _, cr := range res.CompResults {
@@ -53,7 +54,7 @@ func InsertData(db *runner.DB, res model.RawParsingResults) {
 
 		_, err := insertCompResult(db, &cr)
 
-		CheckErr(err, "insert comp results")
+		util.CheckErr(err, "insert comp results")
 	}
 }
 
