@@ -27,7 +27,20 @@ func (s *FCompService) ParseCompetitions() {
 
 func (s *FCompService) ProcessCompetition(fromForum *FCompetition) {
 	inDb := s.dao.FindCompByUrl(fromForum.Url)
+	// в базе такой записи вообще нет, создаём
 	if inDb == nil {
 		s.dao.CreateCompetition(fromForum)
+		return
 	}
+	// запись в базе есть
+	if inDb.RawText == fromForum.RawText {
+		// ничего не поменялось с даты последнего обновления -> выходим
+		return
+	}
+	// запись об изменении уже есть
+	if inDb.RawTextChanged == fromForum.RawText {
+		return
+
+	}
+	s.dao.UpdateHasChange(inDb, fromForum.DownloadDate, fromForum.RawText)
 }

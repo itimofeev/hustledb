@@ -7,6 +7,7 @@ import (
 	"github.com/itimofeev/hustledb/util"
 	"regexp"
 	"strings"
+	"time"
 )
 
 const baseUrl = "http://hustle-sa.ru/forum/index.php?showforum=6&prune_day=100&sort_by=Z-A&sort_key=title&st=%d"
@@ -71,13 +72,16 @@ func getCompetitionListFromPage(body []byte) []FCompetition {
 			spanElem := s.Find("span")
 
 			comps = append(comps, FCompetition{
-				Url:         fixLink(link),
-				Title:       compTitle,
-				RawText:     s.Text(),
-				Date:        util.ParseForumDate(compDateStr),
-				Desc:        spanElem.Text(),
-				ApprovedASH: hasApprovedStatus(spanElem.Text()),
-				City: tryFindCity(spanElem.Text()),
+				Url:            fixLink(link),
+				Title:          compTitle,
+				RawText:        s.Text(),
+				RawTextChanged: s.Text(),
+				HasChange:      true,
+				Date:           util.ParseForumDate(compDateStr),
+				Desc:           spanElem.Text(),
+				ApprovedASH:    hasApprovedStatus(spanElem.Text()),
+				City:           tryFindCity(spanElem.Text()),
+				DownloadDate:   time.Now(),
 			})
 		})
 
@@ -108,7 +112,7 @@ func tryFindCity(desc string) *string {
 		return nil
 	}
 
-	afterCityStart := desc[cityIndex + 3:]
+	afterCityStart := desc[cityIndex+3:]
 	endCityIndex := strings.IndexAny(afterCityStart, ",.")
 
 	if endCityIndex < 0 {
