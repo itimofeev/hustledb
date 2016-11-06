@@ -5,7 +5,6 @@ import (
 	"gopkg.in/mgutz/dat.v1/sqlx-runner"
 	"net/http"
 	fServer "github.com/itimofeev/hustledb/server/forum"
-	"github.com/itimofeev/hustledb/forum"
 )
 
 var db *runner.DB
@@ -21,7 +20,7 @@ func InitRouter(conn *runner.DB) *gin.Engine {
 	api.GET("/dancers/:dancerId", GetDancerInfo)
 
 
-	fHandlers := fServer.NewForumHandlers(forum.NewCompDao(conn))
+	fHandlers := fServer.NewForumHandlers(conn)
 	forumApi := api.Group("/forum")
 	forumApi.GET("/competitions", fHandlers.ListCompetitions)
 	forumApi.POST("/competitions", fHandlers.ParseCompetitions)

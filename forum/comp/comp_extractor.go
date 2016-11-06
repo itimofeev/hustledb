@@ -1,33 +1,25 @@
-package forum
+package comp
 
 import (
 	"bytes"
+	"fmt"
 	"github.com/PuerkitoBio/goquery"
 	"github.com/itimofeev/hustledb/util"
 	"regexp"
 	"strings"
-	"fmt"
 )
 
 const baseUrl = "http://hustle-sa.ru/forum/index.php?showforum=6&prune_day=100&sort_by=Z-A&sort_key=title&st=%d"
 const countOnPage = 15
 const forumDir = "/Users/ilyatimofee/prog/axxonsoft/src/github.com/itimofeev/hustledb/tools/forum-comp/"
 
-
-type LinkAndTitle struct {
-	Link    string
-	Title   string
-	DateStr string
-	Desc    string
-}
-
-func ParseCompetitionsFromForum() []LinkAndTitle {
-	var content []LinkAndTitle
+func ParseCompetitionListFromForum() []FCompetition {
+	var content []FCompetition
 	for page := 0; page < 1000; page += countOnPage {
 		url := fmt.Sprintf(baseUrl, page)
 		data := util.GetUrlContent(url)
 		//data := util.DownloadUrlToFileIfNotExists(url, fmt.Sprintf("%s%d.html", forumDir, page))
-		comps := getCompetitionsFromPage(data)
+		comps := getCompetitionListFromPage(data)
 		if len(comps) == 0 {
 			return content
 		}
@@ -37,13 +29,13 @@ func ParseCompetitionsFromForum() []LinkAndTitle {
 	return content
 }
 
-func getCompetitionsFromPage(body []byte) []LinkAndTitle {
+func getCompetitionListFromPage(body []byte) []FCompetition {
 	doc, err := goquery.NewDocumentFromReader(bytes.NewBuffer(body))
 	util.CheckErr(err)
 	r, err := regexp.Compile("^\\(\\d{4}-\\d{2}-\\d{2}(,\\d+)*\\) .*$")
 	util.CheckErr(err)
 
-	var lat []LinkAndTitle
+	var comps []FCompetition
 
 	doc.
 		Find(".tableborder table tr").
@@ -78,19 +70,21 @@ func getCompetitionsFromPage(body []byte) []LinkAndTitle {
 			link := aElem.AttrOr("href", "")
 			spanElem := s.Find("span")
 
-			lat = append(lat, LinkAndTitle{
-				Link:    fixLink(link),
-				Title:   compTitle,
-				DateStr: compDateStr,
-				Desc:    spanElem.Text(),
+			comps = append(comps, FCompetition{
+				Url:         fixLink(link),
+				Title:       compTitle,
+				RawText:     s.Text(),
+				Date:        util.ParseForumDate(compDateStr),
+				Desc:        spanElem.Text(),
+				ApprovedASH: hasApprovedStatus(spanElem.Text()),
+				City: tryFindCity(spanElem.Text()),
 			})
-
 		})
 
-	return lat
+	return comps
 }
 
-func fixLink(link string) string{
+func fixLink(link string) string {
 	sIndex := strings.Index(link, "?s=") + 1
 	ampIndex := strings.Index(link, "\u0026")
 
@@ -100,5 +94,33 @@ func fixLink(link string) string{
 func parseTitleAndDate(titleAndDate string) (string, string) {
 	closeIndex := strings.Index(titleAndDate, ")")
 
-	return titleAndDate[closeIndex + 2:], titleAndDate[1:closeIndex]
+	return titleAndDate[closeIndex+2:], titleAndDate[1:closeIndex]
+}
+
+func hasApprovedStatus(desc string) bool {
+	lowerDesc := strings.ToLower(desc)
+	return strings.Contains(lowerDesc, "утверждено")
+}
+
+func tryFindCity(desc string) *string {
+	cityIndex := strings.Index(desc, "г.")
+	if cityIndex < 0 {
+		return nil
+	}
+
+	afterCityStart := desc[cityIndex + 3:]
+	endCityIndex := strings.IndexAny(afterCityStart, ",.")
+
+	if endCityIndex < 0 {
+		endCityIndex = len(afterCityStart)
+	}
+
+	city := strings.TrimSpace(afterCityStart[:endCityIndex])
+	city = strings.Replace(city, "УТВЕРЖДЕНО", "", 1)
+	city = strings.Replace(city, "АСХ", "", 1)
+	city = strings.Replace(city, "РК", "", 1)
+	if len(city) == 0 {
+		return nil
+	}
+	return &city
 }

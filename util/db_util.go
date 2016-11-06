@@ -15,8 +15,11 @@ import (
 )
 
 func GetDb() *runner.DB {
-	//InitEnvironment()
 	config := ReadConfig()
+	if len(config.Db().URL) == 0 {
+		InitEnvironment()
+		config = ReadConfig()
+	}
 	return InitDb(config)
 }
 

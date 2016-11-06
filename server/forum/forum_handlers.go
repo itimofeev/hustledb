@@ -3,25 +3,23 @@ package forum
 import "net/http"
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/itimofeev/hustledb/forum"
+	"github.com/itimofeev/hustledb/forum/comp"
+	"gopkg.in/mgutz/dat.v1/sqlx-runner"
 )
 
-func NewForumHandlers(dao forum.FCompDao) *ForumHandlers {
-	return &ForumHandlers{dao: dao}
+func NewForumHandlers(db*runner.DB) *ForumHandlers {
+	return &ForumHandlers{service: comp.NewFCompService(db)}
 }
 
 type ForumHandlers struct {
-	dao forum.FCompDao
+	service *comp.FCompService
 }
 
 func (h *ForumHandlers) ListCompetitions(c *gin.Context) {
-	list := h.dao.ListCompetitions()
+	list := h.service.ListCompetitions()
 	c.JSON(http.StatusOK, list)
 }
 
 func (h *ForumHandlers) ParseCompetitions(c *gin.Context) {
-	linkAndTitles := forum.ParseCompetitionsFromForum()
-	for _, value := range linkAndTitles {
-		h.dao.CreateCompetition(value)
-	}
+	h.service.ParseCompetitions()
 }

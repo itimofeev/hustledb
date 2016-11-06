@@ -10,6 +10,7 @@ import (
 	"golang.org/x/net/html/charset"
 	"io/ioutil"
 	"net/http"
+	"time"
 )
 
 // CheckErr check error is nil and if not panic with message
@@ -97,4 +98,15 @@ func DownloadUrlToFileIfNotExists(url, path string) []byte {
 	CheckErr(err, "")
 
 	return data
+}
+
+// 2014-05-18kshdfjkhsdf
+func ParseForumDate(dateStr string) time.Time {
+	year := dateStr[:4]
+	monthStr := dateStr[5:7]
+	day := dateStr[8:10]
+
+	month := time.Month(Atoi(monthStr))
+
+	return time.Date(Atoi(year), month, Atoi(day), 0, 0, 0, 0, time.UTC)
 }

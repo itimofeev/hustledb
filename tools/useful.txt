@@ -3,3 +3,6 @@ go-bindata -pkg migrations -o db/migrations/bindata.go db/migrations/
 ssh ilyaufo@188.166.26.165
 
 scp -r target/* ilyaufo@188.166.26.165:/home/ilyaufo/hustledb
+
+
+http://188.166.26.165:18080/api/v1/forum/competitions
