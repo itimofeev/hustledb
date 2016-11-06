@@ -24,7 +24,7 @@ docker save -o "$PROJECT_PATH/target/hustledb.img" "hustledb"
 
 rm hustledb
 
-cp ${PROJECT_PATH}/tools/prod.docker-compose.yml ${PROJECT_PATH}/tools/run.sh ${PROJECT_PATH}/tools/prod.env ${PROJECT_PATH}/tools/postgres.env ${PROJECT_PATH}/target/
+cp ${PROJECT_PATH}/tools/prod.docker-compose.yml ${PROJECT_PATH}/tools/run.sh ${PROJECT_PATH}/tools/backup.sh ${PROJECT_PATH}/tools/prod.env ${PROJECT_PATH}/tools/postgres.env ${PROJECT_PATH}/target/
 
 echo 'building frontend'
 
