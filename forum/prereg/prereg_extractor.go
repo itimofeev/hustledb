@@ -87,5 +87,5 @@ func GetForumCompetitionId(preregId int) string {
 }
 
 func ParsePreregCompetition(preregId int, fCompUrl string) PreregComp {
- return PreregComp{}
+	return PreregComp{}
 }
