@@ -10,9 +10,6 @@ import (
 func main() {
 	db := util.GetDb()
 
-	//res := parser.Parse("config.App().JsonFilesPath")
-	//parser.InsertData(db, res)
-
 	log.Fatal(http.ListenAndServe(":8080", server.InitRouter(db)))
 
 }

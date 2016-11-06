@@ -1,16 +1,12 @@
 go-bindata -pkg migrations -o db/migrations/bindata.go db/migrations/
 
+ssh ilyaufo@188.166.26.165
+
 scp -r target/* ilyaufo@188.166.26.165:/home/ilyaufo/hustledb
 
 
+http://188.166.26.165:18080/api/v1/forum/competitions
 
-SELECT *
-FROM result r
-WHERE r.competition_id = 252 AND NOT exists(
-    SELECT NULL
-    FROM
-      f_place p
-    WHERE
-      (p.result1_id IS NOT NULL AND p.result1_id = r.id) OR
-      (p.result2_id IS NOT NULL AND p.result2_id = r.id)
-)
+
+Backup:
+sudo docker exec -t hustledb_db_1 pg_dumpall -c -U postgres > dump_`date +%d-%m-%Y"_"%H_%M_%S`.sql
