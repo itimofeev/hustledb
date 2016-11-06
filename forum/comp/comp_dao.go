@@ -17,7 +17,6 @@ type FCompetition struct {
 	City          *string   `json:"city" db:"city"`
 	ApprovedASH   bool      `json:"approved" db:"approved_ash"` // Утверждено АСХ, конкурс не отменён, рейтинг не снят
 	RawText       string    `json:"raw_text" db:"raw_text"`
-	AdminVerified bool      `json:"admin_verified" db:"admin_verified"` // Админ hustledb проверил изменения
 }
 
 type FCompDaoImpl struct {
