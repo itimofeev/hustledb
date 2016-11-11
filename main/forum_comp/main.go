@@ -6,7 +6,11 @@ import (
 )
 
 func main() {
-	f()
+	r := prereg.ParsePreregCompetition(284, "http://hustle-sa.ru/forum/index.php?showtopic=3753")
+
+	filler := prereg.NewPreregFiller(util.GetDb())
+	filler.Fill(r)
+	util.PrintJson(r)
 }
 
 func f() {
