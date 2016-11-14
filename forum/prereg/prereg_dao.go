@@ -73,3 +73,15 @@ func (d *PreregDao) ListPreregs() []PreregComp {
 
 	return found
 }
+
+func (d *PreregDao) GetPreregById(fCompId int) *PreregComp {
+	s := d.session.Clone()
+	defer s.Close()
+	c := s.DB("prereg_info").C("prereg_comp")
+
+	found := &PreregComp{}
+	err := c.Find(bson.M{"f_competition_id": fCompId}).One(&found)
+	util.CheckErr(err)
+
+	return found
+}

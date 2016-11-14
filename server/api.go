@@ -28,6 +28,8 @@ func InitRouter(conn *runner.DB) *gin.Engine {
 	preregHandlers := prereg.NewPreregHandlers(conn)
 	preregApi := api.Group("/prereg")
 	preregApi.GET("/", preregHandlers.ListPreregs)
+	preregApi.GET("/:fCompId", preregHandlers.GetPreregById)
+	preregApi.POST("/", preregHandlers.ParsePreregInfo)
 
 	db = conn
 
