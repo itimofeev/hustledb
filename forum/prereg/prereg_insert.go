@@ -1,11 +1,12 @@
 package prereg
 
 import (
+	"gopkg.in/mgo.v2"
 	"gopkg.in/mgutz/dat.v1/sqlx-runner"
 )
 
-func NewPreregInserter(db *runner.DB) *PreregInserter {
-	return &PreregInserter{dao: NewPreregDao(db)}
+func NewPreregInserter(db *runner.DB, session *mgo.Session) *PreregInserter {
+	return &PreregInserter{dao: NewPreregDao(db, session)}
 }
 
 type PreregInserter struct {

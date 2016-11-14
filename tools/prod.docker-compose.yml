@@ -15,8 +15,11 @@ services:
     env_file: postgres.env
 #    volumes:
 #      - /var/lib/postgresql/data/pgdata:/var/lib/postgresql/data/pgdata
+  mongo:
+    image: mongo:3.2
   hustledb:
     image: hustledb
     env_file: prod.env
     depends_on:
       - db
+      - mongo

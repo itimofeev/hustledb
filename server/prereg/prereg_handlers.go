@@ -6,11 +6,12 @@ import (
 	"gopkg.in/mgutz/dat.v1/sqlx-runner"
 
 	"github.com/itimofeev/hustledb/util"
+	"gopkg.in/mgo.v2"
 	"net/http"
 )
 
-func NewPreregHandlers(db *runner.DB) *PreregHandlers {
-	return &PreregHandlers{service: prereg.NewPreregService(db)}
+func NewPreregHandlers(db *runner.DB, session *mgo.Session) *PreregHandlers {
+	return &PreregHandlers{service: prereg.NewPreregService(db, session)}
 }
 
 type PreregHandlers struct {

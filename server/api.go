@@ -4,13 +4,14 @@ import (
 	"github.com/gin-gonic/gin"
 	fServer "github.com/itimofeev/hustledb/server/forum"
 	"github.com/itimofeev/hustledb/server/prereg"
+	"gopkg.in/mgo.v2"
 	"gopkg.in/mgutz/dat.v1/sqlx-runner"
 	"net/http"
 )
 
 var db *runner.DB
 
-func InitRouter(conn *runner.DB) *gin.Engine {
+func InitRouter(conn *runner.DB, session *mgo.Session) *gin.Engine {
 	r := gin.Default()
 
 	api := r.Group("/api/v1")
@@ -25,7 +26,7 @@ func InitRouter(conn *runner.DB) *gin.Engine {
 	forumApi.GET("/competitions", fHandlers.ListCompetitions)
 	forumApi.POST("/competitions", fHandlers.ParseCompetitions)
 
-	preregHandlers := prereg.NewPreregHandlers(conn)
+	preregHandlers := prereg.NewPreregHandlers(conn, session)
 	preregApi := api.Group("/prereg")
 	preregApi.GET("/", preregHandlers.ListPreregs)
 	preregApi.GET("/:fCompId", preregHandlers.GetPreregById)

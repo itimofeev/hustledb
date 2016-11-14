@@ -8,13 +8,7 @@ import (
 	"gopkg.in/mgutz/dat.v1/sqlx-runner"
 )
 
-func NewPreregDao(db *runner.DB) *PreregDao {
-	session, err := mgo.Dial("127.0.0.1")
-	if err != nil {
-		panic(err)
-	}
-	session.SetMode(mgo.Monotonic, true)
-
+func NewPreregDao(db *runner.DB, session *mgo.Session) *PreregDao {
 	return &PreregDao{db, session}
 }
 

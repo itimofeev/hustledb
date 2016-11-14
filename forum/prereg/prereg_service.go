@@ -1,13 +1,13 @@
 package prereg
 
 import (
-	"github.com/itimofeev/hustledb/util"
+	"gopkg.in/mgo.v2"
 	"gopkg.in/mgutz/dat.v1/sqlx-runner"
 )
 
-func NewPreregService(db *runner.DB) *PreregService {
+func NewPreregService(db *runner.DB, session *mgo.Session) *PreregService {
 	return &PreregService{
-		dao: NewPreregDao(db),
+		dao: NewPreregDao(db, session),
 	}
 }
 
@@ -36,13 +36,14 @@ func (s *PreregService) ParsePreregInfo() {
 		fCompUrls[preregId] = GetForumCompetitionId(preregId)
 	}
 
+	inserter := NewPreregInserter(s.dao.db, s.dao.session)
+
 	for fCompId, url := range fCompUrls {
 		if len(url) == 0 {
 			continue
 		}
 		r := ParsePreregCompetition(fCompId, url)
 
-		inserter := NewPreregInserter(util.GetDb())
 		inserter.Insert(r)
 	}
 }

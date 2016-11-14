@@ -21,6 +21,7 @@ type DbEnv struct {
 	MaxIdleConns int    `envconfig:"HUSTLEDB_DB_MAX_IDLE_CONNS" default:"4"`
 	MaxOpenConns int    `envconfig:"HUSTLEDB_DB_MAX_OPEN_CONNS" default:"16"`
 	StrictMode   bool   `envconfig:"HUSTLEDB_DB_STRICT_MODE" default:"false"`
+	MongoURL     string `envconfig:"HUSTLEDB_MONGO_URL"`
 }
 type AppEnv struct {
 	JsonFilesPath string `envconfig:"HUSTLEDB_APP_JSON_FILES_PATH"`
