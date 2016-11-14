@@ -2,9 +2,10 @@ package server
 
 import (
 	"github.com/gin-gonic/gin"
+	fServer "github.com/itimofeev/hustledb/server/forum"
+	"github.com/itimofeev/hustledb/server/prereg"
 	"gopkg.in/mgutz/dat.v1/sqlx-runner"
 	"net/http"
-	fServer "github.com/itimofeev/hustledb/server/forum"
 )
 
 var db *runner.DB
@@ -19,11 +20,14 @@ func InitRouter(conn *runner.DB) *gin.Engine {
 	api.GET("/dancers", ListDancers)
 	api.GET("/dancers/:dancerId", GetDancerInfo)
 
-
 	fHandlers := fServer.NewForumHandlers(conn)
 	forumApi := api.Group("/forum")
 	forumApi.GET("/competitions", fHandlers.ListCompetitions)
 	forumApi.POST("/competitions", fHandlers.ParseCompetitions)
+
+	preregHandlers := prereg.NewPreregHandlers(conn)
+	preregApi := api.Group("/prereg")
+	preregApi.GET("/", preregHandlers.ListPreregs)
 
 	db = conn
 

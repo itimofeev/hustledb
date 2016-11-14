@@ -5,34 +5,29 @@ import (
 	"fmt"
 	"github.com/PuerkitoBio/goquery"
 	"github.com/itimofeev/hustledb/util"
+	"gopkg.in/mgo.v2/bson"
 	"strings"
 )
 
 type PreregComp struct {
-	ID              int64               `json:"id" db:"id"`
-	PreregId        int                 `json:"prereg_id" db:"prereg_id"`
-	FCompetitionId  int64               `json:"f_competition_id" db:"f_competition_id"`
+	ID              bson.ObjectId       `json:"id" db:"id" bson:"_id,omitempty"`
+	FCompetitionId  int64               `bson:"f_competition_id" json:"f_competition_id" db:"f_competition_id"`
 	Nominations     []*PreregNomination `json:"nominations"`
 	FCompetitionUrl string              `json:"f_competition_url"`
 }
 
 type PreregNomination struct {
-	ID           int64           `json:"id" db:"id"`
-	PreregCompId int64           `json:"prereg_comp_id" db:"prereg_comp_id"`
-	Title        string          `json:"title" db:"title"`
-	Records      []*PreregRecord `json:"records"`
+	Title   string          `json:"title" db:"title"`
+	Records []*PreregRecord `json:"records"`
 }
 
 type PreregRecord struct {
-	ID          int64         `json:"id" db:"id"`
-	PreregNomId int64         `json:"prereg_nom_id" db:"prereg_nom_id"`
-	Index       int           `json:"index" db:"idnex"`
-	Dancer1     *PreregDancer `json:"dancer_1"`
-	Dancer2     *PreregDancer `json:"dancer_2"`
+	Index   int           `json:"index" db:"idnex"`
+	Dancer1 *PreregDancer `json:"dancer_1" bson:"dancer_1,omitempty"`
+	Dancer2 *PreregDancer `json:"dancer_2" bson:"dancer_2,omitempty"`
 }
 
 type PreregDancer struct {
-	ID      int64         `json:"id" db:"id"`
 	CodeASH *string       `json:"code_ash" db:"code_ash"`
 	Class   string        `json:"class" db:"class"`
 	Title   string        `json:"title" db:"title"`
@@ -40,7 +35,6 @@ type PreregDancer struct {
 }
 
 type PreregClub struct {
-	ID    int64  `json:"id" db:"id"`
 	Title string `json:"title" db:"title"`
 }
 
@@ -102,7 +96,8 @@ func GetForumCompetitionId(preregId int) string {
 
 func ParsePreregCompetition(preregId int, fCompUrl string) *PreregComp {
 	listUrlFull := fmt.Sprintf(listUrl, preregId)
-	data := util.DownloadUrlToFileIfNotExists(listUrlFull, fmt.Sprintf("%s%d.html", forumDir, preregId))
+	//data := util.DownloadUrlToFileIfNotExists(listUrlFull, fmt.Sprintf("%s%d.html", forumDir, preregId))
+	data := util.GetUrlContent(listUrlFull)
 
 	preregComp := PreregComp{FCompetitionUrl: fCompUrl}
 
@@ -186,6 +181,14 @@ func parseRecordsFromTable(sTable *goquery.Selection) []*PreregRecord {
 				}
 			}
 		})
+
+		if len(record.Dancer1.Title) == 0 {
+			record.Dancer1 = nil
+		}
+
+		if len(record.Dancer2.Title) == 0 {
+			record.Dancer2 = nil
+		}
 	})
 	return records
 }

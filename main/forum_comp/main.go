@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"github.com/itimofeev/hustledb/forum/prereg"
 	"github.com/itimofeev/hustledb/util"
 )
@@ -8,9 +9,12 @@ import (
 func main() {
 	r := prereg.ParsePreregCompetition(284, "http://hustle-sa.ru/forum/index.php?showtopic=3753")
 
-	filler := prereg.NewPreregFiller(util.GetDb())
-	filler.Fill(r)
+	filler := prereg.NewPreregInserter(util.GetDb())
+	filler.Insert(r)
 	util.PrintJson(r)
+
+	fmt.Println("!!!", "----------") //TODO remove
+	f()
 }
 
 func f() {
@@ -23,10 +27,9 @@ func f() {
 	}
 	util.PrintJson(ids)
 
-	var fCompUrls []string
+	fCompUrls := make(map[int]string)
 	for _, preregId := range ids {
-		fCompUrl := prereg.GetForumCompetitionId(preregId)
-		fCompUrls = append(fCompUrls, fCompUrl)
+		fCompUrls[preregId] = prereg.GetForumCompetitionId(preregId)
 	}
 
 	util.PrintJson(fCompUrls)
