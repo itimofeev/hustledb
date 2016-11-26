@@ -16,6 +16,10 @@ func InitRouter(conn *runner.DB, session *mgo.Session) *gin.Engine {
 
 	api := r.Group("/api/v1")
 
+	api.GET("/", func(c *gin.Context) {
+		c.JSON(http.StatusOK, "Welcome to hustledb!")
+	})
+
 	api.GET("/competitions", ListCompetitions)
 	api.GET("/competitions/:id", ListCompetition)
 	api.GET("/dancers", ListDancers)
