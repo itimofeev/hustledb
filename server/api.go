@@ -2,28 +2,39 @@ package server
 
 import (
 	"github.com/gin-gonic/gin"
+	fServer "github.com/itimofeev/hustledb/server/forum"
+	"github.com/itimofeev/hustledb/server/prereg"
+	"gopkg.in/mgo.v2"
 	"gopkg.in/mgutz/dat.v1/sqlx-runner"
 	"net/http"
-	fServer "github.com/itimofeev/hustledb/server/forum"
 )
 
 var db *runner.DB
 
-func InitRouter(conn *runner.DB) *gin.Engine {
+func InitRouter(conn *runner.DB, session *mgo.Session) *gin.Engine {
 	r := gin.Default()
 
 	api := r.Group("/api/v1")
+
+	api.GET("/", func(c *gin.Context) {
+		c.JSON(http.StatusOK, "Welcome to hustledb!")
+	})
 
 	api.GET("/competitions", ListCompetitions)
 	api.GET("/competitions/:id", ListCompetition)
 	api.GET("/dancers", ListDancers)
 	api.GET("/dancers/:dancerId", GetDancerInfo)
 
-
 	fHandlers := fServer.NewForumHandlers(conn)
 	forumApi := api.Group("/forum")
 	forumApi.GET("/competitions", fHandlers.ListCompetitions)
 	forumApi.POST("/competitions", fHandlers.ParseCompetitions)
+
+	preregHandlers := prereg.NewPreregHandlers(conn, session)
+	preregApi := api.Group("/prereg")
+	preregApi.GET("/", preregHandlers.ListPreregs)
+	preregApi.GET("/:fCompId", preregHandlers.GetPreregById)
+	preregApi.POST("/", preregHandlers.ParsePreregInfo)
 
 	db = conn
 

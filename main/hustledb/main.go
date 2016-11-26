@@ -8,8 +8,8 @@ import (
 )
 
 func main() {
-	db := util.GetDb()
+	db, session := util.GetDb()
 
-	log.Fatal(http.ListenAndServe(":8080", server.InitRouter(db)))
+	log.Fatal(http.ListenAndServe(":8080", server.InitRouter(db, session)))
 
 }

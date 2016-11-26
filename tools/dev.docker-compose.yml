@@ -1,0 +1,26 @@
+version: '2'
+services:
+  nginx:
+    image: nginxhustledb
+    ports:
+      - "18080:80"
+      - "18443:443"
+    depends_on:
+      - hustledb
+    volumes:
+      - /Users/ilyatimofee/prog/axxonsoft/src/github.com/itimofeev/hustledb/tools/logs:/var/log/nginx
+      - /Users/ilyatimofee/prog/axxonsoft/src/github.com/itimofeev/hustledb/target/frontend:/etc/nginx/html/
+  db:
+    image: postgres:9.5
+    env_file: /Users/ilyatimofee/prog/axxonsoft/src/github.com/itimofeev/hustledb/target/postgres.env
+#    volumes:
+#      - /var/lib/postgresql/data/pgdata:/var/lib/postgresql/data/pgdata
+  mongo:
+    image: tutum/mongodb:3.2
+    env_file: /Users/ilyatimofee/prog/axxonsoft/src/github.com/itimofeev/hustledb/target/mongo.env
+  hustledb:
+    image: hustledb
+    env_file: /Users/ilyatimofee/prog/axxonsoft/src/github.com/itimofeev/hustledb/tools/dev.env
+    depends_on:
+      - db
+      - mongo

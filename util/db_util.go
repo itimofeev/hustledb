@@ -1,11 +1,13 @@
 package util
 
 import (
+	"bitbucket.org/Axxonsoft/ditsep/util"
 	"bufio"
 	"database/sql"
 	"github.com/itimofeev/hustledb/db/migrations"
 	_ "github.com/lib/pq" //postgres driver
 	"github.com/rubenv/sql-migrate"
+	"gopkg.in/mgo.v2"
 	"gopkg.in/mgutz/dat.v1"
 	"gopkg.in/mgutz/dat.v1/sqlx-runner"
 	"log"
@@ -14,13 +16,17 @@ import (
 	"time"
 )
 
-func GetDb() *runner.DB {
+func GetDb() (*runner.DB, *mgo.Session) {
 	config := ReadConfig()
 	if len(config.Db().URL) == 0 {
 		InitEnvironment()
 		config = ReadConfig()
 	}
-	return InitDb(config)
+
+	s, err := mgo.Dial(config.Db().MongoURL)
+	util.CheckErr(err)
+
+	return InitDb(config), s
 }
 
 func InitDb(config Config) *runner.DB {

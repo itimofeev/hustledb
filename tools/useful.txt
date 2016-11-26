@@ -10,3 +10,6 @@ http://188.166.26.165:18080/api/v1/forum/competitions
 
 Backup:
 sudo docker exec -t hustledb_db_1 pg_dumpall -c -U postgres > dump_`date +%d-%m-%Y"_"%H_%M_%S`.sql
+
+Run docker locally
+docker-compose -p hustledb -f tools/dev.docker-compose.yml up -d
