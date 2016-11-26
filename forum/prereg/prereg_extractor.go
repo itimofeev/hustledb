@@ -10,28 +10,28 @@ import (
 )
 
 type PreregComp struct {
-	ID              bson.ObjectId       `json:"id" db:"id" bson:"_id,omitempty"`
-	FCompetitionId  int64               `bson:"f_competition_id" json:"f_competition_id" db:"f_competition_id"`
+	ID              bson.ObjectId       `json:"id"bson:"_id,omitempty"`
+	FCompetitionId  int64               `bson:"f_competition_id" json:"f_competition_id"`
 	Nominations     []*PreregNomination `json:"nominations"`
 	FCompetitionUrl string              `json:"f_competition_url"`
 }
 
 type PreregNomination struct {
-	Title   string          `json:"title" db:"title"`
+	Title   string          `json:"title"`
 	Records []*PreregRecord `json:"records"`
 }
 
 type PreregRecord struct {
-	Index   int           `json:"index" db:"idnex"`
+	Index   int           `json:"index"`
 	Dancer1 *PreregDancer `json:"dancer_1" bson:"dancer_1,omitempty"`
 	Dancer2 *PreregDancer `json:"dancer_2" bson:"dancer_2,omitempty"`
 }
 
 type PreregDancer struct {
-	CodeASH *string       `json:"code_ash" db:"code_ash"`
-	Class   string        `json:"class" db:"class"`
-	Title   string        `json:"title" db:"title"`
-	Clubs   []*PreregClub `json:"clubs"`
+	CodeASH     *string       `json:"code_ash"`
+	DancerClass string        `json:"dancer_class"`
+	Title       string        `json:"title"`
+	Clubs       []*PreregClub `json:"clubs"`
 }
 
 type PreregClub struct {
@@ -145,7 +145,7 @@ func parseRecordsFromTable(sTable *goquery.Selection) []*PreregRecord {
 				case 1:
 					record.Dancer2.Title = s.Text()
 				case 2:
-					record.Dancer2.Class = s.Text()
+					record.Dancer2.DancerClass = s.Text()
 				case 3:
 					{
 						code := s.Text()
@@ -164,13 +164,13 @@ func parseRecordsFromTable(sTable *goquery.Selection) []*PreregRecord {
 						record.Dancer1.CodeASH = &code
 					}
 				case 3:
-					record.Dancer1.Class = s.Text()
+					record.Dancer1.DancerClass = s.Text()
 				case 4:
 					record.Dancer1.Title = s.Text()
 				case 5:
 					record.Dancer2.Title = s.Text()
 				case 6:
-					record.Dancer2.Class = s.Text()
+					record.Dancer2.DancerClass = s.Text()
 				case 7:
 					{
 						code := s.Text()
