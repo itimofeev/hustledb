@@ -17,7 +17,8 @@ services:
 #      - /var/lib/postgresql/data/pgdata:/var/lib/postgresql/data/pgdata
   mongo:
     image: tutum/mongodb:3.2
-  hustledb:
+    env_file: mongo.env
+hustledb:
     image: hustledb
     env_file: prod.env
     depends_on:

@@ -17,6 +17,7 @@ services:
 #      - /var/lib/postgresql/data/pgdata:/var/lib/postgresql/data/pgdata
   mongo:
     image: tutum/mongodb:3.2
+    env_file: /Users/ilyatimofee/prog/axxonsoft/src/github.com/itimofeev/hustledb/target/mongo.env
   hustledb:
     image: hustledb
     env_file: /Users/ilyatimofee/prog/axxonsoft/src/github.com/itimofeev/hustledb/tools/dev.env
