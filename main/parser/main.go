@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/itimofeev/hustledb/parser"
-	"github.com/itimofeev/hustledb/util"
+	"github.com/itimofeev/hustledb/components/hsaxls/parser"
+	"github.com/itimofeev/hustledb/components/util"
 )
 
 func main() {

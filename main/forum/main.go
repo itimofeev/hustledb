@@ -1,9 +1,8 @@
 package main
 
 import (
-	"github.com/itimofeev/hustledb/forum"
-	"github.com/itimofeev/hustledb/util"
-	"io/ioutil"
+	"github.com/itimofeev/hustledb/components/forum"
+	"github.com/itimofeev/hustledb/components/util"
 )
 
 const forumDir = "/Users/ilyatimofee/prog/axxonsoft/src/github.com/itimofeev/hustledb/tools/forum/"
@@ -39,7 +38,7 @@ func parseAndInsert(topicId string) {
 
 	util.PrintJson(results)
 
-	db := util.GetDb()
+	db, _ := util.GetDb()
 
 	filler := forum.NewForumDbFiller(compUrl+topicId, forum.NewDao(db))
 	filler.FillDbInfo(results)
