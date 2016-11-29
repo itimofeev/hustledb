@@ -25,6 +25,7 @@ type DbEnv struct {
 }
 type AppEnv struct {
 	JsonFilesPath string `envconfig:"HUSTLEDB_APP_JSON_FILES_PATH"`
+	LogDirPath    string `envconfig:"HUSTLEDB_APP_LOG_DIR_PATH"`
 }
 
 // Db settings

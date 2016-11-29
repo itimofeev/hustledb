@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"golang.org/x/net/html/charset"
 	"io/ioutil"
-	"log"
 	"net/http"
 	"os"
 	"regexp"
@@ -16,14 +15,14 @@ import (
 // CheckErr check error is nil and if not panic with message
 func CheckErr(err error, msg ...interface{}) {
 	if err != nil {
-		log.Panicln(err, msg)
+		anyLog.Panicln(err, msg)
 	}
 }
 
 // CheckOk check ok
 func CheckOk(ok bool, msg ...interface{}) {
 	if !ok {
-		log.Panicln(msg)
+		anyLog.Panicln(msg)
 	}
 }
 
@@ -61,20 +60,21 @@ func IsFileExists(name string) bool {
 	return true
 }
 
+// TODO error processing
 func GetUrlContent(url string) []byte {
 	resp, err := http.Get(url)
 	if err != nil {
-		log.Fatal(err)
+		anyLog.Fatal(err)
 	}
 
 	defer resp.Body.Close()
 	utf8, err := charset.NewReader(resp.Body, resp.Header.Get("Content-Type"))
 	if err != nil {
-		log.Fatal(err)
+		anyLog.Fatal(err)
 	}
 	body, err := ioutil.ReadAll(utf8)
 	if err != nil {
-		log.Fatal(err)
+		anyLog.Fatal(err)
 	}
 
 	return body

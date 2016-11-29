@@ -12,7 +12,8 @@ import (
 )
 
 func InitRouter(conn *runner.DB, session *mgo.Session) *gin.Engine {
-	r := gin.Default()
+	r := gin.New()
+	r.Use(gin.LoggerWithWriter(util.GinLog.Writer()), gin.RecoveryWithWriter(util.RecLog.Writer()))
 
 	api := r.Group("/api/v1")
 

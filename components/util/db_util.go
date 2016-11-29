@@ -1,7 +1,6 @@
 package util
 
 import (
-	"bitbucket.org/Axxonsoft/ditsep/util"
 	"bufio"
 	"database/sql"
 	"github.com/itimofeev/hustledb/db/migrations"
@@ -26,7 +25,8 @@ func GetDb() (*runner.DB, *mgo.Session) {
 	}
 
 	s, err := mgo.Dial(config.Db().MongoURL)
-	util.CheckErr(err)
+	CheckErr(err)
+	InitLogs(config)
 
 	return InitDb(config), s
 }
