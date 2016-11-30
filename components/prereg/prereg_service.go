@@ -7,7 +7,7 @@ import (
 
 func NewPreregService(db *runner.DB, session *mgo.Session) *PreregService {
 	return &PreregService{
-		dao: NewPreregDao(db, session),
+		dao: &PreregDao{db, session},
 	}
 }
 

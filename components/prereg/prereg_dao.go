@@ -8,10 +8,6 @@ import (
 	"gopkg.in/mgutz/dat.v1/sqlx-runner"
 )
 
-func NewPreregDao(db *runner.DB, session *mgo.Session) *PreregDao {
-	return &PreregDao{db, session}
-}
-
 type PreregDao struct {
 	db      *runner.DB
 	session *mgo.Session

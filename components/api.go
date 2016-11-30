@@ -2,7 +2,7 @@ package components
 
 import (
 	"github.com/gin-gonic/gin"
-	fServer "github.com/itimofeev/hustledb/components/forum"
+	fServer "github.com/itimofeev/hustledb/components/forum/results"
 	"github.com/itimofeev/hustledb/components/hsaxls"
 	"github.com/itimofeev/hustledb/components/prereg"
 	"github.com/itimofeev/hustledb/components/util"
