@@ -8,7 +8,7 @@ services:
     depends_on:
       - hustledb
     volumes:
-#      - /var/log/nginx:/var/log/nginx
+      - /var/log:/var/log
       - /home/ilyaufo/hustledb/frontend:/etc/nginx/html/
   db:
     image: postgres:9.5
@@ -21,6 +21,8 @@ services:
   hustledb:
     image: hustledb
     env_file: prod.env
+    volumes:
+      - /var/log/hustledb:/var/log/hustledb
     depends_on:
       - db
       - mongo

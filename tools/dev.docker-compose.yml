@@ -8,7 +8,7 @@ services:
     depends_on:
       - hustledb
     volumes:
-      - /Users/ilyatimofee/prog/axxonsoft/src/github.com/itimofeev/hustledb/tools/logs:/var/log/nginx
+      - /Users/ilyatimofee/prog/axxonsoft/src/github.com/itimofeev/hustledb/tools/logs:/var/log/
       - /Users/ilyatimofee/prog/axxonsoft/src/github.com/itimofeev/hustledb/target/frontend:/etc/nginx/html/
   db:
     image: postgres:9.5
@@ -21,6 +21,8 @@ services:
   hustledb:
     image: hustledb
     env_file: /Users/ilyatimofee/prog/axxonsoft/src/github.com/itimofeev/hustledb/tools/dev.env
+    volumes:
+      - /Users/ilyatimofee/prog/axxonsoft/src/github.com/itimofeev/hustledb/tools/logs:/var/log/
     depends_on:
       - db
       - mongo

@@ -1,15 +1,17 @@
 package main
 
 import (
-	"github.com/itimofeev/hustledb/server"
-	"github.com/itimofeev/hustledb/util"
+	server "github.com/itimofeev/hustledb/components"
+	"github.com/itimofeev/hustledb/components/util"
+
 	"log"
 	"net/http"
 )
 
 func main() {
-	db, session := util.GetDb()
+	util.InitPersistence()
+	server.InitCronTasks()
 
-	log.Fatal(http.ListenAndServe(":8080", server.InitRouter(db, session)))
+	log.Fatal(http.ListenAndServe(":8080", server.InitRouter()))
 
 }
