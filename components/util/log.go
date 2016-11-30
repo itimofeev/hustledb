@@ -13,8 +13,9 @@ var CompLog *log.Logger
 var CronLog *log.Logger
 
 func InitLogs(c Config) {
-	const logLevel = "debug"
-	if len(c.App().LogDirPath) == 0 {
+	var logLevel = log.DebugLevel.String()
+	logDirPath := c.App().LogDirPath
+	if len(logDirPath) == 0 {
 		var lg = log.New()
 		lg.Out = os.Stdout
 		lg.Level = log.DebugLevel
@@ -25,11 +26,11 @@ func InitLogs(c Config) {
 		CompLog = lg
 		CronLog = lg
 	} else {
-		GinLog = newFileLog(c.App().LogDirPath, logLevel, "gin.log")
-		RecLog = newFileLog(c.App().LogDirPath, logLevel, "rec.log")
-		AnyLog = newFileLog(c.App().LogDirPath, logLevel, "any.log")
-		CompLog = newFileLog(c.App().LogDirPath, logLevel, "comp.log")
-		CronLog = newFileLog(c.App().LogDirPath, logLevel, "cron.log")
+		GinLog = newFileLog(logDirPath, logLevel, "gin.log")
+		RecLog = newFileLog(logDirPath, logLevel, "rec.log")
+		AnyLog = newFileLog(logDirPath, logLevel, "any.log")
+		CompLog = newFileLog(logDirPath, logLevel, "comp.log")
+		CronLog = newFileLog(logDirPath, logLevel, "cron.log")
 	}
 
 	AnyLog.Debug("Lets start fun with hustledb :)")
