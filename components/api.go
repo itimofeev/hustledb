@@ -2,7 +2,7 @@ package components
 
 import (
 	"github.com/gin-gonic/gin"
-	fServer "github.com/itimofeev/hustledb/components/forum/results"
+	"github.com/itimofeev/hustledb/components/forum/comp"
 	"github.com/itimofeev/hustledb/components/hsaxls"
 	"github.com/itimofeev/hustledb/components/prereg"
 	"github.com/itimofeev/hustledb/components/util"
@@ -24,18 +24,16 @@ func InitRouter() *gin.Engine {
 	api.GET("/dancers", hsaxls.ListDancers)
 	api.GET("/dancers/:dancerId", hsaxls.GetDancerInfo)
 
-	fHandlers := fServer.NewForumHandlers(util.DB)
 	forumApi := api.Group("/forum")
-	forumApi.GET("/competitions", fHandlers.ListCompetitions)
+	forumApi.GET("/competitions", comp.ListCompetitions)
 
-	preregHandlers := prereg.NewPreregHandlers(util.DB, util.MGO)
 	preregApi := api.Group("/prereg")
-	preregApi.GET("/", preregHandlers.ListPreregs)
-	preregApi.GET("/:fCompId", preregHandlers.GetPreregById)
+	preregApi.GET("/", prereg.ListPreregs)
+	preregApi.GET("/:fCompId", prereg.GetPreregById)
 
 	admin := api.Group("/admin")
-	admin.POST("/competitions", fHandlers.ParseCompetitions)
-	admin.POST("/prereg", preregHandlers.ParsePreregInfo)
+	admin.POST("/competitions", comp.ParseCompetitions)
+	admin.POST("/prereg", prereg.ParsePreregInfo)
 
 	return r
 }

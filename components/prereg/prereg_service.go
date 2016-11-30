@@ -1,14 +1,23 @@
 package prereg
 
 import (
-	"gopkg.in/mgo.v2"
-	"gopkg.in/mgutz/dat.v1/sqlx-runner"
+	"github.com/itimofeev/hustledb/components/util"
+	"sync"
+	"time"
 )
 
-func NewPreregService(db *runner.DB, session *mgo.Session) *PreregService {
-	return &PreregService{
-		dao: &PreregDao{db, session},
+var preregService *PreregService
+var oncePreregService sync.Once
+
+func initPreregService() {
+	preregService = &PreregService{
+		dao: &PreregDao{util.DB, util.MGO},
 	}
+}
+
+func GetPreregService() *PreregService {
+	oncePreregService.Do(initPreregService)
+	return preregService
 }
 
 type PreregService struct {
@@ -49,6 +58,7 @@ func (s *PreregService) ParsePreregInfo() {
 func (pf *PreregService) insert(c *PreregComp) {
 	fComp := pf.dao.FindCompByForumUrl(c.FCompetitionUrl)
 	c.FCompetitionId = fComp.ID
+	c.UpdateDate = time.Now()
 
-	pf.dao.InsertPreregComp(c)
+	pf.dao.insertPreregComp(c)
 }

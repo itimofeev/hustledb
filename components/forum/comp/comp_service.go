@@ -2,13 +2,21 @@ package comp
 
 import (
 	"github.com/itimofeev/hustledb/components/util"
-	"gopkg.in/mgutz/dat.v1/sqlx-runner"
+	"sync"
 )
 
-func NewFCompService(db *runner.DB) *FCompService {
-	return &FCompService{
-		dao: NewCompDao(db),
+var fCompService *FCompService
+var initFCompServiceSync sync.Once
+
+func initFCompService() {
+	fCompService = &FCompService{
+		dao: NewCompDao(util.DB),
 	}
+}
+
+func GetFCompService() *FCompService {
+	initFCompServiceSync.Do(initFCompService)
+	return fCompService
 }
 
 type FCompService struct {

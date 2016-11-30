@@ -17,9 +17,7 @@ func InitLogs(c Config) {
 	if len(c.App().LogDirPath) == 0 {
 		var lg = log.New()
 		lg.Out = os.Stdout
-		formatter := new(log.TextFormatter)
-		formatter.ForceColors = true
-		lg.Formatter = formatter
+		lg.Level = log.DebugLevel
 
 		GinLog = lg
 		RecLog = lg
@@ -33,6 +31,8 @@ func InitLogs(c Config) {
 		CompLog = newFileLog(c.App().LogDirPath, logLevel, "comp.log")
 		CronLog = newFileLog(c.App().LogDirPath, logLevel, "cron.log")
 	}
+
+	AnyLog.Debug("Lets start fun with hustledb :)")
 }
 
 func newFileLog(logDir, logLevel, logName string) *log.Logger {

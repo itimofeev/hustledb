@@ -10,7 +10,7 @@ import (
 
 func main() {
 	util.InitPersistence()
-	util.InitCronTasks()
+	server.InitCronTasks()
 
 	log.Fatal(http.ListenAndServe(":8080", server.InitRouter()))
 

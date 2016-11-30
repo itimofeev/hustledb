@@ -32,7 +32,7 @@ func (d *PreregDao) FindCompByForumUrl(forumUrl string) *comp.FCompetition {
 	return &comps[0]
 }
 
-func (d *PreregDao) InsertPreregComp(comp *PreregComp) *PreregComp {
+func (d *PreregDao) insertPreregComp(comp *PreregComp) *PreregComp {
 	s := d.session.Clone()
 	defer s.Close()
 

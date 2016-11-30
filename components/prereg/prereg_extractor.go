@@ -7,6 +7,7 @@ import (
 	"github.com/itimofeev/hustledb/components/util"
 	"gopkg.in/mgo.v2/bson"
 	"strings"
+	"time"
 )
 
 type PreregComp struct {
@@ -14,6 +15,7 @@ type PreregComp struct {
 	FCompetitionId  int64               `bson:"f_competition_id" json:"f_competition_id"`
 	Nominations     []*PreregNomination `json:"nominations"`
 	FCompetitionUrl string              `json:"f_competition_url"`
+	UpdateDate      time.Time           `json:"update_date" bson:"update_date"`
 }
 
 type PreregNomination struct {
