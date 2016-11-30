@@ -16,19 +16,21 @@ import (
 )
 
 var DB *runner.DB
+var MGO *mgo.Session
 
-func GetDb() (*runner.DB, *mgo.Session) {
+func InitPersistence() {
 	config := ReadConfig()
 	if len(config.Db().URL) == 0 {
 		InitEnvironment()
 		config = ReadConfig()
 	}
 
-	s, err := mgo.Dial(config.Db().MongoURL)
-	CheckErr(err)
 	InitLogs(config)
+	DB = InitDb(config)
 
-	return InitDb(config), s
+	var err error
+	MGO, err = mgo.Dial(config.Db().MongoURL)
+	CheckErr(err)
 }
 
 func InitDb(config Config) *runner.DB {

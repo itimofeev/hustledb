@@ -38,7 +38,7 @@ func parseAndInsert(topicId string) {
 
 	util.PrintJson(results)
 
-	db, _ := util.GetDb()
+	db, _ := util.InitPersistence()
 
 	filler := forum.NewForumDbFiller(compUrl+topicId, forum.NewDao(db))
 	filler.FillDbInfo(results)

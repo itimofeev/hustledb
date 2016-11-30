@@ -6,12 +6,10 @@ import (
 	"github.com/itimofeev/hustledb/components/hsaxls"
 	"github.com/itimofeev/hustledb/components/prereg"
 	"github.com/itimofeev/hustledb/components/util"
-	"gopkg.in/mgo.v2"
-	"gopkg.in/mgutz/dat.v1/sqlx-runner"
 	"net/http"
 )
 
-func InitRouter(conn *runner.DB, session *mgo.Session) *gin.Engine {
+func InitRouter() *gin.Engine {
 	r := gin.New()
 	r.Use(gin.LoggerWithWriter(util.GinLog.Writer()), gin.RecoveryWithWriter(util.RecLog.Writer()))
 
@@ -26,11 +24,11 @@ func InitRouter(conn *runner.DB, session *mgo.Session) *gin.Engine {
 	api.GET("/dancers", hsaxls.ListDancers)
 	api.GET("/dancers/:dancerId", hsaxls.GetDancerInfo)
 
-	fHandlers := fServer.NewForumHandlers(conn)
+	fHandlers := fServer.NewForumHandlers(util.DB)
 	forumApi := api.Group("/forum")
 	forumApi.GET("/competitions", fHandlers.ListCompetitions)
 
-	preregHandlers := prereg.NewPreregHandlers(conn, session)
+	preregHandlers := prereg.NewPreregHandlers(util.DB, util.MGO)
 	preregApi := api.Group("/prereg")
 	preregApi.GET("/", preregHandlers.ListPreregs)
 	preregApi.GET("/:fCompId", preregHandlers.GetPreregById)
@@ -38,8 +36,6 @@ func InitRouter(conn *runner.DB, session *mgo.Session) *gin.Engine {
 	admin := api.Group("/admin")
 	admin.POST("/competitions", fHandlers.ParseCompetitions)
 	admin.POST("/prereg", preregHandlers.ParsePreregInfo)
-
-	util.DB = conn
 
 	return r
 }

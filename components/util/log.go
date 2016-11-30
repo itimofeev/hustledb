@@ -10,6 +10,7 @@ var GinLog *log.Logger
 var RecLog *log.Logger
 var AnyLog *log.Logger
 var CompLog *log.Logger
+var CronLog *log.Logger
 
 func InitLogs(c Config) {
 	const logLevel = "debug"
@@ -24,17 +25,19 @@ func InitLogs(c Config) {
 		RecLog = lg
 		AnyLog = lg
 		CompLog = lg
+		CronLog = lg
 	} else {
 		GinLog = newFileLog(c.App().LogDirPath, logLevel, "gin.log")
 		RecLog = newFileLog(c.App().LogDirPath, logLevel, "rec.log")
 		AnyLog = newFileLog(c.App().LogDirPath, logLevel, "any.log")
 		CompLog = newFileLog(c.App().LogDirPath, logLevel, "comp.log")
+		CronLog = newFileLog(c.App().LogDirPath, logLevel, "cron.log")
 	}
 }
 
 func newFileLog(logDir, logLevel, logName string) *log.Logger {
 	fileLog := &lumberjack.Logger{
-		Filename:   logDir + logName,
+		Filename:   logDir + "/" + logName,
 		MaxSize:    5, // megabytes
 		MaxBackups: 10,
 		MaxAge:     28, //days

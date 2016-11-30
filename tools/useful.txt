@@ -13,3 +13,7 @@ sudo docker exec -t hustledb_db_1 pg_dumpall -c -U postgres > dump_`date +%d-%m-
 
 Run docker locally
 docker-compose -p hustledb -f tools/dev.docker-compose.yml up -d
+docker-compose -p hustledb -f tools/dev.docker-compose.yml stop
+
+
+godep save -v github.com/itimofeev/hustledb/main/hustledb

@@ -9,8 +9,9 @@ import (
 )
 
 func main() {
-	db, session := util.GetDb()
+	util.InitPersistence()
+	util.InitCronTasks()
 
-	log.Fatal(http.ListenAndServe(":8080", server.InitRouter(db, session)))
+	log.Fatal(http.ListenAndServe(":8080", server.InitRouter()))
 
 }

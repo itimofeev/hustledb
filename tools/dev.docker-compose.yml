@@ -21,6 +21,8 @@ services:
   hustledb:
     image: hustledb
     env_file: /Users/ilyatimofee/prog/axxonsoft/src/github.com/itimofeev/hustledb/tools/dev.env
+    volumes:
+      - /Users/ilyatimofee/prog/axxonsoft/src/github.com/itimofeev/hustledb/tools/logs:/var/log/hustledb
     depends_on:
       - db
       - mongo
