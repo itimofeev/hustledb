@@ -14,29 +14,33 @@ const baseUrl = "http://hustle-sa.ru/forum/index.php?showforum=6&prune_day=100&s
 const countOnPage = 15
 const forumDir = "/Users/ilyatimofee/prog/axxonsoft/src/github.com/itimofeev/hustledb/tools/forum-comp/"
 
-func ParseCompetitionListFromForum() []FCompetition {
-	var content []FCompetition
+func ParseCompetitionListFromForum() (comps []FCompetition, err error) {
 	for page := 0; page < 1000; page += countOnPage {
-		url := fmt.Sprintf(baseUrl, page)
-		data := util.GetUrlContent(url)
-		//data := util.DownloadUrlToFileIfNotExists(url, fmt.Sprintf("%s%d.html", forumDir, page))
-		comps := getCompetitionListFromPage(data)
-		if len(comps) == 0 {
-			return content
+		var data []byte
+		data, err = util.GetUrlContent(fmt.Sprintf(baseUrl, page))
+
+		if err != nil {
+			return
 		}
-		content = append(content, comps...)
+
+		var fromPage []FCompetition
+		fromPage, err = getCompetitionListFromPage(data)
+		if len(fromPage) == 0 {
+			return
+		}
+		comps = append(comps, fromPage...)
 	}
 
-	return content
+	return
 }
 
-func getCompetitionListFromPage(body []byte) []FCompetition {
+func getCompetitionListFromPage(body []byte) (comps []FCompetition, err error) {
 	doc, err := goquery.NewDocumentFromReader(bytes.NewBuffer(body))
-	util.CheckErr(err)
+	if err != nil {
+		return
+	}
 	r, err := regexp.Compile("^\\(\\d{4}-\\d{2}-\\d{2}(,\\d+)*\\) .*$")
 	util.CheckErr(err)
-
-	var comps []FCompetition
 
 	doc.
 		Find(".tableborder table tr").
@@ -85,7 +89,7 @@ func getCompetitionListFromPage(body []byte) []FCompetition {
 			})
 		})
 
-	return comps
+	return
 }
 
 func fixLink(link string) string {

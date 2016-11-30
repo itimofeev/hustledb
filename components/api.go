@@ -29,13 +29,15 @@ func InitRouter(conn *runner.DB, session *mgo.Session) *gin.Engine {
 	fHandlers := fServer.NewForumHandlers(conn)
 	forumApi := api.Group("/forum")
 	forumApi.GET("/competitions", fHandlers.ListCompetitions)
-	forumApi.POST("/competitions", fHandlers.ParseCompetitions)
 
 	preregHandlers := prereg.NewPreregHandlers(conn, session)
 	preregApi := api.Group("/prereg")
 	preregApi.GET("/", preregHandlers.ListPreregs)
 	preregApi.GET("/:fCompId", preregHandlers.GetPreregById)
-	preregApi.POST("/", preregHandlers.ParsePreregInfo)
+
+	admin := api.Group("/admin")
+	admin.POST("/competitions", fHandlers.ParseCompetitions)
+	admin.POST("/prereg", preregHandlers.ParsePreregInfo)
 
 	util.DB = conn
 

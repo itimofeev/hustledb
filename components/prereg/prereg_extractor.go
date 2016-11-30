@@ -53,7 +53,8 @@ const listUrl = "http://www.liveindance.ru/contest/registration/list.php?id=%d"
 const forumDir = "/Users/ilyatimofee/prog/axxonsoft/src/github.com/itimofeev/hustledb/tools/prereg/"
 
 func ParseAllPreregLinks() []string {
-	data := util.GetUrlContent(mainUrl)
+	data, err := util.GetUrlContent(mainUrl)
+	util.CheckErr(err)
 	doc, err := goquery.NewDocumentFromReader(bytes.NewBuffer(data))
 	util.CheckErr(err)
 
@@ -80,7 +81,8 @@ func ParsePreregId(listLink string) int {
 
 func GetForumCompetitionId(preregId int) string {
 	regUrlFull := fmt.Sprintf(regUrl, preregId)
-	data := util.GetUrlContent(regUrlFull)
+	data, err := util.GetUrlContent(regUrlFull)
+	util.CheckErr(err)
 
 	doc, err := goquery.NewDocumentFromReader(bytes.NewBuffer(data))
 	util.CheckErr(err)
@@ -97,7 +99,8 @@ func GetForumCompetitionId(preregId int) string {
 func ParsePreregCompetition(preregId int, fCompUrl string) *PreregComp {
 	listUrlFull := fmt.Sprintf(listUrl, preregId)
 	//data := util.DownloadUrlToFileIfNotExists(listUrlFull, fmt.Sprintf("%s%d.html", forumDir, preregId))
-	data := util.GetUrlContent(listUrlFull)
+	data, err := util.GetUrlContent(listUrlFull)
+	util.CheckErr(err)
 
 	preregComp := PreregComp{FCompetitionUrl: fCompUrl}
 

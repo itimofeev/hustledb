@@ -1,6 +1,7 @@
 package comp
 
 import (
+	"github.com/itimofeev/hustledb/components/util"
 	"gopkg.in/mgutz/dat.v1/sqlx-runner"
 )
 
@@ -19,7 +20,10 @@ func (s *FCompService) ListCompetitions() []FCompetition {
 }
 
 func (s *FCompService) ParseCompetitions() {
-	comps := ParseCompetitionListFromForum()
+	comps, err := ParseCompetitionListFromForum()
+	if err != nil {
+		util.CompLog.WithError(err).Error("Unable to parse competition list from forum")
+	}
 	for _, comp := range comps {
 		s.ProcessCompetition(&comp)
 	}

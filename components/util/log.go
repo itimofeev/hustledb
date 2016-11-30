@@ -8,7 +8,8 @@ import (
 
 var GinLog *log.Logger
 var RecLog *log.Logger
-var anyLog *log.Logger
+var AnyLog *log.Logger
+var CompLog *log.Logger
 
 func InitLogs(c Config) {
 	const logLevel = "debug"
@@ -21,11 +22,13 @@ func InitLogs(c Config) {
 
 		GinLog = lg
 		RecLog = lg
-		anyLog = lg
+		AnyLog = lg
+		CompLog = lg
 	} else {
 		GinLog = newFileLog(c.App().LogDirPath, logLevel, "gin.log")
 		RecLog = newFileLog(c.App().LogDirPath, logLevel, "rec.log")
-		anyLog = newFileLog(c.App().LogDirPath, logLevel, "any.log")
+		AnyLog = newFileLog(c.App().LogDirPath, logLevel, "any.log")
+		CompLog = newFileLog(c.App().LogDirPath, logLevel, "comp.log")
 	}
 }
 

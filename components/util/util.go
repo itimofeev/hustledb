@@ -15,14 +15,14 @@ import (
 // CheckErr check error is nil and if not panic with message
 func CheckErr(err error, msg ...interface{}) {
 	if err != nil {
-		anyLog.Panicln(err, msg)
+		AnyLog.Panicln(err, msg)
 	}
 }
 
 // CheckOk check ok
 func CheckOk(ok bool, msg ...interface{}) {
 	if !ok {
-		anyLog.Panicln(msg)
+		AnyLog.Panicln(msg)
 	}
 }
 
@@ -60,43 +60,38 @@ func IsFileExists(name string) bool {
 	return true
 }
 
-// TODO error processing
-func GetUrlContent(url string) []byte {
+func GetUrlContent(url string) (body []byte, err error) {
 	resp, err := http.Get(url)
-	if err != nil {
-		anyLog.Fatal(err)
+	if resp != nil {
+		defer resp.Body.Close()
 	}
-
-	defer resp.Body.Close()
+	if err != nil {
+		return
+	}
 	utf8, err := charset.NewReader(resp.Body, resp.Header.Get("Content-Type"))
 	if err != nil {
-		anyLog.Fatal(err)
+		return
 	}
-	body, err := ioutil.ReadAll(utf8)
+	body, err = ioutil.ReadAll(utf8)
+	return
+}
+
+func DownloadUrlToFile(url, path string) (data []byte, err error) {
+	data, err = GetUrlContent(url)
 	if err != nil {
-		anyLog.Fatal(err)
+		return
 	}
 
-	return body
+	ioutil.WriteFile(path, data, 0644)
+	return
 }
-
-func DownloadUrlToFile(url, path string) []byte {
-	data := GetUrlContent(url)
-
-	err := ioutil.WriteFile(path, data, 0644)
-
-	CheckErr(err, "")
-	return data
-}
-func DownloadUrlToFileIfNotExists(url, path string) []byte {
+func DownloadUrlToFileIfNotExists(url, path string) (data []byte, err error) {
 	if !IsFileExists(path) {
 		return DownloadUrlToFile(url, path)
 	}
 
-	data, err := ioutil.ReadFile(path)
-	CheckErr(err, "")
-
-	return data
+	data, err = ioutil.ReadFile(path)
+	return
 }
 
 // 2014-05-18kshdfjkhsdf
