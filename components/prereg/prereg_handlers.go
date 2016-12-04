@@ -13,7 +13,12 @@ func ListPreregs(c *gin.Context) {
 
 func GetPreregById(c *gin.Context) {
 	id := c.Param("fCompId")
-	c.JSON(http.StatusOK, preregService.GetPreregById(util.Atoi(id)))
+	prereg := preregService.GetPreregById(util.Atoi(id))
+	if prereg == nil {
+		c.AbortWithStatus(http.StatusNotFound)
+	} else {
+		c.JSON(http.StatusOK, prereg)
+	}
 }
 
 func ParsePreregInfo(c *gin.Context) {

@@ -71,6 +71,9 @@ func (d *PreregDao) GetPreregById(fCompId int) *PreregComp {
 
 	found := &PreregComp{}
 	err := c.Find(bson.M{"f_competition_id": fCompId}).One(&found)
+	if err == mgo.ErrNotFound {
+		return nil
+	}
 	util.CheckErr(err)
 
 	return found
